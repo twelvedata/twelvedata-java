@@ -1,0 +1,267 @@
+/*
+ * Twelve Data API client for Java
+ *
+ * NOTE: This code is auto generated, please do not edit it manually.
+ */
+
+
+package com.twelvedata.client.model;
+
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.util.StringJoiner;
+import java.util.Objects;
+import java.util.Map;
+import java.util.HashMap;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+
+import com.twelvedata.client.ApiClient;
+/**
+ * CryptocurrencyResponseItem represents details of a cryptocurrency
+ */
+@JsonPropertyOrder({
+  CryptocurrencyResponseItem.JSON_PROPERTY_SYMBOL,
+  CryptocurrencyResponseItem.JSON_PROPERTY_AVAILABLE_EXCHANGES,
+  CryptocurrencyResponseItem.JSON_PROPERTY_CURRENCY_BASE,
+  CryptocurrencyResponseItem.JSON_PROPERTY_CURRENCY_QUOTE
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.19.0")
+public class CryptocurrencyResponseItem {
+  public static final String JSON_PROPERTY_SYMBOL = "symbol";
+  @javax.annotation.Nonnull
+  private String symbol;
+
+  public static final String JSON_PROPERTY_AVAILABLE_EXCHANGES = "available_exchanges";
+  @javax.annotation.Nonnull
+  private List<String> availableExchanges = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_CURRENCY_BASE = "currency_base";
+  @javax.annotation.Nonnull
+  private String currencyBase;
+
+  public static final String JSON_PROPERTY_CURRENCY_QUOTE = "currency_quote";
+  @javax.annotation.Nonnull
+  private String currencyQuote;
+
+  public CryptocurrencyResponseItem() { 
+  }
+
+  public CryptocurrencyResponseItem symbol(@javax.annotation.Nonnull String symbol) {
+    this.symbol = symbol;
+    return this;
+  }
+
+  /**
+   * Cryptocurrency pair codes with slash(/) delimiter
+   * @return symbol
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_SYMBOL, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public String getSymbol() {
+    return symbol;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_SYMBOL, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setSymbol(@javax.annotation.Nonnull String symbol) {
+    this.symbol = symbol;
+  }
+
+
+  public CryptocurrencyResponseItem availableExchanges(@javax.annotation.Nonnull List<String> availableExchanges) {
+    this.availableExchanges = availableExchanges;
+    return this;
+  }
+
+  public CryptocurrencyResponseItem addAvailableExchangesItem(String availableExchangesItem) {
+    if (this.availableExchanges == null) {
+      this.availableExchanges = new ArrayList<>();
+    }
+    this.availableExchanges.add(availableExchangesItem);
+    return this;
+  }
+
+  /**
+   * List of exchanges where the cryptocurrency is available
+   * @return availableExchanges
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_AVAILABLE_EXCHANGES, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public List<String> getAvailableExchanges() {
+    return availableExchanges;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_AVAILABLE_EXCHANGES, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setAvailableExchanges(@javax.annotation.Nonnull List<String> availableExchanges) {
+    this.availableExchanges = availableExchanges;
+  }
+
+
+  public CryptocurrencyResponseItem currencyBase(@javax.annotation.Nonnull String currencyBase) {
+    this.currencyBase = currencyBase;
+    return this;
+  }
+
+  /**
+   * Base currency of the cryptocurrency pair
+   * @return currencyBase
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_CURRENCY_BASE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public String getCurrencyBase() {
+    return currencyBase;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CURRENCY_BASE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setCurrencyBase(@javax.annotation.Nonnull String currencyBase) {
+    this.currencyBase = currencyBase;
+  }
+
+
+  public CryptocurrencyResponseItem currencyQuote(@javax.annotation.Nonnull String currencyQuote) {
+    this.currencyQuote = currencyQuote;
+    return this;
+  }
+
+  /**
+   * Quote currency of the cryptocurrency pair
+   * @return currencyQuote
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_CURRENCY_QUOTE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public String getCurrencyQuote() {
+    return currencyQuote;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CURRENCY_QUOTE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setCurrencyQuote(@javax.annotation.Nonnull String currencyQuote) {
+    this.currencyQuote = currencyQuote;
+  }
+
+
+  /**
+   * Return true if this CryptocurrencyResponseItem object is equal to o.
+   */
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    CryptocurrencyResponseItem cryptocurrencyResponseItem = (CryptocurrencyResponseItem) o;
+    return Objects.equals(this.symbol, cryptocurrencyResponseItem.symbol) &&
+        Objects.equals(this.availableExchanges, cryptocurrencyResponseItem.availableExchanges) &&
+        Objects.equals(this.currencyBase, cryptocurrencyResponseItem.currencyBase) &&
+        Objects.equals(this.currencyQuote, cryptocurrencyResponseItem.currencyQuote);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(symbol, availableExchanges, currencyBase, currencyQuote);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class CryptocurrencyResponseItem {\n");
+    sb.append("    symbol: ").append(toIndentedString(symbol)).append("\n");
+    sb.append("    availableExchanges: ").append(toIndentedString(availableExchanges)).append("\n");
+    sb.append("    currencyBase: ").append(toIndentedString(currencyBase)).append("\n");
+    sb.append("    currencyQuote: ").append(toIndentedString(currencyQuote)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
+  }
+
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @param prefix prefix of the query string
+   * @return URL query string
+   */
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
+    }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `symbol` to the URL query string
+    if (getSymbol() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%ssymbol%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSymbol()))));
+    }
+
+    // add `available_exchanges` to the URL query string
+    if (getAvailableExchanges() != null) {
+      for (int i = 0; i < getAvailableExchanges().size(); i++) {
+        joiner.add(String.format(java.util.Locale.ROOT, "%savailable_exchanges%s%s=%s", prefix, suffix,
+            "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
+            ApiClient.urlEncode(ApiClient.valueToString(getAvailableExchanges().get(i)))));
+      }
+    }
+
+    // add `currency_base` to the URL query string
+    if (getCurrencyBase() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%scurrency_base%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCurrencyBase()))));
+    }
+
+    // add `currency_quote` to the URL query string
+    if (getCurrencyQuote() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%scurrency_quote%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCurrencyQuote()))));
+    }
+
+    return joiner.toString();
+  }
+}
+
