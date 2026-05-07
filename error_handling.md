@@ -69,3 +69,57 @@ client.setHttpClientBuilder(java.net.http.HttpClient.newBuilder()
     .connectTimeout(java.time.Duration.ofSeconds(30)));
 Twelvedata.installErrorHandling(client);
 ```
+
+## WebSocket errors
+
+All WebSocket errors extend `com.twelvedata.client.ws.TwelvedataWebSocketException`. They are surfaced in two places: `connect()` completes its `CompletableFuture` exceptionally with the first error it encounters, and any error after a successful connection is delivered via `TwelvedataWebSocketListener.onError`. Fatal errors (e.g. an invalid API key) suppress the auto-reconnect loop so the client fails fast instead of retrying indefinitely.
+
+| Exception | Raised when |
+|---|---|
+| `TwelvedataWebSocketException.AuthException` | API key is missing, invalid, or rejected by the server during the upgrade handshake. **Not retried.** |
+| `TwelvedataWebSocketException.ConnectionException` | Socket failed to open, a send failed, or the server returned an unexpected non-auth response. |
+| `TwelvedataWebSocketException.TimeoutException` | No pong reply received within `pingTimeoutMs`. Triggers a reconnect. Exposes `getTimeoutMs()`. |
+| `TwelvedataWebSocketException.ReconnectException` | Reconnect attempts were exhausted (hit `reconnect.maxAttempts`). Exposes `getAttempts()`. |
+
+```java
+package com.example;
+
+import java.util.concurrent.CompletionException;
+
+import com.twelvedata.client.ws.TwelvedataWebSocketClient;
+import com.twelvedata.client.ws.TwelvedataWebSocketException;
+import com.twelvedata.client.ws.TwelvedataWebSocketListener;
+import com.twelvedata.client.ws.TwelvedataWebSocketOptions;
+
+public class App {
+    public static void main(String[] args) {
+        TwelvedataWebSocketClient client = new TwelvedataWebSocketClient(
+            TwelvedataWebSocketOptions.builder()
+                .apiKey("YOUR_API_KEY_HERE") // defaults to System.getenv("TWELVEDATA_API_KEY")
+                .build());
+
+        client.addListener(new TwelvedataWebSocketListener() {
+            @Override
+            public void onError(TwelvedataWebSocketException error) {
+                System.err.println("WebSocket error [" + error.getClass().getSimpleName() + "]: " + error.getMessage());
+
+                if (error instanceof TwelvedataWebSocketException.ReconnectException) {
+                    // Retries exhausted — client is inert until connect() is called again.
+                }
+            }
+        });
+
+        try {
+            client.connect().join();
+        } catch (CompletionException ex) {
+            if (ex.getCause() instanceof TwelvedataWebSocketException.AuthException) {
+                // Invalid / missing API key — not retried; fail fast.
+                System.exit(1);
+            }
+            throw ex;
+        }
+
+        client.subscribe("AAPL");
+    }
+}
+```

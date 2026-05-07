@@ -127,6 +127,116 @@ Gradle:
 ```
 
 👀 Check the full example and other examples [here](https://github.com/twelvedata/twelvedata-java/tree/master/examples).
+## WebSocket
+
+The library ships with a WebSocket client for streaming real-time prices from
+Twelve Data. It handles authorization, sends both application-level heartbeats
+and protocol-level pings, detects dead connections, and automatically
+reconnects with exponential backoff — re-subscribing to your active symbols on
+the way back up.
+
+> WebSocket streaming is available on the **Pro** (individual) and **Venture**
+> (business) plans and above. **Basic** and **Grow** plans are limited to one
+> connection and up to 8 simultaneous subscriptions from the
+> [trial symbol list](https://support.twelvedata.com/en/articles/5335783-trial).
+> See the [WebSocket FAQ](https://support.twelvedata.com/en/articles/5194610-websocket-faq)
+> for more details.
+### Usage
+
+```java
+package com.example;
+
+import java.util.concurrent.CompletionException;
+
+import com.twelvedata.client.ws.PriceEvent;
+import com.twelvedata.client.ws.ReconnectingEvent;
+import com.twelvedata.client.ws.SubscribeStatusEvent;
+import com.twelvedata.client.ws.TwelvedataWebSocketClient;
+import com.twelvedata.client.ws.TwelvedataWebSocketException;
+import com.twelvedata.client.ws.TwelvedataWebSocketListener;
+import com.twelvedata.client.ws.TwelvedataWebSocketOptions;
+
+public class App {
+    public static void main(String[] args) {
+        TwelvedataWebSocketClient client = new TwelvedataWebSocketClient(
+            TwelvedataWebSocketOptions.builder()
+                .apiKey("YOUR_API_KEY_HERE") // defaults to System.getenv("TWELVEDATA_API_KEY")
+                .build());
+
+        client.addListener(new TwelvedataWebSocketListener() {
+            @Override
+            public void onPrice(PriceEvent event) {
+                System.out.println(event.getSymbol() + " @ " + event.getPrice() + " (" + event.getTimestamp() + ")");
+            }
+
+            @Override
+            public void onSubscribeStatus(SubscribeStatusEvent event) {
+                System.out.println("Subscribed: " + event.getSuccess());
+                if (!event.getFails().isEmpty()) {
+                    System.err.println("Failed: " + event.getFails());
+                }
+            }
+
+            @Override
+            public void onReconnecting(ReconnectingEvent event) {
+                System.out.println("Reconnecting (attempt " + event.getAttempt() + ") in " + event.getDelayMs() + "ms");
+            }
+
+            @Override
+            public void onError(TwelvedataWebSocketException error) {
+                System.err.println("WebSocket error: " + error.getClass().getSimpleName() + ": " + error.getMessage());
+            }
+        });
+
+        try {
+            client.connect().join();
+        } catch (CompletionException ex) {
+            if (ex.getCause() instanceof TwelvedataWebSocketException.AuthException) {
+                // Invalid / missing API key — not retried.
+                System.exit(1);
+            }
+            throw ex;
+        }
+
+        client.subscribe("AAPL,EUR/USD,BTC/USD");
+
+        // Later, if you want to stop:
+        // client.unsubscribe("BTC/USD");
+        // client.disconnect();
+    }
+}
+```
+
+For the full list of WebSocket error types and recommended handling, see
+[WebSocket errors](error_handling.md#websocket-errors).
+
+### WebSocket client configuration
+
+All timing and retry knobs are exposed as constants on `WebSocketConstants` and can be overridden via the options builder:
+
+```java
+import com.twelvedata.client.ws.ReconnectOptions;
+import com.twelvedata.client.ws.TwelvedataWebSocketClient;
+import com.twelvedata.client.ws.TwelvedataWebSocketOptions;
+import com.twelvedata.client.ws.WebSocketConstants;
+
+TwelvedataWebSocketClient client = new TwelvedataWebSocketClient(
+    TwelvedataWebSocketOptions.builder()
+        .apiKey(System.getenv("TWELVEDATA_API_KEY")) // optional; falls back to env var
+        .heartbeatIntervalMs(WebSocketConstants.DEFAULT_HEARTBEAT_INTERVAL_MS) // 10_000 by default
+        .pingIntervalMs(30_000L)
+        .pingTimeoutMs(10_000L)
+        .reconnect(ReconnectOptions.builder()
+            .initialDelayMs(1_000L)
+            .maxDelayMs(30_000L)
+            .maxAttempts(10)
+            .backoffFactor(2.0)
+            .build())
+        // Pass `.reconnect(null)` to disable automatic reconnection entirely.
+        .build());
+```
+
+👀 Check the full example and other examples [here](https://github.com/twelvedata/twelvedata-java/tree/master/examples).
 
 ## Error Handling
 

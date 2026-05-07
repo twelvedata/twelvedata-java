@@ -19,7 +19,8 @@ dependencies {
 ['TimeSeries', 'Price', 'Quote', 'Eod',
  'ExchangeRate', 'CurrencyConversion',
  'EarliestTimestamp',
- 'TiRsi', 'TiEma', 'TiAtr', 'TiBbands'].each { name ->
+ 'TiRsi', 'TiEma', 'TiAtr', 'TiBbands',
+ 'WebSocketStream'].each { name ->
     tasks.register("run${name}", JavaExec) {
         group = 'examples'
         classpath = sourceSets.main.runtimeClasspath
