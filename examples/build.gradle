@@ -1,0 +1,30 @@
+plugins {
+    id 'application'
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+dependencies {
+    implementation 'com.twelvedata:twelvedata-java'
+}
+
+['TimeSeries', 'Price', 'Quote', 'Eod',
+ 'ExchangeRate', 'CurrencyConversion',
+ 'EarliestTimestamp',
+ 'TiRsi', 'TiEma', 'TiAtr', 'TiBbands'].each { name ->
+    tasks.register("run${name}", JavaExec) {
+        group = 'examples'
+        classpath = sourceSets.main.runtimeClasspath
+        mainClass = "com.twelvedata.examples.${name}"
+        standardOutput = System.out
+        errorOutput = System.err
+    }
+}
