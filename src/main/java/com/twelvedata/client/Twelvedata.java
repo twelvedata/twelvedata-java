@@ -10,7 +10,6 @@ import com.twelvedata.client.errors.TwelvedataErrorInterceptor;
 
 import java.io.InputStream;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.http.HttpResponse;
 import java.util.function.Consumer;
 
@@ -80,14 +79,10 @@ public final class Twelvedata {
     client.setRequestInterceptor(builder -> {
       builder.header("Authorization", authHeader);
       builder.header("X-API-Version", "last");
-      try {
-        URI current = builder.copy().build().uri();
-        URI rewritten = appendSourceIfMissing(current);
-        if (!rewritten.equals(current)) {
-          builder.uri(rewritten);
-        }
-      } catch (URISyntaxException e) {
-        throw new IllegalStateException("Failed to inject source parameter", e);
+      URI current = builder.copy().build().uri();
+      URI rewritten = appendSourceIfMissing(current);
+      if (!rewritten.equals(current)) {
+        builder.uri(rewritten);
       }
     });
     installErrorHandling(client);
@@ -110,7 +105,7 @@ public final class Twelvedata {
     client.setResponseInterceptor(existing != null ? existing.andThen(handler) : handler);
   }
 
-  private static URI appendSourceIfMissing(URI uri) throws URISyntaxException {
+  private static URI appendSourceIfMissing(URI uri) {
     String query = uri.getRawQuery();
     if (query != null) {
       for (String pair : query.split("&")) {
@@ -123,7 +118,16 @@ public final class Twelvedata {
     }
     String addition = SOURCE_PARAM + "=" + SOURCE_VALUE;
     String newQuery = (query == null || query.isEmpty()) ? addition : query + "&" + addition;
-    return new URI(uri.getScheme(), uri.getRawAuthority(), uri.getRawPath(), newQuery, uri.getRawFragment());
+
+    // Build the URI from an already-encoded string: the multi-arg URI constructor
+    // re-quotes `%` as `%25`, double-encoding values like `EUR%2FUSD` from getRawQuery().
+    StringBuilder sb = new StringBuilder();
+    sb.append(uri.getScheme()).append("://").append(uri.getRawAuthority()).append(uri.getRawPath());
+    sb.append('?').append(newQuery);
+    if (uri.getRawFragment() != null) {
+      sb.append('#').append(uri.getRawFragment());
+    }
+    return URI.create(sb.toString());
   }
 
   private static String firstNonEmpty(String... values) {
