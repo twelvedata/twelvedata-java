@@ -52,7 +52,7 @@ public final class WebSocketStream {
     client.subscribe("AAPL,EUR/USD,BTC/USD");
 
     // Stream for 30 seconds, then close cleanly.
-    TimeUnit.SECONDS.sleep(30000000);
+    TimeUnit.SECONDS.sleep(30);
     client.disconnect();
   }
 
