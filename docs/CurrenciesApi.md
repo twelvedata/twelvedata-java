@@ -13,7 +13,7 @@ All URIs are relative to *https://api.twelvedata.com*
 
 ## getCurrencyConversion
 
-> GetCurrencyConversion200Response getCurrencyConversion(symbol, amount, date, format, delimiter, dp, timezone)
+> GetCurrencyConversion200Response getCurrencyConversion(getCurrencyConversionRequest)
 
 Currency conversion
 
@@ -29,6 +29,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.CurrenciesApi;
+import com.twelvedata.client.api.CurrenciesApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -50,7 +51,16 @@ public class Example {
         Long dp = 5L; // Long | The number of decimal places for the data
         String timezone = "UTC"; // String | Timezone at which output datetime will be displayed. Supports: <ul> <li>1. <code>Exchange</code> for local exchange time</li> <li>2. <code>UTC</code> for datetime at universal UTC standard</li> <li>3. Timezone name according to the IANA Time Zone Database. E.g. <code>America/New_York</code>, <code>Asia/Singapore</code>. Full list of timezones can be found <a href=\"https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\" target=\"blank\">here</a>.</li> </ul> <i>Take note that the IANA Timezone name is case-sensitive</i>
         try {
-            GetCurrencyConversion200Response result = apiInstance.getCurrencyConversion(symbol, amount, date, format, delimiter, dp, timezone);
+            APIgetCurrencyConversionRequest request = APIgetCurrencyConversionRequest.newBuilder()
+                .symbol(symbol)
+                .amount(amount)
+                .date(date)
+                .format(format)
+                .delimiter(delimiter)
+                .dp(dp)
+                .timezone(timezone)
+                .build();
+            GetCurrencyConversion200Response result = apiInstance.getCurrencyConversion(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CurrenciesApi#getCurrencyConversion");
@@ -65,16 +75,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The currency pair you want to request can be either forex or cryptocurrency. Slash(&#x60;/&#x60;) delimiter is used. E.g. &#x60;EUR/USD&#x60; or &#x60;BTC/ETH&#x60; will be correct | |
-| **amount** | **Double**| Amount of base currency to be converted into quote currency. Supports values in the range from &#x60;0&#x60; and above | |
-| **date** | **String**| If not null, will use exchange rate from a specific date or time. Format &#x60;2006-01-02&#x60; or &#x60;2006-01-02T15:04:05&#x60;. Is set in the local exchange time zone, use timezone parameter to specify a specific time zone | [optional] |
-| **format** | [**FormatEnum**](.md)| Value can be &#x60;JSON&#x60; or &#x60;CSV&#x60;. Default &#x60;JSON&#x60; | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| Specify the delimiter used when downloading the &#x60;CSV&#x60; file. Default semicolon &#x60;;&#x60; | [optional] [default to ;] |
-| **dp** | **Long**| The number of decimal places for the data | [optional] [default to 5] |
-| **timezone** | **String**| Timezone at which output datetime will be displayed. Supports: &lt;ul&gt; &lt;li&gt;1. &lt;code&gt;Exchange&lt;/code&gt; for local exchange time&lt;/li&gt; &lt;li&gt;2. &lt;code&gt;UTC&lt;/code&gt; for datetime at universal UTC standard&lt;/li&gt; &lt;li&gt;3. Timezone name according to the IANA Time Zone Database. E.g. &lt;code&gt;America/New_York&lt;/code&gt;, &lt;code&gt;Asia/Singapore&lt;/code&gt;. Full list of timezones can be found &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\&quot; target&#x3D;\&quot;blank\&quot;&gt;here&lt;/a&gt;.&lt;/li&gt; &lt;/ul&gt; &lt;i&gt;Take note that the IANA Timezone name is case-sensitive&lt;/i&gt; | [optional] |
+| getCurrencyConversionRequest | [**APIgetCurrencyConversionRequest**](CurrenciesApi.md#APIgetCurrencyConversionRequest)|-|-|
 
 ### Return type
 
@@ -104,7 +107,7 @@ public class Example {
 
 ## getCurrencyConversionWithHttpInfo
 
-> ApiResponse<GetCurrencyConversion200Response> getCurrencyConversion getCurrencyConversionWithHttpInfo(symbol, amount, date, format, delimiter, dp, timezone)
+> ApiResponse<GetCurrencyConversion200Response> getCurrencyConversion getCurrencyConversionWithHttpInfo(getCurrencyConversionRequest)
 
 Currency conversion
 
@@ -121,6 +124,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.CurrenciesApi;
+import com.twelvedata.client.api.CurrenciesApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -142,7 +146,16 @@ public class Example {
         Long dp = 5L; // Long | The number of decimal places for the data
         String timezone = "UTC"; // String | Timezone at which output datetime will be displayed. Supports: <ul> <li>1. <code>Exchange</code> for local exchange time</li> <li>2. <code>UTC</code> for datetime at universal UTC standard</li> <li>3. Timezone name according to the IANA Time Zone Database. E.g. <code>America/New_York</code>, <code>Asia/Singapore</code>. Full list of timezones can be found <a href=\"https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\" target=\"blank\">here</a>.</li> </ul> <i>Take note that the IANA Timezone name is case-sensitive</i>
         try {
-            ApiResponse<GetCurrencyConversion200Response> response = apiInstance.getCurrencyConversionWithHttpInfo(symbol, amount, date, format, delimiter, dp, timezone);
+            APIgetCurrencyConversionRequest request = APIgetCurrencyConversionRequest.newBuilder()
+                .symbol(symbol)
+                .amount(amount)
+                .date(date)
+                .format(format)
+                .delimiter(delimiter)
+                .dp(dp)
+                .timezone(timezone)
+                .build();
+            ApiResponse<GetCurrencyConversion200Response> response = apiInstance.getCurrencyConversionWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -159,16 +172,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The currency pair you want to request can be either forex or cryptocurrency. Slash(&#x60;/&#x60;) delimiter is used. E.g. &#x60;EUR/USD&#x60; or &#x60;BTC/ETH&#x60; will be correct | |
-| **amount** | **Double**| Amount of base currency to be converted into quote currency. Supports values in the range from &#x60;0&#x60; and above | |
-| **date** | **String**| If not null, will use exchange rate from a specific date or time. Format &#x60;2006-01-02&#x60; or &#x60;2006-01-02T15:04:05&#x60;. Is set in the local exchange time zone, use timezone parameter to specify a specific time zone | [optional] |
-| **format** | [**FormatEnum**](.md)| Value can be &#x60;JSON&#x60; or &#x60;CSV&#x60;. Default &#x60;JSON&#x60; | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| Specify the delimiter used when downloading the &#x60;CSV&#x60; file. Default semicolon &#x60;;&#x60; | [optional] [default to ;] |
-| **dp** | **Long**| The number of decimal places for the data | [optional] [default to 5] |
-| **timezone** | **String**| Timezone at which output datetime will be displayed. Supports: &lt;ul&gt; &lt;li&gt;1. &lt;code&gt;Exchange&lt;/code&gt; for local exchange time&lt;/li&gt; &lt;li&gt;2. &lt;code&gt;UTC&lt;/code&gt; for datetime at universal UTC standard&lt;/li&gt; &lt;li&gt;3. Timezone name according to the IANA Time Zone Database. E.g. &lt;code&gt;America/New_York&lt;/code&gt;, &lt;code&gt;Asia/Singapore&lt;/code&gt;. Full list of timezones can be found &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\&quot; target&#x3D;\&quot;blank\&quot;&gt;here&lt;/a&gt;.&lt;/li&gt; &lt;/ul&gt; &lt;i&gt;Take note that the IANA Timezone name is case-sensitive&lt;/i&gt; | [optional] |
+| getCurrencyConversionRequest | [**APIgetCurrencyConversionRequest**](CurrenciesApi.md#APIgetCurrencyConversionRequest)|-|-|
 
 ### Return type
 
@@ -197,9 +203,25 @@ ApiResponse<[**GetCurrencyConversion200Response**](GetCurrencyConversion200Respo
 | **500** |  |  -  |
 
 
+<a id="APIgetCurrencyConversionRequest"></a>
+## APIgetCurrencyConversionRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | The currency pair you want to request can be either forex or cryptocurrency. Slash(&#x60;/&#x60;) delimiter is used. E.g. &#x60;EUR/USD&#x60; or &#x60;BTC/ETH&#x60; will be correct | |
+| **amount** | **Double** | Amount of base currency to be converted into quote currency. Supports values in the range from &#x60;0&#x60; and above | |
+| **date** | **String** | If not null, will use exchange rate from a specific date or time. Format &#x60;2006-01-02&#x60; or &#x60;2006-01-02T15:04:05&#x60;. Is set in the local exchange time zone, use timezone parameter to specify a specific time zone | [optional] |
+| **format** | [**FormatEnum**](.md) | Value can be &#x60;JSON&#x60; or &#x60;CSV&#x60;. Default &#x60;JSON&#x60; | [optional] [default to JSON] [enum: JSON, CSV] |
+| **delimiter** | **String** | Specify the delimiter used when downloading the &#x60;CSV&#x60; file. Default semicolon &#x60;;&#x60; | [optional] [default to ;] |
+| **dp** | **Long** | The number of decimal places for the data | [optional] [default to 5] |
+| **timezone** | **String** | Timezone at which output datetime will be displayed. Supports: &lt;ul&gt; &lt;li&gt;1. &lt;code&gt;Exchange&lt;/code&gt; for local exchange time&lt;/li&gt; &lt;li&gt;2. &lt;code&gt;UTC&lt;/code&gt; for datetime at universal UTC standard&lt;/li&gt; &lt;li&gt;3. Timezone name according to the IANA Time Zone Database. E.g. &lt;code&gt;America/New_York&lt;/code&gt;, &lt;code&gt;Asia/Singapore&lt;/code&gt;. Full list of timezones can be found &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\&quot; target&#x3D;\&quot;blank\&quot;&gt;here&lt;/a&gt;.&lt;/li&gt; &lt;/ul&gt; &lt;i&gt;Take note that the IANA Timezone name is case-sensitive&lt;/i&gt; | [optional] |
+
+
+
 ## getExchangeRate
 
-> GetExchangeRate200Response getExchangeRate(symbol, date, format, delimiter, dp, timezone)
+> GetExchangeRate200Response getExchangeRate(getExchangeRateRequest)
 
 Exchange rate
 
@@ -215,6 +237,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.CurrenciesApi;
+import com.twelvedata.client.api.CurrenciesApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -235,7 +258,15 @@ public class Example {
         Long dp = 5L; // Long | The number of decimal places for the data
         String timezone = "UTC"; // String | Timezone at which output datetime will be displayed. Supports: <ul> <li>1. <code>Exchange</code> for local exchange time</li> <li>2. <code>UTC</code> for datetime at universal UTC standard</li> <li>3. Timezone name according to the IANA Time Zone Database. E.g. <code>America/New_York</code>, <code>Asia/Singapore</code>. Full list of timezones can be found <a href=\"https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\" target=\"blank\">here</a>.</li> </ul> <i>Take note that the IANA Timezone name is case-sensitive</i>
         try {
-            GetExchangeRate200Response result = apiInstance.getExchangeRate(symbol, date, format, delimiter, dp, timezone);
+            APIgetExchangeRateRequest request = APIgetExchangeRateRequest.newBuilder()
+                .symbol(symbol)
+                .date(date)
+                .format(format)
+                .delimiter(delimiter)
+                .dp(dp)
+                .timezone(timezone)
+                .build();
+            GetExchangeRate200Response result = apiInstance.getExchangeRate(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CurrenciesApi#getExchangeRate");
@@ -250,15 +281,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The currency pair you want to request can be either forex or cryptocurrency. Slash(&#x60;/&#x60;) delimiter is used. E.g. &#x60;EUR/USD&#x60; or &#x60;BTC/ETH&#x60; will be correct | |
-| **date** | **String**| If not null, will use exchange rate from a specific date or time. Format &#x60;2006-01-02&#x60; or &#x60;2006-01-02T15:04:05&#x60;. Is set in the local exchange time zone, use timezone parameter to specify a specific time zone | [optional] |
-| **format** | [**FormatEnum**](.md)| Value can be &#x60;JSON&#x60; or &#x60;CSV&#x60;. Default &#x60;JSON&#x60; | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| Specify the delimiter used when downloading the &#x60;CSV&#x60; file. Default semicolon &#x60;;&#x60; | [optional] [default to ;] |
-| **dp** | **Long**| The number of decimal places for the data | [optional] [default to 5] |
-| **timezone** | **String**| Timezone at which output datetime will be displayed. Supports: &lt;ul&gt; &lt;li&gt;1. &lt;code&gt;Exchange&lt;/code&gt; for local exchange time&lt;/li&gt; &lt;li&gt;2. &lt;code&gt;UTC&lt;/code&gt; for datetime at universal UTC standard&lt;/li&gt; &lt;li&gt;3. Timezone name according to the IANA Time Zone Database. E.g. &lt;code&gt;America/New_York&lt;/code&gt;, &lt;code&gt;Asia/Singapore&lt;/code&gt;. Full list of timezones can be found &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\&quot; target&#x3D;\&quot;blank\&quot;&gt;here&lt;/a&gt;.&lt;/li&gt; &lt;/ul&gt; &lt;i&gt;Take note that the IANA Timezone name is case-sensitive&lt;/i&gt; | [optional] |
+| getExchangeRateRequest | [**APIgetExchangeRateRequest**](CurrenciesApi.md#APIgetExchangeRateRequest)|-|-|
 
 ### Return type
 
@@ -288,7 +313,7 @@ public class Example {
 
 ## getExchangeRateWithHttpInfo
 
-> ApiResponse<GetExchangeRate200Response> getExchangeRate getExchangeRateWithHttpInfo(symbol, date, format, delimiter, dp, timezone)
+> ApiResponse<GetExchangeRate200Response> getExchangeRate getExchangeRateWithHttpInfo(getExchangeRateRequest)
 
 Exchange rate
 
@@ -305,6 +330,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.CurrenciesApi;
+import com.twelvedata.client.api.CurrenciesApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -325,7 +351,15 @@ public class Example {
         Long dp = 5L; // Long | The number of decimal places for the data
         String timezone = "UTC"; // String | Timezone at which output datetime will be displayed. Supports: <ul> <li>1. <code>Exchange</code> for local exchange time</li> <li>2. <code>UTC</code> for datetime at universal UTC standard</li> <li>3. Timezone name according to the IANA Time Zone Database. E.g. <code>America/New_York</code>, <code>Asia/Singapore</code>. Full list of timezones can be found <a href=\"https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\" target=\"blank\">here</a>.</li> </ul> <i>Take note that the IANA Timezone name is case-sensitive</i>
         try {
-            ApiResponse<GetExchangeRate200Response> response = apiInstance.getExchangeRateWithHttpInfo(symbol, date, format, delimiter, dp, timezone);
+            APIgetExchangeRateRequest request = APIgetExchangeRateRequest.newBuilder()
+                .symbol(symbol)
+                .date(date)
+                .format(format)
+                .delimiter(delimiter)
+                .dp(dp)
+                .timezone(timezone)
+                .build();
+            ApiResponse<GetExchangeRate200Response> response = apiInstance.getExchangeRateWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -342,15 +376,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The currency pair you want to request can be either forex or cryptocurrency. Slash(&#x60;/&#x60;) delimiter is used. E.g. &#x60;EUR/USD&#x60; or &#x60;BTC/ETH&#x60; will be correct | |
-| **date** | **String**| If not null, will use exchange rate from a specific date or time. Format &#x60;2006-01-02&#x60; or &#x60;2006-01-02T15:04:05&#x60;. Is set in the local exchange time zone, use timezone parameter to specify a specific time zone | [optional] |
-| **format** | [**FormatEnum**](.md)| Value can be &#x60;JSON&#x60; or &#x60;CSV&#x60;. Default &#x60;JSON&#x60; | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| Specify the delimiter used when downloading the &#x60;CSV&#x60; file. Default semicolon &#x60;;&#x60; | [optional] [default to ;] |
-| **dp** | **Long**| The number of decimal places for the data | [optional] [default to 5] |
-| **timezone** | **String**| Timezone at which output datetime will be displayed. Supports: &lt;ul&gt; &lt;li&gt;1. &lt;code&gt;Exchange&lt;/code&gt; for local exchange time&lt;/li&gt; &lt;li&gt;2. &lt;code&gt;UTC&lt;/code&gt; for datetime at universal UTC standard&lt;/li&gt; &lt;li&gt;3. Timezone name according to the IANA Time Zone Database. E.g. &lt;code&gt;America/New_York&lt;/code&gt;, &lt;code&gt;Asia/Singapore&lt;/code&gt;. Full list of timezones can be found &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\&quot; target&#x3D;\&quot;blank\&quot;&gt;here&lt;/a&gt;.&lt;/li&gt; &lt;/ul&gt; &lt;i&gt;Take note that the IANA Timezone name is case-sensitive&lt;/i&gt; | [optional] |
+| getExchangeRateRequest | [**APIgetExchangeRateRequest**](CurrenciesApi.md#APIgetExchangeRateRequest)|-|-|
 
 ### Return type
 
@@ -377,4 +405,19 @@ ApiResponse<[**GetExchangeRate200Response**](GetExchangeRate200Response.md)>
 | **414** |  |  -  |
 | **429** |  |  -  |
 | **500** |  |  -  |
+
+
+<a id="APIgetExchangeRateRequest"></a>
+## APIgetExchangeRateRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | The currency pair you want to request can be either forex or cryptocurrency. Slash(&#x60;/&#x60;) delimiter is used. E.g. &#x60;EUR/USD&#x60; or &#x60;BTC/ETH&#x60; will be correct | |
+| **date** | **String** | If not null, will use exchange rate from a specific date or time. Format &#x60;2006-01-02&#x60; or &#x60;2006-01-02T15:04:05&#x60;. Is set in the local exchange time zone, use timezone parameter to specify a specific time zone | [optional] |
+| **format** | [**FormatEnum**](.md) | Value can be &#x60;JSON&#x60; or &#x60;CSV&#x60;. Default &#x60;JSON&#x60; | [optional] [default to JSON] [enum: JSON, CSV] |
+| **delimiter** | **String** | Specify the delimiter used when downloading the &#x60;CSV&#x60; file. Default semicolon &#x60;;&#x60; | [optional] [default to ;] |
+| **dp** | **Long** | The number of decimal places for the data | [optional] [default to 5] |
+| **timezone** | **String** | Timezone at which output datetime will be displayed. Supports: &lt;ul&gt; &lt;li&gt;1. &lt;code&gt;Exchange&lt;/code&gt; for local exchange time&lt;/li&gt; &lt;li&gt;2. &lt;code&gt;UTC&lt;/code&gt; for datetime at universal UTC standard&lt;/li&gt; &lt;li&gt;3. Timezone name according to the IANA Time Zone Database. E.g. &lt;code&gt;America/New_York&lt;/code&gt;, &lt;code&gt;Asia/Singapore&lt;/code&gt;. Full list of timezones can be found &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\&quot; target&#x3D;\&quot;blank\&quot;&gt;here&lt;/a&gt;.&lt;/li&gt; &lt;/ul&gt; &lt;i&gt;Take note that the IANA Timezone name is case-sensitive&lt;/i&gt; | [optional] |
+
 

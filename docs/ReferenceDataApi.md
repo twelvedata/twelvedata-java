@@ -45,7 +45,7 @@ All URIs are relative to *https://api.twelvedata.com*
 
 ## getBonds
 
-> GetBonds200Response getBonds(symbol, exchange, country, format, delimiter, showPlan, page, outputsize)
+> GetBonds200Response getBonds(getBondsRequest)
 
 Fixed income
 
@@ -61,6 +61,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -83,7 +84,17 @@ public class Example {
         Long page = 1L; // Long | Page number of the results to fetch
         Long outputsize = 5000L; // Long | Determines the number of data points returned in the output
         try {
-            GetBonds200Response result = apiInstance.getBonds(symbol, exchange, country, format, delimiter, showPlan, page, outputsize);
+            APIgetBondsRequest request = APIgetBondsRequest.newBuilder()
+                .symbol(symbol)
+                .exchange(exchange)
+                .country(country)
+                .format(format)
+                .delimiter(delimiter)
+                .showPlan(showPlan)
+                .page(page)
+                .outputsize(outputsize)
+                .build();
+            GetBonds200Response result = apiInstance.getBonds(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReferenceDataApi#getBonds");
@@ -98,17 +109,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The ticker symbol of an instrument for which data is requested | [optional] |
-| **exchange** | **String**| Filter by exchange name | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **format** | [**FormatEnum**](.md)| The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| The separator used in the CSV response data | [optional] [default to ;] |
-| **showPlan** | **Boolean**| Adds info on which plan symbol is available | [optional] [default to false] |
-| **page** | **Long**| Page number of the results to fetch | [optional] [default to 1] |
-| **outputsize** | **Long**| Determines the number of data points returned in the output | [optional] [default to 5000] |
+| getBondsRequest | [**APIgetBondsRequest**](ReferenceDataApi.md#APIgetBondsRequest)|-|-|
 
 ### Return type
 
@@ -138,7 +141,7 @@ public class Example {
 
 ## getBondsWithHttpInfo
 
-> ApiResponse<GetBonds200Response> getBonds getBondsWithHttpInfo(symbol, exchange, country, format, delimiter, showPlan, page, outputsize)
+> ApiResponse<GetBonds200Response> getBonds getBondsWithHttpInfo(getBondsRequest)
 
 Fixed income
 
@@ -155,6 +158,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -177,7 +181,17 @@ public class Example {
         Long page = 1L; // Long | Page number of the results to fetch
         Long outputsize = 5000L; // Long | Determines the number of data points returned in the output
         try {
-            ApiResponse<GetBonds200Response> response = apiInstance.getBondsWithHttpInfo(symbol, exchange, country, format, delimiter, showPlan, page, outputsize);
+            APIgetBondsRequest request = APIgetBondsRequest.newBuilder()
+                .symbol(symbol)
+                .exchange(exchange)
+                .country(country)
+                .format(format)
+                .delimiter(delimiter)
+                .showPlan(showPlan)
+                .page(page)
+                .outputsize(outputsize)
+                .build();
+            ApiResponse<GetBonds200Response> response = apiInstance.getBondsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -194,17 +208,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The ticker symbol of an instrument for which data is requested | [optional] |
-| **exchange** | **String**| Filter by exchange name | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **format** | [**FormatEnum**](.md)| The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| The separator used in the CSV response data | [optional] [default to ;] |
-| **showPlan** | **Boolean**| Adds info on which plan symbol is available | [optional] [default to false] |
-| **page** | **Long**| Page number of the results to fetch | [optional] [default to 1] |
-| **outputsize** | **Long**| Determines the number of data points returned in the output | [optional] [default to 5000] |
+| getBondsRequest | [**APIgetBondsRequest**](ReferenceDataApi.md#APIgetBondsRequest)|-|-|
 
 ### Return type
 
@@ -233,9 +239,26 @@ ApiResponse<[**GetBonds200Response**](GetBonds200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetBondsRequest"></a>
+## APIgetBondsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | The ticker symbol of an instrument for which data is requested | [optional] |
+| **exchange** | **String** | Filter by exchange name | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **format** | [**FormatEnum**](.md) | The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
+| **delimiter** | **String** | The separator used in the CSV response data | [optional] [default to ;] |
+| **showPlan** | **Boolean** | Adds info on which plan symbol is available | [optional] [default to false] |
+| **page** | **Long** | Page number of the results to fetch | [optional] [default to 1] |
+| **outputsize** | **Long** | Determines the number of data points returned in the output | [optional] [default to 5000] |
+
+
+
 ## getCommodities
 
-> GetCommodities200Response getCommodities(symbol, category, format, delimiter)
+> GetCommodities200Response getCommodities(getCommoditiesRequest)
 
 Commodities
 
@@ -251,6 +274,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -269,7 +293,13 @@ public class Example {
         FormatEnum format = FormatEnum.fromValue("JSON"); // FormatEnum | The format of the response data
         String delimiter = ";"; // String | The separator used in the CSV response data
         try {
-            GetCommodities200Response result = apiInstance.getCommodities(symbol, category, format, delimiter);
+            APIgetCommoditiesRequest request = APIgetCommoditiesRequest.newBuilder()
+                .symbol(symbol)
+                .category(category)
+                .format(format)
+                .delimiter(delimiter)
+                .build();
+            GetCommodities200Response result = apiInstance.getCommodities(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReferenceDataApi#getCommodities");
@@ -284,13 +314,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The ticker symbol of an instrument for which data is requested | [optional] |
-| **category** | **String**| Filter by category of commodity | [optional] |
-| **format** | [**FormatEnum**](.md)| The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| The separator used in the CSV response data | [optional] [default to ;] |
+| getCommoditiesRequest | [**APIgetCommoditiesRequest**](ReferenceDataApi.md#APIgetCommoditiesRequest)|-|-|
 
 ### Return type
 
@@ -320,7 +346,7 @@ public class Example {
 
 ## getCommoditiesWithHttpInfo
 
-> ApiResponse<GetCommodities200Response> getCommodities getCommoditiesWithHttpInfo(symbol, category, format, delimiter)
+> ApiResponse<GetCommodities200Response> getCommodities getCommoditiesWithHttpInfo(getCommoditiesRequest)
 
 Commodities
 
@@ -337,6 +363,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -355,7 +382,13 @@ public class Example {
         FormatEnum format = FormatEnum.fromValue("JSON"); // FormatEnum | The format of the response data
         String delimiter = ";"; // String | The separator used in the CSV response data
         try {
-            ApiResponse<GetCommodities200Response> response = apiInstance.getCommoditiesWithHttpInfo(symbol, category, format, delimiter);
+            APIgetCommoditiesRequest request = APIgetCommoditiesRequest.newBuilder()
+                .symbol(symbol)
+                .category(category)
+                .format(format)
+                .delimiter(delimiter)
+                .build();
+            ApiResponse<GetCommodities200Response> response = apiInstance.getCommoditiesWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -372,13 +405,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The ticker symbol of an instrument for which data is requested | [optional] |
-| **category** | **String**| Filter by category of commodity | [optional] |
-| **format** | [**FormatEnum**](.md)| The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| The separator used in the CSV response data | [optional] [default to ;] |
+| getCommoditiesRequest | [**APIgetCommoditiesRequest**](ReferenceDataApi.md#APIgetCommoditiesRequest)|-|-|
 
 ### Return type
 
@@ -407,6 +436,19 @@ ApiResponse<[**GetCommodities200Response**](GetCommodities200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetCommoditiesRequest"></a>
+## APIgetCommoditiesRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | The ticker symbol of an instrument for which data is requested | [optional] |
+| **category** | **String** | Filter by category of commodity | [optional] |
+| **format** | [**FormatEnum**](.md) | The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
+| **delimiter** | **String** | The separator used in the CSV response data | [optional] [default to ;] |
+
+
+
 ## getCountries
 
 > GetCountries200Response getCountries()
@@ -425,6 +467,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -501,6 +544,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -563,7 +607,7 @@ ApiResponse<[**GetCountries200Response**](GetCountries200Response.md)>
 
 ## getCrossListings
 
-> GetCrossListings200Response getCrossListings(symbol, exchange, micCode, country)
+> GetCrossListings200Response getCrossListings(getCrossListingsRequest)
 
 Cross listings
 
@@ -579,6 +623,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -597,7 +642,13 @@ public class Example {
         String micCode = "XNGS"; // String | Market identifier code (MIC) under ISO 10383 standard
         String country = "United States"; // String | Country to which stock exchange belongs to
         try {
-            GetCrossListings200Response result = apiInstance.getCrossListings(symbol, exchange, micCode, country);
+            APIgetCrossListingsRequest request = APIgetCrossListingsRequest.newBuilder()
+                .symbol(symbol)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .build();
+            GetCrossListings200Response result = apiInstance.getCrossListings(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReferenceDataApi#getCrossListings");
@@ -612,13 +663,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The ticker symbol of an instrument for which data is requested | |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market identifier code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country to which stock exchange belongs to | [optional] |
+| getCrossListingsRequest | [**APIgetCrossListingsRequest**](ReferenceDataApi.md#APIgetCrossListingsRequest)|-|-|
 
 ### Return type
 
@@ -648,7 +695,7 @@ public class Example {
 
 ## getCrossListingsWithHttpInfo
 
-> ApiResponse<GetCrossListings200Response> getCrossListings getCrossListingsWithHttpInfo(symbol, exchange, micCode, country)
+> ApiResponse<GetCrossListings200Response> getCrossListings getCrossListingsWithHttpInfo(getCrossListingsRequest)
 
 Cross listings
 
@@ -665,6 +712,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -683,7 +731,13 @@ public class Example {
         String micCode = "XNGS"; // String | Market identifier code (MIC) under ISO 10383 standard
         String country = "United States"; // String | Country to which stock exchange belongs to
         try {
-            ApiResponse<GetCrossListings200Response> response = apiInstance.getCrossListingsWithHttpInfo(symbol, exchange, micCode, country);
+            APIgetCrossListingsRequest request = APIgetCrossListingsRequest.newBuilder()
+                .symbol(symbol)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .build();
+            ApiResponse<GetCrossListings200Response> response = apiInstance.getCrossListingsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -700,13 +754,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The ticker symbol of an instrument for which data is requested | |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market identifier code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country to which stock exchange belongs to | [optional] |
+| getCrossListingsRequest | [**APIgetCrossListingsRequest**](ReferenceDataApi.md#APIgetCrossListingsRequest)|-|-|
 
 ### Return type
 
@@ -735,9 +785,22 @@ ApiResponse<[**GetCrossListings200Response**](GetCrossListings200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetCrossListingsRequest"></a>
+## APIgetCrossListingsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | The ticker symbol of an instrument for which data is requested | |
+| **exchange** | **String** | Exchange where instrument is traded | [optional] |
+| **micCode** | **String** | Market identifier code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Country to which stock exchange belongs to | [optional] |
+
+
+
 ## getCryptocurrencies
 
-> GetCryptocurrencies200Response getCryptocurrencies(symbol, exchange, currencyBase, currencyQuote, format, delimiter)
+> GetCryptocurrencies200Response getCryptocurrencies(getCryptocurrenciesRequest)
 
 Cryptocurrency pairs
 
@@ -753,6 +816,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -773,7 +837,15 @@ public class Example {
         FormatEnum format = FormatEnum.fromValue("JSON"); // FormatEnum | The format of the response data
         String delimiter = ";"; // String | The separator used in the CSV response data
         try {
-            GetCryptocurrencies200Response result = apiInstance.getCryptocurrencies(symbol, exchange, currencyBase, currencyQuote, format, delimiter);
+            APIgetCryptocurrenciesRequest request = APIgetCryptocurrenciesRequest.newBuilder()
+                .symbol(symbol)
+                .exchange(exchange)
+                .currencyBase(currencyBase)
+                .currencyQuote(currencyQuote)
+                .format(format)
+                .delimiter(delimiter)
+                .build();
+            GetCryptocurrencies200Response result = apiInstance.getCryptocurrencies(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReferenceDataApi#getCryptocurrencies");
@@ -788,15 +860,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The ticker symbol of an instrument for which data is requested | [optional] |
-| **exchange** | **String**| Filter by exchange name. E.g. &#x60;Binance&#x60;, &#x60;Coinbase&#x60;, etc. | [optional] |
-| **currencyBase** | **String**| Filter by currency base | [optional] |
-| **currencyQuote** | **String**| Filter by currency quote | [optional] |
-| **format** | [**FormatEnum**](.md)| The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| The separator used in the CSV response data | [optional] [default to ;] |
+| getCryptocurrenciesRequest | [**APIgetCryptocurrenciesRequest**](ReferenceDataApi.md#APIgetCryptocurrenciesRequest)|-|-|
 
 ### Return type
 
@@ -826,7 +892,7 @@ public class Example {
 
 ## getCryptocurrenciesWithHttpInfo
 
-> ApiResponse<GetCryptocurrencies200Response> getCryptocurrencies getCryptocurrenciesWithHttpInfo(symbol, exchange, currencyBase, currencyQuote, format, delimiter)
+> ApiResponse<GetCryptocurrencies200Response> getCryptocurrencies getCryptocurrenciesWithHttpInfo(getCryptocurrenciesRequest)
 
 Cryptocurrency pairs
 
@@ -843,6 +909,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -863,7 +930,15 @@ public class Example {
         FormatEnum format = FormatEnum.fromValue("JSON"); // FormatEnum | The format of the response data
         String delimiter = ";"; // String | The separator used in the CSV response data
         try {
-            ApiResponse<GetCryptocurrencies200Response> response = apiInstance.getCryptocurrenciesWithHttpInfo(symbol, exchange, currencyBase, currencyQuote, format, delimiter);
+            APIgetCryptocurrenciesRequest request = APIgetCryptocurrenciesRequest.newBuilder()
+                .symbol(symbol)
+                .exchange(exchange)
+                .currencyBase(currencyBase)
+                .currencyQuote(currencyQuote)
+                .format(format)
+                .delimiter(delimiter)
+                .build();
+            ApiResponse<GetCryptocurrencies200Response> response = apiInstance.getCryptocurrenciesWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -880,15 +955,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The ticker symbol of an instrument for which data is requested | [optional] |
-| **exchange** | **String**| Filter by exchange name. E.g. &#x60;Binance&#x60;, &#x60;Coinbase&#x60;, etc. | [optional] |
-| **currencyBase** | **String**| Filter by currency base | [optional] |
-| **currencyQuote** | **String**| Filter by currency quote | [optional] |
-| **format** | [**FormatEnum**](.md)| The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| The separator used in the CSV response data | [optional] [default to ;] |
+| getCryptocurrenciesRequest | [**APIgetCryptocurrenciesRequest**](ReferenceDataApi.md#APIgetCryptocurrenciesRequest)|-|-|
 
 ### Return type
 
@@ -917,9 +986,24 @@ ApiResponse<[**GetCryptocurrencies200Response**](GetCryptocurrencies200Response.
 | **500** |  |  -  |
 
 
+<a id="APIgetCryptocurrenciesRequest"></a>
+## APIgetCryptocurrenciesRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | The ticker symbol of an instrument for which data is requested | [optional] |
+| **exchange** | **String** | Filter by exchange name. E.g. &#x60;Binance&#x60;, &#x60;Coinbase&#x60;, etc. | [optional] |
+| **currencyBase** | **String** | Filter by currency base | [optional] |
+| **currencyQuote** | **String** | Filter by currency quote | [optional] |
+| **format** | [**FormatEnum**](.md) | The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
+| **delimiter** | **String** | The separator used in the CSV response data | [optional] [default to ;] |
+
+
+
 ## getCryptocurrencyExchanges
 
-> GetCryptocurrencyExchanges200Response getCryptocurrencyExchanges(format, delimiter)
+> GetCryptocurrencyExchanges200Response getCryptocurrencyExchanges(getCryptocurrencyExchangesRequest)
 
 Cryptocurrency exchanges
 
@@ -935,6 +1019,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -951,7 +1036,11 @@ public class Example {
         FormatEnum format = FormatEnum.fromValue("JSON"); // FormatEnum | The format of the response data
         String delimiter = ";"; // String | Specify the delimiter used when downloading the CSV file
         try {
-            GetCryptocurrencyExchanges200Response result = apiInstance.getCryptocurrencyExchanges(format, delimiter);
+            APIgetCryptocurrencyExchangesRequest request = APIgetCryptocurrencyExchangesRequest.newBuilder()
+                .format(format)
+                .delimiter(delimiter)
+                .build();
+            GetCryptocurrencyExchanges200Response result = apiInstance.getCryptocurrencyExchanges(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReferenceDataApi#getCryptocurrencyExchanges");
@@ -966,11 +1055,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **format** | [**FormatEnum**](.md)| The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| Specify the delimiter used when downloading the CSV file | [optional] [default to ;] |
+| getCryptocurrencyExchangesRequest | [**APIgetCryptocurrencyExchangesRequest**](ReferenceDataApi.md#APIgetCryptocurrencyExchangesRequest)|-|-|
 
 ### Return type
 
@@ -1000,7 +1087,7 @@ public class Example {
 
 ## getCryptocurrencyExchangesWithHttpInfo
 
-> ApiResponse<GetCryptocurrencyExchanges200Response> getCryptocurrencyExchanges getCryptocurrencyExchangesWithHttpInfo(format, delimiter)
+> ApiResponse<GetCryptocurrencyExchanges200Response> getCryptocurrencyExchanges getCryptocurrencyExchangesWithHttpInfo(getCryptocurrencyExchangesRequest)
 
 Cryptocurrency exchanges
 
@@ -1017,6 +1104,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1033,7 +1121,11 @@ public class Example {
         FormatEnum format = FormatEnum.fromValue("JSON"); // FormatEnum | The format of the response data
         String delimiter = ";"; // String | Specify the delimiter used when downloading the CSV file
         try {
-            ApiResponse<GetCryptocurrencyExchanges200Response> response = apiInstance.getCryptocurrencyExchangesWithHttpInfo(format, delimiter);
+            APIgetCryptocurrencyExchangesRequest request = APIgetCryptocurrencyExchangesRequest.newBuilder()
+                .format(format)
+                .delimiter(delimiter)
+                .build();
+            ApiResponse<GetCryptocurrencyExchanges200Response> response = apiInstance.getCryptocurrencyExchangesWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1050,11 +1142,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **format** | [**FormatEnum**](.md)| The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| Specify the delimiter used when downloading the CSV file | [optional] [default to ;] |
+| getCryptocurrencyExchangesRequest | [**APIgetCryptocurrencyExchangesRequest**](ReferenceDataApi.md#APIgetCryptocurrencyExchangesRequest)|-|-|
 
 ### Return type
 
@@ -1083,9 +1173,20 @@ ApiResponse<[**GetCryptocurrencyExchanges200Response**](GetCryptocurrencyExchang
 | **500** |  |  -  |
 
 
+<a id="APIgetCryptocurrencyExchangesRequest"></a>
+## APIgetCryptocurrencyExchangesRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **format** | [**FormatEnum**](.md) | The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
+| **delimiter** | **String** | Specify the delimiter used when downloading the CSV file | [optional] [default to ;] |
+
+
+
 ## getEarliestTimestamp
 
-> GetEarliestTimestamp200Response getEarliestTimestamp(interval, symbol, figi, isin, cusip, exchange, micCode, timezone)
+> GetEarliestTimestamp200Response getEarliestTimestamp(getEarliestTimestampRequest)
 
 Earliest timestamp
 
@@ -1101,6 +1202,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1123,7 +1225,17 @@ public class Example {
         String micCode = "XNAS"; // String | Market Identifier Code (MIC) under ISO 10383 standard.
         String timezone = "Exchange"; // String | Timezone at which output datetime will be displayed. Supports: <ul> <li>1. <code>Exchange</code> for local exchange time</li> <li>2. <code>UTC</code> for datetime at universal UTC standard</li> <li>3. Timezone name according to the IANA Time Zone Database. E.g. <code>America/New_York</code>, <code>Asia/Singapore</code>. Full list of timezones can be found <a href=\"https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\" target=\"blank\">here</a>.</li> </ul> <p>Interval Limitation: The timezone parameter is only applicable for intraday intervals (less than 1 day). For intervals of 1day, 1week, or 1month, the timezone parameter is ignored, and data is strictly returned in the Exchange local time.</p> <i>Take note that the IANA Timezone name is case-sensitive</i>
         try {
-            GetEarliestTimestamp200Response result = apiInstance.getEarliestTimestamp(interval, symbol, figi, isin, cusip, exchange, micCode, timezone);
+            APIgetEarliestTimestampRequest request = APIgetEarliestTimestampRequest.newBuilder()
+                .interval(interval)
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .timezone(timezone)
+                .build();
+            GetEarliestTimestamp200Response result = apiInstance.getEarliestTimestamp(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReferenceDataApi#getEarliestTimestamp");
@@ -1138,17 +1250,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **interval** | [**IntervalEnum**](.md)| Interval between two consecutive points in time series. | [enum: 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 8h, 1day, 1week, 1month] |
-| **symbol** | **String**| Symbol ticker of the instrument. | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded. | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard. | [optional] |
-| **timezone** | **String**| Timezone at which output datetime will be displayed. Supports: &lt;ul&gt; &lt;li&gt;1. &lt;code&gt;Exchange&lt;/code&gt; for local exchange time&lt;/li&gt; &lt;li&gt;2. &lt;code&gt;UTC&lt;/code&gt; for datetime at universal UTC standard&lt;/li&gt; &lt;li&gt;3. Timezone name according to the IANA Time Zone Database. E.g. &lt;code&gt;America/New_York&lt;/code&gt;, &lt;code&gt;Asia/Singapore&lt;/code&gt;. Full list of timezones can be found &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\&quot; target&#x3D;\&quot;blank\&quot;&gt;here&lt;/a&gt;.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Interval Limitation: The timezone parameter is only applicable for intraday intervals (less than 1 day). For intervals of 1day, 1week, or 1month, the timezone parameter is ignored, and data is strictly returned in the Exchange local time.&lt;/p&gt; &lt;i&gt;Take note that the IANA Timezone name is case-sensitive&lt;/i&gt; | [optional] [default to Exchange] |
+| getEarliestTimestampRequest | [**APIgetEarliestTimestampRequest**](ReferenceDataApi.md#APIgetEarliestTimestampRequest)|-|-|
 
 ### Return type
 
@@ -1178,7 +1282,7 @@ public class Example {
 
 ## getEarliestTimestampWithHttpInfo
 
-> ApiResponse<GetEarliestTimestamp200Response> getEarliestTimestamp getEarliestTimestampWithHttpInfo(interval, symbol, figi, isin, cusip, exchange, micCode, timezone)
+> ApiResponse<GetEarliestTimestamp200Response> getEarliestTimestamp getEarliestTimestampWithHttpInfo(getEarliestTimestampRequest)
 
 Earliest timestamp
 
@@ -1195,6 +1299,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1217,7 +1322,17 @@ public class Example {
         String micCode = "XNAS"; // String | Market Identifier Code (MIC) under ISO 10383 standard.
         String timezone = "Exchange"; // String | Timezone at which output datetime will be displayed. Supports: <ul> <li>1. <code>Exchange</code> for local exchange time</li> <li>2. <code>UTC</code> for datetime at universal UTC standard</li> <li>3. Timezone name according to the IANA Time Zone Database. E.g. <code>America/New_York</code>, <code>Asia/Singapore</code>. Full list of timezones can be found <a href=\"https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\" target=\"blank\">here</a>.</li> </ul> <p>Interval Limitation: The timezone parameter is only applicable for intraday intervals (less than 1 day). For intervals of 1day, 1week, or 1month, the timezone parameter is ignored, and data is strictly returned in the Exchange local time.</p> <i>Take note that the IANA Timezone name is case-sensitive</i>
         try {
-            ApiResponse<GetEarliestTimestamp200Response> response = apiInstance.getEarliestTimestampWithHttpInfo(interval, symbol, figi, isin, cusip, exchange, micCode, timezone);
+            APIgetEarliestTimestampRequest request = APIgetEarliestTimestampRequest.newBuilder()
+                .interval(interval)
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .timezone(timezone)
+                .build();
+            ApiResponse<GetEarliestTimestamp200Response> response = apiInstance.getEarliestTimestampWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1234,17 +1349,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **interval** | [**IntervalEnum**](.md)| Interval between two consecutive points in time series. | [enum: 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 8h, 1day, 1week, 1month] |
-| **symbol** | **String**| Symbol ticker of the instrument. | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded. | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard. | [optional] |
-| **timezone** | **String**| Timezone at which output datetime will be displayed. Supports: &lt;ul&gt; &lt;li&gt;1. &lt;code&gt;Exchange&lt;/code&gt; for local exchange time&lt;/li&gt; &lt;li&gt;2. &lt;code&gt;UTC&lt;/code&gt; for datetime at universal UTC standard&lt;/li&gt; &lt;li&gt;3. Timezone name according to the IANA Time Zone Database. E.g. &lt;code&gt;America/New_York&lt;/code&gt;, &lt;code&gt;Asia/Singapore&lt;/code&gt;. Full list of timezones can be found &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\&quot; target&#x3D;\&quot;blank\&quot;&gt;here&lt;/a&gt;.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Interval Limitation: The timezone parameter is only applicable for intraday intervals (less than 1 day). For intervals of 1day, 1week, or 1month, the timezone parameter is ignored, and data is strictly returned in the Exchange local time.&lt;/p&gt; &lt;i&gt;Take note that the IANA Timezone name is case-sensitive&lt;/i&gt; | [optional] [default to Exchange] |
+| getEarliestTimestampRequest | [**APIgetEarliestTimestampRequest**](ReferenceDataApi.md#APIgetEarliestTimestampRequest)|-|-|
 
 ### Return type
 
@@ -1273,9 +1380,26 @@ ApiResponse<[**GetEarliestTimestamp200Response**](GetEarliestTimestamp200Respons
 | **500** |  |  -  |
 
 
+<a id="APIgetEarliestTimestampRequest"></a>
+## APIgetEarliestTimestampRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **interval** | [**IntervalEnum**](.md) | Interval between two consecutive points in time series. | [enum: 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 8h, 1day, 1week, 1month] |
+| **symbol** | **String** | Symbol ticker of the instrument. | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **exchange** | **String** | Exchange where instrument is traded. | [optional] |
+| **micCode** | **String** | Market Identifier Code (MIC) under ISO 10383 standard. | [optional] |
+| **timezone** | **String** | Timezone at which output datetime will be displayed. Supports: &lt;ul&gt; &lt;li&gt;1. &lt;code&gt;Exchange&lt;/code&gt; for local exchange time&lt;/li&gt; &lt;li&gt;2. &lt;code&gt;UTC&lt;/code&gt; for datetime at universal UTC standard&lt;/li&gt; &lt;li&gt;3. Timezone name according to the IANA Time Zone Database. E.g. &lt;code&gt;America/New_York&lt;/code&gt;, &lt;code&gt;Asia/Singapore&lt;/code&gt;. Full list of timezones can be found &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\&quot; target&#x3D;\&quot;blank\&quot;&gt;here&lt;/a&gt;.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Interval Limitation: The timezone parameter is only applicable for intraday intervals (less than 1 day). For intervals of 1day, 1week, or 1month, the timezone parameter is ignored, and data is strictly returned in the Exchange local time.&lt;/p&gt; &lt;i&gt;Take note that the IANA Timezone name is case-sensitive&lt;/i&gt; | [optional] [default to Exchange] |
+
+
+
 ## getEtf
 
-> GetEtf200Response getEtf(symbol, figi, isin, cusip, cik, exchange, micCode, country, format, delimiter, showPlan, includeDelisted)
+> GetEtf200Response getEtf(getEtfRequest)
 
 ETFs
 
@@ -1291,6 +1415,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1317,7 +1442,21 @@ public class Example {
         Boolean showPlan = false; // Boolean | Adds info on which plan symbol is available
         Boolean includeDelisted = false; // Boolean | Include delisted identifiers
         try {
-            GetEtf200Response result = apiInstance.getEtf(symbol, figi, isin, cusip, cik, exchange, micCode, country, format, delimiter, showPlan, includeDelisted);
+            APIgetEtfRequest request = APIgetEtfRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .cik(cik)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .format(format)
+                .delimiter(delimiter)
+                .showPlan(showPlan)
+                .includeDelisted(includeDelisted)
+                .build();
+            GetEtf200Response result = apiInstance.getEtf(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReferenceDataApi#getEtf");
@@ -1332,21 +1471,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The ticker symbol of an instrument for which data is requested | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cik** | **String**| The CIK of an instrument for which data is requested | [optional] |
-| **exchange** | **String**| Filter by exchange name | [optional] |
-| **micCode** | **String**| Filter by market identifier code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **format** | [**FormatEnum**](.md)| The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| The separator used in the CSV response data | [optional] [default to ;] |
-| **showPlan** | **Boolean**| Adds info on which plan symbol is available | [optional] [default to false] |
-| **includeDelisted** | **Boolean**| Include delisted identifiers | [optional] [default to false] |
+| getEtfRequest | [**APIgetEtfRequest**](ReferenceDataApi.md#APIgetEtfRequest)|-|-|
 
 ### Return type
 
@@ -1376,7 +1503,7 @@ public class Example {
 
 ## getEtfWithHttpInfo
 
-> ApiResponse<GetEtf200Response> getEtf getEtfWithHttpInfo(symbol, figi, isin, cusip, cik, exchange, micCode, country, format, delimiter, showPlan, includeDelisted)
+> ApiResponse<GetEtf200Response> getEtf getEtfWithHttpInfo(getEtfRequest)
 
 ETFs
 
@@ -1393,6 +1520,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1419,7 +1547,21 @@ public class Example {
         Boolean showPlan = false; // Boolean | Adds info on which plan symbol is available
         Boolean includeDelisted = false; // Boolean | Include delisted identifiers
         try {
-            ApiResponse<GetEtf200Response> response = apiInstance.getEtfWithHttpInfo(symbol, figi, isin, cusip, cik, exchange, micCode, country, format, delimiter, showPlan, includeDelisted);
+            APIgetEtfRequest request = APIgetEtfRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .cik(cik)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .format(format)
+                .delimiter(delimiter)
+                .showPlan(showPlan)
+                .includeDelisted(includeDelisted)
+                .build();
+            ApiResponse<GetEtf200Response> response = apiInstance.getEtfWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1436,21 +1578,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The ticker symbol of an instrument for which data is requested | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cik** | **String**| The CIK of an instrument for which data is requested | [optional] |
-| **exchange** | **String**| Filter by exchange name | [optional] |
-| **micCode** | **String**| Filter by market identifier code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **format** | [**FormatEnum**](.md)| The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| The separator used in the CSV response data | [optional] [default to ;] |
-| **showPlan** | **Boolean**| Adds info on which plan symbol is available | [optional] [default to false] |
-| **includeDelisted** | **Boolean**| Include delisted identifiers | [optional] [default to false] |
+| getEtfRequest | [**APIgetEtfRequest**](ReferenceDataApi.md#APIgetEtfRequest)|-|-|
 
 ### Return type
 
@@ -1479,9 +1609,30 @@ ApiResponse<[**GetEtf200Response**](GetEtf200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetEtfRequest"></a>
+## APIgetEtfRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | The ticker symbol of an instrument for which data is requested | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cik** | **String** | The CIK of an instrument for which data is requested | [optional] |
+| **exchange** | **String** | Filter by exchange name | [optional] |
+| **micCode** | **String** | Filter by market identifier code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **format** | [**FormatEnum**](.md) | The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
+| **delimiter** | **String** | The separator used in the CSV response data | [optional] [default to ;] |
+| **showPlan** | **Boolean** | Adds info on which plan symbol is available | [optional] [default to false] |
+| **includeDelisted** | **Boolean** | Include delisted identifiers | [optional] [default to false] |
+
+
+
 ## getExchangeSchedule
 
-> GetExchangeSchedule200Response getExchangeSchedule(micName, micCode, country, date)
+> GetExchangeSchedule200Response getExchangeSchedule(getExchangeScheduleRequest)
 
 Exchanges schedule
 
@@ -1497,6 +1648,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1515,7 +1667,13 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         String date = "2021-10-27"; // String | <p> If a date is provided, the API returns the schedule for the specified date; otherwise, it returns the default (common) schedule. </p> The date can be specified in one of the following formats: <ul> <li>An exact date (e.g., <code>2021-10-27</code>)</li> <li>A human-readable keyword: <code>today</code> or <code>yesterday</code></li> <li>A full datetime string in UTC (e.g., <code>2025-04-11T20:00:00</code>) to retrieve the schedule corresponding to the day in the specified time.</li> </ul> When using a datetime value, the resulting schedule will correspond to the local calendar day at the specified time. For example, <code>2025-04-11T20:00:00 UTC</code> corresponds to: <ul> <li><code>2025-04-11</code> in the <code>America/New_York</code> timezone</li> <li><code>2025-04-12</code> in the <code>Australia/Sydney</code> timezone</li> </ul>
         try {
-            GetExchangeSchedule200Response result = apiInstance.getExchangeSchedule(micName, micCode, country, date);
+            APIgetExchangeScheduleRequest request = APIgetExchangeScheduleRequest.newBuilder()
+                .micName(micName)
+                .micCode(micCode)
+                .country(country)
+                .date(date)
+                .build();
+            GetExchangeSchedule200Response result = apiInstance.getExchangeSchedule(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReferenceDataApi#getExchangeSchedule");
@@ -1530,13 +1688,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **micName** | **String**| Filter by exchange name | [optional] |
-| **micCode** | **String**| Filter by market identifier code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **date** | **String**| &lt;p&gt; If a date is provided, the API returns the schedule for the specified date; otherwise, it returns the default (common) schedule. &lt;/p&gt; The date can be specified in one of the following formats: &lt;ul&gt; &lt;li&gt;An exact date (e.g., &lt;code&gt;2021-10-27&lt;/code&gt;)&lt;/li&gt; &lt;li&gt;A human-readable keyword: &lt;code&gt;today&lt;/code&gt; or &lt;code&gt;yesterday&lt;/code&gt;&lt;/li&gt; &lt;li&gt;A full datetime string in UTC (e.g., &lt;code&gt;2025-04-11T20:00:00&lt;/code&gt;) to retrieve the schedule corresponding to the day in the specified time.&lt;/li&gt; &lt;/ul&gt; When using a datetime value, the resulting schedule will correspond to the local calendar day at the specified time. For example, &lt;code&gt;2025-04-11T20:00:00 UTC&lt;/code&gt; corresponds to: &lt;ul&gt; &lt;li&gt;&lt;code&gt;2025-04-11&lt;/code&gt; in the &lt;code&gt;America/New_York&lt;/code&gt; timezone&lt;/li&gt; &lt;li&gt;&lt;code&gt;2025-04-12&lt;/code&gt; in the &lt;code&gt;Australia/Sydney&lt;/code&gt; timezone&lt;/li&gt; &lt;/ul&gt; | [optional] |
+| getExchangeScheduleRequest | [**APIgetExchangeScheduleRequest**](ReferenceDataApi.md#APIgetExchangeScheduleRequest)|-|-|
 
 ### Return type
 
@@ -1566,7 +1720,7 @@ public class Example {
 
 ## getExchangeScheduleWithHttpInfo
 
-> ApiResponse<GetExchangeSchedule200Response> getExchangeSchedule getExchangeScheduleWithHttpInfo(micName, micCode, country, date)
+> ApiResponse<GetExchangeSchedule200Response> getExchangeSchedule getExchangeScheduleWithHttpInfo(getExchangeScheduleRequest)
 
 Exchanges schedule
 
@@ -1583,6 +1737,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1601,7 +1756,13 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         String date = "2021-10-27"; // String | <p> If a date is provided, the API returns the schedule for the specified date; otherwise, it returns the default (common) schedule. </p> The date can be specified in one of the following formats: <ul> <li>An exact date (e.g., <code>2021-10-27</code>)</li> <li>A human-readable keyword: <code>today</code> or <code>yesterday</code></li> <li>A full datetime string in UTC (e.g., <code>2025-04-11T20:00:00</code>) to retrieve the schedule corresponding to the day in the specified time.</li> </ul> When using a datetime value, the resulting schedule will correspond to the local calendar day at the specified time. For example, <code>2025-04-11T20:00:00 UTC</code> corresponds to: <ul> <li><code>2025-04-11</code> in the <code>America/New_York</code> timezone</li> <li><code>2025-04-12</code> in the <code>Australia/Sydney</code> timezone</li> </ul>
         try {
-            ApiResponse<GetExchangeSchedule200Response> response = apiInstance.getExchangeScheduleWithHttpInfo(micName, micCode, country, date);
+            APIgetExchangeScheduleRequest request = APIgetExchangeScheduleRequest.newBuilder()
+                .micName(micName)
+                .micCode(micCode)
+                .country(country)
+                .date(date)
+                .build();
+            ApiResponse<GetExchangeSchedule200Response> response = apiInstance.getExchangeScheduleWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1618,13 +1779,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **micName** | **String**| Filter by exchange name | [optional] |
-| **micCode** | **String**| Filter by market identifier code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **date** | **String**| &lt;p&gt; If a date is provided, the API returns the schedule for the specified date; otherwise, it returns the default (common) schedule. &lt;/p&gt; The date can be specified in one of the following formats: &lt;ul&gt; &lt;li&gt;An exact date (e.g., &lt;code&gt;2021-10-27&lt;/code&gt;)&lt;/li&gt; &lt;li&gt;A human-readable keyword: &lt;code&gt;today&lt;/code&gt; or &lt;code&gt;yesterday&lt;/code&gt;&lt;/li&gt; &lt;li&gt;A full datetime string in UTC (e.g., &lt;code&gt;2025-04-11T20:00:00&lt;/code&gt;) to retrieve the schedule corresponding to the day in the specified time.&lt;/li&gt; &lt;/ul&gt; When using a datetime value, the resulting schedule will correspond to the local calendar day at the specified time. For example, &lt;code&gt;2025-04-11T20:00:00 UTC&lt;/code&gt; corresponds to: &lt;ul&gt; &lt;li&gt;&lt;code&gt;2025-04-11&lt;/code&gt; in the &lt;code&gt;America/New_York&lt;/code&gt; timezone&lt;/li&gt; &lt;li&gt;&lt;code&gt;2025-04-12&lt;/code&gt; in the &lt;code&gt;Australia/Sydney&lt;/code&gt; timezone&lt;/li&gt; &lt;/ul&gt; | [optional] |
+| getExchangeScheduleRequest | [**APIgetExchangeScheduleRequest**](ReferenceDataApi.md#APIgetExchangeScheduleRequest)|-|-|
 
 ### Return type
 
@@ -1653,9 +1810,22 @@ ApiResponse<[**GetExchangeSchedule200Response**](GetExchangeSchedule200Response.
 | **500** |  |  -  |
 
 
+<a id="APIgetExchangeScheduleRequest"></a>
+## APIgetExchangeScheduleRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **micName** | **String** | Filter by exchange name | [optional] |
+| **micCode** | **String** | Filter by market identifier code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **date** | **String** | &lt;p&gt; If a date is provided, the API returns the schedule for the specified date; otherwise, it returns the default (common) schedule. &lt;/p&gt; The date can be specified in one of the following formats: &lt;ul&gt; &lt;li&gt;An exact date (e.g., &lt;code&gt;2021-10-27&lt;/code&gt;)&lt;/li&gt; &lt;li&gt;A human-readable keyword: &lt;code&gt;today&lt;/code&gt; or &lt;code&gt;yesterday&lt;/code&gt;&lt;/li&gt; &lt;li&gt;A full datetime string in UTC (e.g., &lt;code&gt;2025-04-11T20:00:00&lt;/code&gt;) to retrieve the schedule corresponding to the day in the specified time.&lt;/li&gt; &lt;/ul&gt; When using a datetime value, the resulting schedule will correspond to the local calendar day at the specified time. For example, &lt;code&gt;2025-04-11T20:00:00 UTC&lt;/code&gt; corresponds to: &lt;ul&gt; &lt;li&gt;&lt;code&gt;2025-04-11&lt;/code&gt; in the &lt;code&gt;America/New_York&lt;/code&gt; timezone&lt;/li&gt; &lt;li&gt;&lt;code&gt;2025-04-12&lt;/code&gt; in the &lt;code&gt;Australia/Sydney&lt;/code&gt; timezone&lt;/li&gt; &lt;/ul&gt; | [optional] |
+
+
+
 ## getExchanges
 
-> GetExchanges200Response getExchanges(type, name, code, country, format, delimiter, showPlan)
+> GetExchanges200Response getExchanges(getExchangesRequest)
 
 Exchanges
 
@@ -1671,6 +1841,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1692,7 +1863,16 @@ public class Example {
         String delimiter = ";"; // String | The separator used in the CSV response data
         Boolean showPlan = false; // Boolean | Adds info on which plan symbol is available
         try {
-            GetExchanges200Response result = apiInstance.getExchanges(type, name, code, country, format, delimiter, showPlan);
+            APIgetExchangesRequest request = APIgetExchangesRequest.newBuilder()
+                .type(type)
+                .name(name)
+                .code(code)
+                .country(country)
+                .format(format)
+                .delimiter(delimiter)
+                .showPlan(showPlan)
+                .build();
+            GetExchanges200Response result = apiInstance.getExchanges(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReferenceDataApi#getExchanges");
@@ -1707,16 +1887,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **type** | [**TypeEnum**](.md)| The asset class to which the instrument belongs | [optional] [enum: American Depositary Receipt, Bond, Bond Fund, Closed-end Fund, Common Stock, Depositary Receipt, Digital Currency, ETF, Exchange-Traded Note, Global Depositary Receipt, Limited Partnership, Mutual Fund, Physical Currency, Preferred Stock, REIT, Right, Structured Product, Trust, Unit, Warrant] |
-| **name** | **String**| Filter by exchange name | [optional] |
-| **code** | **String**| Filter by market identifier code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **format** | [**FormatEnum**](.md)| The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| The separator used in the CSV response data | [optional] [default to ;] |
-| **showPlan** | **Boolean**| Adds info on which plan symbol is available | [optional] [default to false] |
+| getExchangesRequest | [**APIgetExchangesRequest**](ReferenceDataApi.md#APIgetExchangesRequest)|-|-|
 
 ### Return type
 
@@ -1746,7 +1919,7 @@ public class Example {
 
 ## getExchangesWithHttpInfo
 
-> ApiResponse<GetExchanges200Response> getExchanges getExchangesWithHttpInfo(type, name, code, country, format, delimiter, showPlan)
+> ApiResponse<GetExchanges200Response> getExchanges getExchangesWithHttpInfo(getExchangesRequest)
 
 Exchanges
 
@@ -1763,6 +1936,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1784,7 +1958,16 @@ public class Example {
         String delimiter = ";"; // String | The separator used in the CSV response data
         Boolean showPlan = false; // Boolean | Adds info on which plan symbol is available
         try {
-            ApiResponse<GetExchanges200Response> response = apiInstance.getExchangesWithHttpInfo(type, name, code, country, format, delimiter, showPlan);
+            APIgetExchangesRequest request = APIgetExchangesRequest.newBuilder()
+                .type(type)
+                .name(name)
+                .code(code)
+                .country(country)
+                .format(format)
+                .delimiter(delimiter)
+                .showPlan(showPlan)
+                .build();
+            ApiResponse<GetExchanges200Response> response = apiInstance.getExchangesWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1801,16 +1984,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **type** | [**TypeEnum**](.md)| The asset class to which the instrument belongs | [optional] [enum: American Depositary Receipt, Bond, Bond Fund, Closed-end Fund, Common Stock, Depositary Receipt, Digital Currency, ETF, Exchange-Traded Note, Global Depositary Receipt, Limited Partnership, Mutual Fund, Physical Currency, Preferred Stock, REIT, Right, Structured Product, Trust, Unit, Warrant] |
-| **name** | **String**| Filter by exchange name | [optional] |
-| **code** | **String**| Filter by market identifier code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **format** | [**FormatEnum**](.md)| The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| The separator used in the CSV response data | [optional] [default to ;] |
-| **showPlan** | **Boolean**| Adds info on which plan symbol is available | [optional] [default to false] |
+| getExchangesRequest | [**APIgetExchangesRequest**](ReferenceDataApi.md#APIgetExchangesRequest)|-|-|
 
 ### Return type
 
@@ -1839,9 +2015,25 @@ ApiResponse<[**GetExchanges200Response**](GetExchanges200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetExchangesRequest"></a>
+## APIgetExchangesRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **type** | [**TypeEnum**](.md) | The asset class to which the instrument belongs | [optional] [enum: American Depositary Receipt, Bond, Bond Fund, Closed-end Fund, Common Stock, Depositary Receipt, Digital Currency, ETF, Exchange-Traded Note, Global Depositary Receipt, Limited Partnership, Mutual Fund, Physical Currency, Preferred Stock, REIT, Right, Structured Product, Trust, Unit, Warrant] |
+| **name** | **String** | Filter by exchange name | [optional] |
+| **code** | **String** | Filter by market identifier code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **format** | [**FormatEnum**](.md) | The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
+| **delimiter** | **String** | The separator used in the CSV response data | [optional] [default to ;] |
+| **showPlan** | **Boolean** | Adds info on which plan symbol is available | [optional] [default to false] |
+
+
+
 ## getForexPairs
 
-> GetForexPairs200Response getForexPairs(symbol, currencyBase, currencyQuote, format, delimiter)
+> GetForexPairs200Response getForexPairs(getForexPairsRequest)
 
 Forex pairs
 
@@ -1857,6 +2049,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1876,7 +2069,14 @@ public class Example {
         FormatEnum format = FormatEnum.fromValue("JSON"); // FormatEnum | The format of the response data
         String delimiter = ";"; // String | The separator used in the CSV response data
         try {
-            GetForexPairs200Response result = apiInstance.getForexPairs(symbol, currencyBase, currencyQuote, format, delimiter);
+            APIgetForexPairsRequest request = APIgetForexPairsRequest.newBuilder()
+                .symbol(symbol)
+                .currencyBase(currencyBase)
+                .currencyQuote(currencyQuote)
+                .format(format)
+                .delimiter(delimiter)
+                .build();
+            GetForexPairs200Response result = apiInstance.getForexPairs(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReferenceDataApi#getForexPairs");
@@ -1891,14 +2091,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The ticker symbol of an instrument for which data is requested | [optional] |
-| **currencyBase** | **String**| Filter by currency base | [optional] |
-| **currencyQuote** | **String**| Filter by currency quote | [optional] |
-| **format** | [**FormatEnum**](.md)| The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| The separator used in the CSV response data | [optional] [default to ;] |
+| getForexPairsRequest | [**APIgetForexPairsRequest**](ReferenceDataApi.md#APIgetForexPairsRequest)|-|-|
 
 ### Return type
 
@@ -1928,7 +2123,7 @@ public class Example {
 
 ## getForexPairsWithHttpInfo
 
-> ApiResponse<GetForexPairs200Response> getForexPairs getForexPairsWithHttpInfo(symbol, currencyBase, currencyQuote, format, delimiter)
+> ApiResponse<GetForexPairs200Response> getForexPairs getForexPairsWithHttpInfo(getForexPairsRequest)
 
 Forex pairs
 
@@ -1945,6 +2140,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1964,7 +2160,14 @@ public class Example {
         FormatEnum format = FormatEnum.fromValue("JSON"); // FormatEnum | The format of the response data
         String delimiter = ";"; // String | The separator used in the CSV response data
         try {
-            ApiResponse<GetForexPairs200Response> response = apiInstance.getForexPairsWithHttpInfo(symbol, currencyBase, currencyQuote, format, delimiter);
+            APIgetForexPairsRequest request = APIgetForexPairsRequest.newBuilder()
+                .symbol(symbol)
+                .currencyBase(currencyBase)
+                .currencyQuote(currencyQuote)
+                .format(format)
+                .delimiter(delimiter)
+                .build();
+            ApiResponse<GetForexPairs200Response> response = apiInstance.getForexPairsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1981,14 +2184,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The ticker symbol of an instrument for which data is requested | [optional] |
-| **currencyBase** | **String**| Filter by currency base | [optional] |
-| **currencyQuote** | **String**| Filter by currency quote | [optional] |
-| **format** | [**FormatEnum**](.md)| The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| The separator used in the CSV response data | [optional] [default to ;] |
+| getForexPairsRequest | [**APIgetForexPairsRequest**](ReferenceDataApi.md#APIgetForexPairsRequest)|-|-|
 
 ### Return type
 
@@ -2017,9 +2215,23 @@ ApiResponse<[**GetForexPairs200Response**](GetForexPairs200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetForexPairsRequest"></a>
+## APIgetForexPairsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | The ticker symbol of an instrument for which data is requested | [optional] |
+| **currencyBase** | **String** | Filter by currency base | [optional] |
+| **currencyQuote** | **String** | Filter by currency quote | [optional] |
+| **format** | [**FormatEnum**](.md) | The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
+| **delimiter** | **String** | The separator used in the CSV response data | [optional] [default to ;] |
+
+
+
 ## getFunds
 
-> GetFunds200Response getFunds(symbol, figi, isin, cusip, cik, exchange, country, format, delimiter, showPlan, page, outputsize)
+> GetFunds200Response getFunds(getFundsRequest)
 
 Funds
 
@@ -2035,6 +2247,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -2061,7 +2274,21 @@ public class Example {
         Long page = 1L; // Long | Page number of the results to fetch
         Long outputsize = 5000L; // Long | Determines the number of data points returned in the output
         try {
-            GetFunds200Response result = apiInstance.getFunds(symbol, figi, isin, cusip, cik, exchange, country, format, delimiter, showPlan, page, outputsize);
+            APIgetFundsRequest request = APIgetFundsRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .cik(cik)
+                .exchange(exchange)
+                .country(country)
+                .format(format)
+                .delimiter(delimiter)
+                .showPlan(showPlan)
+                .page(page)
+                .outputsize(outputsize)
+                .build();
+            GetFunds200Response result = apiInstance.getFunds(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReferenceDataApi#getFunds");
@@ -2076,21 +2303,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The ticker symbol of an instrument for which data is requested | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cik** | **String**| The CIK of an instrument for which data is requested | [optional] |
-| **exchange** | **String**| Filter by exchange name | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **format** | [**FormatEnum**](.md)| The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| The separator used in the CSV response data | [optional] [default to ;] |
-| **showPlan** | **Boolean**| Adds info on which plan symbol is available | [optional] [default to false] |
-| **page** | **Long**| Page number of the results to fetch | [optional] [default to 1] |
-| **outputsize** | **Long**| Determines the number of data points returned in the output | [optional] [default to 5000] |
+| getFundsRequest | [**APIgetFundsRequest**](ReferenceDataApi.md#APIgetFundsRequest)|-|-|
 
 ### Return type
 
@@ -2120,7 +2335,7 @@ public class Example {
 
 ## getFundsWithHttpInfo
 
-> ApiResponse<GetFunds200Response> getFunds getFundsWithHttpInfo(symbol, figi, isin, cusip, cik, exchange, country, format, delimiter, showPlan, page, outputsize)
+> ApiResponse<GetFunds200Response> getFunds getFundsWithHttpInfo(getFundsRequest)
 
 Funds
 
@@ -2137,6 +2352,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -2163,7 +2379,21 @@ public class Example {
         Long page = 1L; // Long | Page number of the results to fetch
         Long outputsize = 5000L; // Long | Determines the number of data points returned in the output
         try {
-            ApiResponse<GetFunds200Response> response = apiInstance.getFundsWithHttpInfo(symbol, figi, isin, cusip, cik, exchange, country, format, delimiter, showPlan, page, outputsize);
+            APIgetFundsRequest request = APIgetFundsRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .cik(cik)
+                .exchange(exchange)
+                .country(country)
+                .format(format)
+                .delimiter(delimiter)
+                .showPlan(showPlan)
+                .page(page)
+                .outputsize(outputsize)
+                .build();
+            ApiResponse<GetFunds200Response> response = apiInstance.getFundsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -2180,21 +2410,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The ticker symbol of an instrument for which data is requested | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cik** | **String**| The CIK of an instrument for which data is requested | [optional] |
-| **exchange** | **String**| Filter by exchange name | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **format** | [**FormatEnum**](.md)| The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| The separator used in the CSV response data | [optional] [default to ;] |
-| **showPlan** | **Boolean**| Adds info on which plan symbol is available | [optional] [default to false] |
-| **page** | **Long**| Page number of the results to fetch | [optional] [default to 1] |
-| **outputsize** | **Long**| Determines the number of data points returned in the output | [optional] [default to 5000] |
+| getFundsRequest | [**APIgetFundsRequest**](ReferenceDataApi.md#APIgetFundsRequest)|-|-|
 
 ### Return type
 
@@ -2223,6 +2441,27 @@ ApiResponse<[**GetFunds200Response**](GetFunds200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetFundsRequest"></a>
+## APIgetFundsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | The ticker symbol of an instrument for which data is requested | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cik** | **String** | The CIK of an instrument for which data is requested | [optional] |
+| **exchange** | **String** | Filter by exchange name | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **format** | [**FormatEnum**](.md) | The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
+| **delimiter** | **String** | The separator used in the CSV response data | [optional] [default to ;] |
+| **showPlan** | **Boolean** | Adds info on which plan symbol is available | [optional] [default to false] |
+| **page** | **Long** | Page number of the results to fetch | [optional] [default to 1] |
+| **outputsize** | **Long** | Determines the number of data points returned in the output | [optional] [default to 5000] |
+
+
+
 ## getInstrumentType
 
 > GetInstrumentType200Response getInstrumentType()
@@ -2241,6 +2480,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -2317,6 +2557,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -2395,6 +2636,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -2471,6 +2713,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -2533,7 +2776,7 @@ ApiResponse<[**GetIntervals200Response**](GetIntervals200Response.md)>
 
 ## getMarketState
 
-> List<MarketStateResponseItem> getMarketState(exchange, code, country)
+> List<MarketStateResponseItem> getMarketState(getMarketStateRequest)
 
 Market state
 
@@ -2549,6 +2792,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -2566,7 +2810,12 @@ public class Example {
         String code = "XNYS"; // String | The Market Identifier Code (MIC) of the exchange where the instrument is traded.
         String country = "United States"; // String | The country where the exchange is located. Takes country name or alpha code.
         try {
-            List<MarketStateResponseItem> result = apiInstance.getMarketState(exchange, code, country);
+            APIgetMarketStateRequest request = APIgetMarketStateRequest.newBuilder()
+                .exchange(exchange)
+                .code(code)
+                .country(country)
+                .build();
+            List<MarketStateResponseItem> result = apiInstance.getMarketState(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReferenceDataApi#getMarketState");
@@ -2581,12 +2830,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **exchange** | **String**| The exchange name where the instrument is traded. | [optional] |
-| **code** | **String**| The Market Identifier Code (MIC) of the exchange where the instrument is traded. | [optional] |
-| **country** | **String**| The country where the exchange is located. Takes country name or alpha code. | [optional] |
+| getMarketStateRequest | [**APIgetMarketStateRequest**](ReferenceDataApi.md#APIgetMarketStateRequest)|-|-|
 
 ### Return type
 
@@ -2616,7 +2862,7 @@ public class Example {
 
 ## getMarketStateWithHttpInfo
 
-> ApiResponse<List<MarketStateResponseItem>> getMarketState getMarketStateWithHttpInfo(exchange, code, country)
+> ApiResponse<List<MarketStateResponseItem>> getMarketState getMarketStateWithHttpInfo(getMarketStateRequest)
 
 Market state
 
@@ -2633,6 +2879,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -2650,7 +2897,12 @@ public class Example {
         String code = "XNYS"; // String | The Market Identifier Code (MIC) of the exchange where the instrument is traded.
         String country = "United States"; // String | The country where the exchange is located. Takes country name or alpha code.
         try {
-            ApiResponse<List<MarketStateResponseItem>> response = apiInstance.getMarketStateWithHttpInfo(exchange, code, country);
+            APIgetMarketStateRequest request = APIgetMarketStateRequest.newBuilder()
+                .exchange(exchange)
+                .code(code)
+                .country(country)
+                .build();
+            ApiResponse<List<MarketStateResponseItem>> response = apiInstance.getMarketStateWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -2667,12 +2919,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **exchange** | **String**| The exchange name where the instrument is traded. | [optional] |
-| **code** | **String**| The Market Identifier Code (MIC) of the exchange where the instrument is traded. | [optional] |
-| **country** | **String**| The country where the exchange is located. Takes country name or alpha code. | [optional] |
+| getMarketStateRequest | [**APIgetMarketStateRequest**](ReferenceDataApi.md#APIgetMarketStateRequest)|-|-|
 
 ### Return type
 
@@ -2701,9 +2950,21 @@ ApiResponse<[**List&lt;MarketStateResponseItem&gt;**](MarketStateResponseItem.md
 | **500** |  |  -  |
 
 
+<a id="APIgetMarketStateRequest"></a>
+## APIgetMarketStateRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **exchange** | **String** | The exchange name where the instrument is traded. | [optional] |
+| **code** | **String** | The Market Identifier Code (MIC) of the exchange where the instrument is traded. | [optional] |
+| **country** | **String** | The country where the exchange is located. Takes country name or alpha code. | [optional] |
+
+
+
 ## getStocks
 
-> GetStocks200Response getStocks(symbol, figi, isin, cusip, cik, exchange, micCode, country, type, format, delimiter, showPlan, includeDelisted)
+> GetStocks200Response getStocks(getStocksRequest)
 
 Stocks
 
@@ -2719,6 +2980,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -2746,7 +3008,22 @@ public class Example {
         Boolean showPlan = false; // Boolean | Adds info on which plan symbol is available
         Boolean includeDelisted = false; // Boolean | Include delisted identifiers
         try {
-            GetStocks200Response result = apiInstance.getStocks(symbol, figi, isin, cusip, cik, exchange, micCode, country, type, format, delimiter, showPlan, includeDelisted);
+            APIgetStocksRequest request = APIgetStocksRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .cik(cik)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .type(type)
+                .format(format)
+                .delimiter(delimiter)
+                .showPlan(showPlan)
+                .includeDelisted(includeDelisted)
+                .build();
+            GetStocks200Response result = apiInstance.getStocks(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReferenceDataApi#getStocks");
@@ -2761,22 +3038,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The ticker symbol of an instrument for which data is requested | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cik** | **String**| The CIK of an instrument for which data is requested | [optional] |
-| **exchange** | **String**| Filter by exchange name | [optional] |
-| **micCode** | **String**| Filter by market identifier code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **type** | [**TypeEnum**](.md)| The asset class to which the instrument belongs | [optional] [enum: American Depositary Receipt, Bond, Bond Fund, Closed-end Fund, Common Stock, Depositary Receipt, Digital Currency, ETF, Exchange-Traded Note, Global Depositary Receipt, Limited Partnership, Mutual Fund, Physical Currency, Preferred Stock, REIT, Right, Structured Product, Trust, Unit, Warrant] |
-| **format** | [**FormatEnum**](.md)| The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| The separator used in the CSV response data | [optional] [default to ;] |
-| **showPlan** | **Boolean**| Adds info on which plan symbol is available | [optional] [default to false] |
-| **includeDelisted** | **Boolean**| Include delisted identifiers | [optional] [default to false] |
+| getStocksRequest | [**APIgetStocksRequest**](ReferenceDataApi.md#APIgetStocksRequest)|-|-|
 
 ### Return type
 
@@ -2806,7 +3070,7 @@ public class Example {
 
 ## getStocksWithHttpInfo
 
-> ApiResponse<GetStocks200Response> getStocks getStocksWithHttpInfo(symbol, figi, isin, cusip, cik, exchange, micCode, country, type, format, delimiter, showPlan, includeDelisted)
+> ApiResponse<GetStocks200Response> getStocks getStocksWithHttpInfo(getStocksRequest)
 
 Stocks
 
@@ -2823,6 +3087,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -2850,7 +3115,22 @@ public class Example {
         Boolean showPlan = false; // Boolean | Adds info on which plan symbol is available
         Boolean includeDelisted = false; // Boolean | Include delisted identifiers
         try {
-            ApiResponse<GetStocks200Response> response = apiInstance.getStocksWithHttpInfo(symbol, figi, isin, cusip, cik, exchange, micCode, country, type, format, delimiter, showPlan, includeDelisted);
+            APIgetStocksRequest request = APIgetStocksRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .cik(cik)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .type(type)
+                .format(format)
+                .delimiter(delimiter)
+                .showPlan(showPlan)
+                .includeDelisted(includeDelisted)
+                .build();
+            ApiResponse<GetStocks200Response> response = apiInstance.getStocksWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -2867,22 +3147,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The ticker symbol of an instrument for which data is requested | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cik** | **String**| The CIK of an instrument for which data is requested | [optional] |
-| **exchange** | **String**| Filter by exchange name | [optional] |
-| **micCode** | **String**| Filter by market identifier code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **type** | [**TypeEnum**](.md)| The asset class to which the instrument belongs | [optional] [enum: American Depositary Receipt, Bond, Bond Fund, Closed-end Fund, Common Stock, Depositary Receipt, Digital Currency, ETF, Exchange-Traded Note, Global Depositary Receipt, Limited Partnership, Mutual Fund, Physical Currency, Preferred Stock, REIT, Right, Structured Product, Trust, Unit, Warrant] |
-| **format** | [**FormatEnum**](.md)| The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| The separator used in the CSV response data | [optional] [default to ;] |
-| **showPlan** | **Boolean**| Adds info on which plan symbol is available | [optional] [default to false] |
-| **includeDelisted** | **Boolean**| Include delisted identifiers | [optional] [default to false] |
+| getStocksRequest | [**APIgetStocksRequest**](ReferenceDataApi.md#APIgetStocksRequest)|-|-|
 
 ### Return type
 
@@ -2911,9 +3178,31 @@ ApiResponse<[**GetStocks200Response**](GetStocks200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetStocksRequest"></a>
+## APIgetStocksRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | The ticker symbol of an instrument for which data is requested | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cik** | **String** | The CIK of an instrument for which data is requested | [optional] |
+| **exchange** | **String** | Filter by exchange name | [optional] |
+| **micCode** | **String** | Filter by market identifier code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **type** | [**TypeEnum**](.md) | The asset class to which the instrument belongs | [optional] [enum: American Depositary Receipt, Bond, Bond Fund, Closed-end Fund, Common Stock, Depositary Receipt, Digital Currency, ETF, Exchange-Traded Note, Global Depositary Receipt, Limited Partnership, Mutual Fund, Physical Currency, Preferred Stock, REIT, Right, Structured Product, Trust, Unit, Warrant] |
+| **format** | [**FormatEnum**](.md) | The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
+| **delimiter** | **String** | The separator used in the CSV response data | [optional] [default to ;] |
+| **showPlan** | **Boolean** | Adds info on which plan symbol is available | [optional] [default to false] |
+| **includeDelisted** | **Boolean** | Include delisted identifiers | [optional] [default to false] |
+
+
+
 ## getSymbolSearch
 
-> GetSymbolSearch200Response getSymbolSearch(symbol, outputsize, showPlan)
+> GetSymbolSearch200Response getSymbolSearch(getSymbolSearchRequest)
 
 Symbol search
 
@@ -2929,6 +3218,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -2946,7 +3236,12 @@ public class Example {
         Long outputsize = 30L; // Long | Number of matches in response. Max <code>120</code>
         Boolean showPlan = false; // Boolean | Adds info on which plan symbol is available.
         try {
-            GetSymbolSearch200Response result = apiInstance.getSymbolSearch(symbol, outputsize, showPlan);
+            APIgetSymbolSearchRequest request = APIgetSymbolSearchRequest.newBuilder()
+                .symbol(symbol)
+                .outputsize(outputsize)
+                .showPlan(showPlan)
+                .build();
+            GetSymbolSearch200Response result = apiInstance.getSymbolSearch(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReferenceDataApi#getSymbolSearch");
@@ -2961,12 +3256,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol to search. Supports: &lt;ul&gt; &lt;li&gt;Ticker symbol of instrument.&lt;/li&gt; &lt;li&gt;International securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section&lt;/li&gt; &lt;li&gt;The FIGI (Financial Instrument Global Identifier) parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above.&lt;/li&gt; &lt;li&gt;Composite FIGI parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above.&lt;/li&gt; &lt;li&gt;Share Class FIGI parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above.&lt;/li&gt; &lt;/ul&gt; | |
-| **outputsize** | **Long**| Number of matches in response. Max &lt;code&gt;120&lt;/code&gt; | [optional] [default to 30] |
-| **showPlan** | **Boolean**| Adds info on which plan symbol is available. | [optional] [default to false] |
+| getSymbolSearchRequest | [**APIgetSymbolSearchRequest**](ReferenceDataApi.md#APIgetSymbolSearchRequest)|-|-|
 
 ### Return type
 
@@ -2996,7 +3288,7 @@ public class Example {
 
 ## getSymbolSearchWithHttpInfo
 
-> ApiResponse<GetSymbolSearch200Response> getSymbolSearch getSymbolSearchWithHttpInfo(symbol, outputsize, showPlan)
+> ApiResponse<GetSymbolSearch200Response> getSymbolSearch getSymbolSearchWithHttpInfo(getSymbolSearchRequest)
 
 Symbol search
 
@@ -3013,6 +3305,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -3030,7 +3323,12 @@ public class Example {
         Long outputsize = 30L; // Long | Number of matches in response. Max <code>120</code>
         Boolean showPlan = false; // Boolean | Adds info on which plan symbol is available.
         try {
-            ApiResponse<GetSymbolSearch200Response> response = apiInstance.getSymbolSearchWithHttpInfo(symbol, outputsize, showPlan);
+            APIgetSymbolSearchRequest request = APIgetSymbolSearchRequest.newBuilder()
+                .symbol(symbol)
+                .outputsize(outputsize)
+                .showPlan(showPlan)
+                .build();
+            ApiResponse<GetSymbolSearch200Response> response = apiInstance.getSymbolSearchWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -3047,12 +3345,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol to search. Supports: &lt;ul&gt; &lt;li&gt;Ticker symbol of instrument.&lt;/li&gt; &lt;li&gt;International securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section&lt;/li&gt; &lt;li&gt;The FIGI (Financial Instrument Global Identifier) parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above.&lt;/li&gt; &lt;li&gt;Composite FIGI parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above.&lt;/li&gt; &lt;li&gt;Share Class FIGI parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above.&lt;/li&gt; &lt;/ul&gt; | |
-| **outputsize** | **Long**| Number of matches in response. Max &lt;code&gt;120&lt;/code&gt; | [optional] [default to 30] |
-| **showPlan** | **Boolean**| Adds info on which plan symbol is available. | [optional] [default to false] |
+| getSymbolSearchRequest | [**APIgetSymbolSearchRequest**](ReferenceDataApi.md#APIgetSymbolSearchRequest)|-|-|
 
 ### Return type
 
@@ -3081,6 +3376,18 @@ ApiResponse<[**GetSymbolSearch200Response**](GetSymbolSearch200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetSymbolSearchRequest"></a>
+## APIgetSymbolSearchRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol to search. Supports: &lt;ul&gt; &lt;li&gt;Ticker symbol of instrument.&lt;/li&gt; &lt;li&gt;International securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section&lt;/li&gt; &lt;li&gt;The FIGI (Financial Instrument Global Identifier) parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above.&lt;/li&gt; &lt;li&gt;Composite FIGI parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above.&lt;/li&gt; &lt;li&gt;Share Class FIGI parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above.&lt;/li&gt; &lt;/ul&gt; | |
+| **outputsize** | **Long** | Number of matches in response. Max &lt;code&gt;120&lt;/code&gt; | [optional] [default to 30] |
+| **showPlan** | **Boolean** | Adds info on which plan symbol is available. | [optional] [default to false] |
+
+
+
 ## getTechnicalIndicators
 
 > GetTechnicalIndicators200Response getTechnicalIndicators()
@@ -3099,6 +3406,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -3175,6 +3483,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 
 public class Example {
     public static void main(String[] args) {

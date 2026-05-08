@@ -169,6 +169,55 @@ public class AdvancedApi {
   /**
    * Batches
    * The batch request endpoint allows users to request data for multiple financial instruments, time intervals, and data types simultaneously. This endpoint is useful for efficiently gathering diverse financial data in a single operation, reducing the need for multiple individual requests. Errors in specific requests do not affect the processing of others, and each error is reported separately, enabling easy troubleshooting.  ### Request body Only JSON &#x60;POST&#x60; requests are supported. The request content structure consists of key-value items. The key is a unique request ID. The value is requested url.  ### Response The response contains key-value data. The key is a unique request ID. The value is returned data.  ### API credits &lt;ul&gt; &lt;li&gt;The number of concurrent requests is limited by your subscription plan.&lt;/li&gt; &lt;li&gt;Credits are consumed per requested endpoint, with the total usage equal to the sum of individual requests in the batch.&lt;/li&gt; &lt;li&gt;If the requested data exceeds your available credits, only partial data will be returned asynchronously until your quota is exhausted.&lt;/li&gt; &lt;li&gt;If one or more requests in the batch contain errors (e.g., invalid symbols or unsupported intervals), it will not affect the successful processing of other requests. Errors are reported individually within the response, allowing you to identify and correct specific issues without impacting the entire batch.&lt;/li&gt; &lt;/ul&gt;
+   * @param apiRequest {@link APIAdvancedRequest}
+   * @return Advanced200Response
+   * @throws ApiException if fails to make API call
+   */
+  public Advanced200Response advanced(APIAdvancedRequest apiRequest) throws ApiException {
+    return advanced(apiRequest, null);
+  }
+
+  /**
+   * Batches
+   * The batch request endpoint allows users to request data for multiple financial instruments, time intervals, and data types simultaneously. This endpoint is useful for efficiently gathering diverse financial data in a single operation, reducing the need for multiple individual requests. Errors in specific requests do not affect the processing of others, and each error is reported separately, enabling easy troubleshooting.  ### Request body Only JSON &#x60;POST&#x60; requests are supported. The request content structure consists of key-value items. The key is a unique request ID. The value is requested url.  ### Response The response contains key-value data. The key is a unique request ID. The value is returned data.  ### API credits &lt;ul&gt; &lt;li&gt;The number of concurrent requests is limited by your subscription plan.&lt;/li&gt; &lt;li&gt;Credits are consumed per requested endpoint, with the total usage equal to the sum of individual requests in the batch.&lt;/li&gt; &lt;li&gt;If the requested data exceeds your available credits, only partial data will be returned asynchronously until your quota is exhausted.&lt;/li&gt; &lt;li&gt;If one or more requests in the batch contain errors (e.g., invalid symbols or unsupported intervals), it will not affect the successful processing of other requests. Errors are reported individually within the response, allowing you to identify and correct specific issues without impacting the entire batch.&lt;/li&gt; &lt;/ul&gt;
+   * @param apiRequest {@link APIAdvancedRequest}
+   * @param headers Optional headers to include in the request
+   * @return Advanced200Response
+   * @throws ApiException if fails to make API call
+   */
+  public Advanced200Response advanced(APIAdvancedRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    Map<String, AdvancedRequestValue> key = apiRequest.key();
+    return advanced(key, headers);
+  }
+
+  /**
+   * Batches
+   * The batch request endpoint allows users to request data for multiple financial instruments, time intervals, and data types simultaneously. This endpoint is useful for efficiently gathering diverse financial data in a single operation, reducing the need for multiple individual requests. Errors in specific requests do not affect the processing of others, and each error is reported separately, enabling easy troubleshooting.  ### Request body Only JSON &#x60;POST&#x60; requests are supported. The request content structure consists of key-value items. The key is a unique request ID. The value is requested url.  ### Response The response contains key-value data. The key is a unique request ID. The value is returned data.  ### API credits &lt;ul&gt; &lt;li&gt;The number of concurrent requests is limited by your subscription plan.&lt;/li&gt; &lt;li&gt;Credits are consumed per requested endpoint, with the total usage equal to the sum of individual requests in the batch.&lt;/li&gt; &lt;li&gt;If the requested data exceeds your available credits, only partial data will be returned asynchronously until your quota is exhausted.&lt;/li&gt; &lt;li&gt;If one or more requests in the batch contain errors (e.g., invalid symbols or unsupported intervals), it will not affect the successful processing of other requests. Errors are reported individually within the response, allowing you to identify and correct specific issues without impacting the entire batch.&lt;/li&gt; &lt;/ul&gt;
+   * @param apiRequest {@link APIAdvancedRequest}
+   * @return ApiResponse&lt;Advanced200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Advanced200Response> advancedWithHttpInfo(APIAdvancedRequest apiRequest) throws ApiException {
+    return advancedWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Batches
+   * The batch request endpoint allows users to request data for multiple financial instruments, time intervals, and data types simultaneously. This endpoint is useful for efficiently gathering diverse financial data in a single operation, reducing the need for multiple individual requests. Errors in specific requests do not affect the processing of others, and each error is reported separately, enabling easy troubleshooting.  ### Request body Only JSON &#x60;POST&#x60; requests are supported. The request content structure consists of key-value items. The key is a unique request ID. The value is requested url.  ### Response The response contains key-value data. The key is a unique request ID. The value is returned data.  ### API credits &lt;ul&gt; &lt;li&gt;The number of concurrent requests is limited by your subscription plan.&lt;/li&gt; &lt;li&gt;Credits are consumed per requested endpoint, with the total usage equal to the sum of individual requests in the batch.&lt;/li&gt; &lt;li&gt;If the requested data exceeds your available credits, only partial data will be returned asynchronously until your quota is exhausted.&lt;/li&gt; &lt;li&gt;If one or more requests in the batch contain errors (e.g., invalid symbols or unsupported intervals), it will not affect the successful processing of other requests. Errors are reported individually within the response, allowing you to identify and correct specific issues without impacting the entire batch.&lt;/li&gt; &lt;/ul&gt;
+   * @param apiRequest {@link APIAdvancedRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Advanced200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Advanced200Response> advancedWithHttpInfo(APIAdvancedRequest apiRequest, Map<String, String> headers) throws ApiException {
+    Map<String, AdvancedRequestValue> key = apiRequest.key();
+    return advancedWithHttpInfo(key, headers);
+  }
+
+  /**
+   * Batches
+   * The batch request endpoint allows users to request data for multiple financial instruments, time intervals, and data types simultaneously. This endpoint is useful for efficiently gathering diverse financial data in a single operation, reducing the need for multiple individual requests. Errors in specific requests do not affect the processing of others, and each error is reported separately, enabling easy troubleshooting.  ### Request body Only JSON &#x60;POST&#x60; requests are supported. The request content structure consists of key-value items. The key is a unique request ID. The value is requested url.  ### Response The response contains key-value data. The key is a unique request ID. The value is returned data.  ### API credits &lt;ul&gt; &lt;li&gt;The number of concurrent requests is limited by your subscription plan.&lt;/li&gt; &lt;li&gt;Credits are consumed per requested endpoint, with the total usage equal to the sum of individual requests in the batch.&lt;/li&gt; &lt;li&gt;If the requested data exceeds your available credits, only partial data will be returned asynchronously until your quota is exhausted.&lt;/li&gt; &lt;li&gt;If one or more requests in the batch contain errors (e.g., invalid symbols or unsupported intervals), it will not affect the successful processing of other requests. Errors are reported individually within the response, allowing you to identify and correct specific issues without impacting the entire batch.&lt;/li&gt; &lt;/ul&gt;
    * @param key Map of requests (optional)
    * @return Advanced200Response
    * @throws ApiException if fails to make API call
@@ -283,6 +332,90 @@ public class AdvancedApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
+  }
+
+
+  public static final class APIAdvancedRequest {
+    @javax.annotation.Nullable
+    private Map<String, AdvancedRequestValue> key; // Map of requests (optional)
+
+    private APIAdvancedRequest(Builder builder) {
+      this.key = builder.key;
+    }
+    @javax.annotation.Nullable
+    public Map<String, AdvancedRequestValue> key() {
+      return key;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private Map<String, AdvancedRequestValue> key;
+
+      public Builder key(@javax.annotation.Nullable Map<String, AdvancedRequestValue> key) {
+        this.key = key;
+        return this;
+      }
+      public APIAdvancedRequest build() {
+        return new APIAdvancedRequest(this);
+      }
+    }
+  }
+
+  /**
+   * API usage
+   * The API Usage endpoint provides detailed information on your current API usage statistics. It returns data such as the number of requests made, remaining requests, and the reset time for your usage limits. This endpoint is essential for monitoring and managing your API consumption to ensure you stay within your allocated limits.
+   * @param apiRequest {@link APIGetApiUsageRequest}
+   * @return GetApiUsage200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetApiUsage200Response getApiUsage(APIGetApiUsageRequest apiRequest) throws ApiException {
+    return getApiUsage(apiRequest, null);
+  }
+
+  /**
+   * API usage
+   * The API Usage endpoint provides detailed information on your current API usage statistics. It returns data such as the number of requests made, remaining requests, and the reset time for your usage limits. This endpoint is essential for monitoring and managing your API consumption to ensure you stay within your allocated limits.
+   * @param apiRequest {@link APIGetApiUsageRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetApiUsage200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetApiUsage200Response getApiUsage(APIGetApiUsageRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    FormatEnum format = apiRequest.format();
+    @javax.annotation.Nullable
+    String delimiter = apiRequest.delimiter();
+    @javax.annotation.Nullable
+    String timezone = apiRequest.timezone();
+    return getApiUsage(format, delimiter, timezone, headers);
+  }
+
+  /**
+   * API usage
+   * The API Usage endpoint provides detailed information on your current API usage statistics. It returns data such as the number of requests made, remaining requests, and the reset time for your usage limits. This endpoint is essential for monitoring and managing your API consumption to ensure you stay within your allocated limits.
+   * @param apiRequest {@link APIGetApiUsageRequest}
+   * @return ApiResponse&lt;GetApiUsage200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetApiUsage200Response> getApiUsageWithHttpInfo(APIGetApiUsageRequest apiRequest) throws ApiException {
+    return getApiUsageWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * API usage
+   * The API Usage endpoint provides detailed information on your current API usage statistics. It returns data such as the number of requests made, remaining requests, and the reset time for your usage limits. This endpoint is essential for monitoring and managing your API consumption to ensure you stay within your allocated limits.
+   * @param apiRequest {@link APIGetApiUsageRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetApiUsage200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetApiUsage200Response> getApiUsageWithHttpInfo(APIGetApiUsageRequest apiRequest, Map<String, String> headers) throws ApiException {
+    FormatEnum format = apiRequest.format();
+    String delimiter = apiRequest.delimiter();
+    String timezone = apiRequest.timezone();
+    return getApiUsageWithHttpInfo(format, delimiter, timezone, headers);
   }
 
   /**
@@ -423,6 +556,59 @@ public class AdvancedApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
+  }
+
+
+  public static final class APIGetApiUsageRequest {
+    @javax.annotation.Nullable
+    private FormatEnum format; // Output format (optional, default to JSON)
+    @javax.annotation.Nullable
+    private String delimiter; // Specify the delimiter used when downloading the CSV file (optional, default to ;)
+    @javax.annotation.Nullable
+    private String timezone; // Timezone at which output datetime will be displayed. Supports: &lt;ul&gt; &lt;li&gt;1. &lt;code&gt;UTC&lt;/code&gt; for datetime at universal UTC standard&lt;/li&gt; &lt;li&gt;2. Timezone name according to the IANA Time Zone Database. E.g. &lt;code&gt;America/New_York&lt;/code&gt;, &lt;code&gt;Asia/Singapore&lt;/code&gt;. Full list of timezones can be found &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\&quot; target&#x3D;\&quot;blank\&quot;&gt;here&lt;/a&gt;.&lt;/li&gt; &lt;/ul&gt; &lt;i&gt;Take note that the IANA Timezone name is case-sensitive&lt;/i&gt; (optional, default to UTC)
+
+    private APIGetApiUsageRequest(Builder builder) {
+      this.format = builder.format;
+      this.delimiter = builder.delimiter;
+      this.timezone = builder.timezone;
+    }
+    @javax.annotation.Nullable
+    public FormatEnum format() {
+      return format;
+    }
+    @javax.annotation.Nullable
+    public String delimiter() {
+      return delimiter;
+    }
+    @javax.annotation.Nullable
+    public String timezone() {
+      return timezone;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private FormatEnum format;
+      private String delimiter;
+      private String timezone;
+
+      public Builder format(@javax.annotation.Nullable FormatEnum format) {
+        this.format = format;
+        return this;
+      }
+      public Builder delimiter(@javax.annotation.Nullable String delimiter) {
+        this.delimiter = delimiter;
+        return this;
+      }
+      public Builder timezone(@javax.annotation.Nullable String timezone) {
+        this.timezone = timezone;
+        return this;
+      }
+      public APIGetApiUsageRequest build() {
+        return new APIGetApiUsageRequest(this);
+      }
+    }
   }
 
 }

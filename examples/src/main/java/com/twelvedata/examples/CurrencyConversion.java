@@ -3,6 +3,7 @@ package com.twelvedata.examples;
 import com.twelvedata.client.ApiClient;
 import com.twelvedata.client.Twelvedata;
 import com.twelvedata.client.api.CurrenciesApi;
+import com.twelvedata.client.api.CurrenciesApi.APIGetCurrencyConversionRequest;
 
 public final class CurrencyConversion {
   public static void main(String[] args) throws Exception {
@@ -10,7 +11,10 @@ public final class CurrencyConversion {
     CurrenciesApi api = new CurrenciesApi(client);
 
     var response = api.getCurrencyConversion(
-        "USD/EUR", 100.0, null, null, null, null, null);
+        APIGetCurrencyConversionRequest.newBuilder()
+            .symbol("USD/EUR")
+            .amount(100.0)
+            .build());
     System.out.println(response);
   }
 

@@ -10,6 +10,7 @@ import com.twelvedata.client.errors.TwelvedataErrorInterceptor;
 
 import java.io.InputStream;
 import java.net.URI;
+import java.net.http.HttpHeaders;
 import java.net.http.HttpResponse;
 import java.util.function.Consumer;
 
@@ -77,8 +78,16 @@ public final class Twelvedata {
 
     String authHeader = API_KEY_PREFIX + resolvedKey;
     client.setRequestInterceptor(builder -> {
-      builder.header("Authorization", authHeader);
-      builder.header("X-API-Version", "last");
+      // HttpRequest.Builder.header(...) appends — calling it for a header the
+      // caller already supplied via the per-request `headers` map would put two
+      // values on the wire. Inspect the built copy and skip-set if present.
+      HttpHeaders existing = builder.copy().build().headers();
+      if (existing.firstValue("Authorization").isEmpty()) {
+        builder.header("Authorization", authHeader);
+      }
+      if (existing.firstValue("X-API-Version").isEmpty()) {
+        builder.header("X-API-Version", "last");
+      }
       URI current = builder.copy().build().uri();
       URI rewritten = appendSourceIfMissing(current);
       if (!rewritten.equals(current)) {
@@ -95,14 +104,17 @@ public final class Twelvedata {
    * {@link com.twelvedata.client.errors.TwelvedataApiException} subclasses.
    *
    * <p>Composes with any response interceptor already attached to {@code client}:
-   * the existing interceptor runs first, then the Twelve Data error handler.
-   * Use this when you build the {@code ApiClient} yourself (e.g. to set custom
-   * timeouts or a proxy) instead of going through {@link #newApiClient()}.</p>
+   * the Twelve Data error handler runs first so it can read the response body
+   * before any other interceptor consumes it. On non-2xx the handler throws and
+   * the existing interceptor is bypassed; on 2xx the existing interceptor runs
+   * with the body still intact. Use this when you build the {@code ApiClient}
+   * yourself (e.g. to set custom timeouts or a proxy) instead of going through
+   * {@link #newApiClient()}.</p>
    */
   public static void installErrorHandling(ApiClient client) {
     Consumer<HttpResponse<InputStream>> existing = client.getResponseInterceptor();
     Consumer<HttpResponse<InputStream>> handler = new TwelvedataErrorInterceptor();
-    client.setResponseInterceptor(existing != null ? existing.andThen(handler) : handler);
+    client.setResponseInterceptor(existing != null ? handler.andThen(existing) : handler);
   }
 
   private static URI appendSourceIfMissing(URI uri) {

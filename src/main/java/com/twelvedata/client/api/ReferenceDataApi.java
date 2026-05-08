@@ -186,6 +186,76 @@ public class ReferenceDataApi {
   /**
    * Fixed income
    * The fixed income endpoint provides a daily updated list of available bonds. It returns an array containing detailed information about each bond, including identifiers, names, and other relevant attributes.
+   * @param apiRequest {@link APIGetBondsRequest}
+   * @return GetBonds200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetBonds200Response getBonds(APIGetBondsRequest apiRequest) throws ApiException {
+    return getBonds(apiRequest, null);
+  }
+
+  /**
+   * Fixed income
+   * The fixed income endpoint provides a daily updated list of available bonds. It returns an array containing detailed information about each bond, including identifiers, names, and other relevant attributes.
+   * @param apiRequest {@link APIGetBondsRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetBonds200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetBonds200Response getBonds(APIGetBondsRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String exchange = apiRequest.exchange();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    @javax.annotation.Nullable
+    FormatEnum format = apiRequest.format();
+    @javax.annotation.Nullable
+    String delimiter = apiRequest.delimiter();
+    @javax.annotation.Nullable
+    Boolean showPlan = apiRequest.showPlan();
+    @javax.annotation.Nullable
+    Long page = apiRequest.page();
+    @javax.annotation.Nullable
+    Long outputsize = apiRequest.outputsize();
+    return getBonds(symbol, exchange, country, format, delimiter, showPlan, page, outputsize, headers);
+  }
+
+  /**
+   * Fixed income
+   * The fixed income endpoint provides a daily updated list of available bonds. It returns an array containing detailed information about each bond, including identifiers, names, and other relevant attributes.
+   * @param apiRequest {@link APIGetBondsRequest}
+   * @return ApiResponse&lt;GetBonds200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetBonds200Response> getBondsWithHttpInfo(APIGetBondsRequest apiRequest) throws ApiException {
+    return getBondsWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Fixed income
+   * The fixed income endpoint provides a daily updated list of available bonds. It returns an array containing detailed information about each bond, including identifiers, names, and other relevant attributes.
+   * @param apiRequest {@link APIGetBondsRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetBonds200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetBonds200Response> getBondsWithHttpInfo(APIGetBondsRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String exchange = apiRequest.exchange();
+    String country = apiRequest.country();
+    FormatEnum format = apiRequest.format();
+    String delimiter = apiRequest.delimiter();
+    Boolean showPlan = apiRequest.showPlan();
+    Long page = apiRequest.page();
+    Long outputsize = apiRequest.outputsize();
+    return getBondsWithHttpInfo(symbol, exchange, country, format, delimiter, showPlan, page, outputsize, headers);
+  }
+
+  /**
+   * Fixed income
+   * The fixed income endpoint provides a daily updated list of available bonds. It returns an array containing detailed information about each bond, including identifiers, names, and other relevant attributes.
    * @param symbol The ticker symbol of an instrument for which data is requested (optional)
    * @param exchange Filter by exchange name (optional)
    * @param country Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
@@ -353,6 +423,177 @@ public class ReferenceDataApi {
     return localVarRequestBuilder;
   }
 
+
+  public static final class APIGetBondsRequest {
+    @javax.annotation.Nullable
+    private String symbol; // The ticker symbol of an instrument for which data is requested (optional)
+    @javax.annotation.Nullable
+    private String exchange; // Filter by exchange name (optional)
+    @javax.annotation.Nullable
+    private String country; // Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+    @javax.annotation.Nullable
+    private FormatEnum format; // The format of the response data (optional, default to JSON)
+    @javax.annotation.Nullable
+    private String delimiter; // The separator used in the CSV response data (optional, default to ;)
+    @javax.annotation.Nullable
+    private Boolean showPlan; // Adds info on which plan symbol is available (optional, default to false)
+    @javax.annotation.Nullable
+    private Long page; // Page number of the results to fetch (optional, default to 1)
+    @javax.annotation.Nullable
+    private Long outputsize; // Determines the number of data points returned in the output (optional, default to 5000)
+
+    private APIGetBondsRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.exchange = builder.exchange;
+      this.country = builder.country;
+      this.format = builder.format;
+      this.delimiter = builder.delimiter;
+      this.showPlan = builder.showPlan;
+      this.page = builder.page;
+      this.outputsize = builder.outputsize;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String exchange() {
+      return exchange;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    @javax.annotation.Nullable
+    public FormatEnum format() {
+      return format;
+    }
+    @javax.annotation.Nullable
+    public String delimiter() {
+      return delimiter;
+    }
+    @javax.annotation.Nullable
+    public Boolean showPlan() {
+      return showPlan;
+    }
+    @javax.annotation.Nullable
+    public Long page() {
+      return page;
+    }
+    @javax.annotation.Nullable
+    public Long outputsize() {
+      return outputsize;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String exchange;
+      private String country;
+      private FormatEnum format;
+      private String delimiter;
+      private Boolean showPlan;
+      private Long page;
+      private Long outputsize;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder exchange(@javax.annotation.Nullable String exchange) {
+        this.exchange = exchange;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public Builder format(@javax.annotation.Nullable FormatEnum format) {
+        this.format = format;
+        return this;
+      }
+      public Builder delimiter(@javax.annotation.Nullable String delimiter) {
+        this.delimiter = delimiter;
+        return this;
+      }
+      public Builder showPlan(@javax.annotation.Nullable Boolean showPlan) {
+        this.showPlan = showPlan;
+        return this;
+      }
+      public Builder page(@javax.annotation.Nullable Long page) {
+        this.page = page;
+        return this;
+      }
+      public Builder outputsize(@javax.annotation.Nullable Long outputsize) {
+        this.outputsize = outputsize;
+        return this;
+      }
+      public APIGetBondsRequest build() {
+        return new APIGetBondsRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Commodities
+   * The commodities endpoint provides a daily updated list of available commodity pairs, across precious metals, livestock, softs, grains, etc.
+   * @param apiRequest {@link APIGetCommoditiesRequest}
+   * @return GetCommodities200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetCommodities200Response getCommodities(APIGetCommoditiesRequest apiRequest) throws ApiException {
+    return getCommodities(apiRequest, null);
+  }
+
+  /**
+   * Commodities
+   * The commodities endpoint provides a daily updated list of available commodity pairs, across precious metals, livestock, softs, grains, etc.
+   * @param apiRequest {@link APIGetCommoditiesRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetCommodities200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetCommodities200Response getCommodities(APIGetCommoditiesRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String category = apiRequest.category();
+    @javax.annotation.Nullable
+    FormatEnum format = apiRequest.format();
+    @javax.annotation.Nullable
+    String delimiter = apiRequest.delimiter();
+    return getCommodities(symbol, category, format, delimiter, headers);
+  }
+
+  /**
+   * Commodities
+   * The commodities endpoint provides a daily updated list of available commodity pairs, across precious metals, livestock, softs, grains, etc.
+   * @param apiRequest {@link APIGetCommoditiesRequest}
+   * @return ApiResponse&lt;GetCommodities200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetCommodities200Response> getCommoditiesWithHttpInfo(APIGetCommoditiesRequest apiRequest) throws ApiException {
+    return getCommoditiesWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Commodities
+   * The commodities endpoint provides a daily updated list of available commodity pairs, across precious metals, livestock, softs, grains, etc.
+   * @param apiRequest {@link APIGetCommoditiesRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetCommodities200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetCommodities200Response> getCommoditiesWithHttpInfo(APIGetCommoditiesRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String category = apiRequest.category();
+    FormatEnum format = apiRequest.format();
+    String delimiter = apiRequest.delimiter();
+    return getCommoditiesWithHttpInfo(symbol, category, format, delimiter, headers);
+  }
+
   /**
    * Commodities
    * The commodities endpoint provides a daily updated list of available commodity pairs, across precious metals, livestock, softs, grains, etc.
@@ -499,6 +740,71 @@ public class ReferenceDataApi {
     return localVarRequestBuilder;
   }
 
+
+  public static final class APIGetCommoditiesRequest {
+    @javax.annotation.Nullable
+    private String symbol; // The ticker symbol of an instrument for which data is requested (optional)
+    @javax.annotation.Nullable
+    private String category; // Filter by category of commodity (optional)
+    @javax.annotation.Nullable
+    private FormatEnum format; // The format of the response data (optional, default to JSON)
+    @javax.annotation.Nullable
+    private String delimiter; // The separator used in the CSV response data (optional, default to ;)
+
+    private APIGetCommoditiesRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.category = builder.category;
+      this.format = builder.format;
+      this.delimiter = builder.delimiter;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String category() {
+      return category;
+    }
+    @javax.annotation.Nullable
+    public FormatEnum format() {
+      return format;
+    }
+    @javax.annotation.Nullable
+    public String delimiter() {
+      return delimiter;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String category;
+      private FormatEnum format;
+      private String delimiter;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder category(@javax.annotation.Nullable String category) {
+        this.category = category;
+        return this;
+      }
+      public Builder format(@javax.annotation.Nullable FormatEnum format) {
+        this.format = format;
+        return this;
+      }
+      public Builder delimiter(@javax.annotation.Nullable String delimiter) {
+        this.delimiter = delimiter;
+        return this;
+      }
+      public APIGetCommoditiesRequest build() {
+        return new APIGetCommoditiesRequest(this);
+      }
+    }
+  }
+
   /**
    * Countries
    * The countries endpoint provides a comprehensive list of countries, including their ISO codes, official names, capitals, and currencies. This data is essential for applications requiring accurate country information for tasks such as localization, currency conversion, or geographic analysis.
@@ -606,6 +912,64 @@ public class ReferenceDataApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
+  }
+
+  /**
+   * Cross listings
+   * The cross_listings endpoint provides a daily updated list of cross-listed symbols for a specified financial instrument. Cross-listed symbols represent the same security available on multiple exchanges. This endpoint is useful for identifying all the exchanges where a particular security is traded, allowing users to access comprehensive trading information across different markets.
+   * @param apiRequest {@link APIGetCrossListingsRequest}
+   * @return GetCrossListings200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetCrossListings200Response getCrossListings(APIGetCrossListingsRequest apiRequest) throws ApiException {
+    return getCrossListings(apiRequest, null);
+  }
+
+  /**
+   * Cross listings
+   * The cross_listings endpoint provides a daily updated list of cross-listed symbols for a specified financial instrument. Cross-listed symbols represent the same security available on multiple exchanges. This endpoint is useful for identifying all the exchanges where a particular security is traded, allowing users to access comprehensive trading information across different markets.
+   * @param apiRequest {@link APIGetCrossListingsRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetCrossListings200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetCrossListings200Response getCrossListings(APIGetCrossListingsRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nonnull
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String exchange = apiRequest.exchange();
+    @javax.annotation.Nullable
+    String micCode = apiRequest.micCode();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    return getCrossListings(symbol, exchange, micCode, country, headers);
+  }
+
+  /**
+   * Cross listings
+   * The cross_listings endpoint provides a daily updated list of cross-listed symbols for a specified financial instrument. Cross-listed symbols represent the same security available on multiple exchanges. This endpoint is useful for identifying all the exchanges where a particular security is traded, allowing users to access comprehensive trading information across different markets.
+   * @param apiRequest {@link APIGetCrossListingsRequest}
+   * @return ApiResponse&lt;GetCrossListings200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetCrossListings200Response> getCrossListingsWithHttpInfo(APIGetCrossListingsRequest apiRequest) throws ApiException {
+    return getCrossListingsWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Cross listings
+   * The cross_listings endpoint provides a daily updated list of cross-listed symbols for a specified financial instrument. Cross-listed symbols represent the same security available on multiple exchanges. This endpoint is useful for identifying all the exchanges where a particular security is traded, allowing users to access comprehensive trading information across different markets.
+   * @param apiRequest {@link APIGetCrossListingsRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetCrossListings200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetCrossListings200Response> getCrossListingsWithHttpInfo(APIGetCrossListingsRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String exchange = apiRequest.exchange();
+    String micCode = apiRequest.micCode();
+    String country = apiRequest.country();
+    return getCrossListingsWithHttpInfo(symbol, exchange, micCode, country, headers);
   }
 
   /**
@@ -756,6 +1120,135 @@ public class ReferenceDataApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
+  }
+
+
+  public static final class APIGetCrossListingsRequest {
+    @javax.annotation.Nonnull
+    private String symbol; // The ticker symbol of an instrument for which data is requested (required)
+    @javax.annotation.Nullable
+    private String exchange; // Exchange where instrument is traded (optional)
+    @javax.annotation.Nullable
+    private String micCode; // Market identifier code (MIC) under ISO 10383 standard (optional)
+    @javax.annotation.Nullable
+    private String country; // Country to which stock exchange belongs to (optional)
+
+    private APIGetCrossListingsRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.exchange = builder.exchange;
+      this.micCode = builder.micCode;
+      this.country = builder.country;
+    }
+    @javax.annotation.Nonnull
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String exchange() {
+      return exchange;
+    }
+    @javax.annotation.Nullable
+    public String micCode() {
+      return micCode;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String exchange;
+      private String micCode;
+      private String country;
+
+      public Builder symbol(@javax.annotation.Nonnull String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder exchange(@javax.annotation.Nullable String exchange) {
+        this.exchange = exchange;
+        return this;
+      }
+      public Builder micCode(@javax.annotation.Nullable String micCode) {
+        this.micCode = micCode;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public APIGetCrossListingsRequest build() {
+        return new APIGetCrossListingsRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Cryptocurrency pairs
+   * The cryptocurrencies endpoint provides a daily updated list of all available cryptos. It returns an array containing detailed information about each cryptocurrency, including its symbol, name, and other relevant identifiers. This endpoint is useful for retrieving a comprehensive catalog of cryptocurrencies for applications that require up-to-date market listings or need to display available crypto assets to users.
+   * @param apiRequest {@link APIGetCryptocurrenciesRequest}
+   * @return GetCryptocurrencies200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetCryptocurrencies200Response getCryptocurrencies(APIGetCryptocurrenciesRequest apiRequest) throws ApiException {
+    return getCryptocurrencies(apiRequest, null);
+  }
+
+  /**
+   * Cryptocurrency pairs
+   * The cryptocurrencies endpoint provides a daily updated list of all available cryptos. It returns an array containing detailed information about each cryptocurrency, including its symbol, name, and other relevant identifiers. This endpoint is useful for retrieving a comprehensive catalog of cryptocurrencies for applications that require up-to-date market listings or need to display available crypto assets to users.
+   * @param apiRequest {@link APIGetCryptocurrenciesRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetCryptocurrencies200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetCryptocurrencies200Response getCryptocurrencies(APIGetCryptocurrenciesRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String exchange = apiRequest.exchange();
+    @javax.annotation.Nullable
+    String currencyBase = apiRequest.currencyBase();
+    @javax.annotation.Nullable
+    String currencyQuote = apiRequest.currencyQuote();
+    @javax.annotation.Nullable
+    FormatEnum format = apiRequest.format();
+    @javax.annotation.Nullable
+    String delimiter = apiRequest.delimiter();
+    return getCryptocurrencies(symbol, exchange, currencyBase, currencyQuote, format, delimiter, headers);
+  }
+
+  /**
+   * Cryptocurrency pairs
+   * The cryptocurrencies endpoint provides a daily updated list of all available cryptos. It returns an array containing detailed information about each cryptocurrency, including its symbol, name, and other relevant identifiers. This endpoint is useful for retrieving a comprehensive catalog of cryptocurrencies for applications that require up-to-date market listings or need to display available crypto assets to users.
+   * @param apiRequest {@link APIGetCryptocurrenciesRequest}
+   * @return ApiResponse&lt;GetCryptocurrencies200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetCryptocurrencies200Response> getCryptocurrenciesWithHttpInfo(APIGetCryptocurrenciesRequest apiRequest) throws ApiException {
+    return getCryptocurrenciesWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Cryptocurrency pairs
+   * The cryptocurrencies endpoint provides a daily updated list of all available cryptos. It returns an array containing detailed information about each cryptocurrency, including its symbol, name, and other relevant identifiers. This endpoint is useful for retrieving a comprehensive catalog of cryptocurrencies for applications that require up-to-date market listings or need to display available crypto assets to users.
+   * @param apiRequest {@link APIGetCryptocurrenciesRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetCryptocurrencies200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetCryptocurrencies200Response> getCryptocurrenciesWithHttpInfo(APIGetCryptocurrenciesRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String exchange = apiRequest.exchange();
+    String currencyBase = apiRequest.currencyBase();
+    String currencyQuote = apiRequest.currencyQuote();
+    FormatEnum format = apiRequest.format();
+    String delimiter = apiRequest.delimiter();
+    return getCryptocurrenciesWithHttpInfo(symbol, exchange, currencyBase, currencyQuote, format, delimiter, headers);
   }
 
   /**
@@ -916,6 +1409,147 @@ public class ReferenceDataApi {
     return localVarRequestBuilder;
   }
 
+
+  public static final class APIGetCryptocurrenciesRequest {
+    @javax.annotation.Nullable
+    private String symbol; // The ticker symbol of an instrument for which data is requested (optional)
+    @javax.annotation.Nullable
+    private String exchange; // Filter by exchange name. E.g. &#x60;Binance&#x60;, &#x60;Coinbase&#x60;, etc. (optional)
+    @javax.annotation.Nullable
+    private String currencyBase; // Filter by currency base (optional)
+    @javax.annotation.Nullable
+    private String currencyQuote; // Filter by currency quote (optional)
+    @javax.annotation.Nullable
+    private FormatEnum format; // The format of the response data (optional, default to JSON)
+    @javax.annotation.Nullable
+    private String delimiter; // The separator used in the CSV response data (optional, default to ;)
+
+    private APIGetCryptocurrenciesRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.exchange = builder.exchange;
+      this.currencyBase = builder.currencyBase;
+      this.currencyQuote = builder.currencyQuote;
+      this.format = builder.format;
+      this.delimiter = builder.delimiter;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String exchange() {
+      return exchange;
+    }
+    @javax.annotation.Nullable
+    public String currencyBase() {
+      return currencyBase;
+    }
+    @javax.annotation.Nullable
+    public String currencyQuote() {
+      return currencyQuote;
+    }
+    @javax.annotation.Nullable
+    public FormatEnum format() {
+      return format;
+    }
+    @javax.annotation.Nullable
+    public String delimiter() {
+      return delimiter;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String exchange;
+      private String currencyBase;
+      private String currencyQuote;
+      private FormatEnum format;
+      private String delimiter;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder exchange(@javax.annotation.Nullable String exchange) {
+        this.exchange = exchange;
+        return this;
+      }
+      public Builder currencyBase(@javax.annotation.Nullable String currencyBase) {
+        this.currencyBase = currencyBase;
+        return this;
+      }
+      public Builder currencyQuote(@javax.annotation.Nullable String currencyQuote) {
+        this.currencyQuote = currencyQuote;
+        return this;
+      }
+      public Builder format(@javax.annotation.Nullable FormatEnum format) {
+        this.format = format;
+        return this;
+      }
+      public Builder delimiter(@javax.annotation.Nullable String delimiter) {
+        this.delimiter = delimiter;
+        return this;
+      }
+      public APIGetCryptocurrenciesRequest build() {
+        return new APIGetCryptocurrenciesRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Cryptocurrency exchanges
+   * The cryptocurrency exchanges endpoint provides a daily updated list of available cryptocurrency exchanges. It returns an array containing details about each exchange, such as exchange names and identifiers.
+   * @param apiRequest {@link APIGetCryptocurrencyExchangesRequest}
+   * @return GetCryptocurrencyExchanges200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetCryptocurrencyExchanges200Response getCryptocurrencyExchanges(APIGetCryptocurrencyExchangesRequest apiRequest) throws ApiException {
+    return getCryptocurrencyExchanges(apiRequest, null);
+  }
+
+  /**
+   * Cryptocurrency exchanges
+   * The cryptocurrency exchanges endpoint provides a daily updated list of available cryptocurrency exchanges. It returns an array containing details about each exchange, such as exchange names and identifiers.
+   * @param apiRequest {@link APIGetCryptocurrencyExchangesRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetCryptocurrencyExchanges200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetCryptocurrencyExchanges200Response getCryptocurrencyExchanges(APIGetCryptocurrencyExchangesRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    FormatEnum format = apiRequest.format();
+    @javax.annotation.Nullable
+    String delimiter = apiRequest.delimiter();
+    return getCryptocurrencyExchanges(format, delimiter, headers);
+  }
+
+  /**
+   * Cryptocurrency exchanges
+   * The cryptocurrency exchanges endpoint provides a daily updated list of available cryptocurrency exchanges. It returns an array containing details about each exchange, such as exchange names and identifiers.
+   * @param apiRequest {@link APIGetCryptocurrencyExchangesRequest}
+   * @return ApiResponse&lt;GetCryptocurrencyExchanges200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetCryptocurrencyExchanges200Response> getCryptocurrencyExchangesWithHttpInfo(APIGetCryptocurrencyExchangesRequest apiRequest) throws ApiException {
+    return getCryptocurrencyExchangesWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Cryptocurrency exchanges
+   * The cryptocurrency exchanges endpoint provides a daily updated list of available cryptocurrency exchanges. It returns an array containing details about each exchange, such as exchange names and identifiers.
+   * @param apiRequest {@link APIGetCryptocurrencyExchangesRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetCryptocurrencyExchanges200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetCryptocurrencyExchanges200Response> getCryptocurrencyExchangesWithHttpInfo(APIGetCryptocurrencyExchangesRequest apiRequest, Map<String, String> headers) throws ApiException {
+    FormatEnum format = apiRequest.format();
+    String delimiter = apiRequest.delimiter();
+    return getCryptocurrencyExchangesWithHttpInfo(format, delimiter, headers);
+  }
+
   /**
    * Cryptocurrency exchanges
    * The cryptocurrency exchanges endpoint provides a daily updated list of available cryptocurrency exchanges. It returns an array containing details about each exchange, such as exchange names and identifiers.
@@ -1048,6 +1682,117 @@ public class ReferenceDataApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
+  }
+
+
+  public static final class APIGetCryptocurrencyExchangesRequest {
+    @javax.annotation.Nullable
+    private FormatEnum format; // The format of the response data (optional, default to JSON)
+    @javax.annotation.Nullable
+    private String delimiter; // Specify the delimiter used when downloading the CSV file (optional, default to ;)
+
+    private APIGetCryptocurrencyExchangesRequest(Builder builder) {
+      this.format = builder.format;
+      this.delimiter = builder.delimiter;
+    }
+    @javax.annotation.Nullable
+    public FormatEnum format() {
+      return format;
+    }
+    @javax.annotation.Nullable
+    public String delimiter() {
+      return delimiter;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private FormatEnum format;
+      private String delimiter;
+
+      public Builder format(@javax.annotation.Nullable FormatEnum format) {
+        this.format = format;
+        return this;
+      }
+      public Builder delimiter(@javax.annotation.Nullable String delimiter) {
+        this.delimiter = delimiter;
+        return this;
+      }
+      public APIGetCryptocurrencyExchangesRequest build() {
+        return new APIGetCryptocurrencyExchangesRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Earliest timestamp
+   * The earliest_timestamp endpoint provides the earliest available date and time for a specified financial instrument at a given data interval. This endpoint is useful for determining the starting point of historical data availability for various assets, such as stocks or currencies, allowing users to understand the time range covered by the data.
+   * @param apiRequest {@link APIGetEarliestTimestampRequest}
+   * @return GetEarliestTimestamp200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetEarliestTimestamp200Response getEarliestTimestamp(APIGetEarliestTimestampRequest apiRequest) throws ApiException {
+    return getEarliestTimestamp(apiRequest, null);
+  }
+
+  /**
+   * Earliest timestamp
+   * The earliest_timestamp endpoint provides the earliest available date and time for a specified financial instrument at a given data interval. This endpoint is useful for determining the starting point of historical data availability for various assets, such as stocks or currencies, allowing users to understand the time range covered by the data.
+   * @param apiRequest {@link APIGetEarliestTimestampRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetEarliestTimestamp200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetEarliestTimestamp200Response getEarliestTimestamp(APIGetEarliestTimestampRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nonnull
+    IntervalEnum interval = apiRequest.interval();
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String figi = apiRequest.figi();
+    @javax.annotation.Nullable
+    String isin = apiRequest.isin();
+    @javax.annotation.Nullable
+    String cusip = apiRequest.cusip();
+    @javax.annotation.Nullable
+    String exchange = apiRequest.exchange();
+    @javax.annotation.Nullable
+    String micCode = apiRequest.micCode();
+    @javax.annotation.Nullable
+    String timezone = apiRequest.timezone();
+    return getEarliestTimestamp(interval, symbol, figi, isin, cusip, exchange, micCode, timezone, headers);
+  }
+
+  /**
+   * Earliest timestamp
+   * The earliest_timestamp endpoint provides the earliest available date and time for a specified financial instrument at a given data interval. This endpoint is useful for determining the starting point of historical data availability for various assets, such as stocks or currencies, allowing users to understand the time range covered by the data.
+   * @param apiRequest {@link APIGetEarliestTimestampRequest}
+   * @return ApiResponse&lt;GetEarliestTimestamp200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetEarliestTimestamp200Response> getEarliestTimestampWithHttpInfo(APIGetEarliestTimestampRequest apiRequest) throws ApiException {
+    return getEarliestTimestampWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Earliest timestamp
+   * The earliest_timestamp endpoint provides the earliest available date and time for a specified financial instrument at a given data interval. This endpoint is useful for determining the starting point of historical data availability for various assets, such as stocks or currencies, allowing users to understand the time range covered by the data.
+   * @param apiRequest {@link APIGetEarliestTimestampRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetEarliestTimestamp200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetEarliestTimestamp200Response> getEarliestTimestampWithHttpInfo(APIGetEarliestTimestampRequest apiRequest, Map<String, String> headers) throws ApiException {
+    IntervalEnum interval = apiRequest.interval();
+    String symbol = apiRequest.symbol();
+    String figi = apiRequest.figi();
+    String isin = apiRequest.isin();
+    String cusip = apiRequest.cusip();
+    String exchange = apiRequest.exchange();
+    String micCode = apiRequest.micCode();
+    String timezone = apiRequest.timezone();
+    return getEarliestTimestampWithHttpInfo(interval, symbol, figi, isin, cusip, exchange, micCode, timezone, headers);
   }
 
   /**
@@ -1222,6 +1967,201 @@ public class ReferenceDataApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
+  }
+
+
+  public static final class APIGetEarliestTimestampRequest {
+    @javax.annotation.Nonnull
+    private IntervalEnum interval; // Interval between two consecutive points in time series. (required)
+    @javax.annotation.Nullable
+    private String symbol; // Symbol ticker of the instrument. (optional)
+    @javax.annotation.Nullable
+    private String figi; // Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. (optional)
+    @javax.annotation.Nullable
+    private String isin; // Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cusip; // The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String exchange; // Exchange where instrument is traded. (optional)
+    @javax.annotation.Nullable
+    private String micCode; // Market Identifier Code (MIC) under ISO 10383 standard. (optional)
+    @javax.annotation.Nullable
+    private String timezone; // Timezone at which output datetime will be displayed. Supports: &lt;ul&gt; &lt;li&gt;1. &lt;code&gt;Exchange&lt;/code&gt; for local exchange time&lt;/li&gt; &lt;li&gt;2. &lt;code&gt;UTC&lt;/code&gt; for datetime at universal UTC standard&lt;/li&gt; &lt;li&gt;3. Timezone name according to the IANA Time Zone Database. E.g. &lt;code&gt;America/New_York&lt;/code&gt;, &lt;code&gt;Asia/Singapore&lt;/code&gt;. Full list of timezones can be found &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\&quot; target&#x3D;\&quot;blank\&quot;&gt;here&lt;/a&gt;.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Interval Limitation: The timezone parameter is only applicable for intraday intervals (less than 1 day). For intervals of 1day, 1week, or 1month, the timezone parameter is ignored, and data is strictly returned in the Exchange local time.&lt;/p&gt; &lt;i&gt;Take note that the IANA Timezone name is case-sensitive&lt;/i&gt; (optional, default to Exchange)
+
+    private APIGetEarliestTimestampRequest(Builder builder) {
+      this.interval = builder.interval;
+      this.symbol = builder.symbol;
+      this.figi = builder.figi;
+      this.isin = builder.isin;
+      this.cusip = builder.cusip;
+      this.exchange = builder.exchange;
+      this.micCode = builder.micCode;
+      this.timezone = builder.timezone;
+    }
+    @javax.annotation.Nonnull
+    public IntervalEnum interval() {
+      return interval;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String figi() {
+      return figi;
+    }
+    @javax.annotation.Nullable
+    public String isin() {
+      return isin;
+    }
+    @javax.annotation.Nullable
+    public String cusip() {
+      return cusip;
+    }
+    @javax.annotation.Nullable
+    public String exchange() {
+      return exchange;
+    }
+    @javax.annotation.Nullable
+    public String micCode() {
+      return micCode;
+    }
+    @javax.annotation.Nullable
+    public String timezone() {
+      return timezone;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private IntervalEnum interval;
+      private String symbol;
+      private String figi;
+      private String isin;
+      private String cusip;
+      private String exchange;
+      private String micCode;
+      private String timezone;
+
+      public Builder interval(@javax.annotation.Nonnull IntervalEnum interval) {
+        this.interval = interval;
+        return this;
+      }
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder figi(@javax.annotation.Nullable String figi) {
+        this.figi = figi;
+        return this;
+      }
+      public Builder isin(@javax.annotation.Nullable String isin) {
+        this.isin = isin;
+        return this;
+      }
+      public Builder cusip(@javax.annotation.Nullable String cusip) {
+        this.cusip = cusip;
+        return this;
+      }
+      public Builder exchange(@javax.annotation.Nullable String exchange) {
+        this.exchange = exchange;
+        return this;
+      }
+      public Builder micCode(@javax.annotation.Nullable String micCode) {
+        this.micCode = micCode;
+        return this;
+      }
+      public Builder timezone(@javax.annotation.Nullable String timezone) {
+        this.timezone = timezone;
+        return this;
+      }
+      public APIGetEarliestTimestampRequest build() {
+        return new APIGetEarliestTimestampRequest(this);
+      }
+    }
+  }
+
+  /**
+   * ETFs
+   * The ETFs endpoint provides a daily updated list of all available Exchange-Traded Funds. It returns an array containing detailed information about each ETF, including its symbol, name, and other relevant identifiers. This endpoint is useful for retrieving a comprehensive catalog of ETFs for portfolio management, investment tracking, or financial analysis.
+   * @param apiRequest {@link APIGetEtfRequest}
+   * @return GetEtf200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetEtf200Response getEtf(APIGetEtfRequest apiRequest) throws ApiException {
+    return getEtf(apiRequest, null);
+  }
+
+  /**
+   * ETFs
+   * The ETFs endpoint provides a daily updated list of all available Exchange-Traded Funds. It returns an array containing detailed information about each ETF, including its symbol, name, and other relevant identifiers. This endpoint is useful for retrieving a comprehensive catalog of ETFs for portfolio management, investment tracking, or financial analysis.
+   * @param apiRequest {@link APIGetEtfRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetEtf200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetEtf200Response getEtf(APIGetEtfRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String figi = apiRequest.figi();
+    @javax.annotation.Nullable
+    String isin = apiRequest.isin();
+    @javax.annotation.Nullable
+    String cusip = apiRequest.cusip();
+    @javax.annotation.Nullable
+    String cik = apiRequest.cik();
+    @javax.annotation.Nullable
+    String exchange = apiRequest.exchange();
+    @javax.annotation.Nullable
+    String micCode = apiRequest.micCode();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    @javax.annotation.Nullable
+    FormatEnum format = apiRequest.format();
+    @javax.annotation.Nullable
+    String delimiter = apiRequest.delimiter();
+    @javax.annotation.Nullable
+    Boolean showPlan = apiRequest.showPlan();
+    @javax.annotation.Nullable
+    Boolean includeDelisted = apiRequest.includeDelisted();
+    return getEtf(symbol, figi, isin, cusip, cik, exchange, micCode, country, format, delimiter, showPlan, includeDelisted, headers);
+  }
+
+  /**
+   * ETFs
+   * The ETFs endpoint provides a daily updated list of all available Exchange-Traded Funds. It returns an array containing detailed information about each ETF, including its symbol, name, and other relevant identifiers. This endpoint is useful for retrieving a comprehensive catalog of ETFs for portfolio management, investment tracking, or financial analysis.
+   * @param apiRequest {@link APIGetEtfRequest}
+   * @return ApiResponse&lt;GetEtf200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetEtf200Response> getEtfWithHttpInfo(APIGetEtfRequest apiRequest) throws ApiException {
+    return getEtfWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * ETFs
+   * The ETFs endpoint provides a daily updated list of all available Exchange-Traded Funds. It returns an array containing detailed information about each ETF, including its symbol, name, and other relevant identifiers. This endpoint is useful for retrieving a comprehensive catalog of ETFs for portfolio management, investment tracking, or financial analysis.
+   * @param apiRequest {@link APIGetEtfRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetEtf200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetEtf200Response> getEtfWithHttpInfo(APIGetEtfRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String figi = apiRequest.figi();
+    String isin = apiRequest.isin();
+    String cusip = apiRequest.cusip();
+    String cik = apiRequest.cik();
+    String exchange = apiRequest.exchange();
+    String micCode = apiRequest.micCode();
+    String country = apiRequest.country();
+    FormatEnum format = apiRequest.format();
+    String delimiter = apiRequest.delimiter();
+    Boolean showPlan = apiRequest.showPlan();
+    Boolean includeDelisted = apiRequest.includeDelisted();
+    return getEtfWithHttpInfo(symbol, figi, isin, cusip, cik, exchange, micCode, country, format, delimiter, showPlan, includeDelisted, headers);
   }
 
   /**
@@ -1418,6 +2358,225 @@ public class ReferenceDataApi {
     return localVarRequestBuilder;
   }
 
+
+  public static final class APIGetEtfRequest {
+    @javax.annotation.Nullable
+    private String symbol; // The ticker symbol of an instrument for which data is requested (optional)
+    @javax.annotation.Nullable
+    private String figi; // Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. (optional)
+    @javax.annotation.Nullable
+    private String isin; // Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cusip; // The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cik; // The CIK of an instrument for which data is requested (optional)
+    @javax.annotation.Nullable
+    private String exchange; // Filter by exchange name (optional)
+    @javax.annotation.Nullable
+    private String micCode; // Filter by market identifier code (MIC) under ISO 10383 standard (optional)
+    @javax.annotation.Nullable
+    private String country; // Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+    @javax.annotation.Nullable
+    private FormatEnum format; // The format of the response data (optional, default to JSON)
+    @javax.annotation.Nullable
+    private String delimiter; // The separator used in the CSV response data (optional, default to ;)
+    @javax.annotation.Nullable
+    private Boolean showPlan; // Adds info on which plan symbol is available (optional, default to false)
+    @javax.annotation.Nullable
+    private Boolean includeDelisted; // Include delisted identifiers (optional, default to false)
+
+    private APIGetEtfRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.figi = builder.figi;
+      this.isin = builder.isin;
+      this.cusip = builder.cusip;
+      this.cik = builder.cik;
+      this.exchange = builder.exchange;
+      this.micCode = builder.micCode;
+      this.country = builder.country;
+      this.format = builder.format;
+      this.delimiter = builder.delimiter;
+      this.showPlan = builder.showPlan;
+      this.includeDelisted = builder.includeDelisted;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String figi() {
+      return figi;
+    }
+    @javax.annotation.Nullable
+    public String isin() {
+      return isin;
+    }
+    @javax.annotation.Nullable
+    public String cusip() {
+      return cusip;
+    }
+    @javax.annotation.Nullable
+    public String cik() {
+      return cik;
+    }
+    @javax.annotation.Nullable
+    public String exchange() {
+      return exchange;
+    }
+    @javax.annotation.Nullable
+    public String micCode() {
+      return micCode;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    @javax.annotation.Nullable
+    public FormatEnum format() {
+      return format;
+    }
+    @javax.annotation.Nullable
+    public String delimiter() {
+      return delimiter;
+    }
+    @javax.annotation.Nullable
+    public Boolean showPlan() {
+      return showPlan;
+    }
+    @javax.annotation.Nullable
+    public Boolean includeDelisted() {
+      return includeDelisted;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String figi;
+      private String isin;
+      private String cusip;
+      private String cik;
+      private String exchange;
+      private String micCode;
+      private String country;
+      private FormatEnum format;
+      private String delimiter;
+      private Boolean showPlan;
+      private Boolean includeDelisted;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder figi(@javax.annotation.Nullable String figi) {
+        this.figi = figi;
+        return this;
+      }
+      public Builder isin(@javax.annotation.Nullable String isin) {
+        this.isin = isin;
+        return this;
+      }
+      public Builder cusip(@javax.annotation.Nullable String cusip) {
+        this.cusip = cusip;
+        return this;
+      }
+      public Builder cik(@javax.annotation.Nullable String cik) {
+        this.cik = cik;
+        return this;
+      }
+      public Builder exchange(@javax.annotation.Nullable String exchange) {
+        this.exchange = exchange;
+        return this;
+      }
+      public Builder micCode(@javax.annotation.Nullable String micCode) {
+        this.micCode = micCode;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public Builder format(@javax.annotation.Nullable FormatEnum format) {
+        this.format = format;
+        return this;
+      }
+      public Builder delimiter(@javax.annotation.Nullable String delimiter) {
+        this.delimiter = delimiter;
+        return this;
+      }
+      public Builder showPlan(@javax.annotation.Nullable Boolean showPlan) {
+        this.showPlan = showPlan;
+        return this;
+      }
+      public Builder includeDelisted(@javax.annotation.Nullable Boolean includeDelisted) {
+        this.includeDelisted = includeDelisted;
+        return this;
+      }
+      public APIGetEtfRequest build() {
+        return new APIGetEtfRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Exchanges schedule
+   * The exchanges schedule endpoint provides detailed information about various stock exchanges, including their trading hours and operational days. This data is essential for users who need to know when specific exchanges are open for trading, allowing them to plan their activities around the availability of these markets.
+   * @param apiRequest {@link APIGetExchangeScheduleRequest}
+   * @return GetExchangeSchedule200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetExchangeSchedule200Response getExchangeSchedule(APIGetExchangeScheduleRequest apiRequest) throws ApiException {
+    return getExchangeSchedule(apiRequest, null);
+  }
+
+  /**
+   * Exchanges schedule
+   * The exchanges schedule endpoint provides detailed information about various stock exchanges, including their trading hours and operational days. This data is essential for users who need to know when specific exchanges are open for trading, allowing them to plan their activities around the availability of these markets.
+   * @param apiRequest {@link APIGetExchangeScheduleRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetExchangeSchedule200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetExchangeSchedule200Response getExchangeSchedule(APIGetExchangeScheduleRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String micName = apiRequest.micName();
+    @javax.annotation.Nullable
+    String micCode = apiRequest.micCode();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    @javax.annotation.Nullable
+    String date = apiRequest.date();
+    return getExchangeSchedule(micName, micCode, country, date, headers);
+  }
+
+  /**
+   * Exchanges schedule
+   * The exchanges schedule endpoint provides detailed information about various stock exchanges, including their trading hours and operational days. This data is essential for users who need to know when specific exchanges are open for trading, allowing them to plan their activities around the availability of these markets.
+   * @param apiRequest {@link APIGetExchangeScheduleRequest}
+   * @return ApiResponse&lt;GetExchangeSchedule200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetExchangeSchedule200Response> getExchangeScheduleWithHttpInfo(APIGetExchangeScheduleRequest apiRequest) throws ApiException {
+    return getExchangeScheduleWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Exchanges schedule
+   * The exchanges schedule endpoint provides detailed information about various stock exchanges, including their trading hours and operational days. This data is essential for users who need to know when specific exchanges are open for trading, allowing them to plan their activities around the availability of these markets.
+   * @param apiRequest {@link APIGetExchangeScheduleRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetExchangeSchedule200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetExchangeSchedule200Response> getExchangeScheduleWithHttpInfo(APIGetExchangeScheduleRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String micName = apiRequest.micName();
+    String micCode = apiRequest.micCode();
+    String country = apiRequest.country();
+    String date = apiRequest.date();
+    return getExchangeScheduleWithHttpInfo(micName, micCode, country, date, headers);
+  }
+
   /**
    * Exchanges schedule
    * The exchanges schedule endpoint provides detailed information about various stock exchanges, including their trading hours and operational days. This data is essential for users who need to know when specific exchanges are open for trading, allowing them to plan their activities around the availability of these markets.
@@ -1562,6 +2721,138 @@ public class ReferenceDataApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
+  }
+
+
+  public static final class APIGetExchangeScheduleRequest {
+    @javax.annotation.Nullable
+    private String micName; // Filter by exchange name (optional)
+    @javax.annotation.Nullable
+    private String micCode; // Filter by market identifier code (MIC) under ISO 10383 standard (optional)
+    @javax.annotation.Nullable
+    private String country; // Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+    @javax.annotation.Nullable
+    private String date; // &lt;p&gt; If a date is provided, the API returns the schedule for the specified date; otherwise, it returns the default (common) schedule. &lt;/p&gt; The date can be specified in one of the following formats: &lt;ul&gt; &lt;li&gt;An exact date (e.g., &lt;code&gt;2021-10-27&lt;/code&gt;)&lt;/li&gt; &lt;li&gt;A human-readable keyword: &lt;code&gt;today&lt;/code&gt; or &lt;code&gt;yesterday&lt;/code&gt;&lt;/li&gt; &lt;li&gt;A full datetime string in UTC (e.g., &lt;code&gt;2025-04-11T20:00:00&lt;/code&gt;) to retrieve the schedule corresponding to the day in the specified time.&lt;/li&gt; &lt;/ul&gt; When using a datetime value, the resulting schedule will correspond to the local calendar day at the specified time. For example, &lt;code&gt;2025-04-11T20:00:00 UTC&lt;/code&gt; corresponds to: &lt;ul&gt; &lt;li&gt;&lt;code&gt;2025-04-11&lt;/code&gt; in the &lt;code&gt;America/New_York&lt;/code&gt; timezone&lt;/li&gt; &lt;li&gt;&lt;code&gt;2025-04-12&lt;/code&gt; in the &lt;code&gt;Australia/Sydney&lt;/code&gt; timezone&lt;/li&gt; &lt;/ul&gt; (optional)
+
+    private APIGetExchangeScheduleRequest(Builder builder) {
+      this.micName = builder.micName;
+      this.micCode = builder.micCode;
+      this.country = builder.country;
+      this.date = builder.date;
+    }
+    @javax.annotation.Nullable
+    public String micName() {
+      return micName;
+    }
+    @javax.annotation.Nullable
+    public String micCode() {
+      return micCode;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    @javax.annotation.Nullable
+    public String date() {
+      return date;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String micName;
+      private String micCode;
+      private String country;
+      private String date;
+
+      public Builder micName(@javax.annotation.Nullable String micName) {
+        this.micName = micName;
+        return this;
+      }
+      public Builder micCode(@javax.annotation.Nullable String micCode) {
+        this.micCode = micCode;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public Builder date(@javax.annotation.Nullable String date) {
+        this.date = date;
+        return this;
+      }
+      public APIGetExchangeScheduleRequest build() {
+        return new APIGetExchangeScheduleRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Exchanges
+   * The exchanges endpoint provides a comprehensive list of all available equity exchanges. It returns an array containing detailed information about each exchange, such as exchange code, name, country, and timezone. This data is updated daily.
+   * @param apiRequest {@link APIGetExchangesRequest}
+   * @return GetExchanges200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetExchanges200Response getExchanges(APIGetExchangesRequest apiRequest) throws ApiException {
+    return getExchanges(apiRequest, null);
+  }
+
+  /**
+   * Exchanges
+   * The exchanges endpoint provides a comprehensive list of all available equity exchanges. It returns an array containing detailed information about each exchange, such as exchange code, name, country, and timezone. This data is updated daily.
+   * @param apiRequest {@link APIGetExchangesRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetExchanges200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetExchanges200Response getExchanges(APIGetExchangesRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    TypeEnum type = apiRequest.type();
+    @javax.annotation.Nullable
+    String name = apiRequest.name();
+    @javax.annotation.Nullable
+    String code = apiRequest.code();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    @javax.annotation.Nullable
+    FormatEnum format = apiRequest.format();
+    @javax.annotation.Nullable
+    String delimiter = apiRequest.delimiter();
+    @javax.annotation.Nullable
+    Boolean showPlan = apiRequest.showPlan();
+    return getExchanges(type, name, code, country, format, delimiter, showPlan, headers);
+  }
+
+  /**
+   * Exchanges
+   * The exchanges endpoint provides a comprehensive list of all available equity exchanges. It returns an array containing detailed information about each exchange, such as exchange code, name, country, and timezone. This data is updated daily.
+   * @param apiRequest {@link APIGetExchangesRequest}
+   * @return ApiResponse&lt;GetExchanges200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetExchanges200Response> getExchangesWithHttpInfo(APIGetExchangesRequest apiRequest) throws ApiException {
+    return getExchangesWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Exchanges
+   * The exchanges endpoint provides a comprehensive list of all available equity exchanges. It returns an array containing detailed information about each exchange, such as exchange code, name, country, and timezone. This data is updated daily.
+   * @param apiRequest {@link APIGetExchangesRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetExchanges200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetExchanges200Response> getExchangesWithHttpInfo(APIGetExchangesRequest apiRequest, Map<String, String> headers) throws ApiException {
+    TypeEnum type = apiRequest.type();
+    String name = apiRequest.name();
+    String code = apiRequest.code();
+    String country = apiRequest.country();
+    FormatEnum format = apiRequest.format();
+    String delimiter = apiRequest.delimiter();
+    Boolean showPlan = apiRequest.showPlan();
+    return getExchangesWithHttpInfo(type, name, code, country, format, delimiter, showPlan, headers);
   }
 
   /**
@@ -1728,6 +3019,168 @@ public class ReferenceDataApi {
     return localVarRequestBuilder;
   }
 
+
+  public static final class APIGetExchangesRequest {
+    @javax.annotation.Nullable
+    private TypeEnum type; // The asset class to which the instrument belongs (optional)
+    @javax.annotation.Nullable
+    private String name; // Filter by exchange name (optional)
+    @javax.annotation.Nullable
+    private String code; // Filter by market identifier code (MIC) under ISO 10383 standard (optional)
+    @javax.annotation.Nullable
+    private String country; // Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+    @javax.annotation.Nullable
+    private FormatEnum format; // The format of the response data (optional, default to JSON)
+    @javax.annotation.Nullable
+    private String delimiter; // The separator used in the CSV response data (optional, default to ;)
+    @javax.annotation.Nullable
+    private Boolean showPlan; // Adds info on which plan symbol is available (optional, default to false)
+
+    private APIGetExchangesRequest(Builder builder) {
+      this.type = builder.type;
+      this.name = builder.name;
+      this.code = builder.code;
+      this.country = builder.country;
+      this.format = builder.format;
+      this.delimiter = builder.delimiter;
+      this.showPlan = builder.showPlan;
+    }
+    @javax.annotation.Nullable
+    public TypeEnum type() {
+      return type;
+    }
+    @javax.annotation.Nullable
+    public String name() {
+      return name;
+    }
+    @javax.annotation.Nullable
+    public String code() {
+      return code;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    @javax.annotation.Nullable
+    public FormatEnum format() {
+      return format;
+    }
+    @javax.annotation.Nullable
+    public String delimiter() {
+      return delimiter;
+    }
+    @javax.annotation.Nullable
+    public Boolean showPlan() {
+      return showPlan;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private TypeEnum type;
+      private String name;
+      private String code;
+      private String country;
+      private FormatEnum format;
+      private String delimiter;
+      private Boolean showPlan;
+
+      public Builder type(@javax.annotation.Nullable TypeEnum type) {
+        this.type = type;
+        return this;
+      }
+      public Builder name(@javax.annotation.Nullable String name) {
+        this.name = name;
+        return this;
+      }
+      public Builder code(@javax.annotation.Nullable String code) {
+        this.code = code;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public Builder format(@javax.annotation.Nullable FormatEnum format) {
+        this.format = format;
+        return this;
+      }
+      public Builder delimiter(@javax.annotation.Nullable String delimiter) {
+        this.delimiter = delimiter;
+        return this;
+      }
+      public Builder showPlan(@javax.annotation.Nullable Boolean showPlan) {
+        this.showPlan = showPlan;
+        return this;
+      }
+      public APIGetExchangesRequest build() {
+        return new APIGetExchangesRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Forex pairs
+   * The forex pairs endpoint provides a comprehensive list of all available foreign exchange currency pairs. It returns an array of forex pairs, which is updated daily.
+   * @param apiRequest {@link APIGetForexPairsRequest}
+   * @return GetForexPairs200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetForexPairs200Response getForexPairs(APIGetForexPairsRequest apiRequest) throws ApiException {
+    return getForexPairs(apiRequest, null);
+  }
+
+  /**
+   * Forex pairs
+   * The forex pairs endpoint provides a comprehensive list of all available foreign exchange currency pairs. It returns an array of forex pairs, which is updated daily.
+   * @param apiRequest {@link APIGetForexPairsRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetForexPairs200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetForexPairs200Response getForexPairs(APIGetForexPairsRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String currencyBase = apiRequest.currencyBase();
+    @javax.annotation.Nullable
+    String currencyQuote = apiRequest.currencyQuote();
+    @javax.annotation.Nullable
+    FormatEnum format = apiRequest.format();
+    @javax.annotation.Nullable
+    String delimiter = apiRequest.delimiter();
+    return getForexPairs(symbol, currencyBase, currencyQuote, format, delimiter, headers);
+  }
+
+  /**
+   * Forex pairs
+   * The forex pairs endpoint provides a comprehensive list of all available foreign exchange currency pairs. It returns an array of forex pairs, which is updated daily.
+   * @param apiRequest {@link APIGetForexPairsRequest}
+   * @return ApiResponse&lt;GetForexPairs200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetForexPairs200Response> getForexPairsWithHttpInfo(APIGetForexPairsRequest apiRequest) throws ApiException {
+    return getForexPairsWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Forex pairs
+   * The forex pairs endpoint provides a comprehensive list of all available foreign exchange currency pairs. It returns an array of forex pairs, which is updated daily.
+   * @param apiRequest {@link APIGetForexPairsRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetForexPairs200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetForexPairs200Response> getForexPairsWithHttpInfo(APIGetForexPairsRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String currencyBase = apiRequest.currencyBase();
+    String currencyQuote = apiRequest.currencyQuote();
+    FormatEnum format = apiRequest.format();
+    String delimiter = apiRequest.delimiter();
+    return getForexPairsWithHttpInfo(symbol, currencyBase, currencyQuote, format, delimiter, headers);
+  }
+
   /**
    * Forex pairs
    * The forex pairs endpoint provides a comprehensive list of all available foreign exchange currency pairs. It returns an array of forex pairs, which is updated daily.
@@ -1878,6 +3331,165 @@ public class ReferenceDataApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
+  }
+
+
+  public static final class APIGetForexPairsRequest {
+    @javax.annotation.Nullable
+    private String symbol; // The ticker symbol of an instrument for which data is requested (optional)
+    @javax.annotation.Nullable
+    private String currencyBase; // Filter by currency base (optional)
+    @javax.annotation.Nullable
+    private String currencyQuote; // Filter by currency quote (optional)
+    @javax.annotation.Nullable
+    private FormatEnum format; // The format of the response data (optional, default to JSON)
+    @javax.annotation.Nullable
+    private String delimiter; // The separator used in the CSV response data (optional, default to ;)
+
+    private APIGetForexPairsRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.currencyBase = builder.currencyBase;
+      this.currencyQuote = builder.currencyQuote;
+      this.format = builder.format;
+      this.delimiter = builder.delimiter;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String currencyBase() {
+      return currencyBase;
+    }
+    @javax.annotation.Nullable
+    public String currencyQuote() {
+      return currencyQuote;
+    }
+    @javax.annotation.Nullable
+    public FormatEnum format() {
+      return format;
+    }
+    @javax.annotation.Nullable
+    public String delimiter() {
+      return delimiter;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String currencyBase;
+      private String currencyQuote;
+      private FormatEnum format;
+      private String delimiter;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder currencyBase(@javax.annotation.Nullable String currencyBase) {
+        this.currencyBase = currencyBase;
+        return this;
+      }
+      public Builder currencyQuote(@javax.annotation.Nullable String currencyQuote) {
+        this.currencyQuote = currencyQuote;
+        return this;
+      }
+      public Builder format(@javax.annotation.Nullable FormatEnum format) {
+        this.format = format;
+        return this;
+      }
+      public Builder delimiter(@javax.annotation.Nullable String delimiter) {
+        this.delimiter = delimiter;
+        return this;
+      }
+      public APIGetForexPairsRequest build() {
+        return new APIGetForexPairsRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Funds
+   * The funds endpoint provides a daily updated list of available investment funds. It returns an array containing detailed information about each fund, including identifiers, names, and other relevant attributes.
+   * @param apiRequest {@link APIGetFundsRequest}
+   * @return GetFunds200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetFunds200Response getFunds(APIGetFundsRequest apiRequest) throws ApiException {
+    return getFunds(apiRequest, null);
+  }
+
+  /**
+   * Funds
+   * The funds endpoint provides a daily updated list of available investment funds. It returns an array containing detailed information about each fund, including identifiers, names, and other relevant attributes.
+   * @param apiRequest {@link APIGetFundsRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetFunds200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetFunds200Response getFunds(APIGetFundsRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String figi = apiRequest.figi();
+    @javax.annotation.Nullable
+    String isin = apiRequest.isin();
+    @javax.annotation.Nullable
+    String cusip = apiRequest.cusip();
+    @javax.annotation.Nullable
+    String cik = apiRequest.cik();
+    @javax.annotation.Nullable
+    String exchange = apiRequest.exchange();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    @javax.annotation.Nullable
+    FormatEnum format = apiRequest.format();
+    @javax.annotation.Nullable
+    String delimiter = apiRequest.delimiter();
+    @javax.annotation.Nullable
+    Boolean showPlan = apiRequest.showPlan();
+    @javax.annotation.Nullable
+    Long page = apiRequest.page();
+    @javax.annotation.Nullable
+    Long outputsize = apiRequest.outputsize();
+    return getFunds(symbol, figi, isin, cusip, cik, exchange, country, format, delimiter, showPlan, page, outputsize, headers);
+  }
+
+  /**
+   * Funds
+   * The funds endpoint provides a daily updated list of available investment funds. It returns an array containing detailed information about each fund, including identifiers, names, and other relevant attributes.
+   * @param apiRequest {@link APIGetFundsRequest}
+   * @return ApiResponse&lt;GetFunds200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetFunds200Response> getFundsWithHttpInfo(APIGetFundsRequest apiRequest) throws ApiException {
+    return getFundsWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Funds
+   * The funds endpoint provides a daily updated list of available investment funds. It returns an array containing detailed information about each fund, including identifiers, names, and other relevant attributes.
+   * @param apiRequest {@link APIGetFundsRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetFunds200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetFunds200Response> getFundsWithHttpInfo(APIGetFundsRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String figi = apiRequest.figi();
+    String isin = apiRequest.isin();
+    String cusip = apiRequest.cusip();
+    String cik = apiRequest.cik();
+    String exchange = apiRequest.exchange();
+    String country = apiRequest.country();
+    FormatEnum format = apiRequest.format();
+    String delimiter = apiRequest.delimiter();
+    Boolean showPlan = apiRequest.showPlan();
+    Long page = apiRequest.page();
+    Long outputsize = apiRequest.outputsize();
+    return getFundsWithHttpInfo(symbol, figi, isin, cusip, cik, exchange, country, format, delimiter, showPlan, page, outputsize, headers);
   }
 
   /**
@@ -2072,6 +3684,167 @@ public class ReferenceDataApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
+  }
+
+
+  public static final class APIGetFundsRequest {
+    @javax.annotation.Nullable
+    private String symbol; // The ticker symbol of an instrument for which data is requested (optional)
+    @javax.annotation.Nullable
+    private String figi; // Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. (optional)
+    @javax.annotation.Nullable
+    private String isin; // Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cusip; // The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cik; // The CIK of an instrument for which data is requested (optional)
+    @javax.annotation.Nullable
+    private String exchange; // Filter by exchange name (optional)
+    @javax.annotation.Nullable
+    private String country; // Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+    @javax.annotation.Nullable
+    private FormatEnum format; // The format of the response data (optional, default to JSON)
+    @javax.annotation.Nullable
+    private String delimiter; // The separator used in the CSV response data (optional, default to ;)
+    @javax.annotation.Nullable
+    private Boolean showPlan; // Adds info on which plan symbol is available (optional, default to false)
+    @javax.annotation.Nullable
+    private Long page; // Page number of the results to fetch (optional, default to 1)
+    @javax.annotation.Nullable
+    private Long outputsize; // Determines the number of data points returned in the output (optional, default to 5000)
+
+    private APIGetFundsRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.figi = builder.figi;
+      this.isin = builder.isin;
+      this.cusip = builder.cusip;
+      this.cik = builder.cik;
+      this.exchange = builder.exchange;
+      this.country = builder.country;
+      this.format = builder.format;
+      this.delimiter = builder.delimiter;
+      this.showPlan = builder.showPlan;
+      this.page = builder.page;
+      this.outputsize = builder.outputsize;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String figi() {
+      return figi;
+    }
+    @javax.annotation.Nullable
+    public String isin() {
+      return isin;
+    }
+    @javax.annotation.Nullable
+    public String cusip() {
+      return cusip;
+    }
+    @javax.annotation.Nullable
+    public String cik() {
+      return cik;
+    }
+    @javax.annotation.Nullable
+    public String exchange() {
+      return exchange;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    @javax.annotation.Nullable
+    public FormatEnum format() {
+      return format;
+    }
+    @javax.annotation.Nullable
+    public String delimiter() {
+      return delimiter;
+    }
+    @javax.annotation.Nullable
+    public Boolean showPlan() {
+      return showPlan;
+    }
+    @javax.annotation.Nullable
+    public Long page() {
+      return page;
+    }
+    @javax.annotation.Nullable
+    public Long outputsize() {
+      return outputsize;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String figi;
+      private String isin;
+      private String cusip;
+      private String cik;
+      private String exchange;
+      private String country;
+      private FormatEnum format;
+      private String delimiter;
+      private Boolean showPlan;
+      private Long page;
+      private Long outputsize;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder figi(@javax.annotation.Nullable String figi) {
+        this.figi = figi;
+        return this;
+      }
+      public Builder isin(@javax.annotation.Nullable String isin) {
+        this.isin = isin;
+        return this;
+      }
+      public Builder cusip(@javax.annotation.Nullable String cusip) {
+        this.cusip = cusip;
+        return this;
+      }
+      public Builder cik(@javax.annotation.Nullable String cik) {
+        this.cik = cik;
+        return this;
+      }
+      public Builder exchange(@javax.annotation.Nullable String exchange) {
+        this.exchange = exchange;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public Builder format(@javax.annotation.Nullable FormatEnum format) {
+        this.format = format;
+        return this;
+      }
+      public Builder delimiter(@javax.annotation.Nullable String delimiter) {
+        this.delimiter = delimiter;
+        return this;
+      }
+      public Builder showPlan(@javax.annotation.Nullable Boolean showPlan) {
+        this.showPlan = showPlan;
+        return this;
+      }
+      public Builder page(@javax.annotation.Nullable Long page) {
+        this.page = page;
+        return this;
+      }
+      public Builder outputsize(@javax.annotation.Nullable Long outputsize) {
+        this.outputsize = outputsize;
+        return this;
+      }
+      public APIGetFundsRequest build() {
+        return new APIGetFundsRequest(this);
+      }
+    }
   }
 
   /**
@@ -2295,6 +4068,61 @@ public class ReferenceDataApi {
   /**
    * Market state
    * The market state endpoint provides real-time information on the operational status of all available stock exchanges. It returns data on whether each exchange is currently open or closed, along with the time remaining until the next opening or closing. This endpoint is useful for users who need to monitor exchange hours and plan their trading activities accordingly.
+   * @param apiRequest {@link APIGetMarketStateRequest}
+   * @return List&lt;MarketStateResponseItem&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public List<MarketStateResponseItem> getMarketState(APIGetMarketStateRequest apiRequest) throws ApiException {
+    return getMarketState(apiRequest, null);
+  }
+
+  /**
+   * Market state
+   * The market state endpoint provides real-time information on the operational status of all available stock exchanges. It returns data on whether each exchange is currently open or closed, along with the time remaining until the next opening or closing. This endpoint is useful for users who need to monitor exchange hours and plan their trading activities accordingly.
+   * @param apiRequest {@link APIGetMarketStateRequest}
+   * @param headers Optional headers to include in the request
+   * @return List&lt;MarketStateResponseItem&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public List<MarketStateResponseItem> getMarketState(APIGetMarketStateRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String exchange = apiRequest.exchange();
+    @javax.annotation.Nullable
+    String code = apiRequest.code();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    return getMarketState(exchange, code, country, headers);
+  }
+
+  /**
+   * Market state
+   * The market state endpoint provides real-time information on the operational status of all available stock exchanges. It returns data on whether each exchange is currently open or closed, along with the time remaining until the next opening or closing. This endpoint is useful for users who need to monitor exchange hours and plan their trading activities accordingly.
+   * @param apiRequest {@link APIGetMarketStateRequest}
+   * @return ApiResponse&lt;List&lt;MarketStateResponseItem&gt;&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<List<MarketStateResponseItem>> getMarketStateWithHttpInfo(APIGetMarketStateRequest apiRequest) throws ApiException {
+    return getMarketStateWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Market state
+   * The market state endpoint provides real-time information on the operational status of all available stock exchanges. It returns data on whether each exchange is currently open or closed, along with the time remaining until the next opening or closing. This endpoint is useful for users who need to monitor exchange hours and plan their trading activities accordingly.
+   * @param apiRequest {@link APIGetMarketStateRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;List&lt;MarketStateResponseItem&gt;&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<List<MarketStateResponseItem>> getMarketStateWithHttpInfo(APIGetMarketStateRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String exchange = apiRequest.exchange();
+    String code = apiRequest.code();
+    String country = apiRequest.country();
+    return getMarketStateWithHttpInfo(exchange, code, country, headers);
+  }
+
+  /**
+   * Market state
+   * The market state endpoint provides real-time information on the operational status of all available stock exchanges. It returns data on whether each exchange is currently open or closed, along with the time remaining until the next opening or closing. This endpoint is useful for users who need to monitor exchange hours and plan their trading activities accordingly.
    * @param exchange The exchange name where the instrument is traded. (optional)
    * @param code The Market Identifier Code (MIC) of the exchange where the instrument is traded. (optional)
    * @param country The country where the exchange is located. Takes country name or alpha code. (optional)
@@ -2430,6 +4258,144 @@ public class ReferenceDataApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
+  }
+
+
+  public static final class APIGetMarketStateRequest {
+    @javax.annotation.Nullable
+    private String exchange; // The exchange name where the instrument is traded. (optional)
+    @javax.annotation.Nullable
+    private String code; // The Market Identifier Code (MIC) of the exchange where the instrument is traded. (optional)
+    @javax.annotation.Nullable
+    private String country; // The country where the exchange is located. Takes country name or alpha code. (optional)
+
+    private APIGetMarketStateRequest(Builder builder) {
+      this.exchange = builder.exchange;
+      this.code = builder.code;
+      this.country = builder.country;
+    }
+    @javax.annotation.Nullable
+    public String exchange() {
+      return exchange;
+    }
+    @javax.annotation.Nullable
+    public String code() {
+      return code;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String exchange;
+      private String code;
+      private String country;
+
+      public Builder exchange(@javax.annotation.Nullable String exchange) {
+        this.exchange = exchange;
+        return this;
+      }
+      public Builder code(@javax.annotation.Nullable String code) {
+        this.code = code;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public APIGetMarketStateRequest build() {
+        return new APIGetMarketStateRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Stocks
+   * The stocks endpoint provides a daily updated list of all available stock symbols. It returns an array containing the symbols, which can be used to identify and access specific stock data across various services. This endpoint is essential for users needing to retrieve the latest stock symbol information for further data requests or integration into financial applications.
+   * @param apiRequest {@link APIGetStocksRequest}
+   * @return GetStocks200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetStocks200Response getStocks(APIGetStocksRequest apiRequest) throws ApiException {
+    return getStocks(apiRequest, null);
+  }
+
+  /**
+   * Stocks
+   * The stocks endpoint provides a daily updated list of all available stock symbols. It returns an array containing the symbols, which can be used to identify and access specific stock data across various services. This endpoint is essential for users needing to retrieve the latest stock symbol information for further data requests or integration into financial applications.
+   * @param apiRequest {@link APIGetStocksRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetStocks200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetStocks200Response getStocks(APIGetStocksRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String figi = apiRequest.figi();
+    @javax.annotation.Nullable
+    String isin = apiRequest.isin();
+    @javax.annotation.Nullable
+    String cusip = apiRequest.cusip();
+    @javax.annotation.Nullable
+    String cik = apiRequest.cik();
+    @javax.annotation.Nullable
+    String exchange = apiRequest.exchange();
+    @javax.annotation.Nullable
+    String micCode = apiRequest.micCode();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    @javax.annotation.Nullable
+    TypeEnum type = apiRequest.type();
+    @javax.annotation.Nullable
+    FormatEnum format = apiRequest.format();
+    @javax.annotation.Nullable
+    String delimiter = apiRequest.delimiter();
+    @javax.annotation.Nullable
+    Boolean showPlan = apiRequest.showPlan();
+    @javax.annotation.Nullable
+    Boolean includeDelisted = apiRequest.includeDelisted();
+    return getStocks(symbol, figi, isin, cusip, cik, exchange, micCode, country, type, format, delimiter, showPlan, includeDelisted, headers);
+  }
+
+  /**
+   * Stocks
+   * The stocks endpoint provides a daily updated list of all available stock symbols. It returns an array containing the symbols, which can be used to identify and access specific stock data across various services. This endpoint is essential for users needing to retrieve the latest stock symbol information for further data requests or integration into financial applications.
+   * @param apiRequest {@link APIGetStocksRequest}
+   * @return ApiResponse&lt;GetStocks200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetStocks200Response> getStocksWithHttpInfo(APIGetStocksRequest apiRequest) throws ApiException {
+    return getStocksWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Stocks
+   * The stocks endpoint provides a daily updated list of all available stock symbols. It returns an array containing the symbols, which can be used to identify and access specific stock data across various services. This endpoint is essential for users needing to retrieve the latest stock symbol information for further data requests or integration into financial applications.
+   * @param apiRequest {@link APIGetStocksRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetStocks200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetStocks200Response> getStocksWithHttpInfo(APIGetStocksRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String figi = apiRequest.figi();
+    String isin = apiRequest.isin();
+    String cusip = apiRequest.cusip();
+    String cik = apiRequest.cik();
+    String exchange = apiRequest.exchange();
+    String micCode = apiRequest.micCode();
+    String country = apiRequest.country();
+    TypeEnum type = apiRequest.type();
+    FormatEnum format = apiRequest.format();
+    String delimiter = apiRequest.delimiter();
+    Boolean showPlan = apiRequest.showPlan();
+    Boolean includeDelisted = apiRequest.includeDelisted();
+    return getStocksWithHttpInfo(symbol, figi, isin, cusip, cik, exchange, micCode, country, type, format, delimiter, showPlan, includeDelisted, headers);
   }
 
   /**
@@ -2632,6 +4598,234 @@ public class ReferenceDataApi {
     return localVarRequestBuilder;
   }
 
+
+  public static final class APIGetStocksRequest {
+    @javax.annotation.Nullable
+    private String symbol; // The ticker symbol of an instrument for which data is requested (optional)
+    @javax.annotation.Nullable
+    private String figi; // Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. (optional)
+    @javax.annotation.Nullable
+    private String isin; // Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cusip; // The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cik; // The CIK of an instrument for which data is requested (optional)
+    @javax.annotation.Nullable
+    private String exchange; // Filter by exchange name (optional)
+    @javax.annotation.Nullable
+    private String micCode; // Filter by market identifier code (MIC) under ISO 10383 standard (optional)
+    @javax.annotation.Nullable
+    private String country; // Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+    @javax.annotation.Nullable
+    private TypeEnum type; // The asset class to which the instrument belongs (optional)
+    @javax.annotation.Nullable
+    private FormatEnum format; // The format of the response data (optional, default to JSON)
+    @javax.annotation.Nullable
+    private String delimiter; // The separator used in the CSV response data (optional, default to ;)
+    @javax.annotation.Nullable
+    private Boolean showPlan; // Adds info on which plan symbol is available (optional, default to false)
+    @javax.annotation.Nullable
+    private Boolean includeDelisted; // Include delisted identifiers (optional, default to false)
+
+    private APIGetStocksRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.figi = builder.figi;
+      this.isin = builder.isin;
+      this.cusip = builder.cusip;
+      this.cik = builder.cik;
+      this.exchange = builder.exchange;
+      this.micCode = builder.micCode;
+      this.country = builder.country;
+      this.type = builder.type;
+      this.format = builder.format;
+      this.delimiter = builder.delimiter;
+      this.showPlan = builder.showPlan;
+      this.includeDelisted = builder.includeDelisted;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String figi() {
+      return figi;
+    }
+    @javax.annotation.Nullable
+    public String isin() {
+      return isin;
+    }
+    @javax.annotation.Nullable
+    public String cusip() {
+      return cusip;
+    }
+    @javax.annotation.Nullable
+    public String cik() {
+      return cik;
+    }
+    @javax.annotation.Nullable
+    public String exchange() {
+      return exchange;
+    }
+    @javax.annotation.Nullable
+    public String micCode() {
+      return micCode;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    @javax.annotation.Nullable
+    public TypeEnum type() {
+      return type;
+    }
+    @javax.annotation.Nullable
+    public FormatEnum format() {
+      return format;
+    }
+    @javax.annotation.Nullable
+    public String delimiter() {
+      return delimiter;
+    }
+    @javax.annotation.Nullable
+    public Boolean showPlan() {
+      return showPlan;
+    }
+    @javax.annotation.Nullable
+    public Boolean includeDelisted() {
+      return includeDelisted;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String figi;
+      private String isin;
+      private String cusip;
+      private String cik;
+      private String exchange;
+      private String micCode;
+      private String country;
+      private TypeEnum type;
+      private FormatEnum format;
+      private String delimiter;
+      private Boolean showPlan;
+      private Boolean includeDelisted;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder figi(@javax.annotation.Nullable String figi) {
+        this.figi = figi;
+        return this;
+      }
+      public Builder isin(@javax.annotation.Nullable String isin) {
+        this.isin = isin;
+        return this;
+      }
+      public Builder cusip(@javax.annotation.Nullable String cusip) {
+        this.cusip = cusip;
+        return this;
+      }
+      public Builder cik(@javax.annotation.Nullable String cik) {
+        this.cik = cik;
+        return this;
+      }
+      public Builder exchange(@javax.annotation.Nullable String exchange) {
+        this.exchange = exchange;
+        return this;
+      }
+      public Builder micCode(@javax.annotation.Nullable String micCode) {
+        this.micCode = micCode;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public Builder type(@javax.annotation.Nullable TypeEnum type) {
+        this.type = type;
+        return this;
+      }
+      public Builder format(@javax.annotation.Nullable FormatEnum format) {
+        this.format = format;
+        return this;
+      }
+      public Builder delimiter(@javax.annotation.Nullable String delimiter) {
+        this.delimiter = delimiter;
+        return this;
+      }
+      public Builder showPlan(@javax.annotation.Nullable Boolean showPlan) {
+        this.showPlan = showPlan;
+        return this;
+      }
+      public Builder includeDelisted(@javax.annotation.Nullable Boolean includeDelisted) {
+        this.includeDelisted = includeDelisted;
+        return this;
+      }
+      public APIGetStocksRequest build() {
+        return new APIGetStocksRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Symbol search
+   * The symbol search endpoint allows users to find financial instruments by name or symbol. It returns a list of matching symbols, ordered by relevance, with the most relevant instrument first. This is useful for quickly locating specific stocks, ETFs, or other financial instruments when only partial information is available.
+   * @param apiRequest {@link APIGetSymbolSearchRequest}
+   * @return GetSymbolSearch200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetSymbolSearch200Response getSymbolSearch(APIGetSymbolSearchRequest apiRequest) throws ApiException {
+    return getSymbolSearch(apiRequest, null);
+  }
+
+  /**
+   * Symbol search
+   * The symbol search endpoint allows users to find financial instruments by name or symbol. It returns a list of matching symbols, ordered by relevance, with the most relevant instrument first. This is useful for quickly locating specific stocks, ETFs, or other financial instruments when only partial information is available.
+   * @param apiRequest {@link APIGetSymbolSearchRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetSymbolSearch200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetSymbolSearch200Response getSymbolSearch(APIGetSymbolSearchRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nonnull
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    Long outputsize = apiRequest.outputsize();
+    @javax.annotation.Nullable
+    Boolean showPlan = apiRequest.showPlan();
+    return getSymbolSearch(symbol, outputsize, showPlan, headers);
+  }
+
+  /**
+   * Symbol search
+   * The symbol search endpoint allows users to find financial instruments by name or symbol. It returns a list of matching symbols, ordered by relevance, with the most relevant instrument first. This is useful for quickly locating specific stocks, ETFs, or other financial instruments when only partial information is available.
+   * @param apiRequest {@link APIGetSymbolSearchRequest}
+   * @return ApiResponse&lt;GetSymbolSearch200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetSymbolSearch200Response> getSymbolSearchWithHttpInfo(APIGetSymbolSearchRequest apiRequest) throws ApiException {
+    return getSymbolSearchWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Symbol search
+   * The symbol search endpoint allows users to find financial instruments by name or symbol. It returns a list of matching symbols, ordered by relevance, with the most relevant instrument first. This is useful for quickly locating specific stocks, ETFs, or other financial instruments when only partial information is available.
+   * @param apiRequest {@link APIGetSymbolSearchRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetSymbolSearch200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetSymbolSearch200Response> getSymbolSearchWithHttpInfo(APIGetSymbolSearchRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    Long outputsize = apiRequest.outputsize();
+    Boolean showPlan = apiRequest.showPlan();
+    return getSymbolSearchWithHttpInfo(symbol, outputsize, showPlan, headers);
+  }
+
   /**
    * Symbol search
    * The symbol search endpoint allows users to find financial instruments by name or symbol. It returns a list of matching symbols, ordered by relevance, with the most relevant instrument first. This is useful for quickly locating specific stocks, ETFs, or other financial instruments when only partial information is available.
@@ -2774,6 +4968,59 @@ public class ReferenceDataApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
+  }
+
+
+  public static final class APIGetSymbolSearchRequest {
+    @javax.annotation.Nonnull
+    private String symbol; // Symbol to search. Supports: &lt;ul&gt; &lt;li&gt;Ticker symbol of instrument.&lt;/li&gt; &lt;li&gt;International securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section&lt;/li&gt; &lt;li&gt;The FIGI (Financial Instrument Global Identifier) parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above.&lt;/li&gt; &lt;li&gt;Composite FIGI parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above.&lt;/li&gt; &lt;li&gt;Share Class FIGI parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above.&lt;/li&gt; &lt;/ul&gt; (required)
+    @javax.annotation.Nullable
+    private Long outputsize; // Number of matches in response. Max &lt;code&gt;120&lt;/code&gt; (optional, default to 30)
+    @javax.annotation.Nullable
+    private Boolean showPlan; // Adds info on which plan symbol is available. (optional, default to false)
+
+    private APIGetSymbolSearchRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.outputsize = builder.outputsize;
+      this.showPlan = builder.showPlan;
+    }
+    @javax.annotation.Nonnull
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public Long outputsize() {
+      return outputsize;
+    }
+    @javax.annotation.Nullable
+    public Boolean showPlan() {
+      return showPlan;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private Long outputsize;
+      private Boolean showPlan;
+
+      public Builder symbol(@javax.annotation.Nonnull String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder outputsize(@javax.annotation.Nullable Long outputsize) {
+        this.outputsize = outputsize;
+        return this;
+      }
+      public Builder showPlan(@javax.annotation.Nullable Boolean showPlan) {
+        this.showPlan = showPlan;
+        return this;
+      }
+      public APIGetSymbolSearchRequest build() {
+        return new APIGetSymbolSearchRequest(this);
+      }
+    }
   }
 
   /**

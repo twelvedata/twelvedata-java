@@ -168,6 +168,73 @@ public class CurrenciesApi {
   /**
    * Currency conversion
    * The currency conversion endpoint provides real-time exchange rates and calculates the converted amount for specified currency pairs, including both forex and cryptocurrencies. This endpoint is useful for obtaining up-to-date conversion values between two currencies, facilitating tasks such as financial reporting, e-commerce transactions, and travel budgeting.
+   * @param apiRequest {@link APIGetCurrencyConversionRequest}
+   * @return GetCurrencyConversion200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetCurrencyConversion200Response getCurrencyConversion(APIGetCurrencyConversionRequest apiRequest) throws ApiException {
+    return getCurrencyConversion(apiRequest, null);
+  }
+
+  /**
+   * Currency conversion
+   * The currency conversion endpoint provides real-time exchange rates and calculates the converted amount for specified currency pairs, including both forex and cryptocurrencies. This endpoint is useful for obtaining up-to-date conversion values between two currencies, facilitating tasks such as financial reporting, e-commerce transactions, and travel budgeting.
+   * @param apiRequest {@link APIGetCurrencyConversionRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetCurrencyConversion200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetCurrencyConversion200Response getCurrencyConversion(APIGetCurrencyConversionRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nonnull
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nonnull
+    Double amount = apiRequest.amount();
+    @javax.annotation.Nullable
+    String date = apiRequest.date();
+    @javax.annotation.Nullable
+    FormatEnum format = apiRequest.format();
+    @javax.annotation.Nullable
+    String delimiter = apiRequest.delimiter();
+    @javax.annotation.Nullable
+    Long dp = apiRequest.dp();
+    @javax.annotation.Nullable
+    String timezone = apiRequest.timezone();
+    return getCurrencyConversion(symbol, amount, date, format, delimiter, dp, timezone, headers);
+  }
+
+  /**
+   * Currency conversion
+   * The currency conversion endpoint provides real-time exchange rates and calculates the converted amount for specified currency pairs, including both forex and cryptocurrencies. This endpoint is useful for obtaining up-to-date conversion values between two currencies, facilitating tasks such as financial reporting, e-commerce transactions, and travel budgeting.
+   * @param apiRequest {@link APIGetCurrencyConversionRequest}
+   * @return ApiResponse&lt;GetCurrencyConversion200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetCurrencyConversion200Response> getCurrencyConversionWithHttpInfo(APIGetCurrencyConversionRequest apiRequest) throws ApiException {
+    return getCurrencyConversionWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Currency conversion
+   * The currency conversion endpoint provides real-time exchange rates and calculates the converted amount for specified currency pairs, including both forex and cryptocurrencies. This endpoint is useful for obtaining up-to-date conversion values between two currencies, facilitating tasks such as financial reporting, e-commerce transactions, and travel budgeting.
+   * @param apiRequest {@link APIGetCurrencyConversionRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetCurrencyConversion200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetCurrencyConversion200Response> getCurrencyConversionWithHttpInfo(APIGetCurrencyConversionRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    Double amount = apiRequest.amount();
+    String date = apiRequest.date();
+    FormatEnum format = apiRequest.format();
+    String delimiter = apiRequest.delimiter();
+    Long dp = apiRequest.dp();
+    String timezone = apiRequest.timezone();
+    return getCurrencyConversionWithHttpInfo(symbol, amount, date, format, delimiter, dp, timezone, headers);
+  }
+
+  /**
+   * Currency conversion
+   * The currency conversion endpoint provides real-time exchange rates and calculates the converted amount for specified currency pairs, including both forex and cryptocurrencies. This endpoint is useful for obtaining up-to-date conversion values between two currencies, facilitating tasks such as financial reporting, e-commerce transactions, and travel budgeting.
    * @param symbol The currency pair you want to request can be either forex or cryptocurrency. Slash(&#x60;/&#x60;) delimiter is used. E.g. &#x60;EUR/USD&#x60; or &#x60;BTC/ETH&#x60; will be correct (required)
    * @param amount Amount of base currency to be converted into quote currency. Supports values in the range from &#x60;0&#x60; and above (required)
    * @param date If not null, will use exchange rate from a specific date or time. Format &#x60;2006-01-02&#x60; or &#x60;2006-01-02T15:04:05&#x60;. Is set in the local exchange time zone, use timezone parameter to specify a specific time zone (optional)
@@ -337,6 +404,171 @@ public class CurrenciesApi {
     return localVarRequestBuilder;
   }
 
+
+  public static final class APIGetCurrencyConversionRequest {
+    @javax.annotation.Nonnull
+    private String symbol; // The currency pair you want to request can be either forex or cryptocurrency. Slash(&#x60;/&#x60;) delimiter is used. E.g. &#x60;EUR/USD&#x60; or &#x60;BTC/ETH&#x60; will be correct (required)
+    @javax.annotation.Nonnull
+    private Double amount; // Amount of base currency to be converted into quote currency. Supports values in the range from &#x60;0&#x60; and above (required)
+    @javax.annotation.Nullable
+    private String date; // If not null, will use exchange rate from a specific date or time. Format &#x60;2006-01-02&#x60; or &#x60;2006-01-02T15:04:05&#x60;. Is set in the local exchange time zone, use timezone parameter to specify a specific time zone (optional)
+    @javax.annotation.Nullable
+    private FormatEnum format; // Value can be &#x60;JSON&#x60; or &#x60;CSV&#x60;. Default &#x60;JSON&#x60; (optional, default to JSON)
+    @javax.annotation.Nullable
+    private String delimiter; // Specify the delimiter used when downloading the &#x60;CSV&#x60; file. Default semicolon &#x60;;&#x60; (optional, default to ;)
+    @javax.annotation.Nullable
+    private Long dp; // The number of decimal places for the data (optional, default to 5)
+    @javax.annotation.Nullable
+    private String timezone; // Timezone at which output datetime will be displayed. Supports: &lt;ul&gt; &lt;li&gt;1. &lt;code&gt;Exchange&lt;/code&gt; for local exchange time&lt;/li&gt; &lt;li&gt;2. &lt;code&gt;UTC&lt;/code&gt; for datetime at universal UTC standard&lt;/li&gt; &lt;li&gt;3. Timezone name according to the IANA Time Zone Database. E.g. &lt;code&gt;America/New_York&lt;/code&gt;, &lt;code&gt;Asia/Singapore&lt;/code&gt;. Full list of timezones can be found &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\&quot; target&#x3D;\&quot;blank\&quot;&gt;here&lt;/a&gt;.&lt;/li&gt; &lt;/ul&gt; &lt;i&gt;Take note that the IANA Timezone name is case-sensitive&lt;/i&gt; (optional)
+
+    private APIGetCurrencyConversionRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.amount = builder.amount;
+      this.date = builder.date;
+      this.format = builder.format;
+      this.delimiter = builder.delimiter;
+      this.dp = builder.dp;
+      this.timezone = builder.timezone;
+    }
+    @javax.annotation.Nonnull
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nonnull
+    public Double amount() {
+      return amount;
+    }
+    @javax.annotation.Nullable
+    public String date() {
+      return date;
+    }
+    @javax.annotation.Nullable
+    public FormatEnum format() {
+      return format;
+    }
+    @javax.annotation.Nullable
+    public String delimiter() {
+      return delimiter;
+    }
+    @javax.annotation.Nullable
+    public Long dp() {
+      return dp;
+    }
+    @javax.annotation.Nullable
+    public String timezone() {
+      return timezone;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private Double amount;
+      private String date;
+      private FormatEnum format;
+      private String delimiter;
+      private Long dp;
+      private String timezone;
+
+      public Builder symbol(@javax.annotation.Nonnull String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder amount(@javax.annotation.Nonnull Double amount) {
+        this.amount = amount;
+        return this;
+      }
+      public Builder date(@javax.annotation.Nullable String date) {
+        this.date = date;
+        return this;
+      }
+      public Builder format(@javax.annotation.Nullable FormatEnum format) {
+        this.format = format;
+        return this;
+      }
+      public Builder delimiter(@javax.annotation.Nullable String delimiter) {
+        this.delimiter = delimiter;
+        return this;
+      }
+      public Builder dp(@javax.annotation.Nullable Long dp) {
+        this.dp = dp;
+        return this;
+      }
+      public Builder timezone(@javax.annotation.Nullable String timezone) {
+        this.timezone = timezone;
+        return this;
+      }
+      public APIGetCurrencyConversionRequest build() {
+        return new APIGetCurrencyConversionRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Exchange rate
+   * The exchange rate endpoint provides real-time exchange rates for specified currency pairs, including both forex and cryptocurrency. It returns the current exchange rate value between two currencies, allowing users to quickly access up-to-date conversion rates for financial transactions or market analysis.
+   * @param apiRequest {@link APIGetExchangeRateRequest}
+   * @return GetExchangeRate200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetExchangeRate200Response getExchangeRate(APIGetExchangeRateRequest apiRequest) throws ApiException {
+    return getExchangeRate(apiRequest, null);
+  }
+
+  /**
+   * Exchange rate
+   * The exchange rate endpoint provides real-time exchange rates for specified currency pairs, including both forex and cryptocurrency. It returns the current exchange rate value between two currencies, allowing users to quickly access up-to-date conversion rates for financial transactions or market analysis.
+   * @param apiRequest {@link APIGetExchangeRateRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetExchangeRate200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetExchangeRate200Response getExchangeRate(APIGetExchangeRateRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nonnull
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String date = apiRequest.date();
+    @javax.annotation.Nullable
+    FormatEnum format = apiRequest.format();
+    @javax.annotation.Nullable
+    String delimiter = apiRequest.delimiter();
+    @javax.annotation.Nullable
+    Long dp = apiRequest.dp();
+    @javax.annotation.Nullable
+    String timezone = apiRequest.timezone();
+    return getExchangeRate(symbol, date, format, delimiter, dp, timezone, headers);
+  }
+
+  /**
+   * Exchange rate
+   * The exchange rate endpoint provides real-time exchange rates for specified currency pairs, including both forex and cryptocurrency. It returns the current exchange rate value between two currencies, allowing users to quickly access up-to-date conversion rates for financial transactions or market analysis.
+   * @param apiRequest {@link APIGetExchangeRateRequest}
+   * @return ApiResponse&lt;GetExchangeRate200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetExchangeRate200Response> getExchangeRateWithHttpInfo(APIGetExchangeRateRequest apiRequest) throws ApiException {
+    return getExchangeRateWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Exchange rate
+   * The exchange rate endpoint provides real-time exchange rates for specified currency pairs, including both forex and cryptocurrency. It returns the current exchange rate value between two currencies, allowing users to quickly access up-to-date conversion rates for financial transactions or market analysis.
+   * @param apiRequest {@link APIGetExchangeRateRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetExchangeRate200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetExchangeRate200Response> getExchangeRateWithHttpInfo(APIGetExchangeRateRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String date = apiRequest.date();
+    FormatEnum format = apiRequest.format();
+    String delimiter = apiRequest.delimiter();
+    Long dp = apiRequest.dp();
+    String timezone = apiRequest.timezone();
+    return getExchangeRateWithHttpInfo(symbol, date, format, delimiter, dp, timezone, headers);
+  }
+
   /**
    * Exchange rate
    * The exchange rate endpoint provides real-time exchange rates for specified currency pairs, including both forex and cryptocurrency. It returns the current exchange rate value between two currencies, allowing users to quickly access up-to-date conversion rates for financial transactions or market analysis.
@@ -497,6 +729,95 @@ public class CurrenciesApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
+  }
+
+
+  public static final class APIGetExchangeRateRequest {
+    @javax.annotation.Nonnull
+    private String symbol; // The currency pair you want to request can be either forex or cryptocurrency. Slash(&#x60;/&#x60;) delimiter is used. E.g. &#x60;EUR/USD&#x60; or &#x60;BTC/ETH&#x60; will be correct (required)
+    @javax.annotation.Nullable
+    private String date; // If not null, will use exchange rate from a specific date or time. Format &#x60;2006-01-02&#x60; or &#x60;2006-01-02T15:04:05&#x60;. Is set in the local exchange time zone, use timezone parameter to specify a specific time zone (optional)
+    @javax.annotation.Nullable
+    private FormatEnum format; // Value can be &#x60;JSON&#x60; or &#x60;CSV&#x60;. Default &#x60;JSON&#x60; (optional, default to JSON)
+    @javax.annotation.Nullable
+    private String delimiter; // Specify the delimiter used when downloading the &#x60;CSV&#x60; file. Default semicolon &#x60;;&#x60; (optional, default to ;)
+    @javax.annotation.Nullable
+    private Long dp; // The number of decimal places for the data (optional, default to 5)
+    @javax.annotation.Nullable
+    private String timezone; // Timezone at which output datetime will be displayed. Supports: &lt;ul&gt; &lt;li&gt;1. &lt;code&gt;Exchange&lt;/code&gt; for local exchange time&lt;/li&gt; &lt;li&gt;2. &lt;code&gt;UTC&lt;/code&gt; for datetime at universal UTC standard&lt;/li&gt; &lt;li&gt;3. Timezone name according to the IANA Time Zone Database. E.g. &lt;code&gt;America/New_York&lt;/code&gt;, &lt;code&gt;Asia/Singapore&lt;/code&gt;. Full list of timezones can be found &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\&quot; target&#x3D;\&quot;blank\&quot;&gt;here&lt;/a&gt;.&lt;/li&gt; &lt;/ul&gt; &lt;i&gt;Take note that the IANA Timezone name is case-sensitive&lt;/i&gt; (optional)
+
+    private APIGetExchangeRateRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.date = builder.date;
+      this.format = builder.format;
+      this.delimiter = builder.delimiter;
+      this.dp = builder.dp;
+      this.timezone = builder.timezone;
+    }
+    @javax.annotation.Nonnull
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String date() {
+      return date;
+    }
+    @javax.annotation.Nullable
+    public FormatEnum format() {
+      return format;
+    }
+    @javax.annotation.Nullable
+    public String delimiter() {
+      return delimiter;
+    }
+    @javax.annotation.Nullable
+    public Long dp() {
+      return dp;
+    }
+    @javax.annotation.Nullable
+    public String timezone() {
+      return timezone;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String date;
+      private FormatEnum format;
+      private String delimiter;
+      private Long dp;
+      private String timezone;
+
+      public Builder symbol(@javax.annotation.Nonnull String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder date(@javax.annotation.Nullable String date) {
+        this.date = date;
+        return this;
+      }
+      public Builder format(@javax.annotation.Nullable FormatEnum format) {
+        this.format = format;
+        return this;
+      }
+      public Builder delimiter(@javax.annotation.Nullable String delimiter) {
+        this.delimiter = delimiter;
+        return this;
+      }
+      public Builder dp(@javax.annotation.Nullable Long dp) {
+        this.dp = dp;
+        return this;
+      }
+      public Builder timezone(@javax.annotation.Nullable String timezone) {
+        this.timezone = timezone;
+        return this;
+      }
+      public APIGetExchangeRateRequest build() {
+        return new APIGetExchangeRateRequest(this);
+      }
+    }
   }
 
 }

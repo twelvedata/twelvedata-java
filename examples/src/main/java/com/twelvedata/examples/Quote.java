@@ -3,6 +3,7 @@ package com.twelvedata.examples;
 import com.twelvedata.client.ApiClient;
 import com.twelvedata.client.Twelvedata;
 import com.twelvedata.client.api.MarketDataApi;
+import com.twelvedata.client.api.MarketDataApi.APIGetQuoteRequest;
 
 public final class Quote {
   public static void main(String[] args) throws Exception {
@@ -10,8 +11,9 @@ public final class Quote {
     MarketDataApi api = new MarketDataApi(client);
 
     var response = api.getQuote(
-        "AAPL", null, null, null, null, null, null, null, null, null,
-        null, null, null, null, null, null, null);
+        APIGetQuoteRequest.newBuilder()
+            .symbol("AAPL")
+            .build());
     System.out.println(response);
   }
 

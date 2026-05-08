@@ -13,7 +13,7 @@ All URIs are relative to *https://api.twelvedata.com*
 
 ## advanced
 
-> Advanced200Response advanced(key)
+> Advanced200Response advanced(advancedRequest)
 
 Batches
 
@@ -29,6 +29,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.AdvancedApi;
+import com.twelvedata.client.api.AdvancedApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -44,7 +45,10 @@ public class Example {
         AdvancedApi apiInstance = new AdvancedApi(defaultClient);
         Map<String, AdvancedRequestValue> key = new HashMap(); // Map<String, AdvancedRequestValue> | Map of requests
         try {
-            Advanced200Response result = apiInstance.advanced(key);
+            APIadvancedRequest request = APIadvancedRequest.newBuilder()
+                .key(key)
+                .build();
+            Advanced200Response result = apiInstance.advanced(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AdvancedApi#advanced");
@@ -59,10 +63,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **key** | [**Map&lt;String, AdvancedRequestValue&gt;**](AdvancedRequestValue.md)| Map of requests | [optional] |
+| advancedRequest | [**APIadvancedRequest**](AdvancedApi.md#APIadvancedRequest)|-|-|
 
 ### Return type
 
@@ -92,7 +95,7 @@ public class Example {
 
 ## advancedWithHttpInfo
 
-> ApiResponse<Advanced200Response> advanced advancedWithHttpInfo(key)
+> ApiResponse<Advanced200Response> advanced advancedWithHttpInfo(advancedRequest)
 
 Batches
 
@@ -109,6 +112,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.AdvancedApi;
+import com.twelvedata.client.api.AdvancedApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -124,7 +128,10 @@ public class Example {
         AdvancedApi apiInstance = new AdvancedApi(defaultClient);
         Map<String, AdvancedRequestValue> key = new HashMap(); // Map<String, AdvancedRequestValue> | Map of requests
         try {
-            ApiResponse<Advanced200Response> response = apiInstance.advancedWithHttpInfo(key);
+            APIadvancedRequest request = APIadvancedRequest.newBuilder()
+                .key(key)
+                .build();
+            ApiResponse<Advanced200Response> response = apiInstance.advancedWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -141,10 +148,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **key** | [**Map&lt;String, AdvancedRequestValue&gt;**](AdvancedRequestValue.md)| Map of requests | [optional] |
+| advancedRequest | [**APIadvancedRequest**](AdvancedApi.md#APIadvancedRequest)|-|-|
 
 ### Return type
 
@@ -173,9 +179,19 @@ ApiResponse<[**Advanced200Response**](Advanced200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIadvancedRequest"></a>
+## APIadvancedRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **key** | [**Map&lt;String, AdvancedRequestValue&gt;**](AdvancedRequestValue.md) | Map of requests | [optional] |
+
+
+
 ## getApiUsage
 
-> GetApiUsage200Response getApiUsage(format, delimiter, timezone)
+> GetApiUsage200Response getApiUsage(getApiUsageRequest)
 
 API usage
 
@@ -191,6 +207,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.AdvancedApi;
+import com.twelvedata.client.api.AdvancedApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -208,7 +225,12 @@ public class Example {
         String delimiter = ";"; // String | Specify the delimiter used when downloading the CSV file
         String timezone = "UTC"; // String | Timezone at which output datetime will be displayed. Supports: <ul> <li>1. <code>UTC</code> for datetime at universal UTC standard</li> <li>2. Timezone name according to the IANA Time Zone Database. E.g. <code>America/New_York</code>, <code>Asia/Singapore</code>. Full list of timezones can be found <a href=\"https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\" target=\"blank\">here</a>.</li> </ul> <i>Take note that the IANA Timezone name is case-sensitive</i>
         try {
-            GetApiUsage200Response result = apiInstance.getApiUsage(format, delimiter, timezone);
+            APIgetApiUsageRequest request = APIgetApiUsageRequest.newBuilder()
+                .format(format)
+                .delimiter(delimiter)
+                .timezone(timezone)
+                .build();
+            GetApiUsage200Response result = apiInstance.getApiUsage(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AdvancedApi#getApiUsage");
@@ -223,12 +245,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **format** | [**FormatEnum**](.md)| Output format | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| Specify the delimiter used when downloading the CSV file | [optional] [default to ;] |
-| **timezone** | **String**| Timezone at which output datetime will be displayed. Supports: &lt;ul&gt; &lt;li&gt;1. &lt;code&gt;UTC&lt;/code&gt; for datetime at universal UTC standard&lt;/li&gt; &lt;li&gt;2. Timezone name according to the IANA Time Zone Database. E.g. &lt;code&gt;America/New_York&lt;/code&gt;, &lt;code&gt;Asia/Singapore&lt;/code&gt;. Full list of timezones can be found &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\&quot; target&#x3D;\&quot;blank\&quot;&gt;here&lt;/a&gt;.&lt;/li&gt; &lt;/ul&gt; &lt;i&gt;Take note that the IANA Timezone name is case-sensitive&lt;/i&gt; | [optional] [default to UTC] |
+| getApiUsageRequest | [**APIgetApiUsageRequest**](AdvancedApi.md#APIgetApiUsageRequest)|-|-|
 
 ### Return type
 
@@ -258,7 +277,7 @@ public class Example {
 
 ## getApiUsageWithHttpInfo
 
-> ApiResponse<GetApiUsage200Response> getApiUsage getApiUsageWithHttpInfo(format, delimiter, timezone)
+> ApiResponse<GetApiUsage200Response> getApiUsage getApiUsageWithHttpInfo(getApiUsageRequest)
 
 API usage
 
@@ -275,6 +294,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.AdvancedApi;
+import com.twelvedata.client.api.AdvancedApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -292,7 +312,12 @@ public class Example {
         String delimiter = ";"; // String | Specify the delimiter used when downloading the CSV file
         String timezone = "UTC"; // String | Timezone at which output datetime will be displayed. Supports: <ul> <li>1. <code>UTC</code> for datetime at universal UTC standard</li> <li>2. Timezone name according to the IANA Time Zone Database. E.g. <code>America/New_York</code>, <code>Asia/Singapore</code>. Full list of timezones can be found <a href=\"https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\" target=\"blank\">here</a>.</li> </ul> <i>Take note that the IANA Timezone name is case-sensitive</i>
         try {
-            ApiResponse<GetApiUsage200Response> response = apiInstance.getApiUsageWithHttpInfo(format, delimiter, timezone);
+            APIgetApiUsageRequest request = APIgetApiUsageRequest.newBuilder()
+                .format(format)
+                .delimiter(delimiter)
+                .timezone(timezone)
+                .build();
+            ApiResponse<GetApiUsage200Response> response = apiInstance.getApiUsageWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -309,12 +334,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **format** | [**FormatEnum**](.md)| Output format | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| Specify the delimiter used when downloading the CSV file | [optional] [default to ;] |
-| **timezone** | **String**| Timezone at which output datetime will be displayed. Supports: &lt;ul&gt; &lt;li&gt;1. &lt;code&gt;UTC&lt;/code&gt; for datetime at universal UTC standard&lt;/li&gt; &lt;li&gt;2. Timezone name according to the IANA Time Zone Database. E.g. &lt;code&gt;America/New_York&lt;/code&gt;, &lt;code&gt;Asia/Singapore&lt;/code&gt;. Full list of timezones can be found &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\&quot; target&#x3D;\&quot;blank\&quot;&gt;here&lt;/a&gt;.&lt;/li&gt; &lt;/ul&gt; &lt;i&gt;Take note that the IANA Timezone name is case-sensitive&lt;/i&gt; | [optional] [default to UTC] |
+| getApiUsageRequest | [**APIgetApiUsageRequest**](AdvancedApi.md#APIgetApiUsageRequest)|-|-|
 
 ### Return type
 
@@ -341,4 +363,16 @@ ApiResponse<[**GetApiUsage200Response**](GetApiUsage200Response.md)>
 | **414** |  |  -  |
 | **429** |  |  -  |
 | **500** |  |  -  |
+
+
+<a id="APIgetApiUsageRequest"></a>
+## APIgetApiUsageRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **format** | [**FormatEnum**](.md) | Output format | [optional] [default to JSON] [enum: JSON, CSV] |
+| **delimiter** | **String** | Specify the delimiter used when downloading the CSV file | [optional] [default to ;] |
+| **timezone** | **String** | Timezone at which output datetime will be displayed. Supports: &lt;ul&gt; &lt;li&gt;1. &lt;code&gt;UTC&lt;/code&gt; for datetime at universal UTC standard&lt;/li&gt; &lt;li&gt;2. Timezone name according to the IANA Time Zone Database. E.g. &lt;code&gt;America/New_York&lt;/code&gt;, &lt;code&gt;Asia/Singapore&lt;/code&gt;. Full list of timezones can be found &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\&quot; target&#x3D;\&quot;blank\&quot;&gt;here&lt;/a&gt;.&lt;/li&gt; &lt;/ul&gt; &lt;i&gt;Take note that the IANA Timezone name is case-sensitive&lt;/i&gt; | [optional] [default to UTC] |
+
 

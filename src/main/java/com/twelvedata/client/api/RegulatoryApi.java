@@ -173,6 +173,73 @@ public class RegulatoryApi {
   /**
    * Direct holders
    * The direct holders endpoint provides detailed information about the number of shares directly held by individuals or entities as recorded in a company&#39;s official share registry. This data is essential for understanding the distribution of stock ownership within a company, helping users identify major shareholders and assess shareholder concentration.
+   * @param apiRequest {@link APIGetDirectHoldersRequest}
+   * @return GetDirectHolders200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetDirectHolders200Response getDirectHolders(APIGetDirectHoldersRequest apiRequest) throws ApiException {
+    return getDirectHolders(apiRequest, null);
+  }
+
+  /**
+   * Direct holders
+   * The direct holders endpoint provides detailed information about the number of shares directly held by individuals or entities as recorded in a company&#39;s official share registry. This data is essential for understanding the distribution of stock ownership within a company, helping users identify major shareholders and assess shareholder concentration.
+   * @param apiRequest {@link APIGetDirectHoldersRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetDirectHolders200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetDirectHolders200Response getDirectHolders(APIGetDirectHoldersRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String figi = apiRequest.figi();
+    @javax.annotation.Nullable
+    String isin = apiRequest.isin();
+    @javax.annotation.Nullable
+    String cusip = apiRequest.cusip();
+    @javax.annotation.Nullable
+    String exchange = apiRequest.exchange();
+    @javax.annotation.Nullable
+    String micCode = apiRequest.micCode();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    return getDirectHolders(symbol, figi, isin, cusip, exchange, micCode, country, headers);
+  }
+
+  /**
+   * Direct holders
+   * The direct holders endpoint provides detailed information about the number of shares directly held by individuals or entities as recorded in a company&#39;s official share registry. This data is essential for understanding the distribution of stock ownership within a company, helping users identify major shareholders and assess shareholder concentration.
+   * @param apiRequest {@link APIGetDirectHoldersRequest}
+   * @return ApiResponse&lt;GetDirectHolders200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetDirectHolders200Response> getDirectHoldersWithHttpInfo(APIGetDirectHoldersRequest apiRequest) throws ApiException {
+    return getDirectHoldersWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Direct holders
+   * The direct holders endpoint provides detailed information about the number of shares directly held by individuals or entities as recorded in a company&#39;s official share registry. This data is essential for understanding the distribution of stock ownership within a company, helping users identify major shareholders and assess shareholder concentration.
+   * @param apiRequest {@link APIGetDirectHoldersRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetDirectHolders200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetDirectHolders200Response> getDirectHoldersWithHttpInfo(APIGetDirectHoldersRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String figi = apiRequest.figi();
+    String isin = apiRequest.isin();
+    String cusip = apiRequest.cusip();
+    String exchange = apiRequest.exchange();
+    String micCode = apiRequest.micCode();
+    String country = apiRequest.country();
+    return getDirectHoldersWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, headers);
+  }
+
+  /**
+   * Direct holders
+   * The direct holders endpoint provides detailed information about the number of shares directly held by individuals or entities as recorded in a company&#39;s official share registry. This data is essential for understanding the distribution of stock ownership within a company, helping users identify major shareholders and assess shareholder concentration.
    * @param symbol Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct (optional)
    * @param figi Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. (optional)
    * @param isin Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
@@ -332,6 +399,189 @@ public class RegulatoryApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
+  }
+
+
+  public static final class APIGetDirectHoldersRequest {
+    @javax.annotation.Nullable
+    private String symbol; // Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct (optional)
+    @javax.annotation.Nullable
+    private String figi; // Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. (optional)
+    @javax.annotation.Nullable
+    private String isin; // Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cusip; // The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String exchange; // Exchange where instrument is traded (optional)
+    @javax.annotation.Nullable
+    private String micCode; // Market Identifier Code (MIC) under ISO 10383 standard (optional)
+    @javax.annotation.Nullable
+    private String country; // Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+
+    private APIGetDirectHoldersRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.figi = builder.figi;
+      this.isin = builder.isin;
+      this.cusip = builder.cusip;
+      this.exchange = builder.exchange;
+      this.micCode = builder.micCode;
+      this.country = builder.country;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String figi() {
+      return figi;
+    }
+    @javax.annotation.Nullable
+    public String isin() {
+      return isin;
+    }
+    @javax.annotation.Nullable
+    public String cusip() {
+      return cusip;
+    }
+    @javax.annotation.Nullable
+    public String exchange() {
+      return exchange;
+    }
+    @javax.annotation.Nullable
+    public String micCode() {
+      return micCode;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String figi;
+      private String isin;
+      private String cusip;
+      private String exchange;
+      private String micCode;
+      private String country;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder figi(@javax.annotation.Nullable String figi) {
+        this.figi = figi;
+        return this;
+      }
+      public Builder isin(@javax.annotation.Nullable String isin) {
+        this.isin = isin;
+        return this;
+      }
+      public Builder cusip(@javax.annotation.Nullable String cusip) {
+        this.cusip = cusip;
+        return this;
+      }
+      public Builder exchange(@javax.annotation.Nullable String exchange) {
+        this.exchange = exchange;
+        return this;
+      }
+      public Builder micCode(@javax.annotation.Nullable String micCode) {
+        this.micCode = micCode;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public APIGetDirectHoldersRequest build() {
+        return new APIGetDirectHoldersRequest(this);
+      }
+    }
+  }
+
+  /**
+   * EDGAR fillings
+   * The EDGAR fillings endpoint provides access to a comprehensive collection of financial documents submitted to the SEC, including real-time and historical forms, filings, and exhibits. Users can retrieve detailed information about company disclosures, financial statements, and regulatory submissions, enabling them to access essential compliance and financial data directly from the SEC&#39;s EDGAR system.
+   * @param apiRequest {@link APIGetEdgarFilingsArchiveRequest}
+   * @return GetEdgarFilingsArchive200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetEdgarFilingsArchive200Response getEdgarFilingsArchive(APIGetEdgarFilingsArchiveRequest apiRequest) throws ApiException {
+    return getEdgarFilingsArchive(apiRequest, null);
+  }
+
+  /**
+   * EDGAR fillings
+   * The EDGAR fillings endpoint provides access to a comprehensive collection of financial documents submitted to the SEC, including real-time and historical forms, filings, and exhibits. Users can retrieve detailed information about company disclosures, financial statements, and regulatory submissions, enabling them to access essential compliance and financial data directly from the SEC&#39;s EDGAR system.
+   * @param apiRequest {@link APIGetEdgarFilingsArchiveRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetEdgarFilingsArchive200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetEdgarFilingsArchive200Response getEdgarFilingsArchive(APIGetEdgarFilingsArchiveRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String figi = apiRequest.figi();
+    @javax.annotation.Nullable
+    String isin = apiRequest.isin();
+    @javax.annotation.Nullable
+    String cusip = apiRequest.cusip();
+    @javax.annotation.Nullable
+    String exchange = apiRequest.exchange();
+    @javax.annotation.Nullable
+    String micCode = apiRequest.micCode();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    @javax.annotation.Nullable
+    String formType = apiRequest.formType();
+    @javax.annotation.Nullable
+    String filledFrom = apiRequest.filledFrom();
+    @javax.annotation.Nullable
+    String filledTo = apiRequest.filledTo();
+    @javax.annotation.Nullable
+    Long page = apiRequest.page();
+    @javax.annotation.Nullable
+    Long pageSize = apiRequest.pageSize();
+    return getEdgarFilingsArchive(symbol, figi, isin, cusip, exchange, micCode, country, formType, filledFrom, filledTo, page, pageSize, headers);
+  }
+
+  /**
+   * EDGAR fillings
+   * The EDGAR fillings endpoint provides access to a comprehensive collection of financial documents submitted to the SEC, including real-time and historical forms, filings, and exhibits. Users can retrieve detailed information about company disclosures, financial statements, and regulatory submissions, enabling them to access essential compliance and financial data directly from the SEC&#39;s EDGAR system.
+   * @param apiRequest {@link APIGetEdgarFilingsArchiveRequest}
+   * @return ApiResponse&lt;GetEdgarFilingsArchive200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetEdgarFilingsArchive200Response> getEdgarFilingsArchiveWithHttpInfo(APIGetEdgarFilingsArchiveRequest apiRequest) throws ApiException {
+    return getEdgarFilingsArchiveWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * EDGAR fillings
+   * The EDGAR fillings endpoint provides access to a comprehensive collection of financial documents submitted to the SEC, including real-time and historical forms, filings, and exhibits. Users can retrieve detailed information about company disclosures, financial statements, and regulatory submissions, enabling them to access essential compliance and financial data directly from the SEC&#39;s EDGAR system.
+   * @param apiRequest {@link APIGetEdgarFilingsArchiveRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetEdgarFilingsArchive200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetEdgarFilingsArchive200Response> getEdgarFilingsArchiveWithHttpInfo(APIGetEdgarFilingsArchiveRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String figi = apiRequest.figi();
+    String isin = apiRequest.isin();
+    String cusip = apiRequest.cusip();
+    String exchange = apiRequest.exchange();
+    String micCode = apiRequest.micCode();
+    String country = apiRequest.country();
+    String formType = apiRequest.formType();
+    String filledFrom = apiRequest.filledFrom();
+    String filledTo = apiRequest.filledTo();
+    Long page = apiRequest.page();
+    Long pageSize = apiRequest.pageSize();
+    return getEdgarFilingsArchiveWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, formType, filledFrom, filledTo, page, pageSize, headers);
   }
 
   /**
@@ -528,6 +778,234 @@ public class RegulatoryApi {
     return localVarRequestBuilder;
   }
 
+
+  public static final class APIGetEdgarFilingsArchiveRequest {
+    @javax.annotation.Nullable
+    private String symbol; // The ticker symbol of an instrument for which data is requested (optional)
+    @javax.annotation.Nullable
+    private String figi; // Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. (optional)
+    @javax.annotation.Nullable
+    private String isin; // Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cusip; // The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String exchange; // Filter by exchange name (optional)
+    @javax.annotation.Nullable
+    private String micCode; // Filter by market identifier code (MIC) under ISO 10383 standard (optional)
+    @javax.annotation.Nullable
+    private String country; // Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+    @javax.annotation.Nullable
+    private String formType; // Filter by form types, example &#x60;8-K&#x60;, &#x60;EX-1.1&#x60; (optional)
+    @javax.annotation.Nullable
+    private String filledFrom; // Filter by filled time from (optional)
+    @javax.annotation.Nullable
+    private String filledTo; // Filter by filled time to (optional)
+    @javax.annotation.Nullable
+    private Long page; // Page number (optional, default to 1)
+    @javax.annotation.Nullable
+    private Long pageSize; // Number of records in response (optional, default to 10)
+
+    private APIGetEdgarFilingsArchiveRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.figi = builder.figi;
+      this.isin = builder.isin;
+      this.cusip = builder.cusip;
+      this.exchange = builder.exchange;
+      this.micCode = builder.micCode;
+      this.country = builder.country;
+      this.formType = builder.formType;
+      this.filledFrom = builder.filledFrom;
+      this.filledTo = builder.filledTo;
+      this.page = builder.page;
+      this.pageSize = builder.pageSize;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String figi() {
+      return figi;
+    }
+    @javax.annotation.Nullable
+    public String isin() {
+      return isin;
+    }
+    @javax.annotation.Nullable
+    public String cusip() {
+      return cusip;
+    }
+    @javax.annotation.Nullable
+    public String exchange() {
+      return exchange;
+    }
+    @javax.annotation.Nullable
+    public String micCode() {
+      return micCode;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    @javax.annotation.Nullable
+    public String formType() {
+      return formType;
+    }
+    @javax.annotation.Nullable
+    public String filledFrom() {
+      return filledFrom;
+    }
+    @javax.annotation.Nullable
+    public String filledTo() {
+      return filledTo;
+    }
+    @javax.annotation.Nullable
+    public Long page() {
+      return page;
+    }
+    @javax.annotation.Nullable
+    public Long pageSize() {
+      return pageSize;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String figi;
+      private String isin;
+      private String cusip;
+      private String exchange;
+      private String micCode;
+      private String country;
+      private String formType;
+      private String filledFrom;
+      private String filledTo;
+      private Long page;
+      private Long pageSize;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder figi(@javax.annotation.Nullable String figi) {
+        this.figi = figi;
+        return this;
+      }
+      public Builder isin(@javax.annotation.Nullable String isin) {
+        this.isin = isin;
+        return this;
+      }
+      public Builder cusip(@javax.annotation.Nullable String cusip) {
+        this.cusip = cusip;
+        return this;
+      }
+      public Builder exchange(@javax.annotation.Nullable String exchange) {
+        this.exchange = exchange;
+        return this;
+      }
+      public Builder micCode(@javax.annotation.Nullable String micCode) {
+        this.micCode = micCode;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public Builder formType(@javax.annotation.Nullable String formType) {
+        this.formType = formType;
+        return this;
+      }
+      public Builder filledFrom(@javax.annotation.Nullable String filledFrom) {
+        this.filledFrom = filledFrom;
+        return this;
+      }
+      public Builder filledTo(@javax.annotation.Nullable String filledTo) {
+        this.filledTo = filledTo;
+        return this;
+      }
+      public Builder page(@javax.annotation.Nullable Long page) {
+        this.page = page;
+        return this;
+      }
+      public Builder pageSize(@javax.annotation.Nullable Long pageSize) {
+        this.pageSize = pageSize;
+        return this;
+      }
+      public APIGetEdgarFilingsArchiveRequest build() {
+        return new APIGetEdgarFilingsArchiveRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Fund holders
+   * The fund holders endpoint provides detailed information about the proportion of a company&#39;s stock that is owned by mutual fund holders. It returns data on the number of shares held, the percentage of total shares outstanding, and the names of the mutual funds involved. This endpoint is useful for users looking to understand mutual fund investment in a specific company.
+   * @param apiRequest {@link APIGetFundHoldersRequest}
+   * @return GetFundHolders200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetFundHolders200Response getFundHolders(APIGetFundHoldersRequest apiRequest) throws ApiException {
+    return getFundHolders(apiRequest, null);
+  }
+
+  /**
+   * Fund holders
+   * The fund holders endpoint provides detailed information about the proportion of a company&#39;s stock that is owned by mutual fund holders. It returns data on the number of shares held, the percentage of total shares outstanding, and the names of the mutual funds involved. This endpoint is useful for users looking to understand mutual fund investment in a specific company.
+   * @param apiRequest {@link APIGetFundHoldersRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetFundHolders200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetFundHolders200Response getFundHolders(APIGetFundHoldersRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String figi = apiRequest.figi();
+    @javax.annotation.Nullable
+    String isin = apiRequest.isin();
+    @javax.annotation.Nullable
+    String cusip = apiRequest.cusip();
+    @javax.annotation.Nullable
+    String exchange = apiRequest.exchange();
+    @javax.annotation.Nullable
+    String micCode = apiRequest.micCode();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    return getFundHolders(symbol, figi, isin, cusip, exchange, micCode, country, headers);
+  }
+
+  /**
+   * Fund holders
+   * The fund holders endpoint provides detailed information about the proportion of a company&#39;s stock that is owned by mutual fund holders. It returns data on the number of shares held, the percentage of total shares outstanding, and the names of the mutual funds involved. This endpoint is useful for users looking to understand mutual fund investment in a specific company.
+   * @param apiRequest {@link APIGetFundHoldersRequest}
+   * @return ApiResponse&lt;GetFundHolders200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetFundHolders200Response> getFundHoldersWithHttpInfo(APIGetFundHoldersRequest apiRequest) throws ApiException {
+    return getFundHoldersWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Fund holders
+   * The fund holders endpoint provides detailed information about the proportion of a company&#39;s stock that is owned by mutual fund holders. It returns data on the number of shares held, the percentage of total shares outstanding, and the names of the mutual funds involved. This endpoint is useful for users looking to understand mutual fund investment in a specific company.
+   * @param apiRequest {@link APIGetFundHoldersRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetFundHolders200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetFundHolders200Response> getFundHoldersWithHttpInfo(APIGetFundHoldersRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String figi = apiRequest.figi();
+    String isin = apiRequest.isin();
+    String cusip = apiRequest.cusip();
+    String exchange = apiRequest.exchange();
+    String micCode = apiRequest.micCode();
+    String country = apiRequest.country();
+    return getFundHoldersWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, headers);
+  }
+
   /**
    * Fund holders
    * The fund holders endpoint provides detailed information about the proportion of a company&#39;s stock that is owned by mutual fund holders. It returns data on the number of shares held, the percentage of total shares outstanding, and the names of the mutual funds involved. This endpoint is useful for users looking to understand mutual fund investment in a specific company.
@@ -690,6 +1168,174 @@ public class RegulatoryApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
+  }
+
+
+  public static final class APIGetFundHoldersRequest {
+    @javax.annotation.Nullable
+    private String symbol; // Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct (optional)
+    @javax.annotation.Nullable
+    private String figi; // Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. (optional)
+    @javax.annotation.Nullable
+    private String isin; // Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cusip; // The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String exchange; // Exchange where instrument is traded (optional)
+    @javax.annotation.Nullable
+    private String micCode; // Market Identifier Code (MIC) under ISO 10383 standard (optional)
+    @javax.annotation.Nullable
+    private String country; // Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+
+    private APIGetFundHoldersRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.figi = builder.figi;
+      this.isin = builder.isin;
+      this.cusip = builder.cusip;
+      this.exchange = builder.exchange;
+      this.micCode = builder.micCode;
+      this.country = builder.country;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String figi() {
+      return figi;
+    }
+    @javax.annotation.Nullable
+    public String isin() {
+      return isin;
+    }
+    @javax.annotation.Nullable
+    public String cusip() {
+      return cusip;
+    }
+    @javax.annotation.Nullable
+    public String exchange() {
+      return exchange;
+    }
+    @javax.annotation.Nullable
+    public String micCode() {
+      return micCode;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String figi;
+      private String isin;
+      private String cusip;
+      private String exchange;
+      private String micCode;
+      private String country;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder figi(@javax.annotation.Nullable String figi) {
+        this.figi = figi;
+        return this;
+      }
+      public Builder isin(@javax.annotation.Nullable String isin) {
+        this.isin = isin;
+        return this;
+      }
+      public Builder cusip(@javax.annotation.Nullable String cusip) {
+        this.cusip = cusip;
+        return this;
+      }
+      public Builder exchange(@javax.annotation.Nullable String exchange) {
+        this.exchange = exchange;
+        return this;
+      }
+      public Builder micCode(@javax.annotation.Nullable String micCode) {
+        this.micCode = micCode;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public APIGetFundHoldersRequest build() {
+        return new APIGetFundHoldersRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Insider transaction
+   * The insider transaction endpoint provides detailed data on trades executed by company insiders, such as executives and directors. It returns information including the insider&#39;s name, their role, the transaction type, the number of shares, the transaction date, and the price per share. This endpoint is useful for tracking insider activity and understanding potential insider sentiment towards a company&#39;s stock.
+   * @param apiRequest {@link APIGetInsiderTransactionsRequest}
+   * @return GetInsiderTransactions200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetInsiderTransactions200Response getInsiderTransactions(APIGetInsiderTransactionsRequest apiRequest) throws ApiException {
+    return getInsiderTransactions(apiRequest, null);
+  }
+
+  /**
+   * Insider transaction
+   * The insider transaction endpoint provides detailed data on trades executed by company insiders, such as executives and directors. It returns information including the insider&#39;s name, their role, the transaction type, the number of shares, the transaction date, and the price per share. This endpoint is useful for tracking insider activity and understanding potential insider sentiment towards a company&#39;s stock.
+   * @param apiRequest {@link APIGetInsiderTransactionsRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetInsiderTransactions200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetInsiderTransactions200Response getInsiderTransactions(APIGetInsiderTransactionsRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String figi = apiRequest.figi();
+    @javax.annotation.Nullable
+    String isin = apiRequest.isin();
+    @javax.annotation.Nullable
+    String cusip = apiRequest.cusip();
+    @javax.annotation.Nullable
+    String exchange = apiRequest.exchange();
+    @javax.annotation.Nullable
+    String micCode = apiRequest.micCode();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    return getInsiderTransactions(symbol, figi, isin, cusip, exchange, micCode, country, headers);
+  }
+
+  /**
+   * Insider transaction
+   * The insider transaction endpoint provides detailed data on trades executed by company insiders, such as executives and directors. It returns information including the insider&#39;s name, their role, the transaction type, the number of shares, the transaction date, and the price per share. This endpoint is useful for tracking insider activity and understanding potential insider sentiment towards a company&#39;s stock.
+   * @param apiRequest {@link APIGetInsiderTransactionsRequest}
+   * @return ApiResponse&lt;GetInsiderTransactions200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetInsiderTransactions200Response> getInsiderTransactionsWithHttpInfo(APIGetInsiderTransactionsRequest apiRequest) throws ApiException {
+    return getInsiderTransactionsWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Insider transaction
+   * The insider transaction endpoint provides detailed data on trades executed by company insiders, such as executives and directors. It returns information including the insider&#39;s name, their role, the transaction type, the number of shares, the transaction date, and the price per share. This endpoint is useful for tracking insider activity and understanding potential insider sentiment towards a company&#39;s stock.
+   * @param apiRequest {@link APIGetInsiderTransactionsRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetInsiderTransactions200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetInsiderTransactions200Response> getInsiderTransactionsWithHttpInfo(APIGetInsiderTransactionsRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String figi = apiRequest.figi();
+    String isin = apiRequest.isin();
+    String cusip = apiRequest.cusip();
+    String exchange = apiRequest.exchange();
+    String micCode = apiRequest.micCode();
+    String country = apiRequest.country();
+    return getInsiderTransactionsWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, headers);
   }
 
   /**
@@ -856,6 +1502,174 @@ public class RegulatoryApi {
     return localVarRequestBuilder;
   }
 
+
+  public static final class APIGetInsiderTransactionsRequest {
+    @javax.annotation.Nullable
+    private String symbol; // The ticker symbol of an instrument for which data is requested, e.g., &#x60;AAPL&#x60;, &#x60;TSLA&#x60;. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct (optional)
+    @javax.annotation.Nullable
+    private String figi; // Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. (optional)
+    @javax.annotation.Nullable
+    private String isin; // Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cusip; // The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String exchange; // Exchange where instrument is traded, e.g., &#x60;Nasdaq&#x60;, &#x60;NSE&#x60; (optional)
+    @javax.annotation.Nullable
+    private String micCode; // Market Identifier Code (MIC) under ISO 10383 standard (optional)
+    @javax.annotation.Nullable
+    private String country; // Country where instrument is traded, e.g., United States or US. (optional)
+
+    private APIGetInsiderTransactionsRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.figi = builder.figi;
+      this.isin = builder.isin;
+      this.cusip = builder.cusip;
+      this.exchange = builder.exchange;
+      this.micCode = builder.micCode;
+      this.country = builder.country;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String figi() {
+      return figi;
+    }
+    @javax.annotation.Nullable
+    public String isin() {
+      return isin;
+    }
+    @javax.annotation.Nullable
+    public String cusip() {
+      return cusip;
+    }
+    @javax.annotation.Nullable
+    public String exchange() {
+      return exchange;
+    }
+    @javax.annotation.Nullable
+    public String micCode() {
+      return micCode;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String figi;
+      private String isin;
+      private String cusip;
+      private String exchange;
+      private String micCode;
+      private String country;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder figi(@javax.annotation.Nullable String figi) {
+        this.figi = figi;
+        return this;
+      }
+      public Builder isin(@javax.annotation.Nullable String isin) {
+        this.isin = isin;
+        return this;
+      }
+      public Builder cusip(@javax.annotation.Nullable String cusip) {
+        this.cusip = cusip;
+        return this;
+      }
+      public Builder exchange(@javax.annotation.Nullable String exchange) {
+        this.exchange = exchange;
+        return this;
+      }
+      public Builder micCode(@javax.annotation.Nullable String micCode) {
+        this.micCode = micCode;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public APIGetInsiderTransactionsRequest build() {
+        return new APIGetInsiderTransactionsRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Institutional holders
+   * The institutional holders endpoint provides detailed information on the percentage and amount of a company&#39;s stock owned by institutional investors, such as pension funds, insurance companies, and investment firms. This data is essential for understanding the influence and involvement of large entities in a company&#39;s ownership structure.
+   * @param apiRequest {@link APIGetInstitutionalHoldersRequest}
+   * @return GetInstitutionalHolders200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetInstitutionalHolders200Response getInstitutionalHolders(APIGetInstitutionalHoldersRequest apiRequest) throws ApiException {
+    return getInstitutionalHolders(apiRequest, null);
+  }
+
+  /**
+   * Institutional holders
+   * The institutional holders endpoint provides detailed information on the percentage and amount of a company&#39;s stock owned by institutional investors, such as pension funds, insurance companies, and investment firms. This data is essential for understanding the influence and involvement of large entities in a company&#39;s ownership structure.
+   * @param apiRequest {@link APIGetInstitutionalHoldersRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetInstitutionalHolders200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetInstitutionalHolders200Response getInstitutionalHolders(APIGetInstitutionalHoldersRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String figi = apiRequest.figi();
+    @javax.annotation.Nullable
+    String isin = apiRequest.isin();
+    @javax.annotation.Nullable
+    String cusip = apiRequest.cusip();
+    @javax.annotation.Nullable
+    String exchange = apiRequest.exchange();
+    @javax.annotation.Nullable
+    String micCode = apiRequest.micCode();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    return getInstitutionalHolders(symbol, figi, isin, cusip, exchange, micCode, country, headers);
+  }
+
+  /**
+   * Institutional holders
+   * The institutional holders endpoint provides detailed information on the percentage and amount of a company&#39;s stock owned by institutional investors, such as pension funds, insurance companies, and investment firms. This data is essential for understanding the influence and involvement of large entities in a company&#39;s ownership structure.
+   * @param apiRequest {@link APIGetInstitutionalHoldersRequest}
+   * @return ApiResponse&lt;GetInstitutionalHolders200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetInstitutionalHolders200Response> getInstitutionalHoldersWithHttpInfo(APIGetInstitutionalHoldersRequest apiRequest) throws ApiException {
+    return getInstitutionalHoldersWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Institutional holders
+   * The institutional holders endpoint provides detailed information on the percentage and amount of a company&#39;s stock owned by institutional investors, such as pension funds, insurance companies, and investment firms. This data is essential for understanding the influence and involvement of large entities in a company&#39;s ownership structure.
+   * @param apiRequest {@link APIGetInstitutionalHoldersRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetInstitutionalHolders200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetInstitutionalHolders200Response> getInstitutionalHoldersWithHttpInfo(APIGetInstitutionalHoldersRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String figi = apiRequest.figi();
+    String isin = apiRequest.isin();
+    String cusip = apiRequest.cusip();
+    String exchange = apiRequest.exchange();
+    String micCode = apiRequest.micCode();
+    String country = apiRequest.country();
+    return getInstitutionalHoldersWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, headers);
+  }
+
   /**
    * Institutional holders
    * The institutional holders endpoint provides detailed information on the percentage and amount of a company&#39;s stock owned by institutional investors, such as pension funds, insurance companies, and investment firms. This data is essential for understanding the influence and involvement of large entities in a company&#39;s ownership structure.
@@ -1020,6 +1834,156 @@ public class RegulatoryApi {
     return localVarRequestBuilder;
   }
 
+
+  public static final class APIGetInstitutionalHoldersRequest {
+    @javax.annotation.Nullable
+    private String symbol; // Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct (optional)
+    @javax.annotation.Nullable
+    private String figi; // Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. (optional)
+    @javax.annotation.Nullable
+    private String isin; // Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cusip; // The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String exchange; // Exchange where instrument is traded (optional)
+    @javax.annotation.Nullable
+    private String micCode; // Market Identifier Code (MIC) under ISO 10383 standard (optional)
+    @javax.annotation.Nullable
+    private String country; // Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+
+    private APIGetInstitutionalHoldersRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.figi = builder.figi;
+      this.isin = builder.isin;
+      this.cusip = builder.cusip;
+      this.exchange = builder.exchange;
+      this.micCode = builder.micCode;
+      this.country = builder.country;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String figi() {
+      return figi;
+    }
+    @javax.annotation.Nullable
+    public String isin() {
+      return isin;
+    }
+    @javax.annotation.Nullable
+    public String cusip() {
+      return cusip;
+    }
+    @javax.annotation.Nullable
+    public String exchange() {
+      return exchange;
+    }
+    @javax.annotation.Nullable
+    public String micCode() {
+      return micCode;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String figi;
+      private String isin;
+      private String cusip;
+      private String exchange;
+      private String micCode;
+      private String country;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder figi(@javax.annotation.Nullable String figi) {
+        this.figi = figi;
+        return this;
+      }
+      public Builder isin(@javax.annotation.Nullable String isin) {
+        this.isin = isin;
+        return this;
+      }
+      public Builder cusip(@javax.annotation.Nullable String cusip) {
+        this.cusip = cusip;
+        return this;
+      }
+      public Builder exchange(@javax.annotation.Nullable String exchange) {
+        this.exchange = exchange;
+        return this;
+      }
+      public Builder micCode(@javax.annotation.Nullable String micCode) {
+        this.micCode = micCode;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public APIGetInstitutionalHoldersRequest build() {
+        return new APIGetInstitutionalHoldersRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Sanctioned entities
+   * The sanctions entities endpoint provides a comprehensive list of entities sanctioned by a specified authority, such as OFAC, UK, EU, or AU. Users can retrieve detailed information about individuals, organizations, and other entities subject to sanctions from the chosen source, facilitating compliance and risk management processes.
+   * @param apiRequest {@link APIGetSourceSanctionedEntitiesRequest}
+   * @return GetSourceSanctionedEntities200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetSourceSanctionedEntities200Response getSourceSanctionedEntities(APIGetSourceSanctionedEntitiesRequest apiRequest) throws ApiException {
+    return getSourceSanctionedEntities(apiRequest, null);
+  }
+
+  /**
+   * Sanctioned entities
+   * The sanctions entities endpoint provides a comprehensive list of entities sanctioned by a specified authority, such as OFAC, UK, EU, or AU. Users can retrieve detailed information about individuals, organizations, and other entities subject to sanctions from the chosen source, facilitating compliance and risk management processes.
+   * @param apiRequest {@link APIGetSourceSanctionedEntitiesRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetSourceSanctionedEntities200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetSourceSanctionedEntities200Response getSourceSanctionedEntities(APIGetSourceSanctionedEntitiesRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nonnull
+    SourceEnum source = apiRequest.source();
+    return getSourceSanctionedEntities(source, headers);
+  }
+
+  /**
+   * Sanctioned entities
+   * The sanctions entities endpoint provides a comprehensive list of entities sanctioned by a specified authority, such as OFAC, UK, EU, or AU. Users can retrieve detailed information about individuals, organizations, and other entities subject to sanctions from the chosen source, facilitating compliance and risk management processes.
+   * @param apiRequest {@link APIGetSourceSanctionedEntitiesRequest}
+   * @return ApiResponse&lt;GetSourceSanctionedEntities200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetSourceSanctionedEntities200Response> getSourceSanctionedEntitiesWithHttpInfo(APIGetSourceSanctionedEntitiesRequest apiRequest) throws ApiException {
+    return getSourceSanctionedEntitiesWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Sanctioned entities
+   * The sanctions entities endpoint provides a comprehensive list of entities sanctioned by a specified authority, such as OFAC, UK, EU, or AU. Users can retrieve detailed information about individuals, organizations, and other entities subject to sanctions from the chosen source, facilitating compliance and risk management processes.
+   * @param apiRequest {@link APIGetSourceSanctionedEntitiesRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetSourceSanctionedEntities200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetSourceSanctionedEntities200Response> getSourceSanctionedEntitiesWithHttpInfo(APIGetSourceSanctionedEntitiesRequest apiRequest, Map<String, String> headers) throws ApiException {
+    SourceEnum source = apiRequest.source();
+    return getSourceSanctionedEntitiesWithHttpInfo(source, headers);
+  }
+
   /**
    * Sanctioned entities
    * The sanctions entities endpoint provides a comprehensive list of entities sanctioned by a specified authority, such as OFAC, UK, EU, or AU. Users can retrieve detailed information about individuals, organizations, and other entities subject to sanctions from the chosen source, facilitating compliance and risk management processes.
@@ -1136,6 +2100,99 @@ public class RegulatoryApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
+  }
+
+
+  public static final class APIGetSourceSanctionedEntitiesRequest {
+    @javax.annotation.Nonnull
+    private SourceEnum source; // Sanctions source (required)
+
+    private APIGetSourceSanctionedEntitiesRequest(Builder builder) {
+      this.source = builder.source;
+    }
+    @javax.annotation.Nonnull
+    public SourceEnum source() {
+      return source;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private SourceEnum source;
+
+      public Builder source(@javax.annotation.Nonnull SourceEnum source) {
+        this.source = source;
+        return this;
+      }
+      public APIGetSourceSanctionedEntitiesRequest build() {
+        return new APIGetSourceSanctionedEntitiesRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Tax information
+   * The tax information endpoint provides detailed tax-related data for a specified financial instrument, including applicable tax rates and relevant tax codes. This information is essential for users needing to understand the tax implications associated with trading or investing in specific instruments.
+   * @param apiRequest {@link APIGetTaxInfoRequest}
+   * @return GetTaxInfo200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetTaxInfo200Response getTaxInfo(APIGetTaxInfoRequest apiRequest) throws ApiException {
+    return getTaxInfo(apiRequest, null);
+  }
+
+  /**
+   * Tax information
+   * The tax information endpoint provides detailed tax-related data for a specified financial instrument, including applicable tax rates and relevant tax codes. This information is essential for users needing to understand the tax implications associated with trading or investing in specific instruments.
+   * @param apiRequest {@link APIGetTaxInfoRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetTaxInfo200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetTaxInfo200Response getTaxInfo(APIGetTaxInfoRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String isin = apiRequest.isin();
+    @javax.annotation.Nullable
+    String figi = apiRequest.figi();
+    @javax.annotation.Nullable
+    String cusip = apiRequest.cusip();
+    @javax.annotation.Nullable
+    String exchange = apiRequest.exchange();
+    @javax.annotation.Nullable
+    String micCode = apiRequest.micCode();
+    return getTaxInfo(symbol, isin, figi, cusip, exchange, micCode, headers);
+  }
+
+  /**
+   * Tax information
+   * The tax information endpoint provides detailed tax-related data for a specified financial instrument, including applicable tax rates and relevant tax codes. This information is essential for users needing to understand the tax implications associated with trading or investing in specific instruments.
+   * @param apiRequest {@link APIGetTaxInfoRequest}
+   * @return ApiResponse&lt;GetTaxInfo200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetTaxInfo200Response> getTaxInfoWithHttpInfo(APIGetTaxInfoRequest apiRequest) throws ApiException {
+    return getTaxInfoWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Tax information
+   * The tax information endpoint provides detailed tax-related data for a specified financial instrument, including applicable tax rates and relevant tax codes. This information is essential for users needing to understand the tax implications associated with trading or investing in specific instruments.
+   * @param apiRequest {@link APIGetTaxInfoRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetTaxInfo200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetTaxInfo200Response> getTaxInfoWithHttpInfo(APIGetTaxInfoRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String isin = apiRequest.isin();
+    String figi = apiRequest.figi();
+    String cusip = apiRequest.cusip();
+    String exchange = apiRequest.exchange();
+    String micCode = apiRequest.micCode();
+    return getTaxInfoWithHttpInfo(symbol, isin, figi, cusip, exchange, micCode, headers);
   }
 
   /**
@@ -1294,6 +2351,95 @@ public class RegulatoryApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
+  }
+
+
+  public static final class APIGetTaxInfoRequest {
+    @javax.annotation.Nullable
+    private String symbol; // The ticker symbol of an instrument for which data is requested, e.g., &#x60;SKYQ&#x60;, &#x60;AIRE&#x60;, &#x60;ALM:BME&#x60;, &#x60;HSI:HKEX&#x60;. (optional)
+    @javax.annotation.Nullable
+    private String isin; // Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String figi; // The FIGI of an instrument for which data is requested. This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. (optional)
+    @javax.annotation.Nullable
+    private String cusip; // The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String exchange; // The exchange name where the instrument is traded, e.g., &#x60;Nasdaq&#x60;, &#x60;Euronext&#x60; (optional)
+    @javax.annotation.Nullable
+    private String micCode; // The Market Identifier Code (MIC) of the exchange where the instrument is traded, e.g., &#x60;XNAS&#x60;, &#x60;XLON&#x60; (optional)
+
+    private APIGetTaxInfoRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.isin = builder.isin;
+      this.figi = builder.figi;
+      this.cusip = builder.cusip;
+      this.exchange = builder.exchange;
+      this.micCode = builder.micCode;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String isin() {
+      return isin;
+    }
+    @javax.annotation.Nullable
+    public String figi() {
+      return figi;
+    }
+    @javax.annotation.Nullable
+    public String cusip() {
+      return cusip;
+    }
+    @javax.annotation.Nullable
+    public String exchange() {
+      return exchange;
+    }
+    @javax.annotation.Nullable
+    public String micCode() {
+      return micCode;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String isin;
+      private String figi;
+      private String cusip;
+      private String exchange;
+      private String micCode;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder isin(@javax.annotation.Nullable String isin) {
+        this.isin = isin;
+        return this;
+      }
+      public Builder figi(@javax.annotation.Nullable String figi) {
+        this.figi = figi;
+        return this;
+      }
+      public Builder cusip(@javax.annotation.Nullable String cusip) {
+        this.cusip = cusip;
+        return this;
+      }
+      public Builder exchange(@javax.annotation.Nullable String exchange) {
+        this.exchange = exchange;
+        return this;
+      }
+      public Builder micCode(@javax.annotation.Nullable String micCode) {
+        this.micCode = micCode;
+        return this;
+      }
+      public APIGetTaxInfoRequest build() {
+        return new APIGetTaxInfoRequest(this);
+      }
+    }
   }
 
 }

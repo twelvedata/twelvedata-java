@@ -3,6 +3,7 @@ package com.twelvedata.examples;
 import com.twelvedata.client.ApiClient;
 import com.twelvedata.client.Twelvedata;
 import com.twelvedata.client.api.MarketDataApi;
+import com.twelvedata.client.api.MarketDataApi.APIGetTimeSeriesRequest;
 import com.twelvedata.client.model.IntervalEnum;
 
 public final class TimeSeries {
@@ -11,9 +12,10 @@ public final class TimeSeries {
     MarketDataApi api = new MarketDataApi(client);
 
     var response = api.getTimeSeries(
-        IntervalEnum._1DAY, "AAPL", null, null, null, null,
-        null, null, null, null, null, null, null, null, null, null,
-        null, null, null, null, null);
+        APIGetTimeSeriesRequest.newBuilder()
+            .interval(IntervalEnum._1DAY)
+            .symbol("AAPL")
+            .build());
     System.out.println(response);
   }
 

@@ -30,6 +30,7 @@ package com.example;
 import com.twelvedata.client.ApiClient;
 import com.twelvedata.client.Twelvedata;
 import com.twelvedata.client.api.MarketDataApi;
+import com.twelvedata.client.api.MarketDataApi.APIGetPriceRequest;
 import com.twelvedata.client.errors.TwelvedataApiException;
 import com.twelvedata.client.model.GetPrice200Response;
 
@@ -40,8 +41,9 @@ public class App {
 
         try {
             GetPrice200Response response = api.getPrice(
-                "AAPL",
-                null, null, null, null, null, null, null, null, null, null, null
+                APIGetPriceRequest.newBuilder()
+                    .symbol("AAPL")
+                    .build()
             );
             System.out.println(response);
         } catch (TwelvedataApiException.TooManyRequestsException e) {

@@ -49,7 +49,7 @@ All URIs are relative to *https://api.twelvedata.com*
 
 ## getBalanceSheet
 
-> GetBalanceSheet200Response getBalanceSheet(symbol, figi, isin, cusip, exchange, micCode, country, period, startDate, endDate, outputsize)
+> GetBalanceSheet200Response getBalanceSheet(getBalanceSheetRequest)
 
 Balance sheet
 
@@ -65,6 +65,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -90,7 +91,20 @@ public class Example {
         String endDate = "2024-05-01"; // String | End date for filtering items by fiscal date. Returns income statements with fiscal dates on or before this date. Format `2006-01-02`
         Long outputsize = 6L; // Long | Number of records in response
         try {
-            GetBalanceSheet200Response result = apiInstance.getBalanceSheet(symbol, figi, isin, cusip, exchange, micCode, country, period, startDate, endDate, outputsize);
+            APIgetBalanceSheetRequest request = APIgetBalanceSheetRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .period(period)
+                .startDate(startDate)
+                .endDate(endDate)
+                .outputsize(outputsize)
+                .build();
+            GetBalanceSheet200Response result = apiInstance.getBalanceSheet(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FundamentalsApi#getBalanceSheet");
@@ -105,20 +119,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **period** | [**PeriodEnum**](.md)| The reporting period for the balane sheet data | [optional] [default to annual] [enum: annual, quarterly] |
-| **startDate** | **String**| Begin date for filtering items by fiscal date. Returns income statements with fiscal dates on or after this date. Format &#x60;2006-01-02&#x60; | [optional] |
-| **endDate** | **String**| End date for filtering items by fiscal date. Returns income statements with fiscal dates on or before this date. Format &#x60;2006-01-02&#x60; | [optional] |
-| **outputsize** | **Long**| Number of records in response | [optional] [default to 6] |
+| getBalanceSheetRequest | [**APIgetBalanceSheetRequest**](FundamentalsApi.md#APIgetBalanceSheetRequest)|-|-|
 
 ### Return type
 
@@ -148,7 +151,7 @@ public class Example {
 
 ## getBalanceSheetWithHttpInfo
 
-> ApiResponse<GetBalanceSheet200Response> getBalanceSheet getBalanceSheetWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, period, startDate, endDate, outputsize)
+> ApiResponse<GetBalanceSheet200Response> getBalanceSheet getBalanceSheetWithHttpInfo(getBalanceSheetRequest)
 
 Balance sheet
 
@@ -165,6 +168,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -190,7 +194,20 @@ public class Example {
         String endDate = "2024-05-01"; // String | End date for filtering items by fiscal date. Returns income statements with fiscal dates on or before this date. Format `2006-01-02`
         Long outputsize = 6L; // Long | Number of records in response
         try {
-            ApiResponse<GetBalanceSheet200Response> response = apiInstance.getBalanceSheetWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, period, startDate, endDate, outputsize);
+            APIgetBalanceSheetRequest request = APIgetBalanceSheetRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .period(period)
+                .startDate(startDate)
+                .endDate(endDate)
+                .outputsize(outputsize)
+                .build();
+            ApiResponse<GetBalanceSheet200Response> response = apiInstance.getBalanceSheetWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -207,20 +224,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **period** | [**PeriodEnum**](.md)| The reporting period for the balane sheet data | [optional] [default to annual] [enum: annual, quarterly] |
-| **startDate** | **String**| Begin date for filtering items by fiscal date. Returns income statements with fiscal dates on or after this date. Format &#x60;2006-01-02&#x60; | [optional] |
-| **endDate** | **String**| End date for filtering items by fiscal date. Returns income statements with fiscal dates on or before this date. Format &#x60;2006-01-02&#x60; | [optional] |
-| **outputsize** | **Long**| Number of records in response | [optional] [default to 6] |
+| getBalanceSheetRequest | [**APIgetBalanceSheetRequest**](FundamentalsApi.md#APIgetBalanceSheetRequest)|-|-|
 
 ### Return type
 
@@ -249,9 +255,29 @@ ApiResponse<[**GetBalanceSheet200Response**](GetBalanceSheet200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetBalanceSheetRequest"></a>
+## APIgetBalanceSheetRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **exchange** | **String** | Exchange where instrument is traded | [optional] |
+| **micCode** | **String** | Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **period** | [**PeriodEnum**](.md) | The reporting period for the balane sheet data | [optional] [default to annual] [enum: annual, quarterly] |
+| **startDate** | **String** | Begin date for filtering items by fiscal date. Returns income statements with fiscal dates on or after this date. Format &#x60;2006-01-02&#x60; | [optional] |
+| **endDate** | **String** | End date for filtering items by fiscal date. Returns income statements with fiscal dates on or before this date. Format &#x60;2006-01-02&#x60; | [optional] |
+| **outputsize** | **Long** | Number of records in response | [optional] [default to 6] |
+
+
+
 ## getBalanceSheetConsolidated
 
-> GetBalanceSheetConsolidated200Response getBalanceSheetConsolidated(symbol, figi, isin, cusip, exchange, micCode, country, period, startDate, endDate, outputsize)
+> GetBalanceSheetConsolidated200Response getBalanceSheetConsolidated(getBalanceSheetConsolidatedRequest)
 
 Balance sheet consolidated
 
@@ -267,6 +293,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -292,7 +319,20 @@ public class Example {
         String endDate = "endDate_example"; // String | End date for filtering items by fiscal date. Returns income statements with fiscal dates on or before this date. Format `2006-01-02`
         Long outputsize = 6L; // Long | Number of records in response
         try {
-            GetBalanceSheetConsolidated200Response result = apiInstance.getBalanceSheetConsolidated(symbol, figi, isin, cusip, exchange, micCode, country, period, startDate, endDate, outputsize);
+            APIgetBalanceSheetConsolidatedRequest request = APIgetBalanceSheetConsolidatedRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .period(period)
+                .startDate(startDate)
+                .endDate(endDate)
+                .outputsize(outputsize)
+                .build();
+            GetBalanceSheetConsolidated200Response result = apiInstance.getBalanceSheetConsolidated(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FundamentalsApi#getBalanceSheetConsolidated");
@@ -307,20 +347,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **period** | [**PeriodEnum**](.md)| The reporting period for the balance sheet data. | [optional] [default to annual] [enum: annual, quarterly] |
-| **startDate** | **String**| Begin date for filtering items by fiscal date. Returns income statements with fiscal dates on or after this date. Format &#x60;2006-01-02&#x60; | [optional] |
-| **endDate** | **String**| End date for filtering items by fiscal date. Returns income statements with fiscal dates on or before this date. Format &#x60;2006-01-02&#x60; | [optional] |
-| **outputsize** | **Long**| Number of records in response | [optional] [default to 6] |
+| getBalanceSheetConsolidatedRequest | [**APIgetBalanceSheetConsolidatedRequest**](FundamentalsApi.md#APIgetBalanceSheetConsolidatedRequest)|-|-|
 
 ### Return type
 
@@ -350,7 +379,7 @@ public class Example {
 
 ## getBalanceSheetConsolidatedWithHttpInfo
 
-> ApiResponse<GetBalanceSheetConsolidated200Response> getBalanceSheetConsolidated getBalanceSheetConsolidatedWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, period, startDate, endDate, outputsize)
+> ApiResponse<GetBalanceSheetConsolidated200Response> getBalanceSheetConsolidated getBalanceSheetConsolidatedWithHttpInfo(getBalanceSheetConsolidatedRequest)
 
 Balance sheet consolidated
 
@@ -367,6 +396,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -392,7 +422,20 @@ public class Example {
         String endDate = "endDate_example"; // String | End date for filtering items by fiscal date. Returns income statements with fiscal dates on or before this date. Format `2006-01-02`
         Long outputsize = 6L; // Long | Number of records in response
         try {
-            ApiResponse<GetBalanceSheetConsolidated200Response> response = apiInstance.getBalanceSheetConsolidatedWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, period, startDate, endDate, outputsize);
+            APIgetBalanceSheetConsolidatedRequest request = APIgetBalanceSheetConsolidatedRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .period(period)
+                .startDate(startDate)
+                .endDate(endDate)
+                .outputsize(outputsize)
+                .build();
+            ApiResponse<GetBalanceSheetConsolidated200Response> response = apiInstance.getBalanceSheetConsolidatedWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -409,20 +452,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **period** | [**PeriodEnum**](.md)| The reporting period for the balance sheet data. | [optional] [default to annual] [enum: annual, quarterly] |
-| **startDate** | **String**| Begin date for filtering items by fiscal date. Returns income statements with fiscal dates on or after this date. Format &#x60;2006-01-02&#x60; | [optional] |
-| **endDate** | **String**| End date for filtering items by fiscal date. Returns income statements with fiscal dates on or before this date. Format &#x60;2006-01-02&#x60; | [optional] |
-| **outputsize** | **Long**| Number of records in response | [optional] [default to 6] |
+| getBalanceSheetConsolidatedRequest | [**APIgetBalanceSheetConsolidatedRequest**](FundamentalsApi.md#APIgetBalanceSheetConsolidatedRequest)|-|-|
 
 ### Return type
 
@@ -451,9 +483,29 @@ ApiResponse<[**GetBalanceSheetConsolidated200Response**](GetBalanceSheetConsolid
 | **500** |  |  -  |
 
 
+<a id="APIgetBalanceSheetConsolidatedRequest"></a>
+## APIgetBalanceSheetConsolidatedRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **exchange** | **String** | Exchange where instrument is traded | [optional] |
+| **micCode** | **String** | Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **period** | [**PeriodEnum**](.md) | The reporting period for the balance sheet data. | [optional] [default to annual] [enum: annual, quarterly] |
+| **startDate** | **String** | Begin date for filtering items by fiscal date. Returns income statements with fiscal dates on or after this date. Format &#x60;2006-01-02&#x60; | [optional] |
+| **endDate** | **String** | End date for filtering items by fiscal date. Returns income statements with fiscal dates on or before this date. Format &#x60;2006-01-02&#x60; | [optional] |
+| **outputsize** | **Long** | Number of records in response | [optional] [default to 6] |
+
+
+
 ## getCashFlow
 
-> GetCashFlow200Response getCashFlow(symbol, figi, isin, cusip, exchange, micCode, country, period, startDate, endDate, outputsize)
+> GetCashFlow200Response getCashFlow(getCashFlowRequest)
 
 Cash flow
 
@@ -469,6 +521,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -494,7 +547,20 @@ public class Example {
         String endDate = "2024-12-31"; // String | End date for filtering cash flow statements. Only cash flow statements with fiscal dates on or before this date will be included. Format `2006-01-02`
         Long outputsize = 6L; // Long | Number of records in response
         try {
-            GetCashFlow200Response result = apiInstance.getCashFlow(symbol, figi, isin, cusip, exchange, micCode, country, period, startDate, endDate, outputsize);
+            APIgetCashFlowRequest request = APIgetCashFlowRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .period(period)
+                .startDate(startDate)
+                .endDate(endDate)
+                .outputsize(outputsize)
+                .build();
+            GetCashFlow200Response result = apiInstance.getCashFlow(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FundamentalsApi#getCashFlow");
@@ -509,20 +575,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **period** | [**PeriodEnum**](.md)| The reporting period for the cash flow statements | [optional] [default to annual] [enum: annual, quarterly] |
-| **startDate** | **String**| Start date for filtering cash flow statements. Only cash flow statements with fiscal dates on or after this date will be included. Format &#x60;2006-01-02&#x60; | [optional] |
-| **endDate** | **String**| End date for filtering cash flow statements. Only cash flow statements with fiscal dates on or before this date will be included. Format &#x60;2006-01-02&#x60; | [optional] |
-| **outputsize** | **Long**| Number of records in response | [optional] [default to 6] |
+| getCashFlowRequest | [**APIgetCashFlowRequest**](FundamentalsApi.md#APIgetCashFlowRequest)|-|-|
 
 ### Return type
 
@@ -552,7 +607,7 @@ public class Example {
 
 ## getCashFlowWithHttpInfo
 
-> ApiResponse<GetCashFlow200Response> getCashFlow getCashFlowWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, period, startDate, endDate, outputsize)
+> ApiResponse<GetCashFlow200Response> getCashFlow getCashFlowWithHttpInfo(getCashFlowRequest)
 
 Cash flow
 
@@ -569,6 +624,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -594,7 +650,20 @@ public class Example {
         String endDate = "2024-12-31"; // String | End date for filtering cash flow statements. Only cash flow statements with fiscal dates on or before this date will be included. Format `2006-01-02`
         Long outputsize = 6L; // Long | Number of records in response
         try {
-            ApiResponse<GetCashFlow200Response> response = apiInstance.getCashFlowWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, period, startDate, endDate, outputsize);
+            APIgetCashFlowRequest request = APIgetCashFlowRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .period(period)
+                .startDate(startDate)
+                .endDate(endDate)
+                .outputsize(outputsize)
+                .build();
+            ApiResponse<GetCashFlow200Response> response = apiInstance.getCashFlowWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -611,20 +680,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **period** | [**PeriodEnum**](.md)| The reporting period for the cash flow statements | [optional] [default to annual] [enum: annual, quarterly] |
-| **startDate** | **String**| Start date for filtering cash flow statements. Only cash flow statements with fiscal dates on or after this date will be included. Format &#x60;2006-01-02&#x60; | [optional] |
-| **endDate** | **String**| End date for filtering cash flow statements. Only cash flow statements with fiscal dates on or before this date will be included. Format &#x60;2006-01-02&#x60; | [optional] |
-| **outputsize** | **Long**| Number of records in response | [optional] [default to 6] |
+| getCashFlowRequest | [**APIgetCashFlowRequest**](FundamentalsApi.md#APIgetCashFlowRequest)|-|-|
 
 ### Return type
 
@@ -653,9 +711,29 @@ ApiResponse<[**GetCashFlow200Response**](GetCashFlow200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetCashFlowRequest"></a>
+## APIgetCashFlowRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **exchange** | **String** | Exchange where instrument is traded | [optional] |
+| **micCode** | **String** | Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **period** | [**PeriodEnum**](.md) | The reporting period for the cash flow statements | [optional] [default to annual] [enum: annual, quarterly] |
+| **startDate** | **String** | Start date for filtering cash flow statements. Only cash flow statements with fiscal dates on or after this date will be included. Format &#x60;2006-01-02&#x60; | [optional] |
+| **endDate** | **String** | End date for filtering cash flow statements. Only cash flow statements with fiscal dates on or before this date will be included. Format &#x60;2006-01-02&#x60; | [optional] |
+| **outputsize** | **Long** | Number of records in response | [optional] [default to 6] |
+
+
+
 ## getCashFlowConsolidated
 
-> GetCashFlowConsolidated200Response getCashFlowConsolidated(symbol, figi, isin, cusip, exchange, micCode, country, period, startDate, endDate, outputsize)
+> GetCashFlowConsolidated200Response getCashFlowConsolidated(getCashFlowConsolidatedRequest)
 
 Cash flow consolidated
 
@@ -671,6 +749,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -696,7 +775,20 @@ public class Example {
         String endDate = "2024-12-31"; // String | End date for filtering cash flow statements. Only cash flow statements with fiscal dates on or before this date will be included. Format `2006-01-02`
         Long outputsize = 6L; // Long | Number of records in response
         try {
-            GetCashFlowConsolidated200Response result = apiInstance.getCashFlowConsolidated(symbol, figi, isin, cusip, exchange, micCode, country, period, startDate, endDate, outputsize);
+            APIgetCashFlowConsolidatedRequest request = APIgetCashFlowConsolidatedRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .period(period)
+                .startDate(startDate)
+                .endDate(endDate)
+                .outputsize(outputsize)
+                .build();
+            GetCashFlowConsolidated200Response result = apiInstance.getCashFlowConsolidated(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FundamentalsApi#getCashFlowConsolidated");
@@ -711,20 +803,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **period** | [**PeriodEnum**](.md)| The reporting period for the cash flow statements | [optional] [default to annual] [enum: annual, quarterly] |
-| **startDate** | **String**| Start date for filtering cash flow statements. Only cash flow statements with fiscal dates on or after this date will be included. Format &#x60;2006-01-02&#x60; | [optional] |
-| **endDate** | **String**| End date for filtering cash flow statements. Only cash flow statements with fiscal dates on or before this date will be included. Format &#x60;2006-01-02&#x60; | [optional] |
-| **outputsize** | **Long**| Number of records in response | [optional] [default to 6] |
+| getCashFlowConsolidatedRequest | [**APIgetCashFlowConsolidatedRequest**](FundamentalsApi.md#APIgetCashFlowConsolidatedRequest)|-|-|
 
 ### Return type
 
@@ -754,7 +835,7 @@ public class Example {
 
 ## getCashFlowConsolidatedWithHttpInfo
 
-> ApiResponse<GetCashFlowConsolidated200Response> getCashFlowConsolidated getCashFlowConsolidatedWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, period, startDate, endDate, outputsize)
+> ApiResponse<GetCashFlowConsolidated200Response> getCashFlowConsolidated getCashFlowConsolidatedWithHttpInfo(getCashFlowConsolidatedRequest)
 
 Cash flow consolidated
 
@@ -771,6 +852,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -796,7 +878,20 @@ public class Example {
         String endDate = "2024-12-31"; // String | End date for filtering cash flow statements. Only cash flow statements with fiscal dates on or before this date will be included. Format `2006-01-02`
         Long outputsize = 6L; // Long | Number of records in response
         try {
-            ApiResponse<GetCashFlowConsolidated200Response> response = apiInstance.getCashFlowConsolidatedWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, period, startDate, endDate, outputsize);
+            APIgetCashFlowConsolidatedRequest request = APIgetCashFlowConsolidatedRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .period(period)
+                .startDate(startDate)
+                .endDate(endDate)
+                .outputsize(outputsize)
+                .build();
+            ApiResponse<GetCashFlowConsolidated200Response> response = apiInstance.getCashFlowConsolidatedWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -813,20 +908,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **period** | [**PeriodEnum**](.md)| The reporting period for the cash flow statements | [optional] [default to annual] [enum: annual, quarterly] |
-| **startDate** | **String**| Start date for filtering cash flow statements. Only cash flow statements with fiscal dates on or after this date will be included. Format &#x60;2006-01-02&#x60; | [optional] |
-| **endDate** | **String**| End date for filtering cash flow statements. Only cash flow statements with fiscal dates on or before this date will be included. Format &#x60;2006-01-02&#x60; | [optional] |
-| **outputsize** | **Long**| Number of records in response | [optional] [default to 6] |
+| getCashFlowConsolidatedRequest | [**APIgetCashFlowConsolidatedRequest**](FundamentalsApi.md#APIgetCashFlowConsolidatedRequest)|-|-|
 
 ### Return type
 
@@ -855,9 +939,29 @@ ApiResponse<[**GetCashFlowConsolidated200Response**](GetCashFlowConsolidated200R
 | **500** |  |  -  |
 
 
+<a id="APIgetCashFlowConsolidatedRequest"></a>
+## APIgetCashFlowConsolidatedRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **exchange** | **String** | Exchange where instrument is traded | [optional] |
+| **micCode** | **String** | Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **period** | [**PeriodEnum**](.md) | The reporting period for the cash flow statements | [optional] [default to annual] [enum: annual, quarterly] |
+| **startDate** | **String** | Start date for filtering cash flow statements. Only cash flow statements with fiscal dates on or after this date will be included. Format &#x60;2006-01-02&#x60; | [optional] |
+| **endDate** | **String** | End date for filtering cash flow statements. Only cash flow statements with fiscal dates on or before this date will be included. Format &#x60;2006-01-02&#x60; | [optional] |
+| **outputsize** | **Long** | Number of records in response | [optional] [default to 6] |
+
+
+
 ## getDividends
 
-> GetDividends200Response getDividends(symbol, figi, isin, cusip, exchange, micCode, country, range, startDate, endDate, adjust)
+> GetDividends200Response getDividends(getDividendsRequest)
 
 Dividends
 
@@ -873,6 +977,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -898,7 +1003,20 @@ public class Example {
         String endDate = "2024-12-31"; // String | End date for the dividend data query. Only dividends with dates on or after this date will be returned. Format `2006-01-02`. If provided together with `range` parameter, `range` will take precedence.
         Boolean adjust = true; // Boolean | Specifies if there should be an adjustment
         try {
-            GetDividends200Response result = apiInstance.getDividends(symbol, figi, isin, cusip, exchange, micCode, country, range, startDate, endDate, adjust);
+            APIgetDividendsRequest request = APIgetDividendsRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .range(range)
+                .startDate(startDate)
+                .endDate(endDate)
+                .adjust(adjust)
+                .build();
+            GetDividends200Response result = apiInstance.getDividends(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FundamentalsApi#getDividends");
@@ -913,20 +1031,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **range** | [**RangeEnum**](.md)| Specifies the time range for which to retrieve dividend data. Accepts values such as &#x60;last&#x60; (most recent dividend), &#x60;next&#x60; (upcoming dividend), &#x60;1m&#x60; - &#x60;5y&#x60; for respective periods, or &#x60;full&#x60; for all available data. If provided together with &#x60;start_date&#x60; and/or &#x60;end_date&#x60;, this parameter takes precedence. | [optional] [default to last] [enum: last, next, 1m, 3m, 6m, ytd, 1y, 2y, 5y, full] |
-| **startDate** | **String**| Start date for the dividend data query. Only dividends with dates on or after this date will be returned. Format &#x60;2006-01-02&#x60;. If provided together with &#x60;range&#x60; parameter, &#x60;range&#x60; will take precedence. | [optional] |
-| **endDate** | **String**| End date for the dividend data query. Only dividends with dates on or after this date will be returned. Format &#x60;2006-01-02&#x60;. If provided together with &#x60;range&#x60; parameter, &#x60;range&#x60; will take precedence. | [optional] |
-| **adjust** | **Boolean**| Specifies if there should be an adjustment | [optional] [default to true] |
+| getDividendsRequest | [**APIgetDividendsRequest**](FundamentalsApi.md#APIgetDividendsRequest)|-|-|
 
 ### Return type
 
@@ -956,7 +1063,7 @@ public class Example {
 
 ## getDividendsWithHttpInfo
 
-> ApiResponse<GetDividends200Response> getDividends getDividendsWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, range, startDate, endDate, adjust)
+> ApiResponse<GetDividends200Response> getDividends getDividendsWithHttpInfo(getDividendsRequest)
 
 Dividends
 
@@ -973,6 +1080,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -998,7 +1106,20 @@ public class Example {
         String endDate = "2024-12-31"; // String | End date for the dividend data query. Only dividends with dates on or after this date will be returned. Format `2006-01-02`. If provided together with `range` parameter, `range` will take precedence.
         Boolean adjust = true; // Boolean | Specifies if there should be an adjustment
         try {
-            ApiResponse<GetDividends200Response> response = apiInstance.getDividendsWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, range, startDate, endDate, adjust);
+            APIgetDividendsRequest request = APIgetDividendsRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .range(range)
+                .startDate(startDate)
+                .endDate(endDate)
+                .adjust(adjust)
+                .build();
+            ApiResponse<GetDividends200Response> response = apiInstance.getDividendsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1015,20 +1136,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **range** | [**RangeEnum**](.md)| Specifies the time range for which to retrieve dividend data. Accepts values such as &#x60;last&#x60; (most recent dividend), &#x60;next&#x60; (upcoming dividend), &#x60;1m&#x60; - &#x60;5y&#x60; for respective periods, or &#x60;full&#x60; for all available data. If provided together with &#x60;start_date&#x60; and/or &#x60;end_date&#x60;, this parameter takes precedence. | [optional] [default to last] [enum: last, next, 1m, 3m, 6m, ytd, 1y, 2y, 5y, full] |
-| **startDate** | **String**| Start date for the dividend data query. Only dividends with dates on or after this date will be returned. Format &#x60;2006-01-02&#x60;. If provided together with &#x60;range&#x60; parameter, &#x60;range&#x60; will take precedence. | [optional] |
-| **endDate** | **String**| End date for the dividend data query. Only dividends with dates on or after this date will be returned. Format &#x60;2006-01-02&#x60;. If provided together with &#x60;range&#x60; parameter, &#x60;range&#x60; will take precedence. | [optional] |
-| **adjust** | **Boolean**| Specifies if there should be an adjustment | [optional] [default to true] |
+| getDividendsRequest | [**APIgetDividendsRequest**](FundamentalsApi.md#APIgetDividendsRequest)|-|-|
 
 ### Return type
 
@@ -1057,9 +1167,29 @@ ApiResponse<[**GetDividends200Response**](GetDividends200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetDividendsRequest"></a>
+## APIgetDividendsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **exchange** | **String** | Exchange where instrument is traded | [optional] |
+| **micCode** | **String** | Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **range** | [**RangeEnum**](.md) | Specifies the time range for which to retrieve dividend data. Accepts values such as &#x60;last&#x60; (most recent dividend), &#x60;next&#x60; (upcoming dividend), &#x60;1m&#x60; - &#x60;5y&#x60; for respective periods, or &#x60;full&#x60; for all available data. If provided together with &#x60;start_date&#x60; and/or &#x60;end_date&#x60;, this parameter takes precedence. | [optional] [default to last] [enum: last, next, 1m, 3m, 6m, ytd, 1y, 2y, 5y, full] |
+| **startDate** | **String** | Start date for the dividend data query. Only dividends with dates on or after this date will be returned. Format &#x60;2006-01-02&#x60;. If provided together with &#x60;range&#x60; parameter, &#x60;range&#x60; will take precedence. | [optional] |
+| **endDate** | **String** | End date for the dividend data query. Only dividends with dates on or after this date will be returned. Format &#x60;2006-01-02&#x60;. If provided together with &#x60;range&#x60; parameter, &#x60;range&#x60; will take precedence. | [optional] |
+| **adjust** | **Boolean** | Specifies if there should be an adjustment | [optional] [default to true] |
+
+
+
 ## getDividendsCalendar
 
-> List<DividendsCalendarItem> getDividendsCalendar(symbol, figi, isin, cusip, exchange, micCode, country, startDate, endDate, outputsize, page)
+> List<DividendsCalendarItem> getDividendsCalendar(getDividendsCalendarRequest)
 
 Dividends calendar
 
@@ -1075,6 +1205,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1100,7 +1231,20 @@ public class Example {
         Long outputsize = 100L; // Long | Number of data points to retrieve. Supports values in the range from `1` to `500`. Default `100` when no date parameters are set, otherwise set to maximum
         Long page = 1L; // Long | Page number
         try {
-            List<DividendsCalendarItem> result = apiInstance.getDividendsCalendar(symbol, figi, isin, cusip, exchange, micCode, country, startDate, endDate, outputsize, page);
+            APIgetDividendsCalendarRequest request = APIgetDividendsCalendarRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .startDate(startDate)
+                .endDate(endDate)
+                .outputsize(outputsize)
+                .page(page)
+                .build();
+            List<DividendsCalendarItem> result = apiInstance.getDividendsCalendar(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FundamentalsApi#getDividendsCalendar");
@@ -1115,20 +1259,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **startDate** | **String**| Start date for the dividends calendar query. Only dividends with ex-dates on or after this date will be returned. Format &#x60;2006-01-02&#x60; | [optional] |
-| **endDate** | **String**| End date for the dividends calendar query. Only dividends with ex-dates on or before this date will be returned. Format &#x60;2006-01-02&#x60; | [optional] |
-| **outputsize** | **Long**| Number of data points to retrieve. Supports values in the range from &#x60;1&#x60; to &#x60;500&#x60;. Default &#x60;100&#x60; when no date parameters are set, otherwise set to maximum | [optional] [default to 100] |
-| **page** | **Long**| Page number | [optional] [default to 1] |
+| getDividendsCalendarRequest | [**APIgetDividendsCalendarRequest**](FundamentalsApi.md#APIgetDividendsCalendarRequest)|-|-|
 
 ### Return type
 
@@ -1158,7 +1291,7 @@ public class Example {
 
 ## getDividendsCalendarWithHttpInfo
 
-> ApiResponse<List<DividendsCalendarItem>> getDividendsCalendar getDividendsCalendarWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, startDate, endDate, outputsize, page)
+> ApiResponse<List<DividendsCalendarItem>> getDividendsCalendar getDividendsCalendarWithHttpInfo(getDividendsCalendarRequest)
 
 Dividends calendar
 
@@ -1175,6 +1308,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1200,7 +1334,20 @@ public class Example {
         Long outputsize = 100L; // Long | Number of data points to retrieve. Supports values in the range from `1` to `500`. Default `100` when no date parameters are set, otherwise set to maximum
         Long page = 1L; // Long | Page number
         try {
-            ApiResponse<List<DividendsCalendarItem>> response = apiInstance.getDividendsCalendarWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, startDate, endDate, outputsize, page);
+            APIgetDividendsCalendarRequest request = APIgetDividendsCalendarRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .startDate(startDate)
+                .endDate(endDate)
+                .outputsize(outputsize)
+                .page(page)
+                .build();
+            ApiResponse<List<DividendsCalendarItem>> response = apiInstance.getDividendsCalendarWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1217,20 +1364,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **startDate** | **String**| Start date for the dividends calendar query. Only dividends with ex-dates on or after this date will be returned. Format &#x60;2006-01-02&#x60; | [optional] |
-| **endDate** | **String**| End date for the dividends calendar query. Only dividends with ex-dates on or before this date will be returned. Format &#x60;2006-01-02&#x60; | [optional] |
-| **outputsize** | **Long**| Number of data points to retrieve. Supports values in the range from &#x60;1&#x60; to &#x60;500&#x60;. Default &#x60;100&#x60; when no date parameters are set, otherwise set to maximum | [optional] [default to 100] |
-| **page** | **Long**| Page number | [optional] [default to 1] |
+| getDividendsCalendarRequest | [**APIgetDividendsCalendarRequest**](FundamentalsApi.md#APIgetDividendsCalendarRequest)|-|-|
 
 ### Return type
 
@@ -1259,9 +1395,29 @@ ApiResponse<[**List&lt;DividendsCalendarItem&gt;**](DividendsCalendarItem.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetDividendsCalendarRequest"></a>
+## APIgetDividendsCalendarRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **exchange** | **String** | Exchange where instrument is traded | [optional] |
+| **micCode** | **String** | Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **startDate** | **String** | Start date for the dividends calendar query. Only dividends with ex-dates on or after this date will be returned. Format &#x60;2006-01-02&#x60; | [optional] |
+| **endDate** | **String** | End date for the dividends calendar query. Only dividends with ex-dates on or before this date will be returned. Format &#x60;2006-01-02&#x60; | [optional] |
+| **outputsize** | **Long** | Number of data points to retrieve. Supports values in the range from &#x60;1&#x60; to &#x60;500&#x60;. Default &#x60;100&#x60; when no date parameters are set, otherwise set to maximum | [optional] [default to 100] |
+| **page** | **Long** | Page number | [optional] [default to 1] |
+
+
+
 ## getEarnings
 
-> GetEarnings200Response getEarnings(symbol, figi, isin, cusip, exchange, micCode, country, type, period, outputsize, format, delimiter, startDate, endDate, dp)
+> GetEarnings200Response getEarnings(getEarningsRequest)
 
 Earnings
 
@@ -1277,6 +1433,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1306,7 +1463,24 @@ public class Example {
         String endDate = "2024-04-30"; // String | The date to which the data is requested. The date format is `YYYY-MM-DD`.
         Long dp = 2L; // Long | The number of decimal places in the response data. Should be in range [0,11] inclusive
         try {
-            GetEarnings200Response result = apiInstance.getEarnings(symbol, figi, isin, cusip, exchange, micCode, country, type, period, outputsize, format, delimiter, startDate, endDate, dp);
+            APIgetEarningsRequest request = APIgetEarningsRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .type(type)
+                .period(period)
+                .outputsize(outputsize)
+                .format(format)
+                .delimiter(delimiter)
+                .startDate(startDate)
+                .endDate(endDate)
+                .dp(dp)
+                .build();
+            GetEarnings200Response result = apiInstance.getEarnings(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FundamentalsApi#getEarnings");
@@ -1321,24 +1495,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **type** | [**TypeEnum**](.md)| The asset class to which the instrument belongs | [optional] [enum: American Depositary Receipt, Bond, Bond Fund, Closed-end Fund, Common Stock, Depositary Receipt, Digital Currency, ETF, Exchange-Traded Note, Global Depositary Receipt, Limited Partnership, Mutual Fund, Physical Currency, Preferred Stock, REIT, Right, Structured Product, Trust, Unit, Warrant] |
-| **period** | [**PeriodEarningsEnum**](.md)| Type of earning, returns only 1 record. When is not empty, dates and outputsize parameters are ignored | [optional] [enum: latest, next] |
-| **outputsize** | **Long**| Number of data points to retrieve. Supports values in the range from &#x60;1&#x60; to &#x60;1000&#x60;. Default &#x60;10&#x60; when no date parameters are set, otherwise set to maximum | [optional] [default to 10] |
-| **format** | [**FormatEnum**](.md)| The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| The separator used in the CSV response data | [optional] [default to ;] |
-| **startDate** | **String**| The date from which the data is requested. The date format is &#x60;YYYY-MM-DD&#x60;. | [optional] |
-| **endDate** | **String**| The date to which the data is requested. The date format is &#x60;YYYY-MM-DD&#x60;. | [optional] |
-| **dp** | **Long**| The number of decimal places in the response data. Should be in range [0,11] inclusive | [optional] [default to 2] |
+| getEarningsRequest | [**APIgetEarningsRequest**](FundamentalsApi.md#APIgetEarningsRequest)|-|-|
 
 ### Return type
 
@@ -1368,7 +1527,7 @@ public class Example {
 
 ## getEarningsWithHttpInfo
 
-> ApiResponse<GetEarnings200Response> getEarnings getEarningsWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, type, period, outputsize, format, delimiter, startDate, endDate, dp)
+> ApiResponse<GetEarnings200Response> getEarnings getEarningsWithHttpInfo(getEarningsRequest)
 
 Earnings
 
@@ -1385,6 +1544,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1414,7 +1574,24 @@ public class Example {
         String endDate = "2024-04-30"; // String | The date to which the data is requested. The date format is `YYYY-MM-DD`.
         Long dp = 2L; // Long | The number of decimal places in the response data. Should be in range [0,11] inclusive
         try {
-            ApiResponse<GetEarnings200Response> response = apiInstance.getEarningsWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, type, period, outputsize, format, delimiter, startDate, endDate, dp);
+            APIgetEarningsRequest request = APIgetEarningsRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .type(type)
+                .period(period)
+                .outputsize(outputsize)
+                .format(format)
+                .delimiter(delimiter)
+                .startDate(startDate)
+                .endDate(endDate)
+                .dp(dp)
+                .build();
+            ApiResponse<GetEarnings200Response> response = apiInstance.getEarningsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1431,24 +1608,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **type** | [**TypeEnum**](.md)| The asset class to which the instrument belongs | [optional] [enum: American Depositary Receipt, Bond, Bond Fund, Closed-end Fund, Common Stock, Depositary Receipt, Digital Currency, ETF, Exchange-Traded Note, Global Depositary Receipt, Limited Partnership, Mutual Fund, Physical Currency, Preferred Stock, REIT, Right, Structured Product, Trust, Unit, Warrant] |
-| **period** | [**PeriodEarningsEnum**](.md)| Type of earning, returns only 1 record. When is not empty, dates and outputsize parameters are ignored | [optional] [enum: latest, next] |
-| **outputsize** | **Long**| Number of data points to retrieve. Supports values in the range from &#x60;1&#x60; to &#x60;1000&#x60;. Default &#x60;10&#x60; when no date parameters are set, otherwise set to maximum | [optional] [default to 10] |
-| **format** | [**FormatEnum**](.md)| The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| The separator used in the CSV response data | [optional] [default to ;] |
-| **startDate** | **String**| The date from which the data is requested. The date format is &#x60;YYYY-MM-DD&#x60;. | [optional] |
-| **endDate** | **String**| The date to which the data is requested. The date format is &#x60;YYYY-MM-DD&#x60;. | [optional] |
-| **dp** | **Long**| The number of decimal places in the response data. Should be in range [0,11] inclusive | [optional] [default to 2] |
+| getEarningsRequest | [**APIgetEarningsRequest**](FundamentalsApi.md#APIgetEarningsRequest)|-|-|
 
 ### Return type
 
@@ -1477,9 +1639,33 @@ ApiResponse<[**GetEarnings200Response**](GetEarnings200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetEarningsRequest"></a>
+## APIgetEarningsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **exchange** | **String** | Exchange where instrument is traded | [optional] |
+| **micCode** | **String** | Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **type** | [**TypeEnum**](.md) | The asset class to which the instrument belongs | [optional] [enum: American Depositary Receipt, Bond, Bond Fund, Closed-end Fund, Common Stock, Depositary Receipt, Digital Currency, ETF, Exchange-Traded Note, Global Depositary Receipt, Limited Partnership, Mutual Fund, Physical Currency, Preferred Stock, REIT, Right, Structured Product, Trust, Unit, Warrant] |
+| **period** | [**PeriodEarningsEnum**](.md) | Type of earning, returns only 1 record. When is not empty, dates and outputsize parameters are ignored | [optional] [enum: latest, next] |
+| **outputsize** | **Long** | Number of data points to retrieve. Supports values in the range from &#x60;1&#x60; to &#x60;1000&#x60;. Default &#x60;10&#x60; when no date parameters are set, otherwise set to maximum | [optional] [default to 10] |
+| **format** | [**FormatEnum**](.md) | The format of the response data | [optional] [default to JSON] [enum: JSON, CSV] |
+| **delimiter** | **String** | The separator used in the CSV response data | [optional] [default to ;] |
+| **startDate** | **String** | The date from which the data is requested. The date format is &#x60;YYYY-MM-DD&#x60;. | [optional] |
+| **endDate** | **String** | The date to which the data is requested. The date format is &#x60;YYYY-MM-DD&#x60;. | [optional] |
+| **dp** | **Long** | The number of decimal places in the response data. Should be in range [0,11] inclusive | [optional] [default to 2] |
+
+
+
 ## getEarningsCalendar
 
-> GetEarningsCalendar200Response getEarningsCalendar(exchange, micCode, country, format, delimiter, startDate, endDate, dp)
+> GetEarningsCalendar200Response getEarningsCalendar(getEarningsCalendarRequest)
 
 Earnings calendar
 
@@ -1495,6 +1681,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1517,7 +1704,17 @@ public class Example {
         String endDate = "2024-04-30"; // String | Can be used separately and together with start_date. Format `2006-01-02` or `2006-01-02T15:04:05`
         Long dp = 2L; // Long | Specifies the number of decimal places for floating values. Should be in range [0,11] inclusive
         try {
-            GetEarningsCalendar200Response result = apiInstance.getEarningsCalendar(exchange, micCode, country, format, delimiter, startDate, endDate, dp);
+            APIgetEarningsCalendarRequest request = APIgetEarningsCalendarRequest.newBuilder()
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .format(format)
+                .delimiter(delimiter)
+                .startDate(startDate)
+                .endDate(endDate)
+                .dp(dp)
+                .build();
+            GetEarningsCalendar200Response result = apiInstance.getEarningsCalendar(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FundamentalsApi#getEarningsCalendar");
@@ -1532,17 +1729,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **format** | [**FormatEnum**](.md)| Value can be JSON or CSV | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| Specify the delimiter used when downloading the CSV file | [optional] [default to ;] |
-| **startDate** | **String**| Can be used separately and together with end_date. Format &#x60;2006-01-02&#x60; or &#x60;2006-01-02T15:04:05&#x60; | [optional] |
-| **endDate** | **String**| Can be used separately and together with start_date. Format &#x60;2006-01-02&#x60; or &#x60;2006-01-02T15:04:05&#x60; | [optional] |
-| **dp** | **Long**| Specifies the number of decimal places for floating values. Should be in range [0,11] inclusive | [optional] [default to 2] |
+| getEarningsCalendarRequest | [**APIgetEarningsCalendarRequest**](FundamentalsApi.md#APIgetEarningsCalendarRequest)|-|-|
 
 ### Return type
 
@@ -1572,7 +1761,7 @@ public class Example {
 
 ## getEarningsCalendarWithHttpInfo
 
-> ApiResponse<GetEarningsCalendar200Response> getEarningsCalendar getEarningsCalendarWithHttpInfo(exchange, micCode, country, format, delimiter, startDate, endDate, dp)
+> ApiResponse<GetEarningsCalendar200Response> getEarningsCalendar getEarningsCalendarWithHttpInfo(getEarningsCalendarRequest)
 
 Earnings calendar
 
@@ -1589,6 +1778,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1611,7 +1801,17 @@ public class Example {
         String endDate = "2024-04-30"; // String | Can be used separately and together with start_date. Format `2006-01-02` or `2006-01-02T15:04:05`
         Long dp = 2L; // Long | Specifies the number of decimal places for floating values. Should be in range [0,11] inclusive
         try {
-            ApiResponse<GetEarningsCalendar200Response> response = apiInstance.getEarningsCalendarWithHttpInfo(exchange, micCode, country, format, delimiter, startDate, endDate, dp);
+            APIgetEarningsCalendarRequest request = APIgetEarningsCalendarRequest.newBuilder()
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .format(format)
+                .delimiter(delimiter)
+                .startDate(startDate)
+                .endDate(endDate)
+                .dp(dp)
+                .build();
+            ApiResponse<GetEarningsCalendar200Response> response = apiInstance.getEarningsCalendarWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1628,17 +1828,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **format** | [**FormatEnum**](.md)| Value can be JSON or CSV | [optional] [default to JSON] [enum: JSON, CSV] |
-| **delimiter** | **String**| Specify the delimiter used when downloading the CSV file | [optional] [default to ;] |
-| **startDate** | **String**| Can be used separately and together with end_date. Format &#x60;2006-01-02&#x60; or &#x60;2006-01-02T15:04:05&#x60; | [optional] |
-| **endDate** | **String**| Can be used separately and together with start_date. Format &#x60;2006-01-02&#x60; or &#x60;2006-01-02T15:04:05&#x60; | [optional] |
-| **dp** | **Long**| Specifies the number of decimal places for floating values. Should be in range [0,11] inclusive | [optional] [default to 2] |
+| getEarningsCalendarRequest | [**APIgetEarningsCalendarRequest**](FundamentalsApi.md#APIgetEarningsCalendarRequest)|-|-|
 
 ### Return type
 
@@ -1667,9 +1859,26 @@ ApiResponse<[**GetEarningsCalendar200Response**](GetEarningsCalendar200Response.
 | **500** |  |  -  |
 
 
+<a id="APIgetEarningsCalendarRequest"></a>
+## APIgetEarningsCalendarRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **exchange** | **String** | Exchange where instrument is traded | [optional] |
+| **micCode** | **String** | Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **format** | [**FormatEnum**](.md) | Value can be JSON or CSV | [optional] [default to JSON] [enum: JSON, CSV] |
+| **delimiter** | **String** | Specify the delimiter used when downloading the CSV file | [optional] [default to ;] |
+| **startDate** | **String** | Can be used separately and together with end_date. Format &#x60;2006-01-02&#x60; or &#x60;2006-01-02T15:04:05&#x60; | [optional] |
+| **endDate** | **String** | Can be used separately and together with start_date. Format &#x60;2006-01-02&#x60; or &#x60;2006-01-02T15:04:05&#x60; | [optional] |
+| **dp** | **Long** | Specifies the number of decimal places for floating values. Should be in range [0,11] inclusive | [optional] [default to 2] |
+
+
+
 ## getIncomeStatement
 
-> GetIncomeStatement200Response getIncomeStatement(symbol, figi, isin, cusip, exchange, micCode, country, period, startDate, endDate, outputsize)
+> GetIncomeStatement200Response getIncomeStatement(getIncomeStatementRequest)
 
 Income statement
 
@@ -1685,6 +1894,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1710,7 +1920,20 @@ public class Example {
         String endDate = "2024-12-31"; // String | End date for filtering income statements by fiscal date. Returns income statements with fiscal dates on or before this date. Format `2006-01-02`
         Long outputsize = 6L; // Long | Number of records in response
         try {
-            GetIncomeStatement200Response result = apiInstance.getIncomeStatement(symbol, figi, isin, cusip, exchange, micCode, country, period, startDate, endDate, outputsize);
+            APIgetIncomeStatementRequest request = APIgetIncomeStatementRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .period(period)
+                .startDate(startDate)
+                .endDate(endDate)
+                .outputsize(outputsize)
+                .build();
+            GetIncomeStatement200Response result = apiInstance.getIncomeStatement(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FundamentalsApi#getIncomeStatement");
@@ -1725,20 +1948,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **period** | [**PeriodEnum**](.md)| The reporting period for the income statement data | [optional] [default to annual] [enum: annual, quarterly] |
-| **startDate** | **String**| Begin date for filtering income statements by fiscal date. Returns income statements with fiscal dates on or after this date. Format &#x60;2006-01-02&#x60; | [optional] |
-| **endDate** | **String**| End date for filtering income statements by fiscal date. Returns income statements with fiscal dates on or before this date. Format &#x60;2006-01-02&#x60; | [optional] |
-| **outputsize** | **Long**| Number of records in response | [optional] [default to 6] |
+| getIncomeStatementRequest | [**APIgetIncomeStatementRequest**](FundamentalsApi.md#APIgetIncomeStatementRequest)|-|-|
 
 ### Return type
 
@@ -1768,7 +1980,7 @@ public class Example {
 
 ## getIncomeStatementWithHttpInfo
 
-> ApiResponse<GetIncomeStatement200Response> getIncomeStatement getIncomeStatementWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, period, startDate, endDate, outputsize)
+> ApiResponse<GetIncomeStatement200Response> getIncomeStatement getIncomeStatementWithHttpInfo(getIncomeStatementRequest)
 
 Income statement
 
@@ -1785,6 +1997,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1810,7 +2023,20 @@ public class Example {
         String endDate = "2024-12-31"; // String | End date for filtering income statements by fiscal date. Returns income statements with fiscal dates on or before this date. Format `2006-01-02`
         Long outputsize = 6L; // Long | Number of records in response
         try {
-            ApiResponse<GetIncomeStatement200Response> response = apiInstance.getIncomeStatementWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, period, startDate, endDate, outputsize);
+            APIgetIncomeStatementRequest request = APIgetIncomeStatementRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .period(period)
+                .startDate(startDate)
+                .endDate(endDate)
+                .outputsize(outputsize)
+                .build();
+            ApiResponse<GetIncomeStatement200Response> response = apiInstance.getIncomeStatementWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1827,20 +2053,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **period** | [**PeriodEnum**](.md)| The reporting period for the income statement data | [optional] [default to annual] [enum: annual, quarterly] |
-| **startDate** | **String**| Begin date for filtering income statements by fiscal date. Returns income statements with fiscal dates on or after this date. Format &#x60;2006-01-02&#x60; | [optional] |
-| **endDate** | **String**| End date for filtering income statements by fiscal date. Returns income statements with fiscal dates on or before this date. Format &#x60;2006-01-02&#x60; | [optional] |
-| **outputsize** | **Long**| Number of records in response | [optional] [default to 6] |
+| getIncomeStatementRequest | [**APIgetIncomeStatementRequest**](FundamentalsApi.md#APIgetIncomeStatementRequest)|-|-|
 
 ### Return type
 
@@ -1869,9 +2084,29 @@ ApiResponse<[**GetIncomeStatement200Response**](GetIncomeStatement200Response.md
 | **500** |  |  -  |
 
 
+<a id="APIgetIncomeStatementRequest"></a>
+## APIgetIncomeStatementRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **exchange** | **String** | Exchange where instrument is traded | [optional] |
+| **micCode** | **String** | Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **period** | [**PeriodEnum**](.md) | The reporting period for the income statement data | [optional] [default to annual] [enum: annual, quarterly] |
+| **startDate** | **String** | Begin date for filtering income statements by fiscal date. Returns income statements with fiscal dates on or after this date. Format &#x60;2006-01-02&#x60; | [optional] |
+| **endDate** | **String** | End date for filtering income statements by fiscal date. Returns income statements with fiscal dates on or before this date. Format &#x60;2006-01-02&#x60; | [optional] |
+| **outputsize** | **Long** | Number of records in response | [optional] [default to 6] |
+
+
+
 ## getIncomeStatementConsolidated
 
-> GetIncomeStatementConsolidated200Response getIncomeStatementConsolidated(symbol, figi, isin, cusip, exchange, micCode, country, period, startDate, endDate, outputsize)
+> GetIncomeStatementConsolidated200Response getIncomeStatementConsolidated(getIncomeStatementConsolidatedRequest)
 
 Income statement consolidated
 
@@ -1887,6 +2122,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1912,7 +2148,20 @@ public class Example {
         String endDate = "2024-12-31"; // String | End date for filtering income statements by fiscal date. Returns income statements with fiscal dates on or before this date. Format `2006-01-02`
         Long outputsize = 6L; // Long | Number of records in response
         try {
-            GetIncomeStatementConsolidated200Response result = apiInstance.getIncomeStatementConsolidated(symbol, figi, isin, cusip, exchange, micCode, country, period, startDate, endDate, outputsize);
+            APIgetIncomeStatementConsolidatedRequest request = APIgetIncomeStatementConsolidatedRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .period(period)
+                .startDate(startDate)
+                .endDate(endDate)
+                .outputsize(outputsize)
+                .build();
+            GetIncomeStatementConsolidated200Response result = apiInstance.getIncomeStatementConsolidated(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FundamentalsApi#getIncomeStatementConsolidated");
@@ -1927,20 +2176,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **period** | [**PeriodEnum**](.md)| The reporting period for the income statement data | [optional] [default to annual] [enum: annual, quarterly] |
-| **startDate** | **String**| Begin date for filtering income statements by fiscal date. Returns income statements with fiscal dates on or after this date. Format &#x60;2006-01-02&#x60; | [optional] |
-| **endDate** | **String**| End date for filtering income statements by fiscal date. Returns income statements with fiscal dates on or before this date. Format &#x60;2006-01-02&#x60; | [optional] |
-| **outputsize** | **Long**| Number of records in response | [optional] [default to 6] |
+| getIncomeStatementConsolidatedRequest | [**APIgetIncomeStatementConsolidatedRequest**](FundamentalsApi.md#APIgetIncomeStatementConsolidatedRequest)|-|-|
 
 ### Return type
 
@@ -1970,7 +2208,7 @@ public class Example {
 
 ## getIncomeStatementConsolidatedWithHttpInfo
 
-> ApiResponse<GetIncomeStatementConsolidated200Response> getIncomeStatementConsolidated getIncomeStatementConsolidatedWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, period, startDate, endDate, outputsize)
+> ApiResponse<GetIncomeStatementConsolidated200Response> getIncomeStatementConsolidated getIncomeStatementConsolidatedWithHttpInfo(getIncomeStatementConsolidatedRequest)
 
 Income statement consolidated
 
@@ -1987,6 +2225,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -2012,7 +2251,20 @@ public class Example {
         String endDate = "2024-12-31"; // String | End date for filtering income statements by fiscal date. Returns income statements with fiscal dates on or before this date. Format `2006-01-02`
         Long outputsize = 6L; // Long | Number of records in response
         try {
-            ApiResponse<GetIncomeStatementConsolidated200Response> response = apiInstance.getIncomeStatementConsolidatedWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, period, startDate, endDate, outputsize);
+            APIgetIncomeStatementConsolidatedRequest request = APIgetIncomeStatementConsolidatedRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .period(period)
+                .startDate(startDate)
+                .endDate(endDate)
+                .outputsize(outputsize)
+                .build();
+            ApiResponse<GetIncomeStatementConsolidated200Response> response = apiInstance.getIncomeStatementConsolidatedWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -2029,20 +2281,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **period** | [**PeriodEnum**](.md)| The reporting period for the income statement data | [optional] [default to annual] [enum: annual, quarterly] |
-| **startDate** | **String**| Begin date for filtering income statements by fiscal date. Returns income statements with fiscal dates on or after this date. Format &#x60;2006-01-02&#x60; | [optional] |
-| **endDate** | **String**| End date for filtering income statements by fiscal date. Returns income statements with fiscal dates on or before this date. Format &#x60;2006-01-02&#x60; | [optional] |
-| **outputsize** | **Long**| Number of records in response | [optional] [default to 6] |
+| getIncomeStatementConsolidatedRequest | [**APIgetIncomeStatementConsolidatedRequest**](FundamentalsApi.md#APIgetIncomeStatementConsolidatedRequest)|-|-|
 
 ### Return type
 
@@ -2071,9 +2312,29 @@ ApiResponse<[**GetIncomeStatementConsolidated200Response**](GetIncomeStatementCo
 | **500** |  |  -  |
 
 
+<a id="APIgetIncomeStatementConsolidatedRequest"></a>
+## APIgetIncomeStatementConsolidatedRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **exchange** | **String** | Exchange where instrument is traded | [optional] |
+| **micCode** | **String** | Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **period** | [**PeriodEnum**](.md) | The reporting period for the income statement data | [optional] [default to annual] [enum: annual, quarterly] |
+| **startDate** | **String** | Begin date for filtering income statements by fiscal date. Returns income statements with fiscal dates on or after this date. Format &#x60;2006-01-02&#x60; | [optional] |
+| **endDate** | **String** | End date for filtering income statements by fiscal date. Returns income statements with fiscal dates on or before this date. Format &#x60;2006-01-02&#x60; | [optional] |
+| **outputsize** | **Long** | Number of records in response | [optional] [default to 6] |
+
+
+
 ## getIpoCalendar
 
-> Map<String, List<GetIpoCalendar200ResponseValueInner>> getIpoCalendar(exchange, micCode, country, startDate, endDate)
+> Map<String, List<GetIpoCalendar200ResponseValueInner>> getIpoCalendar(getIpoCalendarRequest)
 
 IPO calendar
 
@@ -2089,6 +2350,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -2108,7 +2370,14 @@ public class Example {
         String startDate = "2021-01-01"; // String | The earliest IPO date to include in the results. Format: `2006-01-02`
         String endDate = "2021-12-31"; // String | The latest IPO date to include in the results. Format: `2006-01-02`
         try {
-            Map<String, List<GetIpoCalendar200ResponseValueInner>> result = apiInstance.getIpoCalendar(exchange, micCode, country, startDate, endDate);
+            APIgetIpoCalendarRequest request = APIgetIpoCalendarRequest.newBuilder()
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .startDate(startDate)
+                .endDate(endDate)
+                .build();
+            Map<String, List<GetIpoCalendar200ResponseValueInner>> result = apiInstance.getIpoCalendar(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FundamentalsApi#getIpoCalendar");
@@ -2123,14 +2392,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **startDate** | **String**| The earliest IPO date to include in the results. Format: &#x60;2006-01-02&#x60; | [optional] |
-| **endDate** | **String**| The latest IPO date to include in the results. Format: &#x60;2006-01-02&#x60; | [optional] |
+| getIpoCalendarRequest | [**APIgetIpoCalendarRequest**](FundamentalsApi.md#APIgetIpoCalendarRequest)|-|-|
 
 ### Return type
 
@@ -2160,7 +2424,7 @@ public class Example {
 
 ## getIpoCalendarWithHttpInfo
 
-> ApiResponse<Map<String, List<GetIpoCalendar200ResponseValueInner>>> getIpoCalendar getIpoCalendarWithHttpInfo(exchange, micCode, country, startDate, endDate)
+> ApiResponse<Map<String, List<GetIpoCalendar200ResponseValueInner>>> getIpoCalendar getIpoCalendarWithHttpInfo(getIpoCalendarRequest)
 
 IPO calendar
 
@@ -2177,6 +2441,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -2196,7 +2461,14 @@ public class Example {
         String startDate = "2021-01-01"; // String | The earliest IPO date to include in the results. Format: `2006-01-02`
         String endDate = "2021-12-31"; // String | The latest IPO date to include in the results. Format: `2006-01-02`
         try {
-            ApiResponse<Map<String, List<GetIpoCalendar200ResponseValueInner>>> response = apiInstance.getIpoCalendarWithHttpInfo(exchange, micCode, country, startDate, endDate);
+            APIgetIpoCalendarRequest request = APIgetIpoCalendarRequest.newBuilder()
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .startDate(startDate)
+                .endDate(endDate)
+                .build();
+            ApiResponse<Map<String, List<GetIpoCalendar200ResponseValueInner>>> response = apiInstance.getIpoCalendarWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -2213,14 +2485,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **startDate** | **String**| The earliest IPO date to include in the results. Format: &#x60;2006-01-02&#x60; | [optional] |
-| **endDate** | **String**| The latest IPO date to include in the results. Format: &#x60;2006-01-02&#x60; | [optional] |
+| getIpoCalendarRequest | [**APIgetIpoCalendarRequest**](FundamentalsApi.md#APIgetIpoCalendarRequest)|-|-|
 
 ### Return type
 
@@ -2249,9 +2516,23 @@ ApiResponse<[**Map&lt;String, List&lt;GetIpoCalendar200ResponseValueInner&gt;&gt
 | **500** |  |  -  |
 
 
+<a id="APIgetIpoCalendarRequest"></a>
+## APIgetIpoCalendarRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **exchange** | **String** | Exchange where instrument is traded | [optional] |
+| **micCode** | **String** | Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **startDate** | **String** | The earliest IPO date to include in the results. Format: &#x60;2006-01-02&#x60; | [optional] |
+| **endDate** | **String** | The latest IPO date to include in the results. Format: &#x60;2006-01-02&#x60; | [optional] |
+
+
+
 ## getKeyExecutives
 
-> GetKeyExecutives200Response getKeyExecutives(symbol, figi, isin, cusip, exchange, micCode, country)
+> GetKeyExecutives200Response getKeyExecutives(getKeyExecutivesRequest)
 
 Key executives
 
@@ -2267,6 +2548,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -2288,7 +2570,16 @@ public class Example {
         String micCode = "XNAS"; // String | Market Identifier Code (MIC) under ISO 10383 standard
         String country = "United States"; // String | Country where instrument is traded, e.g., `United States` or `US`
         try {
-            GetKeyExecutives200Response result = apiInstance.getKeyExecutives(symbol, figi, isin, cusip, exchange, micCode, country);
+            APIgetKeyExecutivesRequest request = APIgetKeyExecutivesRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .build();
+            GetKeyExecutives200Response result = apiInstance.getKeyExecutives(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FundamentalsApi#getKeyExecutives");
@@ -2303,16 +2594,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| getKeyExecutivesRequest | [**APIgetKeyExecutivesRequest**](FundamentalsApi.md#APIgetKeyExecutivesRequest)|-|-|
 
 ### Return type
 
@@ -2342,7 +2626,7 @@ public class Example {
 
 ## getKeyExecutivesWithHttpInfo
 
-> ApiResponse<GetKeyExecutives200Response> getKeyExecutives getKeyExecutivesWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country)
+> ApiResponse<GetKeyExecutives200Response> getKeyExecutives getKeyExecutivesWithHttpInfo(getKeyExecutivesRequest)
 
 Key executives
 
@@ -2359,6 +2643,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -2380,7 +2665,16 @@ public class Example {
         String micCode = "XNAS"; // String | Market Identifier Code (MIC) under ISO 10383 standard
         String country = "United States"; // String | Country where instrument is traded, e.g., `United States` or `US`
         try {
-            ApiResponse<GetKeyExecutives200Response> response = apiInstance.getKeyExecutivesWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country);
+            APIgetKeyExecutivesRequest request = APIgetKeyExecutivesRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .build();
+            ApiResponse<GetKeyExecutives200Response> response = apiInstance.getKeyExecutivesWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -2397,16 +2691,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| getKeyExecutivesRequest | [**APIgetKeyExecutivesRequest**](FundamentalsApi.md#APIgetKeyExecutivesRequest)|-|-|
 
 ### Return type
 
@@ -2435,9 +2722,25 @@ ApiResponse<[**GetKeyExecutives200Response**](GetKeyExecutives200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetKeyExecutivesRequest"></a>
+## APIgetKeyExecutivesRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **exchange** | **String** | Exchange where instrument is traded | [optional] |
+| **micCode** | **String** | Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+
+
+
 ## getLastChanges
 
-> GetLastChanges200Response getLastChanges(endpoint, startDate, symbol, exchange, micCode, country, page, outputsize)
+> GetLastChanges200Response getLastChanges(getLastChangesRequest)
 
 Last changes
 
@@ -2453,6 +2756,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -2475,7 +2779,17 @@ public class Example {
         Long page = 1L; // Long | Page number
         Long outputsize = 30L; // Long | Number of records in response
         try {
-            GetLastChanges200Response result = apiInstance.getLastChanges(endpoint, startDate, symbol, exchange, micCode, country, page, outputsize);
+            APIgetLastChangesRequest request = APIgetLastChangesRequest.newBuilder()
+                .endpoint(endpoint)
+                .startDate(startDate)
+                .symbol(symbol)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .page(page)
+                .outputsize(outputsize)
+                .build();
+            GetLastChanges200Response result = apiInstance.getLastChanges(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FundamentalsApi#getLastChanges");
@@ -2490,17 +2804,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **endpoint** | [**EndpointEnum**](.md)| Endpoint name | [enum: price_target, recommendations, statistics, insider_transactions, profile, mutual_funds_world_summary, mutual_funds_world, institutional_holders, analyst_rating, income_statement, income_statement_quarterly, cash_flow, cash_flow_quarterly, balance_sheet, balance_sheet_quarterly, mutual_funds_list, mutual_funds_world_sustainability, mutual_funds_world_summary, mutual_funds_world_risk, mutual_funds_world_purchase_info, mutual_funds_world_composition, mutual_funds_world_performance, mutual_funds_world, etfs_list, etfs_world, etfs_world_summary, etfs_world_performance, etfs_world_risk, etfs_world_composition, dividends, splits] |
-| **startDate** | **String**| The starting date and time for data selection, in &#x60;2006-01-02T15:04:05&#x60; format | [optional] |
-| **symbol** | **String**| Filter by symbol | [optional] |
-| **exchange** | **String**| Filter by exchange name | [optional] |
-| **micCode** | **String**| Filter by market identifier code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **page** | **Long**| Page number | [optional] [default to 1] |
-| **outputsize** | **Long**| Number of records in response | [optional] [default to 30] |
+| getLastChangesRequest | [**APIgetLastChangesRequest**](FundamentalsApi.md#APIgetLastChangesRequest)|-|-|
 
 ### Return type
 
@@ -2530,7 +2836,7 @@ public class Example {
 
 ## getLastChangesWithHttpInfo
 
-> ApiResponse<GetLastChanges200Response> getLastChanges getLastChangesWithHttpInfo(endpoint, startDate, symbol, exchange, micCode, country, page, outputsize)
+> ApiResponse<GetLastChanges200Response> getLastChanges getLastChangesWithHttpInfo(getLastChangesRequest)
 
 Last changes
 
@@ -2547,6 +2853,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -2569,7 +2876,17 @@ public class Example {
         Long page = 1L; // Long | Page number
         Long outputsize = 30L; // Long | Number of records in response
         try {
-            ApiResponse<GetLastChanges200Response> response = apiInstance.getLastChangesWithHttpInfo(endpoint, startDate, symbol, exchange, micCode, country, page, outputsize);
+            APIgetLastChangesRequest request = APIgetLastChangesRequest.newBuilder()
+                .endpoint(endpoint)
+                .startDate(startDate)
+                .symbol(symbol)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .page(page)
+                .outputsize(outputsize)
+                .build();
+            ApiResponse<GetLastChanges200Response> response = apiInstance.getLastChangesWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -2586,17 +2903,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **endpoint** | [**EndpointEnum**](.md)| Endpoint name | [enum: price_target, recommendations, statistics, insider_transactions, profile, mutual_funds_world_summary, mutual_funds_world, institutional_holders, analyst_rating, income_statement, income_statement_quarterly, cash_flow, cash_flow_quarterly, balance_sheet, balance_sheet_quarterly, mutual_funds_list, mutual_funds_world_sustainability, mutual_funds_world_summary, mutual_funds_world_risk, mutual_funds_world_purchase_info, mutual_funds_world_composition, mutual_funds_world_performance, mutual_funds_world, etfs_list, etfs_world, etfs_world_summary, etfs_world_performance, etfs_world_risk, etfs_world_composition, dividends, splits] |
-| **startDate** | **String**| The starting date and time for data selection, in &#x60;2006-01-02T15:04:05&#x60; format | [optional] |
-| **symbol** | **String**| Filter by symbol | [optional] |
-| **exchange** | **String**| Filter by exchange name | [optional] |
-| **micCode** | **String**| Filter by market identifier code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **page** | **Long**| Page number | [optional] [default to 1] |
-| **outputsize** | **Long**| Number of records in response | [optional] [default to 30] |
+| getLastChangesRequest | [**APIgetLastChangesRequest**](FundamentalsApi.md#APIgetLastChangesRequest)|-|-|
 
 ### Return type
 
@@ -2625,9 +2934,26 @@ ApiResponse<[**GetLastChanges200Response**](GetLastChanges200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetLastChangesRequest"></a>
+## APIgetLastChangesRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **endpoint** | [**EndpointEnum**](.md) | Endpoint name | [enum: price_target, recommendations, statistics, insider_transactions, profile, mutual_funds_world_summary, mutual_funds_world, institutional_holders, analyst_rating, income_statement, income_statement_quarterly, cash_flow, cash_flow_quarterly, balance_sheet, balance_sheet_quarterly, mutual_funds_list, mutual_funds_world_sustainability, mutual_funds_world_summary, mutual_funds_world_risk, mutual_funds_world_purchase_info, mutual_funds_world_composition, mutual_funds_world_performance, mutual_funds_world, etfs_list, etfs_world, etfs_world_summary, etfs_world_performance, etfs_world_risk, etfs_world_composition, dividends, splits] |
+| **startDate** | **String** | The starting date and time for data selection, in &#x60;2006-01-02T15:04:05&#x60; format | [optional] |
+| **symbol** | **String** | Filter by symbol | [optional] |
+| **exchange** | **String** | Filter by exchange name | [optional] |
+| **micCode** | **String** | Filter by market identifier code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **page** | **Long** | Page number | [optional] [default to 1] |
+| **outputsize** | **Long** | Number of records in response | [optional] [default to 30] |
+
+
+
 ## getLogo
 
-> GetLogo200Response getLogo(symbol, exchange, micCode, country)
+> GetLogo200Response getLogo(getLogoRequest)
 
 Logo
 
@@ -2643,6 +2969,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -2661,7 +2988,13 @@ public class Example {
         String micCode = "XNAS"; // String | The Market Identifier Code (MIC) of the exchange where the instrument is traded, e.g., `XNAS`, `XLON`
         String country = "United States"; // String | The country where the instrument is traded, e.g., `United States` or `US`
         try {
-            GetLogo200Response result = apiInstance.getLogo(symbol, exchange, micCode, country);
+            APIgetLogoRequest request = APIgetLogoRequest.newBuilder()
+                .symbol(symbol)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .build();
+            GetLogo200Response result = apiInstance.getLogo(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FundamentalsApi#getLogo");
@@ -2676,13 +3009,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The ticker symbol of an instrument for which data is requested, e.g., &#x60;AAPL&#x60;, &#x60;BTC/USD&#x60;, &#x60;EUR/USD&#x60;. | |
-| **exchange** | **String**| The exchange name where the instrument is traded, e.g., &#x60;NASDAQ&#x60;, &#x60;NSE&#x60; | [optional] |
-| **micCode** | **String**| The Market Identifier Code (MIC) of the exchange where the instrument is traded, e.g., &#x60;XNAS&#x60;, &#x60;XLON&#x60; | [optional] |
-| **country** | **String**| The country where the instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| getLogoRequest | [**APIgetLogoRequest**](FundamentalsApi.md#APIgetLogoRequest)|-|-|
 
 ### Return type
 
@@ -2712,7 +3041,7 @@ public class Example {
 
 ## getLogoWithHttpInfo
 
-> ApiResponse<GetLogo200Response> getLogo getLogoWithHttpInfo(symbol, exchange, micCode, country)
+> ApiResponse<GetLogo200Response> getLogo getLogoWithHttpInfo(getLogoRequest)
 
 Logo
 
@@ -2729,6 +3058,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -2747,7 +3077,13 @@ public class Example {
         String micCode = "XNAS"; // String | The Market Identifier Code (MIC) of the exchange where the instrument is traded, e.g., `XNAS`, `XLON`
         String country = "United States"; // String | The country where the instrument is traded, e.g., `United States` or `US`
         try {
-            ApiResponse<GetLogo200Response> response = apiInstance.getLogoWithHttpInfo(symbol, exchange, micCode, country);
+            APIgetLogoRequest request = APIgetLogoRequest.newBuilder()
+                .symbol(symbol)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .build();
+            ApiResponse<GetLogo200Response> response = apiInstance.getLogoWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -2764,13 +3100,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The ticker symbol of an instrument for which data is requested, e.g., &#x60;AAPL&#x60;, &#x60;BTC/USD&#x60;, &#x60;EUR/USD&#x60;. | |
-| **exchange** | **String**| The exchange name where the instrument is traded, e.g., &#x60;NASDAQ&#x60;, &#x60;NSE&#x60; | [optional] |
-| **micCode** | **String**| The Market Identifier Code (MIC) of the exchange where the instrument is traded, e.g., &#x60;XNAS&#x60;, &#x60;XLON&#x60; | [optional] |
-| **country** | **String**| The country where the instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| getLogoRequest | [**APIgetLogoRequest**](FundamentalsApi.md#APIgetLogoRequest)|-|-|
 
 ### Return type
 
@@ -2799,9 +3131,22 @@ ApiResponse<[**GetLogo200Response**](GetLogo200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetLogoRequest"></a>
+## APIgetLogoRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | The ticker symbol of an instrument for which data is requested, e.g., &#x60;AAPL&#x60;, &#x60;BTC/USD&#x60;, &#x60;EUR/USD&#x60;. | |
+| **exchange** | **String** | The exchange name where the instrument is traded, e.g., &#x60;NASDAQ&#x60;, &#x60;NSE&#x60; | [optional] |
+| **micCode** | **String** | The Market Identifier Code (MIC) of the exchange where the instrument is traded, e.g., &#x60;XNAS&#x60;, &#x60;XLON&#x60; | [optional] |
+| **country** | **String** | The country where the instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+
+
+
 ## getMarketCap
 
-> GetMarketCap200Response getMarketCap(symbol, figi, isin, cusip, exchange, micCode, country, startDate, endDate, page, outputsize)
+> GetMarketCap200Response getMarketCap(getMarketCapRequest)
 
 Market capitalization
 
@@ -2817,6 +3162,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -2842,7 +3188,20 @@ public class Example {
         Long page = 1L; // Long | Page number
         Long outputsize = 10L; // Long | Number of records in response
         try {
-            GetMarketCap200Response result = apiInstance.getMarketCap(symbol, figi, isin, cusip, exchange, micCode, country, startDate, endDate, page, outputsize);
+            APIgetMarketCapRequest request = APIgetMarketCapRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .startDate(startDate)
+                .endDate(endDate)
+                .page(page)
+                .outputsize(outputsize)
+                .build();
+            GetMarketCap200Response result = apiInstance.getMarketCap(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FundamentalsApi#getMarketCap");
@@ -2857,20 +3216,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Filter by symbol | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Filter by exchange name | [optional] |
-| **micCode** | **String**| Filter by market identifier code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **startDate** | **String**| Start date for market capitalization data retrieval. Data will be returned from this date onwards. Format &#x60;2006-01-02&#x60; | [optional] |
-| **endDate** | **String**| End date for market capitalization data retrieval. Data will be returned up to and including this date. Format &#x60;2006-01-02&#x60; | [optional] |
-| **page** | **Long**| Page number | [optional] [default to 1] |
-| **outputsize** | **Long**| Number of records in response | [optional] [default to 10] |
+| getMarketCapRequest | [**APIgetMarketCapRequest**](FundamentalsApi.md#APIgetMarketCapRequest)|-|-|
 
 ### Return type
 
@@ -2900,7 +3248,7 @@ public class Example {
 
 ## getMarketCapWithHttpInfo
 
-> ApiResponse<GetMarketCap200Response> getMarketCap getMarketCapWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, startDate, endDate, page, outputsize)
+> ApiResponse<GetMarketCap200Response> getMarketCap getMarketCapWithHttpInfo(getMarketCapRequest)
 
 Market capitalization
 
@@ -2917,6 +3265,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -2942,7 +3291,20 @@ public class Example {
         Long page = 1L; // Long | Page number
         Long outputsize = 10L; // Long | Number of records in response
         try {
-            ApiResponse<GetMarketCap200Response> response = apiInstance.getMarketCapWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, startDate, endDate, page, outputsize);
+            APIgetMarketCapRequest request = APIgetMarketCapRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .startDate(startDate)
+                .endDate(endDate)
+                .page(page)
+                .outputsize(outputsize)
+                .build();
+            ApiResponse<GetMarketCap200Response> response = apiInstance.getMarketCapWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -2959,20 +3321,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Filter by symbol | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Filter by exchange name | [optional] |
-| **micCode** | **String**| Filter by market identifier code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **startDate** | **String**| Start date for market capitalization data retrieval. Data will be returned from this date onwards. Format &#x60;2006-01-02&#x60; | [optional] |
-| **endDate** | **String**| End date for market capitalization data retrieval. Data will be returned up to and including this date. Format &#x60;2006-01-02&#x60; | [optional] |
-| **page** | **Long**| Page number | [optional] [default to 1] |
-| **outputsize** | **Long**| Number of records in response | [optional] [default to 10] |
+| getMarketCapRequest | [**APIgetMarketCapRequest**](FundamentalsApi.md#APIgetMarketCapRequest)|-|-|
 
 ### Return type
 
@@ -3001,9 +3352,29 @@ ApiResponse<[**GetMarketCap200Response**](GetMarketCap200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetMarketCapRequest"></a>
+## APIgetMarketCapRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Filter by symbol | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **exchange** | **String** | Filter by exchange name | [optional] |
+| **micCode** | **String** | Filter by market identifier code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **startDate** | **String** | Start date for market capitalization data retrieval. Data will be returned from this date onwards. Format &#x60;2006-01-02&#x60; | [optional] |
+| **endDate** | **String** | End date for market capitalization data retrieval. Data will be returned up to and including this date. Format &#x60;2006-01-02&#x60; | [optional] |
+| **page** | **Long** | Page number | [optional] [default to 1] |
+| **outputsize** | **Long** | Number of records in response | [optional] [default to 10] |
+
+
+
 ## getProfile
 
-> GetProfile200Response getProfile(symbol, figi, isin, cusip, exchange, micCode, country)
+> GetProfile200Response getProfile(getProfileRequest)
 
 Profile
 
@@ -3019,6 +3390,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -3040,7 +3412,16 @@ public class Example {
         String micCode = "XNAS"; // String | Market Identifier Code (MIC) under ISO 10383 standard
         String country = "United States"; // String | Country where instrument is traded, e.g., `United States` or `US`
         try {
-            GetProfile200Response result = apiInstance.getProfile(symbol, figi, isin, cusip, exchange, micCode, country);
+            APIgetProfileRequest request = APIgetProfileRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .build();
+            GetProfile200Response result = apiInstance.getProfile(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FundamentalsApi#getProfile");
@@ -3055,16 +3436,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| getProfileRequest | [**APIgetProfileRequest**](FundamentalsApi.md#APIgetProfileRequest)|-|-|
 
 ### Return type
 
@@ -3094,7 +3468,7 @@ public class Example {
 
 ## getProfileWithHttpInfo
 
-> ApiResponse<GetProfile200Response> getProfile getProfileWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country)
+> ApiResponse<GetProfile200Response> getProfile getProfileWithHttpInfo(getProfileRequest)
 
 Profile
 
@@ -3111,6 +3485,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -3132,7 +3507,16 @@ public class Example {
         String micCode = "XNAS"; // String | Market Identifier Code (MIC) under ISO 10383 standard
         String country = "United States"; // String | Country where instrument is traded, e.g., `United States` or `US`
         try {
-            ApiResponse<GetProfile200Response> response = apiInstance.getProfileWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country);
+            APIgetProfileRequest request = APIgetProfileRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .build();
+            ApiResponse<GetProfile200Response> response = apiInstance.getProfileWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -3149,16 +3533,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| getProfileRequest | [**APIgetProfileRequest**](FundamentalsApi.md#APIgetProfileRequest)|-|-|
 
 ### Return type
 
@@ -3187,9 +3564,25 @@ ApiResponse<[**GetProfile200Response**](GetProfile200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetProfileRequest"></a>
+## APIgetProfileRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **exchange** | **String** | Exchange where instrument is traded | [optional] |
+| **micCode** | **String** | Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+
+
+
 ## getSplits
 
-> GetSplits200Response getSplits(symbol, figi, isin, cusip, exchange, micCode, country, range, startDate, endDate)
+> GetSplits200Response getSplits(getSplitsRequest)
 
 Splits
 
@@ -3205,6 +3598,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -3229,7 +3623,19 @@ public class Example {
         String startDate = "2020-01-01"; // String | The starting date for data selection. Format `2006-01-02`
         String endDate = "2020-12-31"; // String | The ending date for data selection. Format `2006-01-02`
         try {
-            GetSplits200Response result = apiInstance.getSplits(symbol, figi, isin, cusip, exchange, micCode, country, range, startDate, endDate);
+            APIgetSplitsRequest request = APIgetSplitsRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .range(range)
+                .startDate(startDate)
+                .endDate(endDate)
+                .build();
+            GetSplits200Response result = apiInstance.getSplits(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FundamentalsApi#getSplits");
@@ -3244,19 +3650,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **range** | [**RangeSplitsEnum**](.md)| Range of data to be returned | [optional] [default to last] [enum: last, 1m, 3m, 6m, ytd, 1y, 2y, 5y, full] |
-| **startDate** | **String**| The starting date for data selection. Format &#x60;2006-01-02&#x60; | [optional] |
-| **endDate** | **String**| The ending date for data selection. Format &#x60;2006-01-02&#x60; | [optional] |
+| getSplitsRequest | [**APIgetSplitsRequest**](FundamentalsApi.md#APIgetSplitsRequest)|-|-|
 
 ### Return type
 
@@ -3286,7 +3682,7 @@ public class Example {
 
 ## getSplitsWithHttpInfo
 
-> ApiResponse<GetSplits200Response> getSplits getSplitsWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, range, startDate, endDate)
+> ApiResponse<GetSplits200Response> getSplits getSplitsWithHttpInfo(getSplitsRequest)
 
 Splits
 
@@ -3303,6 +3699,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -3327,7 +3724,19 @@ public class Example {
         String startDate = "2020-01-01"; // String | The starting date for data selection. Format `2006-01-02`
         String endDate = "2020-12-31"; // String | The ending date for data selection. Format `2006-01-02`
         try {
-            ApiResponse<GetSplits200Response> response = apiInstance.getSplitsWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, range, startDate, endDate);
+            APIgetSplitsRequest request = APIgetSplitsRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .range(range)
+                .startDate(startDate)
+                .endDate(endDate)
+                .build();
+            ApiResponse<GetSplits200Response> response = apiInstance.getSplitsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -3344,19 +3753,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **range** | [**RangeSplitsEnum**](.md)| Range of data to be returned | [optional] [default to last] [enum: last, 1m, 3m, 6m, ytd, 1y, 2y, 5y, full] |
-| **startDate** | **String**| The starting date for data selection. Format &#x60;2006-01-02&#x60; | [optional] |
-| **endDate** | **String**| The ending date for data selection. Format &#x60;2006-01-02&#x60; | [optional] |
+| getSplitsRequest | [**APIgetSplitsRequest**](FundamentalsApi.md#APIgetSplitsRequest)|-|-|
 
 ### Return type
 
@@ -3385,9 +3784,28 @@ ApiResponse<[**GetSplits200Response**](GetSplits200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetSplitsRequest"></a>
+## APIgetSplitsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **exchange** | **String** | Exchange where instrument is traded | [optional] |
+| **micCode** | **String** | Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **range** | [**RangeSplitsEnum**](.md) | Range of data to be returned | [optional] [default to last] [enum: last, 1m, 3m, 6m, ytd, 1y, 2y, 5y, full] |
+| **startDate** | **String** | The starting date for data selection. Format &#x60;2006-01-02&#x60; | [optional] |
+| **endDate** | **String** | The ending date for data selection. Format &#x60;2006-01-02&#x60; | [optional] |
+
+
+
 ## getSplitsCalendar
 
-> List<SplitsCalendarResponseItem> getSplitsCalendar(symbol, figi, isin, cusip, exchange, micCode, country, startDate, endDate, outputsize, page)
+> List<SplitsCalendarResponseItem> getSplitsCalendar(getSplitsCalendarRequest)
 
 Splits calendar
 
@@ -3403,6 +3821,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -3428,7 +3847,20 @@ public class Example {
         Long outputsize = 100L; // Long | Number of data points to retrieve. Supports values in the range from `1` to `500`. Default `100` when no date parameters are set, otherwise set to maximum
         String page = "1"; // String | Page number
         try {
-            List<SplitsCalendarResponseItem> result = apiInstance.getSplitsCalendar(symbol, figi, isin, cusip, exchange, micCode, country, startDate, endDate, outputsize, page);
+            APIgetSplitsCalendarRequest request = APIgetSplitsCalendarRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .startDate(startDate)
+                .endDate(endDate)
+                .outputsize(outputsize)
+                .page(page)
+                .build();
+            List<SplitsCalendarResponseItem> result = apiInstance.getSplitsCalendar(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FundamentalsApi#getSplitsCalendar");
@@ -3443,20 +3875,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **startDate** | **String**| The starting date (inclusive) for filtering split events in the calendar. Format &#x60;2006-01-02&#x60; | [optional] |
-| **endDate** | **String**| The ending date (inclusive) for filtering split events in the calendar. Format &#x60;2006-01-02&#x60; | [optional] |
-| **outputsize** | **Long**| Number of data points to retrieve. Supports values in the range from &#x60;1&#x60; to &#x60;500&#x60;. Default &#x60;100&#x60; when no date parameters are set, otherwise set to maximum | [optional] [default to 100] |
-| **page** | **String**| Page number | [optional] [default to 1] |
+| getSplitsCalendarRequest | [**APIgetSplitsCalendarRequest**](FundamentalsApi.md#APIgetSplitsCalendarRequest)|-|-|
 
 ### Return type
 
@@ -3486,7 +3907,7 @@ public class Example {
 
 ## getSplitsCalendarWithHttpInfo
 
-> ApiResponse<List<SplitsCalendarResponseItem>> getSplitsCalendar getSplitsCalendarWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, startDate, endDate, outputsize, page)
+> ApiResponse<List<SplitsCalendarResponseItem>> getSplitsCalendar getSplitsCalendarWithHttpInfo(getSplitsCalendarRequest)
 
 Splits calendar
 
@@ -3503,6 +3924,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -3528,7 +3950,20 @@ public class Example {
         Long outputsize = 100L; // Long | Number of data points to retrieve. Supports values in the range from `1` to `500`. Default `100` when no date parameters are set, otherwise set to maximum
         String page = "1"; // String | Page number
         try {
-            ApiResponse<List<SplitsCalendarResponseItem>> response = apiInstance.getSplitsCalendarWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, startDate, endDate, outputsize, page);
+            APIgetSplitsCalendarRequest request = APIgetSplitsCalendarRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .startDate(startDate)
+                .endDate(endDate)
+                .outputsize(outputsize)
+                .page(page)
+                .build();
+            ApiResponse<List<SplitsCalendarResponseItem>> response = apiInstance.getSplitsCalendarWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -3545,20 +3980,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **startDate** | **String**| The starting date (inclusive) for filtering split events in the calendar. Format &#x60;2006-01-02&#x60; | [optional] |
-| **endDate** | **String**| The ending date (inclusive) for filtering split events in the calendar. Format &#x60;2006-01-02&#x60; | [optional] |
-| **outputsize** | **Long**| Number of data points to retrieve. Supports values in the range from &#x60;1&#x60; to &#x60;500&#x60;. Default &#x60;100&#x60; when no date parameters are set, otherwise set to maximum | [optional] [default to 100] |
-| **page** | **String**| Page number | [optional] [default to 1] |
+| getSplitsCalendarRequest | [**APIgetSplitsCalendarRequest**](FundamentalsApi.md#APIgetSplitsCalendarRequest)|-|-|
 
 ### Return type
 
@@ -3587,9 +4011,29 @@ ApiResponse<[**List&lt;SplitsCalendarResponseItem&gt;**](SplitsCalendarResponseI
 | **500** |  |  -  |
 
 
+<a id="APIgetSplitsCalendarRequest"></a>
+## APIgetSplitsCalendarRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **exchange** | **String** | Exchange where instrument is traded | [optional] |
+| **micCode** | **String** | Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **startDate** | **String** | The starting date (inclusive) for filtering split events in the calendar. Format &#x60;2006-01-02&#x60; | [optional] |
+| **endDate** | **String** | The ending date (inclusive) for filtering split events in the calendar. Format &#x60;2006-01-02&#x60; | [optional] |
+| **outputsize** | **Long** | Number of data points to retrieve. Supports values in the range from &#x60;1&#x60; to &#x60;500&#x60;. Default &#x60;100&#x60; when no date parameters are set, otherwise set to maximum | [optional] [default to 100] |
+| **page** | **String** | Page number | [optional] [default to 1] |
+
+
+
 ## getStatistics
 
-> GetStatistics200Response getStatistics(symbol, figi, isin, cusip, exchange, micCode, country)
+> GetStatistics200Response getStatistics(getStatisticsRequest)
 
 Statistics
 
@@ -3605,6 +4049,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -3626,7 +4071,16 @@ public class Example {
         String micCode = "XNAS"; // String | Market Identifier Code (MIC) under ISO 10383 standard
         String country = "United States"; // String | Country where instrument is traded, e.g., `United States` or `US`
         try {
-            GetStatistics200Response result = apiInstance.getStatistics(symbol, figi, isin, cusip, exchange, micCode, country);
+            APIgetStatisticsRequest request = APIgetStatisticsRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .build();
+            GetStatistics200Response result = apiInstance.getStatistics(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FundamentalsApi#getStatistics");
@@ -3641,16 +4095,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| getStatisticsRequest | [**APIgetStatisticsRequest**](FundamentalsApi.md#APIgetStatisticsRequest)|-|-|
 
 ### Return type
 
@@ -3680,7 +4127,7 @@ public class Example {
 
 ## getStatisticsWithHttpInfo
 
-> ApiResponse<GetStatistics200Response> getStatistics getStatisticsWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country)
+> ApiResponse<GetStatistics200Response> getStatistics getStatisticsWithHttpInfo(getStatisticsRequest)
 
 Statistics
 
@@ -3697,6 +4144,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -3718,7 +4166,16 @@ public class Example {
         String micCode = "XNAS"; // String | Market Identifier Code (MIC) under ISO 10383 standard
         String country = "United States"; // String | Country where instrument is traded, e.g., `United States` or `US`
         try {
-            ApiResponse<GetStatistics200Response> response = apiInstance.getStatisticsWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country);
+            APIgetStatisticsRequest request = APIgetStatisticsRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .build();
+            ApiResponse<GetStatistics200Response> response = apiInstance.getStatisticsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -3735,16 +4192,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| getStatisticsRequest | [**APIgetStatisticsRequest**](FundamentalsApi.md#APIgetStatisticsRequest)|-|-|
 
 ### Return type
 
@@ -3773,9 +4223,25 @@ ApiResponse<[**GetStatistics200Response**](GetStatistics200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetStatisticsRequest"></a>
+## APIgetStatisticsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **exchange** | **String** | Exchange where instrument is traded | [optional] |
+| **micCode** | **String** | Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+
+
+
 ## pressReleasesListParameters
 
-> PressReleasesListParameters200Response pressReleasesListParameters(symbol, figi, isin, cusip, exchange, micCode, startDate, endDate, timezone, language, outputsize)
+> PressReleasesListParameters200Response pressReleasesListParameters(pressReleasesListParametersRequest)
 
 Press releases
 
@@ -3791,6 +4257,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -3816,7 +4283,20 @@ public class Example {
         String language = "en,en-US"; // String | Comma-separated list of languages to filter press releases by language.
         Long outputsize = 2L; // Long | Number of latest press releases returned. Only used if no data range is specified. Maximum value is `10`.  type: number
         try {
-            PressReleasesListParameters200Response result = apiInstance.pressReleasesListParameters(symbol, figi, isin, cusip, exchange, micCode, startDate, endDate, timezone, language, outputsize);
+            APIpressReleasesListParametersRequest request = APIpressReleasesListParametersRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .startDate(startDate)
+                .endDate(endDate)
+                .timezone(timezone)
+                .language(language)
+                .outputsize(outputsize)
+                .build();
+            PressReleasesListParameters200Response result = apiInstance.pressReleasesListParameters(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling FundamentalsApi#pressReleasesListParameters");
@@ -3831,20 +4311,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **startDate** | **String**| Begin date for filtering items. Returns press releases with release date on or after this date. Format &#x60;2025-12-24T02:07:00&#x60; | [optional] |
-| **endDate** | **String**| End date for filtering items. Returns press releases with release date on or before this date. Format &#x60;2025-12-24T02:07:00&#x60; | [optional] |
-| **timezone** | **String**| Time zone for date filtering. Default is the identifier time zone. | [optional] |
-| **language** | **String**| Comma-separated list of languages to filter press releases by language. | [optional] |
-| **outputsize** | **Long**| Number of latest press releases returned. Only used if no data range is specified. Maximum value is &#x60;10&#x60;.  type: number | [optional] [default to 2] |
+| pressReleasesListParametersRequest | [**APIpressReleasesListParametersRequest**](FundamentalsApi.md#APIpressReleasesListParametersRequest)|-|-|
 
 ### Return type
 
@@ -3874,7 +4343,7 @@ public class Example {
 
 ## pressReleasesListParametersWithHttpInfo
 
-> ApiResponse<PressReleasesListParameters200Response> pressReleasesListParameters pressReleasesListParametersWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, startDate, endDate, timezone, language, outputsize)
+> ApiResponse<PressReleasesListParameters200Response> pressReleasesListParameters pressReleasesListParametersWithHttpInfo(pressReleasesListParametersRequest)
 
 Press releases
 
@@ -3891,6 +4360,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -3916,7 +4386,20 @@ public class Example {
         String language = "en,en-US"; // String | Comma-separated list of languages to filter press releases by language.
         Long outputsize = 2L; // Long | Number of latest press releases returned. Only used if no data range is specified. Maximum value is `10`.  type: number
         try {
-            ApiResponse<PressReleasesListParameters200Response> response = apiInstance.pressReleasesListParametersWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, startDate, endDate, timezone, language, outputsize);
+            APIpressReleasesListParametersRequest request = APIpressReleasesListParametersRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .startDate(startDate)
+                .endDate(endDate)
+                .timezone(timezone)
+                .language(language)
+                .outputsize(outputsize)
+                .build();
+            ApiResponse<PressReleasesListParameters200Response> response = apiInstance.pressReleasesListParametersWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -3933,20 +4416,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **startDate** | **String**| Begin date for filtering items. Returns press releases with release date on or after this date. Format &#x60;2025-12-24T02:07:00&#x60; | [optional] |
-| **endDate** | **String**| End date for filtering items. Returns press releases with release date on or before this date. Format &#x60;2025-12-24T02:07:00&#x60; | [optional] |
-| **timezone** | **String**| Time zone for date filtering. Default is the identifier time zone. | [optional] |
-| **language** | **String**| Comma-separated list of languages to filter press releases by language. | [optional] |
-| **outputsize** | **Long**| Number of latest press releases returned. Only used if no data range is specified. Maximum value is &#x60;10&#x60;.  type: number | [optional] [default to 2] |
+| pressReleasesListParametersRequest | [**APIpressReleasesListParametersRequest**](FundamentalsApi.md#APIpressReleasesListParametersRequest)|-|-|
 
 ### Return type
 
@@ -3973,4 +4445,24 @@ ApiResponse<[**PressReleasesListParameters200Response**](PressReleasesListParame
 | **414** |  |  -  |
 | **429** |  |  -  |
 | **500** |  |  -  |
+
+
+<a id="APIpressReleasesListParametersRequest"></a>
+## APIpressReleasesListParametersRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **exchange** | **String** | Exchange where instrument is traded | [optional] |
+| **micCode** | **String** | Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
+| **startDate** | **String** | Begin date for filtering items. Returns press releases with release date on or after this date. Format &#x60;2025-12-24T02:07:00&#x60; | [optional] |
+| **endDate** | **String** | End date for filtering items. Returns press releases with release date on or before this date. Format &#x60;2025-12-24T02:07:00&#x60; | [optional] |
+| **timezone** | **String** | Time zone for date filtering. Default is the identifier time zone. | [optional] |
+| **language** | **String** | Comma-separated list of languages to filter press releases by language. | [optional] |
+| **outputsize** | **Long** | Number of latest press releases returned. Only used if no data range is specified. Maximum value is &#x60;10&#x60;.  type: number | [optional] [default to 2] |
+
 

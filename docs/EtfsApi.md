@@ -25,7 +25,7 @@ All URIs are relative to *https://api.twelvedata.com*
 
 ## getETFsFamily
 
-> GetETFsFamily200Response getETFsFamily(country, fundFamily)
+> GetETFsFamily200Response getETFsFamily(getETFsFamilyRequest)
 
 ETFs families
 
@@ -41,6 +41,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.EtfsApi;
+import com.twelvedata.client.api.EtfsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -57,7 +58,11 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         String fundFamily = "iShares"; // String | Filter by investment company that manages the fund
         try {
-            GetETFsFamily200Response result = apiInstance.getETFsFamily(country, fundFamily);
+            APIgetETFsFamilyRequest request = APIgetETFsFamilyRequest.newBuilder()
+                .country(country)
+                .fundFamily(fundFamily)
+                .build();
+            GetETFsFamily200Response result = apiInstance.getETFsFamily(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EtfsApi#getETFsFamily");
@@ -72,11 +77,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **fundFamily** | **String**| Filter by investment company that manages the fund | [optional] |
+| getETFsFamilyRequest | [**APIgetETFsFamilyRequest**](EtfsApi.md#APIgetETFsFamilyRequest)|-|-|
 
 ### Return type
 
@@ -106,7 +109,7 @@ public class Example {
 
 ## getETFsFamilyWithHttpInfo
 
-> ApiResponse<GetETFsFamily200Response> getETFsFamily getETFsFamilyWithHttpInfo(country, fundFamily)
+> ApiResponse<GetETFsFamily200Response> getETFsFamily getETFsFamilyWithHttpInfo(getETFsFamilyRequest)
 
 ETFs families
 
@@ -123,6 +126,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.EtfsApi;
+import com.twelvedata.client.api.EtfsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -139,7 +143,11 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         String fundFamily = "iShares"; // String | Filter by investment company that manages the fund
         try {
-            ApiResponse<GetETFsFamily200Response> response = apiInstance.getETFsFamilyWithHttpInfo(country, fundFamily);
+            APIgetETFsFamilyRequest request = APIgetETFsFamilyRequest.newBuilder()
+                .country(country)
+                .fundFamily(fundFamily)
+                .build();
+            ApiResponse<GetETFsFamily200Response> response = apiInstance.getETFsFamilyWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -156,11 +164,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **fundFamily** | **String**| Filter by investment company that manages the fund | [optional] |
+| getETFsFamilyRequest | [**APIgetETFsFamilyRequest**](EtfsApi.md#APIgetETFsFamilyRequest)|-|-|
 
 ### Return type
 
@@ -189,9 +195,20 @@ ApiResponse<[**GetETFsFamily200Response**](GetETFsFamily200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetETFsFamilyRequest"></a>
+## APIgetETFsFamilyRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **fundFamily** | **String** | Filter by investment company that manages the fund | [optional] |
+
+
+
 ## getETFsList
 
-> GetETFsList200Response getETFsList(symbol, figi, isin, cusip, cik, country, fundFamily, fundType, page, outputsize)
+> GetETFsList200Response getETFsList(getETFsListRequest)
 
 ETFs directory
 
@@ -207,6 +224,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.EtfsApi;
+import com.twelvedata.client.api.EtfsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -231,7 +249,19 @@ public class Example {
         Long page = 1L; // Long | Page number
         Long outputsize = 50L; // Long | Number of records in response
         try {
-            GetETFsList200Response result = apiInstance.getETFsList(symbol, figi, isin, cusip, cik, country, fundFamily, fundType, page, outputsize);
+            APIgetETFsListRequest request = APIgetETFsListRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .cik(cik)
+                .country(country)
+                .fundFamily(fundFamily)
+                .fundType(fundType)
+                .page(page)
+                .outputsize(outputsize)
+                .build();
+            GetETFsList200Response result = apiInstance.getETFsList(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EtfsApi#getETFsList");
@@ -246,19 +276,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Filter by symbol | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cik** | **String**| The CIK of an instrument for which data is requested | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **fundFamily** | **String**| Filter by investment company that manages the fund | [optional] |
-| **fundType** | **String**| Filter by the type of fund | [optional] |
-| **page** | **Long**| Page number | [optional] [default to 1] |
-| **outputsize** | **Long**| Number of records in response | [optional] [default to 50] |
+| getETFsListRequest | [**APIgetETFsListRequest**](EtfsApi.md#APIgetETFsListRequest)|-|-|
 
 ### Return type
 
@@ -288,7 +308,7 @@ public class Example {
 
 ## getETFsListWithHttpInfo
 
-> ApiResponse<GetETFsList200Response> getETFsList getETFsListWithHttpInfo(symbol, figi, isin, cusip, cik, country, fundFamily, fundType, page, outputsize)
+> ApiResponse<GetETFsList200Response> getETFsList getETFsListWithHttpInfo(getETFsListRequest)
 
 ETFs directory
 
@@ -305,6 +325,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.EtfsApi;
+import com.twelvedata.client.api.EtfsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -329,7 +350,19 @@ public class Example {
         Long page = 1L; // Long | Page number
         Long outputsize = 50L; // Long | Number of records in response
         try {
-            ApiResponse<GetETFsList200Response> response = apiInstance.getETFsListWithHttpInfo(symbol, figi, isin, cusip, cik, country, fundFamily, fundType, page, outputsize);
+            APIgetETFsListRequest request = APIgetETFsListRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .cik(cik)
+                .country(country)
+                .fundFamily(fundFamily)
+                .fundType(fundType)
+                .page(page)
+                .outputsize(outputsize)
+                .build();
+            ApiResponse<GetETFsList200Response> response = apiInstance.getETFsListWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -346,19 +379,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Filter by symbol | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cik** | **String**| The CIK of an instrument for which data is requested | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **fundFamily** | **String**| Filter by investment company that manages the fund | [optional] |
-| **fundType** | **String**| Filter by the type of fund | [optional] |
-| **page** | **Long**| Page number | [optional] [default to 1] |
-| **outputsize** | **Long**| Number of records in response | [optional] [default to 50] |
+| getETFsListRequest | [**APIgetETFsListRequest**](EtfsApi.md#APIgetETFsListRequest)|-|-|
 
 ### Return type
 
@@ -387,9 +410,28 @@ ApiResponse<[**GetETFsList200Response**](GetETFsList200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetETFsListRequest"></a>
+## APIgetETFsListRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Filter by symbol | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cik** | **String** | The CIK of an instrument for which data is requested | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **fundFamily** | **String** | Filter by investment company that manages the fund | [optional] |
+| **fundType** | **String** | Filter by the type of fund | [optional] |
+| **page** | **Long** | Page number | [optional] [default to 1] |
+| **outputsize** | **Long** | Number of records in response | [optional] [default to 50] |
+
+
+
 ## getETFsType
 
-> GetETFsType200Response getETFsType(country, fundType)
+> GetETFsType200Response getETFsType(getETFsTypeRequest)
 
 ETFs types
 
@@ -405,6 +447,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.EtfsApi;
+import com.twelvedata.client.api.EtfsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -421,7 +464,11 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         String fundType = "Large Blend"; // String | Filter by the type of fund
         try {
-            GetETFsType200Response result = apiInstance.getETFsType(country, fundType);
+            APIgetETFsTypeRequest request = APIgetETFsTypeRequest.newBuilder()
+                .country(country)
+                .fundType(fundType)
+                .build();
+            GetETFsType200Response result = apiInstance.getETFsType(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EtfsApi#getETFsType");
@@ -436,11 +483,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **fundType** | **String**| Filter by the type of fund | [optional] |
+| getETFsTypeRequest | [**APIgetETFsTypeRequest**](EtfsApi.md#APIgetETFsTypeRequest)|-|-|
 
 ### Return type
 
@@ -470,7 +515,7 @@ public class Example {
 
 ## getETFsTypeWithHttpInfo
 
-> ApiResponse<GetETFsType200Response> getETFsType getETFsTypeWithHttpInfo(country, fundType)
+> ApiResponse<GetETFsType200Response> getETFsType getETFsTypeWithHttpInfo(getETFsTypeRequest)
 
 ETFs types
 
@@ -487,6 +532,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.EtfsApi;
+import com.twelvedata.client.api.EtfsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -503,7 +549,11 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         String fundType = "Large Blend"; // String | Filter by the type of fund
         try {
-            ApiResponse<GetETFsType200Response> response = apiInstance.getETFsTypeWithHttpInfo(country, fundType);
+            APIgetETFsTypeRequest request = APIgetETFsTypeRequest.newBuilder()
+                .country(country)
+                .fundType(fundType)
+                .build();
+            ApiResponse<GetETFsType200Response> response = apiInstance.getETFsTypeWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -520,11 +570,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **fundType** | **String**| Filter by the type of fund | [optional] |
+| getETFsTypeRequest | [**APIgetETFsTypeRequest**](EtfsApi.md#APIgetETFsTypeRequest)|-|-|
 
 ### Return type
 
@@ -553,9 +601,20 @@ ApiResponse<[**GetETFsType200Response**](GetETFsType200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetETFsTypeRequest"></a>
+## APIgetETFsTypeRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **fundType** | **String** | Filter by the type of fund | [optional] |
+
+
+
 ## getETFsWorld
 
-> GetETFsWorld200Response getETFsWorld(symbol, figi, isin, cusip, country, dp)
+> GetETFsWorld200Response getETFsWorld(getETFsWorldRequest)
 
 ETF full data
 
@@ -571,6 +630,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.EtfsApi;
+import com.twelvedata.client.api.EtfsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -591,7 +651,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         Long dp = 5L; // Long | Number of decimal places for floating values. Accepts value in range [0,11]
         try {
-            GetETFsWorld200Response result = apiInstance.getETFsWorld(symbol, figi, isin, cusip, country, dp);
+            APIgetETFsWorldRequest request = APIgetETFsWorldRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .dp(dp)
+                .build();
+            GetETFsWorld200Response result = apiInstance.getETFsWorld(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EtfsApi#getETFsWorld");
@@ -606,15 +674,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of etf | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+| getETFsWorldRequest | [**APIgetETFsWorldRequest**](EtfsApi.md#APIgetETFsWorldRequest)|-|-|
 
 ### Return type
 
@@ -644,7 +706,7 @@ public class Example {
 
 ## getETFsWorldWithHttpInfo
 
-> ApiResponse<GetETFsWorld200Response> getETFsWorld getETFsWorldWithHttpInfo(symbol, figi, isin, cusip, country, dp)
+> ApiResponse<GetETFsWorld200Response> getETFsWorld getETFsWorldWithHttpInfo(getETFsWorldRequest)
 
 ETF full data
 
@@ -661,6 +723,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.EtfsApi;
+import com.twelvedata.client.api.EtfsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -681,7 +744,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         Long dp = 5L; // Long | Number of decimal places for floating values. Accepts value in range [0,11]
         try {
-            ApiResponse<GetETFsWorld200Response> response = apiInstance.getETFsWorldWithHttpInfo(symbol, figi, isin, cusip, country, dp);
+            APIgetETFsWorldRequest request = APIgetETFsWorldRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .dp(dp)
+                .build();
+            ApiResponse<GetETFsWorld200Response> response = apiInstance.getETFsWorldWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -698,15 +769,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of etf | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+| getETFsWorldRequest | [**APIgetETFsWorldRequest**](EtfsApi.md#APIgetETFsWorldRequest)|-|-|
 
 ### Return type
 
@@ -735,9 +800,24 @@ ApiResponse<[**GetETFsWorld200Response**](GetETFsWorld200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetETFsWorldRequest"></a>
+## APIgetETFsWorldRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of etf | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **dp** | **Long** | Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+
+
+
 ## getETFsWorldComposition
 
-> GetETFsWorldComposition200Response getETFsWorldComposition(symbol, figi, isin, cusip, country, dp)
+> GetETFsWorldComposition200Response getETFsWorldComposition(getETFsWorldCompositionRequest)
 
 Composition
 
@@ -753,6 +833,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.EtfsApi;
+import com.twelvedata.client.api.EtfsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -773,7 +854,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         Long dp = 5L; // Long | Number of decimal places for floating values. Accepts value in range [0,11]
         try {
-            GetETFsWorldComposition200Response result = apiInstance.getETFsWorldComposition(symbol, figi, isin, cusip, country, dp);
+            APIgetETFsWorldCompositionRequest request = APIgetETFsWorldCompositionRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .dp(dp)
+                .build();
+            GetETFsWorldComposition200Response result = apiInstance.getETFsWorldComposition(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EtfsApi#getETFsWorldComposition");
@@ -788,15 +877,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of etf | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+| getETFsWorldCompositionRequest | [**APIgetETFsWorldCompositionRequest**](EtfsApi.md#APIgetETFsWorldCompositionRequest)|-|-|
 
 ### Return type
 
@@ -826,7 +909,7 @@ public class Example {
 
 ## getETFsWorldCompositionWithHttpInfo
 
-> ApiResponse<GetETFsWorldComposition200Response> getETFsWorldComposition getETFsWorldCompositionWithHttpInfo(symbol, figi, isin, cusip, country, dp)
+> ApiResponse<GetETFsWorldComposition200Response> getETFsWorldComposition getETFsWorldCompositionWithHttpInfo(getETFsWorldCompositionRequest)
 
 Composition
 
@@ -843,6 +926,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.EtfsApi;
+import com.twelvedata.client.api.EtfsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -863,7 +947,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         Long dp = 5L; // Long | Number of decimal places for floating values. Accepts value in range [0,11]
         try {
-            ApiResponse<GetETFsWorldComposition200Response> response = apiInstance.getETFsWorldCompositionWithHttpInfo(symbol, figi, isin, cusip, country, dp);
+            APIgetETFsWorldCompositionRequest request = APIgetETFsWorldCompositionRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .dp(dp)
+                .build();
+            ApiResponse<GetETFsWorldComposition200Response> response = apiInstance.getETFsWorldCompositionWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -880,15 +972,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of etf | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+| getETFsWorldCompositionRequest | [**APIgetETFsWorldCompositionRequest**](EtfsApi.md#APIgetETFsWorldCompositionRequest)|-|-|
 
 ### Return type
 
@@ -917,9 +1003,24 @@ ApiResponse<[**GetETFsWorldComposition200Response**](GetETFsWorldComposition200R
 | **500** |  |  -  |
 
 
+<a id="APIgetETFsWorldCompositionRequest"></a>
+## APIgetETFsWorldCompositionRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of etf | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **dp** | **Long** | Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+
+
+
 ## getETFsWorldPerformance
 
-> GetETFsWorldPerformance200Response getETFsWorldPerformance(symbol, figi, isin, cusip, country, dp)
+> GetETFsWorldPerformance200Response getETFsWorldPerformance(getETFsWorldPerformanceRequest)
 
 Performance
 
@@ -935,6 +1036,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.EtfsApi;
+import com.twelvedata.client.api.EtfsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -955,7 +1057,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         Long dp = 5L; // Long | Number of decimal places for floating values. Accepts value in range [0,11]
         try {
-            GetETFsWorldPerformance200Response result = apiInstance.getETFsWorldPerformance(symbol, figi, isin, cusip, country, dp);
+            APIgetETFsWorldPerformanceRequest request = APIgetETFsWorldPerformanceRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .dp(dp)
+                .build();
+            GetETFsWorldPerformance200Response result = apiInstance.getETFsWorldPerformance(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EtfsApi#getETFsWorldPerformance");
@@ -970,15 +1080,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of etf | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+| getETFsWorldPerformanceRequest | [**APIgetETFsWorldPerformanceRequest**](EtfsApi.md#APIgetETFsWorldPerformanceRequest)|-|-|
 
 ### Return type
 
@@ -1008,7 +1112,7 @@ public class Example {
 
 ## getETFsWorldPerformanceWithHttpInfo
 
-> ApiResponse<GetETFsWorldPerformance200Response> getETFsWorldPerformance getETFsWorldPerformanceWithHttpInfo(symbol, figi, isin, cusip, country, dp)
+> ApiResponse<GetETFsWorldPerformance200Response> getETFsWorldPerformance getETFsWorldPerformanceWithHttpInfo(getETFsWorldPerformanceRequest)
 
 Performance
 
@@ -1025,6 +1129,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.EtfsApi;
+import com.twelvedata.client.api.EtfsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1045,7 +1150,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         Long dp = 5L; // Long | Number of decimal places for floating values. Accepts value in range [0,11]
         try {
-            ApiResponse<GetETFsWorldPerformance200Response> response = apiInstance.getETFsWorldPerformanceWithHttpInfo(symbol, figi, isin, cusip, country, dp);
+            APIgetETFsWorldPerformanceRequest request = APIgetETFsWorldPerformanceRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .dp(dp)
+                .build();
+            ApiResponse<GetETFsWorldPerformance200Response> response = apiInstance.getETFsWorldPerformanceWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1062,15 +1175,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of etf | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+| getETFsWorldPerformanceRequest | [**APIgetETFsWorldPerformanceRequest**](EtfsApi.md#APIgetETFsWorldPerformanceRequest)|-|-|
 
 ### Return type
 
@@ -1099,9 +1206,24 @@ ApiResponse<[**GetETFsWorldPerformance200Response**](GetETFsWorldPerformance200R
 | **500** |  |  -  |
 
 
+<a id="APIgetETFsWorldPerformanceRequest"></a>
+## APIgetETFsWorldPerformanceRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of etf | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **dp** | **Long** | Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+
+
+
 ## getETFsWorldRisk
 
-> GetETFsWorldRisk200Response getETFsWorldRisk(symbol, figi, isin, cusip, country, dp)
+> GetETFsWorldRisk200Response getETFsWorldRisk(getETFsWorldRiskRequest)
 
 Risk
 
@@ -1117,6 +1239,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.EtfsApi;
+import com.twelvedata.client.api.EtfsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1137,7 +1260,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         Long dp = 5L; // Long | Number of decimal places for floating values. Accepts value in range [0,11]
         try {
-            GetETFsWorldRisk200Response result = apiInstance.getETFsWorldRisk(symbol, figi, isin, cusip, country, dp);
+            APIgetETFsWorldRiskRequest request = APIgetETFsWorldRiskRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .dp(dp)
+                .build();
+            GetETFsWorldRisk200Response result = apiInstance.getETFsWorldRisk(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EtfsApi#getETFsWorldRisk");
@@ -1152,15 +1283,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of etf | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+| getETFsWorldRiskRequest | [**APIgetETFsWorldRiskRequest**](EtfsApi.md#APIgetETFsWorldRiskRequest)|-|-|
 
 ### Return type
 
@@ -1190,7 +1315,7 @@ public class Example {
 
 ## getETFsWorldRiskWithHttpInfo
 
-> ApiResponse<GetETFsWorldRisk200Response> getETFsWorldRisk getETFsWorldRiskWithHttpInfo(symbol, figi, isin, cusip, country, dp)
+> ApiResponse<GetETFsWorldRisk200Response> getETFsWorldRisk getETFsWorldRiskWithHttpInfo(getETFsWorldRiskRequest)
 
 Risk
 
@@ -1207,6 +1332,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.EtfsApi;
+import com.twelvedata.client.api.EtfsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1227,7 +1353,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         Long dp = 5L; // Long | Number of decimal places for floating values. Accepts value in range [0,11]
         try {
-            ApiResponse<GetETFsWorldRisk200Response> response = apiInstance.getETFsWorldRiskWithHttpInfo(symbol, figi, isin, cusip, country, dp);
+            APIgetETFsWorldRiskRequest request = APIgetETFsWorldRiskRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .dp(dp)
+                .build();
+            ApiResponse<GetETFsWorldRisk200Response> response = apiInstance.getETFsWorldRiskWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1244,15 +1378,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of etf | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+| getETFsWorldRiskRequest | [**APIgetETFsWorldRiskRequest**](EtfsApi.md#APIgetETFsWorldRiskRequest)|-|-|
 
 ### Return type
 
@@ -1281,9 +1409,24 @@ ApiResponse<[**GetETFsWorldRisk200Response**](GetETFsWorldRisk200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetETFsWorldRiskRequest"></a>
+## APIgetETFsWorldRiskRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of etf | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **dp** | **Long** | Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+
+
+
 ## getETFsWorldSummary
 
-> GetETFsWorldSummary200Response getETFsWorldSummary(symbol, figi, isin, cusip, country, dp)
+> GetETFsWorldSummary200Response getETFsWorldSummary(getETFsWorldSummaryRequest)
 
 Summary
 
@@ -1299,6 +1442,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.EtfsApi;
+import com.twelvedata.client.api.EtfsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1319,7 +1463,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         Long dp = 5L; // Long | Number of decimal places for floating values. Accepts value in range [0,11]
         try {
-            GetETFsWorldSummary200Response result = apiInstance.getETFsWorldSummary(symbol, figi, isin, cusip, country, dp);
+            APIgetETFsWorldSummaryRequest request = APIgetETFsWorldSummaryRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .dp(dp)
+                .build();
+            GetETFsWorldSummary200Response result = apiInstance.getETFsWorldSummary(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EtfsApi#getETFsWorldSummary");
@@ -1334,15 +1486,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of etf | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+| getETFsWorldSummaryRequest | [**APIgetETFsWorldSummaryRequest**](EtfsApi.md#APIgetETFsWorldSummaryRequest)|-|-|
 
 ### Return type
 
@@ -1372,7 +1518,7 @@ public class Example {
 
 ## getETFsWorldSummaryWithHttpInfo
 
-> ApiResponse<GetETFsWorldSummary200Response> getETFsWorldSummary getETFsWorldSummaryWithHttpInfo(symbol, figi, isin, cusip, country, dp)
+> ApiResponse<GetETFsWorldSummary200Response> getETFsWorldSummary getETFsWorldSummaryWithHttpInfo(getETFsWorldSummaryRequest)
 
 Summary
 
@@ -1389,6 +1535,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.EtfsApi;
+import com.twelvedata.client.api.EtfsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1409,7 +1556,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         Long dp = 5L; // Long | Number of decimal places for floating values. Accepts value in range [0,11]
         try {
-            ApiResponse<GetETFsWorldSummary200Response> response = apiInstance.getETFsWorldSummaryWithHttpInfo(symbol, figi, isin, cusip, country, dp);
+            APIgetETFsWorldSummaryRequest request = APIgetETFsWorldSummaryRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .dp(dp)
+                .build();
+            ApiResponse<GetETFsWorldSummary200Response> response = apiInstance.getETFsWorldSummaryWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1426,15 +1581,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of etf | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+| getETFsWorldSummaryRequest | [**APIgetETFsWorldSummaryRequest**](EtfsApi.md#APIgetETFsWorldSummaryRequest)|-|-|
 
 ### Return type
 
@@ -1461,4 +1610,19 @@ ApiResponse<[**GetETFsWorldSummary200Response**](GetETFsWorldSummary200Response.
 | **414** |  |  -  |
 | **429** |  |  -  |
 | **500** |  |  -  |
+
+
+<a id="APIgetETFsWorldSummaryRequest"></a>
+## APIgetETFsWorldSummaryRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of etf | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **dp** | **Long** | Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+
 

@@ -3,6 +3,7 @@ package com.twelvedata.examples;
 import com.twelvedata.client.ApiClient;
 import com.twelvedata.client.Twelvedata;
 import com.twelvedata.client.api.TechnicalIndicatorApi;
+import com.twelvedata.client.api.TechnicalIndicatorApi.APIGetTimeSeriesRsiRequest;
 import com.twelvedata.client.model.IntervalEnum;
 
 public final class TiRsi {
@@ -11,9 +12,12 @@ public final class TiRsi {
     TechnicalIndicatorApi api = new TechnicalIndicatorApi(client);
 
     var response = api.getTimeSeriesRsi(
-        IntervalEnum._1DAY, "AAPL", null, null, null, 10L,
-        null, null, null, null, "UTC", null, null, null, null, null,
-        null, null, null, null, null, null, null, null);
+        APIGetTimeSeriesRsiRequest.newBuilder()
+            .interval(IntervalEnum._1DAY)
+            .symbol("AAPL")
+            .outputsize(10L)
+            .timezone("UTC")
+            .build());
     System.out.println(response);
   }
 

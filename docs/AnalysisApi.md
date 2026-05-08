@@ -27,7 +27,7 @@ All URIs are relative to *https://api.twelvedata.com*
 
 ## getAnalystRatingsLight
 
-> GetAnalystRatingsLight200Response getAnalystRatingsLight(symbol, figi, isin, cusip, exchange, ratingChange, outputsize, country)
+> GetAnalystRatingsLight200Response getAnalystRatingsLight(getAnalystRatingsLightRequest)
 
 Analyst ratings snapshot
 
@@ -43,6 +43,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.AnalysisApi;
+import com.twelvedata.client.api.AnalysisApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -65,7 +66,17 @@ public class Example {
         Long outputsize = 30L; // Long | Number of records in response
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         try {
-            GetAnalystRatingsLight200Response result = apiInstance.getAnalystRatingsLight(symbol, figi, isin, cusip, exchange, ratingChange, outputsize, country);
+            APIgetAnalystRatingsLightRequest request = APIgetAnalystRatingsLightRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .ratingChange(ratingChange)
+                .outputsize(outputsize)
+                .country(country)
+                .build();
+            GetAnalystRatingsLight200Response result = apiInstance.getAnalystRatingsLight(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnalysisApi#getAnalystRatingsLight");
@@ -80,17 +91,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Filter by symbol | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Filter by exchange name | [optional] |
-| **ratingChange** | [**RatingChangeEnum**](.md)| Filter by rating change action | [optional] [enum: Maintains, Upgrade, Downgrade, Initiates, Reiterates] |
-| **outputsize** | **Long**| Number of records in response | [optional] [default to 30] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| getAnalystRatingsLightRequest | [**APIgetAnalystRatingsLightRequest**](AnalysisApi.md#APIgetAnalystRatingsLightRequest)|-|-|
 
 ### Return type
 
@@ -120,7 +123,7 @@ public class Example {
 
 ## getAnalystRatingsLightWithHttpInfo
 
-> ApiResponse<GetAnalystRatingsLight200Response> getAnalystRatingsLight getAnalystRatingsLightWithHttpInfo(symbol, figi, isin, cusip, exchange, ratingChange, outputsize, country)
+> ApiResponse<GetAnalystRatingsLight200Response> getAnalystRatingsLight getAnalystRatingsLightWithHttpInfo(getAnalystRatingsLightRequest)
 
 Analyst ratings snapshot
 
@@ -137,6 +140,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.AnalysisApi;
+import com.twelvedata.client.api.AnalysisApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -159,7 +163,17 @@ public class Example {
         Long outputsize = 30L; // Long | Number of records in response
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         try {
-            ApiResponse<GetAnalystRatingsLight200Response> response = apiInstance.getAnalystRatingsLightWithHttpInfo(symbol, figi, isin, cusip, exchange, ratingChange, outputsize, country);
+            APIgetAnalystRatingsLightRequest request = APIgetAnalystRatingsLightRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .ratingChange(ratingChange)
+                .outputsize(outputsize)
+                .country(country)
+                .build();
+            ApiResponse<GetAnalystRatingsLight200Response> response = apiInstance.getAnalystRatingsLightWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -176,17 +190,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Filter by symbol | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Filter by exchange name | [optional] |
-| **ratingChange** | [**RatingChangeEnum**](.md)| Filter by rating change action | [optional] [enum: Maintains, Upgrade, Downgrade, Initiates, Reiterates] |
-| **outputsize** | **Long**| Number of records in response | [optional] [default to 30] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| getAnalystRatingsLightRequest | [**APIgetAnalystRatingsLightRequest**](AnalysisApi.md#APIgetAnalystRatingsLightRequest)|-|-|
 
 ### Return type
 
@@ -215,9 +221,26 @@ ApiResponse<[**GetAnalystRatingsLight200Response**](GetAnalystRatingsLight200Res
 | **500** |  |  -  |
 
 
+<a id="APIgetAnalystRatingsLightRequest"></a>
+## APIgetAnalystRatingsLightRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Filter by symbol | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **exchange** | **String** | Filter by exchange name | [optional] |
+| **ratingChange** | [**RatingChangeEnum**](.md) | Filter by rating change action | [optional] [enum: Maintains, Upgrade, Downgrade, Initiates, Reiterates] |
+| **outputsize** | **Long** | Number of records in response | [optional] [default to 30] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+
+
+
 ## getAnalystRatingsUsEquities
 
-> GetAnalystRatingsUsEquities200Response getAnalystRatingsUsEquities(symbol, figi, isin, cusip, exchange, ratingChange, outputsize)
+> GetAnalystRatingsUsEquities200Response getAnalystRatingsUsEquities(getAnalystRatingsUsEquitiesRequest)
 
 Analyst ratings US equities
 
@@ -233,6 +256,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.AnalysisApi;
+import com.twelvedata.client.api.AnalysisApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -254,7 +278,16 @@ public class Example {
         RatingChangeEnum ratingChange = RatingChangeEnum.fromValue("Maintains"); // RatingChangeEnum | Filter by rating change action
         Long outputsize = 30L; // Long | Number of records in response
         try {
-            GetAnalystRatingsUsEquities200Response result = apiInstance.getAnalystRatingsUsEquities(symbol, figi, isin, cusip, exchange, ratingChange, outputsize);
+            APIgetAnalystRatingsUsEquitiesRequest request = APIgetAnalystRatingsUsEquitiesRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .ratingChange(ratingChange)
+                .outputsize(outputsize)
+                .build();
+            GetAnalystRatingsUsEquities200Response result = apiInstance.getAnalystRatingsUsEquities(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnalysisApi#getAnalystRatingsUsEquities");
@@ -269,16 +302,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Filter by symbol | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Filter by exchange name | [optional] |
-| **ratingChange** | [**RatingChangeEnum**](.md)| Filter by rating change action | [optional] [enum: Maintains, Upgrade, Downgrade, Initiates, Reiterates] |
-| **outputsize** | **Long**| Number of records in response | [optional] [default to 30] |
+| getAnalystRatingsUsEquitiesRequest | [**APIgetAnalystRatingsUsEquitiesRequest**](AnalysisApi.md#APIgetAnalystRatingsUsEquitiesRequest)|-|-|
 
 ### Return type
 
@@ -308,7 +334,7 @@ public class Example {
 
 ## getAnalystRatingsUsEquitiesWithHttpInfo
 
-> ApiResponse<GetAnalystRatingsUsEquities200Response> getAnalystRatingsUsEquities getAnalystRatingsUsEquitiesWithHttpInfo(symbol, figi, isin, cusip, exchange, ratingChange, outputsize)
+> ApiResponse<GetAnalystRatingsUsEquities200Response> getAnalystRatingsUsEquities getAnalystRatingsUsEquitiesWithHttpInfo(getAnalystRatingsUsEquitiesRequest)
 
 Analyst ratings US equities
 
@@ -325,6 +351,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.AnalysisApi;
+import com.twelvedata.client.api.AnalysisApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -346,7 +373,16 @@ public class Example {
         RatingChangeEnum ratingChange = RatingChangeEnum.fromValue("Maintains"); // RatingChangeEnum | Filter by rating change action
         Long outputsize = 30L; // Long | Number of records in response
         try {
-            ApiResponse<GetAnalystRatingsUsEquities200Response> response = apiInstance.getAnalystRatingsUsEquitiesWithHttpInfo(symbol, figi, isin, cusip, exchange, ratingChange, outputsize);
+            APIgetAnalystRatingsUsEquitiesRequest request = APIgetAnalystRatingsUsEquitiesRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .ratingChange(ratingChange)
+                .outputsize(outputsize)
+                .build();
+            ApiResponse<GetAnalystRatingsUsEquities200Response> response = apiInstance.getAnalystRatingsUsEquitiesWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -363,16 +399,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Filter by symbol | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Filter by exchange name | [optional] |
-| **ratingChange** | [**RatingChangeEnum**](.md)| Filter by rating change action | [optional] [enum: Maintains, Upgrade, Downgrade, Initiates, Reiterates] |
-| **outputsize** | **Long**| Number of records in response | [optional] [default to 30] |
+| getAnalystRatingsUsEquitiesRequest | [**APIgetAnalystRatingsUsEquitiesRequest**](AnalysisApi.md#APIgetAnalystRatingsUsEquitiesRequest)|-|-|
 
 ### Return type
 
@@ -401,9 +430,25 @@ ApiResponse<[**GetAnalystRatingsUsEquities200Response**](GetAnalystRatingsUsEqui
 | **500** |  |  -  |
 
 
+<a id="APIgetAnalystRatingsUsEquitiesRequest"></a>
+## APIgetAnalystRatingsUsEquitiesRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Filter by symbol | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **exchange** | **String** | Filter by exchange name | [optional] |
+| **ratingChange** | [**RatingChangeEnum**](.md) | Filter by rating change action | [optional] [enum: Maintains, Upgrade, Downgrade, Initiates, Reiterates] |
+| **outputsize** | **Long** | Number of records in response | [optional] [default to 30] |
+
+
+
 ## getEarningsEstimate
 
-> GetEarningsEstimate200Response getEarningsEstimate(symbol, figi, isin, cusip, country, exchange)
+> GetEarningsEstimate200Response getEarningsEstimate(getEarningsEstimateRequest)
 
 Earnings estimate
 
@@ -419,6 +464,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.AnalysisApi;
+import com.twelvedata.client.api.AnalysisApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -439,7 +485,15 @@ public class Example {
         String country = "United States"; // String | The country where the instrument is traded, e.g., `United States` or `US`
         String exchange = "NASDAQ"; // String | Exchange where instrument is traded
         try {
-            GetEarningsEstimate200Response result = apiInstance.getEarningsEstimate(symbol, figi, isin, cusip, country, exchange);
+            APIgetEarningsEstimateRequest request = APIgetEarningsEstimateRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .exchange(exchange)
+                .build();
+            GetEarningsEstimate200Response result = apiInstance.getEarningsEstimate(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnalysisApi#getEarningsEstimate");
@@ -454,15 +508,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Filter by symbol | [optional] |
-| **figi** | **String**| The FIGI of an instrument for which data is requested. This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| The country where the instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
+| getEarningsEstimateRequest | [**APIgetEarningsEstimateRequest**](AnalysisApi.md#APIgetEarningsEstimateRequest)|-|-|
 
 ### Return type
 
@@ -492,7 +540,7 @@ public class Example {
 
 ## getEarningsEstimateWithHttpInfo
 
-> ApiResponse<GetEarningsEstimate200Response> getEarningsEstimate getEarningsEstimateWithHttpInfo(symbol, figi, isin, cusip, country, exchange)
+> ApiResponse<GetEarningsEstimate200Response> getEarningsEstimate getEarningsEstimateWithHttpInfo(getEarningsEstimateRequest)
 
 Earnings estimate
 
@@ -509,6 +557,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.AnalysisApi;
+import com.twelvedata.client.api.AnalysisApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -529,7 +578,15 @@ public class Example {
         String country = "United States"; // String | The country where the instrument is traded, e.g., `United States` or `US`
         String exchange = "NASDAQ"; // String | Exchange where instrument is traded
         try {
-            ApiResponse<GetEarningsEstimate200Response> response = apiInstance.getEarningsEstimateWithHttpInfo(symbol, figi, isin, cusip, country, exchange);
+            APIgetEarningsEstimateRequest request = APIgetEarningsEstimateRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .exchange(exchange)
+                .build();
+            ApiResponse<GetEarningsEstimate200Response> response = apiInstance.getEarningsEstimateWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -546,15 +603,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Filter by symbol | [optional] |
-| **figi** | **String**| The FIGI of an instrument for which data is requested. This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| The country where the instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
+| getEarningsEstimateRequest | [**APIgetEarningsEstimateRequest**](AnalysisApi.md#APIgetEarningsEstimateRequest)|-|-|
 
 ### Return type
 
@@ -583,9 +634,24 @@ ApiResponse<[**GetEarningsEstimate200Response**](GetEarningsEstimate200Response.
 | **500** |  |  -  |
 
 
+<a id="APIgetEarningsEstimateRequest"></a>
+## APIgetEarningsEstimateRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Filter by symbol | [optional] |
+| **figi** | **String** | The FIGI of an instrument for which data is requested. This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **country** | **String** | The country where the instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **exchange** | **String** | Exchange where instrument is traded | [optional] |
+
+
+
 ## getEpsRevisions
 
-> GetEpsRevisions200Response getEpsRevisions(symbol, figi, isin, cusip, country, exchange)
+> GetEpsRevisions200Response getEpsRevisions(getEpsRevisionsRequest)
 
 EPS revisions
 
@@ -601,6 +667,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.AnalysisApi;
+import com.twelvedata.client.api.AnalysisApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -621,7 +688,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         String exchange = "NASDAQ"; // String | Filter by exchange name
         try {
-            GetEpsRevisions200Response result = apiInstance.getEpsRevisions(symbol, figi, isin, cusip, country, exchange);
+            APIgetEpsRevisionsRequest request = APIgetEpsRevisionsRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .exchange(exchange)
+                .build();
+            GetEpsRevisions200Response result = apiInstance.getEpsRevisions(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnalysisApi#getEpsRevisions");
@@ -636,15 +711,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Filter by symbol | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **exchange** | **String**| Filter by exchange name | [optional] |
+| getEpsRevisionsRequest | [**APIgetEpsRevisionsRequest**](AnalysisApi.md#APIgetEpsRevisionsRequest)|-|-|
 
 ### Return type
 
@@ -674,7 +743,7 @@ public class Example {
 
 ## getEpsRevisionsWithHttpInfo
 
-> ApiResponse<GetEpsRevisions200Response> getEpsRevisions getEpsRevisionsWithHttpInfo(symbol, figi, isin, cusip, country, exchange)
+> ApiResponse<GetEpsRevisions200Response> getEpsRevisions getEpsRevisionsWithHttpInfo(getEpsRevisionsRequest)
 
 EPS revisions
 
@@ -691,6 +760,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.AnalysisApi;
+import com.twelvedata.client.api.AnalysisApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -711,7 +781,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         String exchange = "NASDAQ"; // String | Filter by exchange name
         try {
-            ApiResponse<GetEpsRevisions200Response> response = apiInstance.getEpsRevisionsWithHttpInfo(symbol, figi, isin, cusip, country, exchange);
+            APIgetEpsRevisionsRequest request = APIgetEpsRevisionsRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .exchange(exchange)
+                .build();
+            ApiResponse<GetEpsRevisions200Response> response = apiInstance.getEpsRevisionsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -728,15 +806,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Filter by symbol | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **exchange** | **String**| Filter by exchange name | [optional] |
+| getEpsRevisionsRequest | [**APIgetEpsRevisionsRequest**](AnalysisApi.md#APIgetEpsRevisionsRequest)|-|-|
 
 ### Return type
 
@@ -765,9 +837,24 @@ ApiResponse<[**GetEpsRevisions200Response**](GetEpsRevisions200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetEpsRevisionsRequest"></a>
+## APIgetEpsRevisionsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Filter by symbol | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **exchange** | **String** | Filter by exchange name | [optional] |
+
+
+
 ## getEpsTrend
 
-> GetEpsTrend200Response getEpsTrend(symbol, figi, isin, cusip, country, exchange)
+> GetEpsTrend200Response getEpsTrend(getEpsTrendRequest)
 
 EPS trend
 
@@ -783,6 +870,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.AnalysisApi;
+import com.twelvedata.client.api.AnalysisApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -803,7 +891,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         String exchange = "NASDAQ"; // String | Filter by exchange name
         try {
-            GetEpsTrend200Response result = apiInstance.getEpsTrend(symbol, figi, isin, cusip, country, exchange);
+            APIgetEpsTrendRequest request = APIgetEpsTrendRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .exchange(exchange)
+                .build();
+            GetEpsTrend200Response result = apiInstance.getEpsTrend(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnalysisApi#getEpsTrend");
@@ -818,15 +914,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Filter by symbol | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **exchange** | **String**| Filter by exchange name | [optional] |
+| getEpsTrendRequest | [**APIgetEpsTrendRequest**](AnalysisApi.md#APIgetEpsTrendRequest)|-|-|
 
 ### Return type
 
@@ -856,7 +946,7 @@ public class Example {
 
 ## getEpsTrendWithHttpInfo
 
-> ApiResponse<GetEpsTrend200Response> getEpsTrend getEpsTrendWithHttpInfo(symbol, figi, isin, cusip, country, exchange)
+> ApiResponse<GetEpsTrend200Response> getEpsTrend getEpsTrendWithHttpInfo(getEpsTrendRequest)
 
 EPS trend
 
@@ -873,6 +963,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.AnalysisApi;
+import com.twelvedata.client.api.AnalysisApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -893,7 +984,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         String exchange = "NASDAQ"; // String | Filter by exchange name
         try {
-            ApiResponse<GetEpsTrend200Response> response = apiInstance.getEpsTrendWithHttpInfo(symbol, figi, isin, cusip, country, exchange);
+            APIgetEpsTrendRequest request = APIgetEpsTrendRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .exchange(exchange)
+                .build();
+            ApiResponse<GetEpsTrend200Response> response = apiInstance.getEpsTrendWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -910,15 +1009,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Filter by symbol | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **exchange** | **String**| Filter by exchange name | [optional] |
+| getEpsTrendRequest | [**APIgetEpsTrendRequest**](AnalysisApi.md#APIgetEpsTrendRequest)|-|-|
 
 ### Return type
 
@@ -947,9 +1040,24 @@ ApiResponse<[**GetEpsTrend200Response**](GetEpsTrend200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetEpsTrendRequest"></a>
+## APIgetEpsTrendRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Filter by symbol | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **exchange** | **String** | Filter by exchange name | [optional] |
+
+
+
 ## getGrowthEstimates
 
-> GetGrowthEstimates200Response getGrowthEstimates(symbol, figi, isin, cusip, country, exchange)
+> GetGrowthEstimates200Response getGrowthEstimates(getGrowthEstimatesRequest)
 
 Growth estimates
 
@@ -965,6 +1073,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.AnalysisApi;
+import com.twelvedata.client.api.AnalysisApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -985,7 +1094,15 @@ public class Example {
         String country = "United States"; // String | The country where the instrument is traded, e.g., `United States` or `US`
         String exchange = "NASDAQ"; // String | Exchange where instrument is traded
         try {
-            GetGrowthEstimates200Response result = apiInstance.getGrowthEstimates(symbol, figi, isin, cusip, country, exchange);
+            APIgetGrowthEstimatesRequest request = APIgetGrowthEstimatesRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .exchange(exchange)
+                .build();
+            GetGrowthEstimates200Response result = apiInstance.getGrowthEstimates(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnalysisApi#getGrowthEstimates");
@@ -1000,15 +1117,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Filter by symbol | [optional] |
-| **figi** | **String**| The FIGI of an instrument for which data is requested. This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| The country where the instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
+| getGrowthEstimatesRequest | [**APIgetGrowthEstimatesRequest**](AnalysisApi.md#APIgetGrowthEstimatesRequest)|-|-|
 
 ### Return type
 
@@ -1038,7 +1149,7 @@ public class Example {
 
 ## getGrowthEstimatesWithHttpInfo
 
-> ApiResponse<GetGrowthEstimates200Response> getGrowthEstimates getGrowthEstimatesWithHttpInfo(symbol, figi, isin, cusip, country, exchange)
+> ApiResponse<GetGrowthEstimates200Response> getGrowthEstimates getGrowthEstimatesWithHttpInfo(getGrowthEstimatesRequest)
 
 Growth estimates
 
@@ -1055,6 +1166,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.AnalysisApi;
+import com.twelvedata.client.api.AnalysisApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1075,7 +1187,15 @@ public class Example {
         String country = "United States"; // String | The country where the instrument is traded, e.g., `United States` or `US`
         String exchange = "NASDAQ"; // String | Exchange where instrument is traded
         try {
-            ApiResponse<GetGrowthEstimates200Response> response = apiInstance.getGrowthEstimatesWithHttpInfo(symbol, figi, isin, cusip, country, exchange);
+            APIgetGrowthEstimatesRequest request = APIgetGrowthEstimatesRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .exchange(exchange)
+                .build();
+            ApiResponse<GetGrowthEstimates200Response> response = apiInstance.getGrowthEstimatesWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1092,15 +1212,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Filter by symbol | [optional] |
-| **figi** | **String**| The FIGI of an instrument for which data is requested. This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| The country where the instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
+| getGrowthEstimatesRequest | [**APIgetGrowthEstimatesRequest**](AnalysisApi.md#APIgetGrowthEstimatesRequest)|-|-|
 
 ### Return type
 
@@ -1129,9 +1243,24 @@ ApiResponse<[**GetGrowthEstimates200Response**](GetGrowthEstimates200Response.md
 | **500** |  |  -  |
 
 
+<a id="APIgetGrowthEstimatesRequest"></a>
+## APIgetGrowthEstimatesRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Filter by symbol | [optional] |
+| **figi** | **String** | The FIGI of an instrument for which data is requested. This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **country** | **String** | The country where the instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **exchange** | **String** | Exchange where instrument is traded | [optional] |
+
+
+
 ## getPriceTarget
 
-> GetPriceTarget200Response getPriceTarget(symbol, figi, isin, cusip, country, exchange)
+> GetPriceTarget200Response getPriceTarget(getPriceTargetRequest)
 
 Price target
 
@@ -1147,6 +1276,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.AnalysisApi;
+import com.twelvedata.client.api.AnalysisApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1167,7 +1297,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         String exchange = "NASDAQ"; // String | Filter by exchange name
         try {
-            GetPriceTarget200Response result = apiInstance.getPriceTarget(symbol, figi, isin, cusip, country, exchange);
+            APIgetPriceTargetRequest request = APIgetPriceTargetRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .exchange(exchange)
+                .build();
+            GetPriceTarget200Response result = apiInstance.getPriceTarget(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnalysisApi#getPriceTarget");
@@ -1182,15 +1320,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Filter by symbol | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **exchange** | **String**| Filter by exchange name | [optional] |
+| getPriceTargetRequest | [**APIgetPriceTargetRequest**](AnalysisApi.md#APIgetPriceTargetRequest)|-|-|
 
 ### Return type
 
@@ -1220,7 +1352,7 @@ public class Example {
 
 ## getPriceTargetWithHttpInfo
 
-> ApiResponse<GetPriceTarget200Response> getPriceTarget getPriceTargetWithHttpInfo(symbol, figi, isin, cusip, country, exchange)
+> ApiResponse<GetPriceTarget200Response> getPriceTarget getPriceTargetWithHttpInfo(getPriceTargetRequest)
 
 Price target
 
@@ -1237,6 +1369,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.AnalysisApi;
+import com.twelvedata.client.api.AnalysisApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1257,7 +1390,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         String exchange = "NASDAQ"; // String | Filter by exchange name
         try {
-            ApiResponse<GetPriceTarget200Response> response = apiInstance.getPriceTargetWithHttpInfo(symbol, figi, isin, cusip, country, exchange);
+            APIgetPriceTargetRequest request = APIgetPriceTargetRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .exchange(exchange)
+                .build();
+            ApiResponse<GetPriceTarget200Response> response = apiInstance.getPriceTargetWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1274,15 +1415,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Filter by symbol | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **exchange** | **String**| Filter by exchange name | [optional] |
+| getPriceTargetRequest | [**APIgetPriceTargetRequest**](AnalysisApi.md#APIgetPriceTargetRequest)|-|-|
 
 ### Return type
 
@@ -1311,9 +1446,24 @@ ApiResponse<[**GetPriceTarget200Response**](GetPriceTarget200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetPriceTargetRequest"></a>
+## APIgetPriceTargetRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Filter by symbol | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **exchange** | **String** | Filter by exchange name | [optional] |
+
+
+
 ## getRecommendations
 
-> GetRecommendations200Response getRecommendations(symbol, figi, isin, cusip, country, exchange)
+> GetRecommendations200Response getRecommendations(getRecommendationsRequest)
 
 Recommendations
 
@@ -1329,6 +1479,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.AnalysisApi;
+import com.twelvedata.client.api.AnalysisApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1349,7 +1500,15 @@ public class Example {
         String country = "United States"; // String | The country where the instrument is traded, e.g., `United States` or `US`
         String exchange = "NASDAQ"; // String | The exchange name where the instrument is traded, e.g., `Nasdaq`, `NSE`.
         try {
-            GetRecommendations200Response result = apiInstance.getRecommendations(symbol, figi, isin, cusip, country, exchange);
+            APIgetRecommendationsRequest request = APIgetRecommendationsRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .exchange(exchange)
+                .build();
+            GetRecommendations200Response result = apiInstance.getRecommendations(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnalysisApi#getRecommendations");
@@ -1364,15 +1523,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Filter by symbol | [optional] |
-| **figi** | **String**| The FIGI of an instrument for which data is requested. This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| The country where the instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **exchange** | **String**| The exchange name where the instrument is traded, e.g., &#x60;Nasdaq&#x60;, &#x60;NSE&#x60;. | [optional] |
+| getRecommendationsRequest | [**APIgetRecommendationsRequest**](AnalysisApi.md#APIgetRecommendationsRequest)|-|-|
 
 ### Return type
 
@@ -1402,7 +1555,7 @@ public class Example {
 
 ## getRecommendationsWithHttpInfo
 
-> ApiResponse<GetRecommendations200Response> getRecommendations getRecommendationsWithHttpInfo(symbol, figi, isin, cusip, country, exchange)
+> ApiResponse<GetRecommendations200Response> getRecommendations getRecommendationsWithHttpInfo(getRecommendationsRequest)
 
 Recommendations
 
@@ -1419,6 +1572,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.AnalysisApi;
+import com.twelvedata.client.api.AnalysisApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1439,7 +1593,15 @@ public class Example {
         String country = "United States"; // String | The country where the instrument is traded, e.g., `United States` or `US`
         String exchange = "NASDAQ"; // String | The exchange name where the instrument is traded, e.g., `Nasdaq`, `NSE`.
         try {
-            ApiResponse<GetRecommendations200Response> response = apiInstance.getRecommendationsWithHttpInfo(symbol, figi, isin, cusip, country, exchange);
+            APIgetRecommendationsRequest request = APIgetRecommendationsRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .exchange(exchange)
+                .build();
+            ApiResponse<GetRecommendations200Response> response = apiInstance.getRecommendationsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1456,15 +1618,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Filter by symbol | [optional] |
-| **figi** | **String**| The FIGI of an instrument for which data is requested. This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| The country where the instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **exchange** | **String**| The exchange name where the instrument is traded, e.g., &#x60;Nasdaq&#x60;, &#x60;NSE&#x60;. | [optional] |
+| getRecommendationsRequest | [**APIgetRecommendationsRequest**](AnalysisApi.md#APIgetRecommendationsRequest)|-|-|
 
 ### Return type
 
@@ -1493,9 +1649,24 @@ ApiResponse<[**GetRecommendations200Response**](GetRecommendations200Response.md
 | **500** |  |  -  |
 
 
+<a id="APIgetRecommendationsRequest"></a>
+## APIgetRecommendationsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Filter by symbol | [optional] |
+| **figi** | **String** | The FIGI of an instrument for which data is requested. This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **country** | **String** | The country where the instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **exchange** | **String** | The exchange name where the instrument is traded, e.g., &#x60;Nasdaq&#x60;, &#x60;NSE&#x60;. | [optional] |
+
+
+
 ## getRevenueEstimate
 
-> GetRevenueEstimate200Response getRevenueEstimate(symbol, figi, isin, cusip, country, exchange, dp)
+> GetRevenueEstimate200Response getRevenueEstimate(getRevenueEstimateRequest)
 
 Revenue estimate
 
@@ -1511,6 +1682,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.AnalysisApi;
+import com.twelvedata.client.api.AnalysisApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1532,7 +1704,16 @@ public class Example {
         String exchange = "NASDAQ"; // String | Filter by exchange name
         Long dp = 5L; // Long | Number of decimal places for floating values. Should be in range [0,11] inclusive
         try {
-            GetRevenueEstimate200Response result = apiInstance.getRevenueEstimate(symbol, figi, isin, cusip, country, exchange, dp);
+            APIgetRevenueEstimateRequest request = APIgetRevenueEstimateRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .exchange(exchange)
+                .dp(dp)
+                .build();
+            GetRevenueEstimate200Response result = apiInstance.getRevenueEstimate(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AnalysisApi#getRevenueEstimate");
@@ -1547,16 +1728,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Filter by symbol | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **exchange** | **String**| Filter by exchange name | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Should be in range [0,11] inclusive | [optional] [default to 5] |
+| getRevenueEstimateRequest | [**APIgetRevenueEstimateRequest**](AnalysisApi.md#APIgetRevenueEstimateRequest)|-|-|
 
 ### Return type
 
@@ -1586,7 +1760,7 @@ public class Example {
 
 ## getRevenueEstimateWithHttpInfo
 
-> ApiResponse<GetRevenueEstimate200Response> getRevenueEstimate getRevenueEstimateWithHttpInfo(symbol, figi, isin, cusip, country, exchange, dp)
+> ApiResponse<GetRevenueEstimate200Response> getRevenueEstimate getRevenueEstimateWithHttpInfo(getRevenueEstimateRequest)
 
 Revenue estimate
 
@@ -1603,6 +1777,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.AnalysisApi;
+import com.twelvedata.client.api.AnalysisApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1624,7 +1799,16 @@ public class Example {
         String exchange = "NASDAQ"; // String | Filter by exchange name
         Long dp = 5L; // Long | Number of decimal places for floating values. Should be in range [0,11] inclusive
         try {
-            ApiResponse<GetRevenueEstimate200Response> response = apiInstance.getRevenueEstimateWithHttpInfo(symbol, figi, isin, cusip, country, exchange, dp);
+            APIgetRevenueEstimateRequest request = APIgetRevenueEstimateRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .exchange(exchange)
+                .dp(dp)
+                .build();
+            ApiResponse<GetRevenueEstimate200Response> response = apiInstance.getRevenueEstimateWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1641,16 +1825,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Filter by symbol | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **exchange** | **String**| Filter by exchange name | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Should be in range [0,11] inclusive | [optional] [default to 5] |
+| getRevenueEstimateRequest | [**APIgetRevenueEstimateRequest**](AnalysisApi.md#APIgetRevenueEstimateRequest)|-|-|
 
 ### Return type
 
@@ -1677,4 +1854,20 @@ ApiResponse<[**GetRevenueEstimate200Response**](GetRevenueEstimate200Response.md
 | **414** |  |  -  |
 | **429** |  |  -  |
 | **500** |  |  -  |
+
+
+<a id="APIgetRevenueEstimateRequest"></a>
+## APIgetRevenueEstimateRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Filter by symbol | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **exchange** | **String** | Filter by exchange name | [optional] |
+| **dp** | **Long** | Number of decimal places for floating values. Should be in range [0,11] inclusive | [optional] [default to 5] |
+
 

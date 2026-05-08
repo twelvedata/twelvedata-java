@@ -173,6 +173,58 @@ public class EtfsApi {
   /**
    * ETFs families
    * Retrieve a comprehensive list of exchange-traded fund (ETF) families, providing users with detailed information on various ETF groups available in the market. This endpoint is ideal for users looking to explore different ETF categories, compare offerings, or integrate ETF family data into their financial applications.
+   * @param apiRequest {@link APIGetETFsFamilyRequest}
+   * @return GetETFsFamily200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetETFsFamily200Response getETFsFamily(APIGetETFsFamilyRequest apiRequest) throws ApiException {
+    return getETFsFamily(apiRequest, null);
+  }
+
+  /**
+   * ETFs families
+   * Retrieve a comprehensive list of exchange-traded fund (ETF) families, providing users with detailed information on various ETF groups available in the market. This endpoint is ideal for users looking to explore different ETF categories, compare offerings, or integrate ETF family data into their financial applications.
+   * @param apiRequest {@link APIGetETFsFamilyRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetETFsFamily200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetETFsFamily200Response getETFsFamily(APIGetETFsFamilyRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    @javax.annotation.Nullable
+    String fundFamily = apiRequest.fundFamily();
+    return getETFsFamily(country, fundFamily, headers);
+  }
+
+  /**
+   * ETFs families
+   * Retrieve a comprehensive list of exchange-traded fund (ETF) families, providing users with detailed information on various ETF groups available in the market. This endpoint is ideal for users looking to explore different ETF categories, compare offerings, or integrate ETF family data into their financial applications.
+   * @param apiRequest {@link APIGetETFsFamilyRequest}
+   * @return ApiResponse&lt;GetETFsFamily200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetETFsFamily200Response> getETFsFamilyWithHttpInfo(APIGetETFsFamilyRequest apiRequest) throws ApiException {
+    return getETFsFamilyWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * ETFs families
+   * Retrieve a comprehensive list of exchange-traded fund (ETF) families, providing users with detailed information on various ETF groups available in the market. This endpoint is ideal for users looking to explore different ETF categories, compare offerings, or integrate ETF family data into their financial applications.
+   * @param apiRequest {@link APIGetETFsFamilyRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetETFsFamily200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetETFsFamily200Response> getETFsFamilyWithHttpInfo(APIGetETFsFamilyRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String country = apiRequest.country();
+    String fundFamily = apiRequest.fundFamily();
+    return getETFsFamilyWithHttpInfo(country, fundFamily, headers);
+  }
+
+  /**
+   * ETFs families
+   * Retrieve a comprehensive list of exchange-traded fund (ETF) families, providing users with detailed information on various ETF groups available in the market. This endpoint is ideal for users looking to explore different ETF categories, compare offerings, or integrate ETF family data into their financial applications.
    * @param country Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
    * @param fundFamily Filter by investment company that manages the fund (optional)
    * @return GetETFsFamily200Response
@@ -302,6 +354,123 @@ public class EtfsApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
+  }
+
+
+  public static final class APIGetETFsFamilyRequest {
+    @javax.annotation.Nullable
+    private String country; // Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+    @javax.annotation.Nullable
+    private String fundFamily; // Filter by investment company that manages the fund (optional)
+
+    private APIGetETFsFamilyRequest(Builder builder) {
+      this.country = builder.country;
+      this.fundFamily = builder.fundFamily;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    @javax.annotation.Nullable
+    public String fundFamily() {
+      return fundFamily;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String country;
+      private String fundFamily;
+
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public Builder fundFamily(@javax.annotation.Nullable String fundFamily) {
+        this.fundFamily = fundFamily;
+        return this;
+      }
+      public APIGetETFsFamilyRequest build() {
+        return new APIGetETFsFamilyRequest(this);
+      }
+    }
+  }
+
+  /**
+   * ETFs directory
+   * The ETFs directory endpoint provides a daily updated list of exchange-traded funds, sorted by total assets in descending order. This endpoint is useful for retrieving comprehensive ETF data, including fund names and asset values, to assist users in quickly identifying the ETFs available.
+   * @param apiRequest {@link APIGetETFsListRequest}
+   * @return GetETFsList200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetETFsList200Response getETFsList(APIGetETFsListRequest apiRequest) throws ApiException {
+    return getETFsList(apiRequest, null);
+  }
+
+  /**
+   * ETFs directory
+   * The ETFs directory endpoint provides a daily updated list of exchange-traded funds, sorted by total assets in descending order. This endpoint is useful for retrieving comprehensive ETF data, including fund names and asset values, to assist users in quickly identifying the ETFs available.
+   * @param apiRequest {@link APIGetETFsListRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetETFsList200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetETFsList200Response getETFsList(APIGetETFsListRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String figi = apiRequest.figi();
+    @javax.annotation.Nullable
+    String isin = apiRequest.isin();
+    @javax.annotation.Nullable
+    String cusip = apiRequest.cusip();
+    @javax.annotation.Nullable
+    String cik = apiRequest.cik();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    @javax.annotation.Nullable
+    String fundFamily = apiRequest.fundFamily();
+    @javax.annotation.Nullable
+    String fundType = apiRequest.fundType();
+    @javax.annotation.Nullable
+    Long page = apiRequest.page();
+    @javax.annotation.Nullable
+    Long outputsize = apiRequest.outputsize();
+    return getETFsList(symbol, figi, isin, cusip, cik, country, fundFamily, fundType, page, outputsize, headers);
+  }
+
+  /**
+   * ETFs directory
+   * The ETFs directory endpoint provides a daily updated list of exchange-traded funds, sorted by total assets in descending order. This endpoint is useful for retrieving comprehensive ETF data, including fund names and asset values, to assist users in quickly identifying the ETFs available.
+   * @param apiRequest {@link APIGetETFsListRequest}
+   * @return ApiResponse&lt;GetETFsList200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetETFsList200Response> getETFsListWithHttpInfo(APIGetETFsListRequest apiRequest) throws ApiException {
+    return getETFsListWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * ETFs directory
+   * The ETFs directory endpoint provides a daily updated list of exchange-traded funds, sorted by total assets in descending order. This endpoint is useful for retrieving comprehensive ETF data, including fund names and asset values, to assist users in quickly identifying the ETFs available.
+   * @param apiRequest {@link APIGetETFsListRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetETFsList200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetETFsList200Response> getETFsListWithHttpInfo(APIGetETFsListRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String figi = apiRequest.figi();
+    String isin = apiRequest.isin();
+    String cusip = apiRequest.cusip();
+    String cik = apiRequest.cik();
+    String country = apiRequest.country();
+    String fundFamily = apiRequest.fundFamily();
+    String fundType = apiRequest.fundType();
+    Long page = apiRequest.page();
+    Long outputsize = apiRequest.outputsize();
+    return getETFsListWithHttpInfo(symbol, figi, isin, cusip, cik, country, fundFamily, fundType, page, outputsize, headers);
   }
 
   /**
@@ -486,6 +655,195 @@ public class EtfsApi {
     return localVarRequestBuilder;
   }
 
+
+  public static final class APIGetETFsListRequest {
+    @javax.annotation.Nullable
+    private String symbol; // Filter by symbol (optional)
+    @javax.annotation.Nullable
+    private String figi; // Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. (optional)
+    @javax.annotation.Nullable
+    private String isin; // Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cusip; // The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cik; // The CIK of an instrument for which data is requested (optional)
+    @javax.annotation.Nullable
+    private String country; // Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+    @javax.annotation.Nullable
+    private String fundFamily; // Filter by investment company that manages the fund (optional)
+    @javax.annotation.Nullable
+    private String fundType; // Filter by the type of fund (optional)
+    @javax.annotation.Nullable
+    private Long page; // Page number (optional, default to 1)
+    @javax.annotation.Nullable
+    private Long outputsize; // Number of records in response (optional, default to 50)
+
+    private APIGetETFsListRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.figi = builder.figi;
+      this.isin = builder.isin;
+      this.cusip = builder.cusip;
+      this.cik = builder.cik;
+      this.country = builder.country;
+      this.fundFamily = builder.fundFamily;
+      this.fundType = builder.fundType;
+      this.page = builder.page;
+      this.outputsize = builder.outputsize;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String figi() {
+      return figi;
+    }
+    @javax.annotation.Nullable
+    public String isin() {
+      return isin;
+    }
+    @javax.annotation.Nullable
+    public String cusip() {
+      return cusip;
+    }
+    @javax.annotation.Nullable
+    public String cik() {
+      return cik;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    @javax.annotation.Nullable
+    public String fundFamily() {
+      return fundFamily;
+    }
+    @javax.annotation.Nullable
+    public String fundType() {
+      return fundType;
+    }
+    @javax.annotation.Nullable
+    public Long page() {
+      return page;
+    }
+    @javax.annotation.Nullable
+    public Long outputsize() {
+      return outputsize;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String figi;
+      private String isin;
+      private String cusip;
+      private String cik;
+      private String country;
+      private String fundFamily;
+      private String fundType;
+      private Long page;
+      private Long outputsize;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder figi(@javax.annotation.Nullable String figi) {
+        this.figi = figi;
+        return this;
+      }
+      public Builder isin(@javax.annotation.Nullable String isin) {
+        this.isin = isin;
+        return this;
+      }
+      public Builder cusip(@javax.annotation.Nullable String cusip) {
+        this.cusip = cusip;
+        return this;
+      }
+      public Builder cik(@javax.annotation.Nullable String cik) {
+        this.cik = cik;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public Builder fundFamily(@javax.annotation.Nullable String fundFamily) {
+        this.fundFamily = fundFamily;
+        return this;
+      }
+      public Builder fundType(@javax.annotation.Nullable String fundType) {
+        this.fundType = fundType;
+        return this;
+      }
+      public Builder page(@javax.annotation.Nullable Long page) {
+        this.page = page;
+        return this;
+      }
+      public Builder outputsize(@javax.annotation.Nullable Long outputsize) {
+        this.outputsize = outputsize;
+        return this;
+      }
+      public APIGetETFsListRequest build() {
+        return new APIGetETFsListRequest(this);
+      }
+    }
+  }
+
+  /**
+   * ETFs types
+   * The ETFs Types endpoint provides a concise list of ETF categories by market (e.g., Singapore, United States), including types like \&quot;Equity Precious Metals\&quot; and \&quot;Large Blend.\&quot; It supports targeted investment research and portfolio diversification.
+   * @param apiRequest {@link APIGetETFsTypeRequest}
+   * @return GetETFsType200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetETFsType200Response getETFsType(APIGetETFsTypeRequest apiRequest) throws ApiException {
+    return getETFsType(apiRequest, null);
+  }
+
+  /**
+   * ETFs types
+   * The ETFs Types endpoint provides a concise list of ETF categories by market (e.g., Singapore, United States), including types like \&quot;Equity Precious Metals\&quot; and \&quot;Large Blend.\&quot; It supports targeted investment research and portfolio diversification.
+   * @param apiRequest {@link APIGetETFsTypeRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetETFsType200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetETFsType200Response getETFsType(APIGetETFsTypeRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    @javax.annotation.Nullable
+    String fundType = apiRequest.fundType();
+    return getETFsType(country, fundType, headers);
+  }
+
+  /**
+   * ETFs types
+   * The ETFs Types endpoint provides a concise list of ETF categories by market (e.g., Singapore, United States), including types like \&quot;Equity Precious Metals\&quot; and \&quot;Large Blend.\&quot; It supports targeted investment research and portfolio diversification.
+   * @param apiRequest {@link APIGetETFsTypeRequest}
+   * @return ApiResponse&lt;GetETFsType200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetETFsType200Response> getETFsTypeWithHttpInfo(APIGetETFsTypeRequest apiRequest) throws ApiException {
+    return getETFsTypeWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * ETFs types
+   * The ETFs Types endpoint provides a concise list of ETF categories by market (e.g., Singapore, United States), including types like \&quot;Equity Precious Metals\&quot; and \&quot;Large Blend.\&quot; It supports targeted investment research and portfolio diversification.
+   * @param apiRequest {@link APIGetETFsTypeRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetETFsType200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetETFsType200Response> getETFsTypeWithHttpInfo(APIGetETFsTypeRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String country = apiRequest.country();
+    String fundType = apiRequest.fundType();
+    return getETFsTypeWithHttpInfo(country, fundType, headers);
+  }
+
   /**
    * ETFs types
    * The ETFs Types endpoint provides a concise list of ETF categories by market (e.g., Singapore, United States), including types like \&quot;Equity Precious Metals\&quot; and \&quot;Large Blend.\&quot; It supports targeted investment research and portfolio diversification.
@@ -618,6 +976,111 @@ public class EtfsApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
+  }
+
+
+  public static final class APIGetETFsTypeRequest {
+    @javax.annotation.Nullable
+    private String country; // Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+    @javax.annotation.Nullable
+    private String fundType; // Filter by the type of fund (optional)
+
+    private APIGetETFsTypeRequest(Builder builder) {
+      this.country = builder.country;
+      this.fundType = builder.fundType;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    @javax.annotation.Nullable
+    public String fundType() {
+      return fundType;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String country;
+      private String fundType;
+
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public Builder fundType(@javax.annotation.Nullable String fundType) {
+        this.fundType = fundType;
+        return this;
+      }
+      public APIGetETFsTypeRequest build() {
+        return new APIGetETFsTypeRequest(this);
+      }
+    }
+  }
+
+  /**
+   * ETF full data
+   * The ETF full data endpoint provides detailed information about global Exchange-Traded Funds. It returns comprehensive data, including a summary, performance metrics, risk assessment, and composition details. This endpoint is ideal for users seeking an in-depth analysis of worldwide ETFs, enabling them to access key financial metrics and portfolio breakdowns.
+   * @param apiRequest {@link APIGetETFsWorldRequest}
+   * @return GetETFsWorld200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetETFsWorld200Response getETFsWorld(APIGetETFsWorldRequest apiRequest) throws ApiException {
+    return getETFsWorld(apiRequest, null);
+  }
+
+  /**
+   * ETF full data
+   * The ETF full data endpoint provides detailed information about global Exchange-Traded Funds. It returns comprehensive data, including a summary, performance metrics, risk assessment, and composition details. This endpoint is ideal for users seeking an in-depth analysis of worldwide ETFs, enabling them to access key financial metrics and portfolio breakdowns.
+   * @param apiRequest {@link APIGetETFsWorldRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetETFsWorld200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetETFsWorld200Response getETFsWorld(APIGetETFsWorldRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String figi = apiRequest.figi();
+    @javax.annotation.Nullable
+    String isin = apiRequest.isin();
+    @javax.annotation.Nullable
+    String cusip = apiRequest.cusip();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    @javax.annotation.Nullable
+    Long dp = apiRequest.dp();
+    return getETFsWorld(symbol, figi, isin, cusip, country, dp, headers);
+  }
+
+  /**
+   * ETF full data
+   * The ETF full data endpoint provides detailed information about global Exchange-Traded Funds. It returns comprehensive data, including a summary, performance metrics, risk assessment, and composition details. This endpoint is ideal for users seeking an in-depth analysis of worldwide ETFs, enabling them to access key financial metrics and portfolio breakdowns.
+   * @param apiRequest {@link APIGetETFsWorldRequest}
+   * @return ApiResponse&lt;GetETFsWorld200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetETFsWorld200Response> getETFsWorldWithHttpInfo(APIGetETFsWorldRequest apiRequest) throws ApiException {
+    return getETFsWorldWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * ETF full data
+   * The ETF full data endpoint provides detailed information about global Exchange-Traded Funds. It returns comprehensive data, including a summary, performance metrics, risk assessment, and composition details. This endpoint is ideal for users seeking an in-depth analysis of worldwide ETFs, enabling them to access key financial metrics and portfolio breakdowns.
+   * @param apiRequest {@link APIGetETFsWorldRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetETFsWorld200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetETFsWorld200Response> getETFsWorldWithHttpInfo(APIGetETFsWorldRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String figi = apiRequest.figi();
+    String isin = apiRequest.isin();
+    String cusip = apiRequest.cusip();
+    String country = apiRequest.country();
+    Long dp = apiRequest.dp();
+    return getETFsWorldWithHttpInfo(symbol, figi, isin, cusip, country, dp, headers);
   }
 
   /**
@@ -778,6 +1241,159 @@ public class EtfsApi {
     return localVarRequestBuilder;
   }
 
+
+  public static final class APIGetETFsWorldRequest {
+    @javax.annotation.Nullable
+    private String symbol; // Symbol ticker of etf (optional)
+    @javax.annotation.Nullable
+    private String figi; // Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. (optional)
+    @javax.annotation.Nullable
+    private String isin; // Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cusip; // The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String country; // Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+    @javax.annotation.Nullable
+    private Long dp; // Number of decimal places for floating values. Accepts value in range [0,11] (optional, default to 5)
+
+    private APIGetETFsWorldRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.figi = builder.figi;
+      this.isin = builder.isin;
+      this.cusip = builder.cusip;
+      this.country = builder.country;
+      this.dp = builder.dp;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String figi() {
+      return figi;
+    }
+    @javax.annotation.Nullable
+    public String isin() {
+      return isin;
+    }
+    @javax.annotation.Nullable
+    public String cusip() {
+      return cusip;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    @javax.annotation.Nullable
+    public Long dp() {
+      return dp;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String figi;
+      private String isin;
+      private String cusip;
+      private String country;
+      private Long dp;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder figi(@javax.annotation.Nullable String figi) {
+        this.figi = figi;
+        return this;
+      }
+      public Builder isin(@javax.annotation.Nullable String isin) {
+        this.isin = isin;
+        return this;
+      }
+      public Builder cusip(@javax.annotation.Nullable String cusip) {
+        this.cusip = cusip;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public Builder dp(@javax.annotation.Nullable Long dp) {
+        this.dp = dp;
+        return this;
+      }
+      public APIGetETFsWorldRequest build() {
+        return new APIGetETFsWorldRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Composition
+   * The ETFs composition endpoint provides detailed information about the composition of global Exchange-Traded Funds. It returns data on the sectors included in the ETF, specific holding details, and the weighted exposure of each component. This endpoint is useful for users who need to understand the specific makeup and sector distribution of an ETF portfolio.
+   * @param apiRequest {@link APIGetETFsWorldCompositionRequest}
+   * @return GetETFsWorldComposition200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetETFsWorldComposition200Response getETFsWorldComposition(APIGetETFsWorldCompositionRequest apiRequest) throws ApiException {
+    return getETFsWorldComposition(apiRequest, null);
+  }
+
+  /**
+   * Composition
+   * The ETFs composition endpoint provides detailed information about the composition of global Exchange-Traded Funds. It returns data on the sectors included in the ETF, specific holding details, and the weighted exposure of each component. This endpoint is useful for users who need to understand the specific makeup and sector distribution of an ETF portfolio.
+   * @param apiRequest {@link APIGetETFsWorldCompositionRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetETFsWorldComposition200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetETFsWorldComposition200Response getETFsWorldComposition(APIGetETFsWorldCompositionRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String figi = apiRequest.figi();
+    @javax.annotation.Nullable
+    String isin = apiRequest.isin();
+    @javax.annotation.Nullable
+    String cusip = apiRequest.cusip();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    @javax.annotation.Nullable
+    Long dp = apiRequest.dp();
+    return getETFsWorldComposition(symbol, figi, isin, cusip, country, dp, headers);
+  }
+
+  /**
+   * Composition
+   * The ETFs composition endpoint provides detailed information about the composition of global Exchange-Traded Funds. It returns data on the sectors included in the ETF, specific holding details, and the weighted exposure of each component. This endpoint is useful for users who need to understand the specific makeup and sector distribution of an ETF portfolio.
+   * @param apiRequest {@link APIGetETFsWorldCompositionRequest}
+   * @return ApiResponse&lt;GetETFsWorldComposition200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetETFsWorldComposition200Response> getETFsWorldCompositionWithHttpInfo(APIGetETFsWorldCompositionRequest apiRequest) throws ApiException {
+    return getETFsWorldCompositionWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Composition
+   * The ETFs composition endpoint provides detailed information about the composition of global Exchange-Traded Funds. It returns data on the sectors included in the ETF, specific holding details, and the weighted exposure of each component. This endpoint is useful for users who need to understand the specific makeup and sector distribution of an ETF portfolio.
+   * @param apiRequest {@link APIGetETFsWorldCompositionRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetETFsWorldComposition200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetETFsWorldComposition200Response> getETFsWorldCompositionWithHttpInfo(APIGetETFsWorldCompositionRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String figi = apiRequest.figi();
+    String isin = apiRequest.isin();
+    String cusip = apiRequest.cusip();
+    String country = apiRequest.country();
+    Long dp = apiRequest.dp();
+    return getETFsWorldCompositionWithHttpInfo(symbol, figi, isin, cusip, country, dp, headers);
+  }
+
   /**
    * Composition
    * The ETFs composition endpoint provides detailed information about the composition of global Exchange-Traded Funds. It returns data on the sectors included in the ETF, specific holding details, and the weighted exposure of each component. This endpoint is useful for users who need to understand the specific makeup and sector distribution of an ETF portfolio.
@@ -934,6 +1550,159 @@ public class EtfsApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
+  }
+
+
+  public static final class APIGetETFsWorldCompositionRequest {
+    @javax.annotation.Nullable
+    private String symbol; // Symbol ticker of etf (optional)
+    @javax.annotation.Nullable
+    private String figi; // Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. (optional)
+    @javax.annotation.Nullable
+    private String isin; // Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cusip; // The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String country; // Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+    @javax.annotation.Nullable
+    private Long dp; // Number of decimal places for floating values. Accepts value in range [0,11] (optional, default to 5)
+
+    private APIGetETFsWorldCompositionRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.figi = builder.figi;
+      this.isin = builder.isin;
+      this.cusip = builder.cusip;
+      this.country = builder.country;
+      this.dp = builder.dp;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String figi() {
+      return figi;
+    }
+    @javax.annotation.Nullable
+    public String isin() {
+      return isin;
+    }
+    @javax.annotation.Nullable
+    public String cusip() {
+      return cusip;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    @javax.annotation.Nullable
+    public Long dp() {
+      return dp;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String figi;
+      private String isin;
+      private String cusip;
+      private String country;
+      private Long dp;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder figi(@javax.annotation.Nullable String figi) {
+        this.figi = figi;
+        return this;
+      }
+      public Builder isin(@javax.annotation.Nullable String isin) {
+        this.isin = isin;
+        return this;
+      }
+      public Builder cusip(@javax.annotation.Nullable String cusip) {
+        this.cusip = cusip;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public Builder dp(@javax.annotation.Nullable Long dp) {
+        this.dp = dp;
+        return this;
+      }
+      public APIGetETFsWorldCompositionRequest build() {
+        return new APIGetETFsWorldCompositionRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Performance
+   * The ETFs performance endpoint provides comprehensive performance data for exchange-traded funds globally. It returns detailed metrics such as trailing returns and annual returns, enabling users to evaluate the historical performance of various ETFs. This endpoint is ideal for users looking to compare ETF performance over different time periods and assess their investment potential.
+   * @param apiRequest {@link APIGetETFsWorldPerformanceRequest}
+   * @return GetETFsWorldPerformance200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetETFsWorldPerformance200Response getETFsWorldPerformance(APIGetETFsWorldPerformanceRequest apiRequest) throws ApiException {
+    return getETFsWorldPerformance(apiRequest, null);
+  }
+
+  /**
+   * Performance
+   * The ETFs performance endpoint provides comprehensive performance data for exchange-traded funds globally. It returns detailed metrics such as trailing returns and annual returns, enabling users to evaluate the historical performance of various ETFs. This endpoint is ideal for users looking to compare ETF performance over different time periods and assess their investment potential.
+   * @param apiRequest {@link APIGetETFsWorldPerformanceRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetETFsWorldPerformance200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetETFsWorldPerformance200Response getETFsWorldPerformance(APIGetETFsWorldPerformanceRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String figi = apiRequest.figi();
+    @javax.annotation.Nullable
+    String isin = apiRequest.isin();
+    @javax.annotation.Nullable
+    String cusip = apiRequest.cusip();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    @javax.annotation.Nullable
+    Long dp = apiRequest.dp();
+    return getETFsWorldPerformance(symbol, figi, isin, cusip, country, dp, headers);
+  }
+
+  /**
+   * Performance
+   * The ETFs performance endpoint provides comprehensive performance data for exchange-traded funds globally. It returns detailed metrics such as trailing returns and annual returns, enabling users to evaluate the historical performance of various ETFs. This endpoint is ideal for users looking to compare ETF performance over different time periods and assess their investment potential.
+   * @param apiRequest {@link APIGetETFsWorldPerformanceRequest}
+   * @return ApiResponse&lt;GetETFsWorldPerformance200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetETFsWorldPerformance200Response> getETFsWorldPerformanceWithHttpInfo(APIGetETFsWorldPerformanceRequest apiRequest) throws ApiException {
+    return getETFsWorldPerformanceWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Performance
+   * The ETFs performance endpoint provides comprehensive performance data for exchange-traded funds globally. It returns detailed metrics such as trailing returns and annual returns, enabling users to evaluate the historical performance of various ETFs. This endpoint is ideal for users looking to compare ETF performance over different time periods and assess their investment potential.
+   * @param apiRequest {@link APIGetETFsWorldPerformanceRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetETFsWorldPerformance200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetETFsWorldPerformance200Response> getETFsWorldPerformanceWithHttpInfo(APIGetETFsWorldPerformanceRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String figi = apiRequest.figi();
+    String isin = apiRequest.isin();
+    String cusip = apiRequest.cusip();
+    String country = apiRequest.country();
+    Long dp = apiRequest.dp();
+    return getETFsWorldPerformanceWithHttpInfo(symbol, figi, isin, cusip, country, dp, headers);
   }
 
   /**
@@ -1094,6 +1863,159 @@ public class EtfsApi {
     return localVarRequestBuilder;
   }
 
+
+  public static final class APIGetETFsWorldPerformanceRequest {
+    @javax.annotation.Nullable
+    private String symbol; // Symbol ticker of etf (optional)
+    @javax.annotation.Nullable
+    private String figi; // Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. (optional)
+    @javax.annotation.Nullable
+    private String isin; // Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cusip; // The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String country; // Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+    @javax.annotation.Nullable
+    private Long dp; // Number of decimal places for floating values. Accepts value in range [0,11] (optional, default to 5)
+
+    private APIGetETFsWorldPerformanceRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.figi = builder.figi;
+      this.isin = builder.isin;
+      this.cusip = builder.cusip;
+      this.country = builder.country;
+      this.dp = builder.dp;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String figi() {
+      return figi;
+    }
+    @javax.annotation.Nullable
+    public String isin() {
+      return isin;
+    }
+    @javax.annotation.Nullable
+    public String cusip() {
+      return cusip;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    @javax.annotation.Nullable
+    public Long dp() {
+      return dp;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String figi;
+      private String isin;
+      private String cusip;
+      private String country;
+      private Long dp;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder figi(@javax.annotation.Nullable String figi) {
+        this.figi = figi;
+        return this;
+      }
+      public Builder isin(@javax.annotation.Nullable String isin) {
+        this.isin = isin;
+        return this;
+      }
+      public Builder cusip(@javax.annotation.Nullable String cusip) {
+        this.cusip = cusip;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public Builder dp(@javax.annotation.Nullable Long dp) {
+        this.dp = dp;
+        return this;
+      }
+      public APIGetETFsWorldPerformanceRequest build() {
+        return new APIGetETFsWorldPerformanceRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Risk
+   * The ETFs risk endpoint provides essential risk metrics for global Exchange Traded Funds. It returns data such as volatility, beta, and other risk-related indicators, enabling users to assess the potential risk associated with investing in various ETFs worldwide.
+   * @param apiRequest {@link APIGetETFsWorldRiskRequest}
+   * @return GetETFsWorldRisk200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetETFsWorldRisk200Response getETFsWorldRisk(APIGetETFsWorldRiskRequest apiRequest) throws ApiException {
+    return getETFsWorldRisk(apiRequest, null);
+  }
+
+  /**
+   * Risk
+   * The ETFs risk endpoint provides essential risk metrics for global Exchange Traded Funds. It returns data such as volatility, beta, and other risk-related indicators, enabling users to assess the potential risk associated with investing in various ETFs worldwide.
+   * @param apiRequest {@link APIGetETFsWorldRiskRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetETFsWorldRisk200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetETFsWorldRisk200Response getETFsWorldRisk(APIGetETFsWorldRiskRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String figi = apiRequest.figi();
+    @javax.annotation.Nullable
+    String isin = apiRequest.isin();
+    @javax.annotation.Nullable
+    String cusip = apiRequest.cusip();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    @javax.annotation.Nullable
+    Long dp = apiRequest.dp();
+    return getETFsWorldRisk(symbol, figi, isin, cusip, country, dp, headers);
+  }
+
+  /**
+   * Risk
+   * The ETFs risk endpoint provides essential risk metrics for global Exchange Traded Funds. It returns data such as volatility, beta, and other risk-related indicators, enabling users to assess the potential risk associated with investing in various ETFs worldwide.
+   * @param apiRequest {@link APIGetETFsWorldRiskRequest}
+   * @return ApiResponse&lt;GetETFsWorldRisk200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetETFsWorldRisk200Response> getETFsWorldRiskWithHttpInfo(APIGetETFsWorldRiskRequest apiRequest) throws ApiException {
+    return getETFsWorldRiskWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Risk
+   * The ETFs risk endpoint provides essential risk metrics for global Exchange Traded Funds. It returns data such as volatility, beta, and other risk-related indicators, enabling users to assess the potential risk associated with investing in various ETFs worldwide.
+   * @param apiRequest {@link APIGetETFsWorldRiskRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetETFsWorldRisk200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetETFsWorldRisk200Response> getETFsWorldRiskWithHttpInfo(APIGetETFsWorldRiskRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String figi = apiRequest.figi();
+    String isin = apiRequest.isin();
+    String cusip = apiRequest.cusip();
+    String country = apiRequest.country();
+    Long dp = apiRequest.dp();
+    return getETFsWorldRiskWithHttpInfo(symbol, figi, isin, cusip, country, dp, headers);
+  }
+
   /**
    * Risk
    * The ETFs risk endpoint provides essential risk metrics for global Exchange Traded Funds. It returns data such as volatility, beta, and other risk-related indicators, enabling users to assess the potential risk associated with investing in various ETFs worldwide.
@@ -1252,6 +2174,159 @@ public class EtfsApi {
     return localVarRequestBuilder;
   }
 
+
+  public static final class APIGetETFsWorldRiskRequest {
+    @javax.annotation.Nullable
+    private String symbol; // Symbol ticker of etf (optional)
+    @javax.annotation.Nullable
+    private String figi; // Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. (optional)
+    @javax.annotation.Nullable
+    private String isin; // Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cusip; // The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String country; // Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+    @javax.annotation.Nullable
+    private Long dp; // Number of decimal places for floating values. Accepts value in range [0,11] (optional, default to 5)
+
+    private APIGetETFsWorldRiskRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.figi = builder.figi;
+      this.isin = builder.isin;
+      this.cusip = builder.cusip;
+      this.country = builder.country;
+      this.dp = builder.dp;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String figi() {
+      return figi;
+    }
+    @javax.annotation.Nullable
+    public String isin() {
+      return isin;
+    }
+    @javax.annotation.Nullable
+    public String cusip() {
+      return cusip;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    @javax.annotation.Nullable
+    public Long dp() {
+      return dp;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String figi;
+      private String isin;
+      private String cusip;
+      private String country;
+      private Long dp;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder figi(@javax.annotation.Nullable String figi) {
+        this.figi = figi;
+        return this;
+      }
+      public Builder isin(@javax.annotation.Nullable String isin) {
+        this.isin = isin;
+        return this;
+      }
+      public Builder cusip(@javax.annotation.Nullable String cusip) {
+        this.cusip = cusip;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public Builder dp(@javax.annotation.Nullable Long dp) {
+        this.dp = dp;
+        return this;
+      }
+      public APIGetETFsWorldRiskRequest build() {
+        return new APIGetETFsWorldRiskRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Summary
+   * The ETFs summary endpoint provides a concise overview of global Exchange-Traded Funds. It returns key data points such as ETF names, symbols, and current market values, enabling users to quickly assess the performance and status of various international ETFs. This summary is ideal for users who need a snapshot of the global ETF landscape without delving into detailed analysis.
+   * @param apiRequest {@link APIGetETFsWorldSummaryRequest}
+   * @return GetETFsWorldSummary200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetETFsWorldSummary200Response getETFsWorldSummary(APIGetETFsWorldSummaryRequest apiRequest) throws ApiException {
+    return getETFsWorldSummary(apiRequest, null);
+  }
+
+  /**
+   * Summary
+   * The ETFs summary endpoint provides a concise overview of global Exchange-Traded Funds. It returns key data points such as ETF names, symbols, and current market values, enabling users to quickly assess the performance and status of various international ETFs. This summary is ideal for users who need a snapshot of the global ETF landscape without delving into detailed analysis.
+   * @param apiRequest {@link APIGetETFsWorldSummaryRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetETFsWorldSummary200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetETFsWorldSummary200Response getETFsWorldSummary(APIGetETFsWorldSummaryRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String figi = apiRequest.figi();
+    @javax.annotation.Nullable
+    String isin = apiRequest.isin();
+    @javax.annotation.Nullable
+    String cusip = apiRequest.cusip();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    @javax.annotation.Nullable
+    Long dp = apiRequest.dp();
+    return getETFsWorldSummary(symbol, figi, isin, cusip, country, dp, headers);
+  }
+
+  /**
+   * Summary
+   * The ETFs summary endpoint provides a concise overview of global Exchange-Traded Funds. It returns key data points such as ETF names, symbols, and current market values, enabling users to quickly assess the performance and status of various international ETFs. This summary is ideal for users who need a snapshot of the global ETF landscape without delving into detailed analysis.
+   * @param apiRequest {@link APIGetETFsWorldSummaryRequest}
+   * @return ApiResponse&lt;GetETFsWorldSummary200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetETFsWorldSummary200Response> getETFsWorldSummaryWithHttpInfo(APIGetETFsWorldSummaryRequest apiRequest) throws ApiException {
+    return getETFsWorldSummaryWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Summary
+   * The ETFs summary endpoint provides a concise overview of global Exchange-Traded Funds. It returns key data points such as ETF names, symbols, and current market values, enabling users to quickly assess the performance and status of various international ETFs. This summary is ideal for users who need a snapshot of the global ETF landscape without delving into detailed analysis.
+   * @param apiRequest {@link APIGetETFsWorldSummaryRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetETFsWorldSummary200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetETFsWorldSummary200Response> getETFsWorldSummaryWithHttpInfo(APIGetETFsWorldSummaryRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String figi = apiRequest.figi();
+    String isin = apiRequest.isin();
+    String cusip = apiRequest.cusip();
+    String country = apiRequest.country();
+    Long dp = apiRequest.dp();
+    return getETFsWorldSummaryWithHttpInfo(symbol, figi, isin, cusip, country, dp, headers);
+  }
+
   /**
    * Summary
    * The ETFs summary endpoint provides a concise overview of global Exchange-Traded Funds. It returns key data points such as ETF names, symbols, and current market values, enabling users to quickly assess the performance and status of various international ETFs. This summary is ideal for users who need a snapshot of the global ETF landscape without delving into detailed analysis.
@@ -1408,6 +2483,95 @@ public class EtfsApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
+  }
+
+
+  public static final class APIGetETFsWorldSummaryRequest {
+    @javax.annotation.Nullable
+    private String symbol; // Symbol ticker of etf (optional)
+    @javax.annotation.Nullable
+    private String figi; // Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. (optional)
+    @javax.annotation.Nullable
+    private String isin; // Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cusip; // The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String country; // Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+    @javax.annotation.Nullable
+    private Long dp; // Number of decimal places for floating values. Accepts value in range [0,11] (optional, default to 5)
+
+    private APIGetETFsWorldSummaryRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.figi = builder.figi;
+      this.isin = builder.isin;
+      this.cusip = builder.cusip;
+      this.country = builder.country;
+      this.dp = builder.dp;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String figi() {
+      return figi;
+    }
+    @javax.annotation.Nullable
+    public String isin() {
+      return isin;
+    }
+    @javax.annotation.Nullable
+    public String cusip() {
+      return cusip;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    @javax.annotation.Nullable
+    public Long dp() {
+      return dp;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String figi;
+      private String isin;
+      private String cusip;
+      private String country;
+      private Long dp;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder figi(@javax.annotation.Nullable String figi) {
+        this.figi = figi;
+        return this;
+      }
+      public Builder isin(@javax.annotation.Nullable String isin) {
+        this.isin = isin;
+        return this;
+      }
+      public Builder cusip(@javax.annotation.Nullable String cusip) {
+        this.cusip = cusip;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public Builder dp(@javax.annotation.Nullable Long dp) {
+        this.dp = dp;
+        return this;
+      }
+      public APIGetETFsWorldSummaryRequest build() {
+        return new APIGetETFsWorldSummaryRequest(this);
+      }
+    }
   }
 
 }

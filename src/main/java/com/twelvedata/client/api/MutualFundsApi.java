@@ -176,6 +176,58 @@ public class MutualFundsApi {
   /**
    * MFs families
    * The mutual funds family endpoint provides a comprehensive list of MF families, which are groups of mutual funds managed by the same investment company. This data is useful for users looking to explore or compare different fund families, understand the range of investment options offered by each, and identify potential investment opportunities within specific fund families.
+   * @param apiRequest {@link APIGetMutualFundsFamilyRequest}
+   * @return GetMutualFundsFamily200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetMutualFundsFamily200Response getMutualFundsFamily(APIGetMutualFundsFamilyRequest apiRequest) throws ApiException {
+    return getMutualFundsFamily(apiRequest, null);
+  }
+
+  /**
+   * MFs families
+   * The mutual funds family endpoint provides a comprehensive list of MF families, which are groups of mutual funds managed by the same investment company. This data is useful for users looking to explore or compare different fund families, understand the range of investment options offered by each, and identify potential investment opportunities within specific fund families.
+   * @param apiRequest {@link APIGetMutualFundsFamilyRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetMutualFundsFamily200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetMutualFundsFamily200Response getMutualFundsFamily(APIGetMutualFundsFamilyRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String fundFamily = apiRequest.fundFamily();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    return getMutualFundsFamily(fundFamily, country, headers);
+  }
+
+  /**
+   * MFs families
+   * The mutual funds family endpoint provides a comprehensive list of MF families, which are groups of mutual funds managed by the same investment company. This data is useful for users looking to explore or compare different fund families, understand the range of investment options offered by each, and identify potential investment opportunities within specific fund families.
+   * @param apiRequest {@link APIGetMutualFundsFamilyRequest}
+   * @return ApiResponse&lt;GetMutualFundsFamily200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetMutualFundsFamily200Response> getMutualFundsFamilyWithHttpInfo(APIGetMutualFundsFamilyRequest apiRequest) throws ApiException {
+    return getMutualFundsFamilyWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * MFs families
+   * The mutual funds family endpoint provides a comprehensive list of MF families, which are groups of mutual funds managed by the same investment company. This data is useful for users looking to explore or compare different fund families, understand the range of investment options offered by each, and identify potential investment opportunities within specific fund families.
+   * @param apiRequest {@link APIGetMutualFundsFamilyRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetMutualFundsFamily200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetMutualFundsFamily200Response> getMutualFundsFamilyWithHttpInfo(APIGetMutualFundsFamilyRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String fundFamily = apiRequest.fundFamily();
+    String country = apiRequest.country();
+    return getMutualFundsFamilyWithHttpInfo(fundFamily, country, headers);
+  }
+
+  /**
+   * MFs families
+   * The mutual funds family endpoint provides a comprehensive list of MF families, which are groups of mutual funds managed by the same investment company. This data is useful for users looking to explore or compare different fund families, understand the range of investment options offered by each, and identify potential investment opportunities within specific fund families.
    * @param fundFamily Filter by investment company that manages the fund (optional)
    * @param country Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
    * @return GetMutualFundsFamily200Response
@@ -305,6 +357,129 @@ public class MutualFundsApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
+  }
+
+
+  public static final class APIGetMutualFundsFamilyRequest {
+    @javax.annotation.Nullable
+    private String fundFamily; // Filter by investment company that manages the fund (optional)
+    @javax.annotation.Nullable
+    private String country; // Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+
+    private APIGetMutualFundsFamilyRequest(Builder builder) {
+      this.fundFamily = builder.fundFamily;
+      this.country = builder.country;
+    }
+    @javax.annotation.Nullable
+    public String fundFamily() {
+      return fundFamily;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String fundFamily;
+      private String country;
+
+      public Builder fundFamily(@javax.annotation.Nullable String fundFamily) {
+        this.fundFamily = fundFamily;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public APIGetMutualFundsFamilyRequest build() {
+        return new APIGetMutualFundsFamilyRequest(this);
+      }
+    }
+  }
+
+  /**
+   * MFs directory
+   * The mutual funds directory endpoint provides a daily updated list of mutual funds, sorted in descending order by their total assets value. This endpoint is useful for retrieving an organized overview of available mutual funds.
+   * @param apiRequest {@link APIGetMutualFundsListRequest}
+   * @return GetMutualFundsList200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetMutualFundsList200Response getMutualFundsList(APIGetMutualFundsListRequest apiRequest) throws ApiException {
+    return getMutualFundsList(apiRequest, null);
+  }
+
+  /**
+   * MFs directory
+   * The mutual funds directory endpoint provides a daily updated list of mutual funds, sorted in descending order by their total assets value. This endpoint is useful for retrieving an organized overview of available mutual funds.
+   * @param apiRequest {@link APIGetMutualFundsListRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetMutualFundsList200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetMutualFundsList200Response getMutualFundsList(APIGetMutualFundsListRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String figi = apiRequest.figi();
+    @javax.annotation.Nullable
+    String isin = apiRequest.isin();
+    @javax.annotation.Nullable
+    String cusip = apiRequest.cusip();
+    @javax.annotation.Nullable
+    String cik = apiRequest.cik();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    @javax.annotation.Nullable
+    String fundFamily = apiRequest.fundFamily();
+    @javax.annotation.Nullable
+    String fundType = apiRequest.fundType();
+    @javax.annotation.Nullable
+    Long performanceRating = apiRequest.performanceRating();
+    @javax.annotation.Nullable
+    Long riskRating = apiRequest.riskRating();
+    @javax.annotation.Nullable
+    Long page = apiRequest.page();
+    @javax.annotation.Nullable
+    Long outputsize = apiRequest.outputsize();
+    return getMutualFundsList(symbol, figi, isin, cusip, cik, country, fundFamily, fundType, performanceRating, riskRating, page, outputsize, headers);
+  }
+
+  /**
+   * MFs directory
+   * The mutual funds directory endpoint provides a daily updated list of mutual funds, sorted in descending order by their total assets value. This endpoint is useful for retrieving an organized overview of available mutual funds.
+   * @param apiRequest {@link APIGetMutualFundsListRequest}
+   * @return ApiResponse&lt;GetMutualFundsList200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetMutualFundsList200Response> getMutualFundsListWithHttpInfo(APIGetMutualFundsListRequest apiRequest) throws ApiException {
+    return getMutualFundsListWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * MFs directory
+   * The mutual funds directory endpoint provides a daily updated list of mutual funds, sorted in descending order by their total assets value. This endpoint is useful for retrieving an organized overview of available mutual funds.
+   * @param apiRequest {@link APIGetMutualFundsListRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetMutualFundsList200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetMutualFundsList200Response> getMutualFundsListWithHttpInfo(APIGetMutualFundsListRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String figi = apiRequest.figi();
+    String isin = apiRequest.isin();
+    String cusip = apiRequest.cusip();
+    String cik = apiRequest.cik();
+    String country = apiRequest.country();
+    String fundFamily = apiRequest.fundFamily();
+    String fundType = apiRequest.fundType();
+    Long performanceRating = apiRequest.performanceRating();
+    Long riskRating = apiRequest.riskRating();
+    Long page = apiRequest.page();
+    Long outputsize = apiRequest.outputsize();
+    return getMutualFundsListWithHttpInfo(symbol, figi, isin, cusip, cik, country, fundFamily, fundType, performanceRating, riskRating, page, outputsize, headers);
   }
 
   /**
@@ -501,6 +676,219 @@ public class MutualFundsApi {
     return localVarRequestBuilder;
   }
 
+
+  public static final class APIGetMutualFundsListRequest {
+    @javax.annotation.Nullable
+    private String symbol; // Filter by symbol (optional)
+    @javax.annotation.Nullable
+    private String figi; // Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. (optional)
+    @javax.annotation.Nullable
+    private String isin; // Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cusip; // The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cik; // The CIK of an instrument for which data is requested (optional)
+    @javax.annotation.Nullable
+    private String country; // Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+    @javax.annotation.Nullable
+    private String fundFamily; // Filter by investment company that manages the fund (optional)
+    @javax.annotation.Nullable
+    private String fundType; // Filter by the type of fund (optional)
+    @javax.annotation.Nullable
+    private Long performanceRating; // Filter by performance rating from &#x60;0&#x60; to &#x60;5&#x60; (optional)
+    @javax.annotation.Nullable
+    private Long riskRating; // Filter by risk rating from &#x60;0&#x60; to &#x60;5&#x60; (optional)
+    @javax.annotation.Nullable
+    private Long page; // Page number (optional, default to 1)
+    @javax.annotation.Nullable
+    private Long outputsize; // Number of records in response (optional, default to 100)
+
+    private APIGetMutualFundsListRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.figi = builder.figi;
+      this.isin = builder.isin;
+      this.cusip = builder.cusip;
+      this.cik = builder.cik;
+      this.country = builder.country;
+      this.fundFamily = builder.fundFamily;
+      this.fundType = builder.fundType;
+      this.performanceRating = builder.performanceRating;
+      this.riskRating = builder.riskRating;
+      this.page = builder.page;
+      this.outputsize = builder.outputsize;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String figi() {
+      return figi;
+    }
+    @javax.annotation.Nullable
+    public String isin() {
+      return isin;
+    }
+    @javax.annotation.Nullable
+    public String cusip() {
+      return cusip;
+    }
+    @javax.annotation.Nullable
+    public String cik() {
+      return cik;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    @javax.annotation.Nullable
+    public String fundFamily() {
+      return fundFamily;
+    }
+    @javax.annotation.Nullable
+    public String fundType() {
+      return fundType;
+    }
+    @javax.annotation.Nullable
+    public Long performanceRating() {
+      return performanceRating;
+    }
+    @javax.annotation.Nullable
+    public Long riskRating() {
+      return riskRating;
+    }
+    @javax.annotation.Nullable
+    public Long page() {
+      return page;
+    }
+    @javax.annotation.Nullable
+    public Long outputsize() {
+      return outputsize;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String figi;
+      private String isin;
+      private String cusip;
+      private String cik;
+      private String country;
+      private String fundFamily;
+      private String fundType;
+      private Long performanceRating;
+      private Long riskRating;
+      private Long page;
+      private Long outputsize;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder figi(@javax.annotation.Nullable String figi) {
+        this.figi = figi;
+        return this;
+      }
+      public Builder isin(@javax.annotation.Nullable String isin) {
+        this.isin = isin;
+        return this;
+      }
+      public Builder cusip(@javax.annotation.Nullable String cusip) {
+        this.cusip = cusip;
+        return this;
+      }
+      public Builder cik(@javax.annotation.Nullable String cik) {
+        this.cik = cik;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public Builder fundFamily(@javax.annotation.Nullable String fundFamily) {
+        this.fundFamily = fundFamily;
+        return this;
+      }
+      public Builder fundType(@javax.annotation.Nullable String fundType) {
+        this.fundType = fundType;
+        return this;
+      }
+      public Builder performanceRating(@javax.annotation.Nullable Long performanceRating) {
+        this.performanceRating = performanceRating;
+        return this;
+      }
+      public Builder riskRating(@javax.annotation.Nullable Long riskRating) {
+        this.riskRating = riskRating;
+        return this;
+      }
+      public Builder page(@javax.annotation.Nullable Long page) {
+        this.page = page;
+        return this;
+      }
+      public Builder outputsize(@javax.annotation.Nullable Long outputsize) {
+        this.outputsize = outputsize;
+        return this;
+      }
+      public APIGetMutualFundsListRequest build() {
+        return new APIGetMutualFundsListRequest(this);
+      }
+    }
+  }
+
+  /**
+   * MFs types
+   * This endpoint provides detailed information on various types of mutual funds, such as equity, bond, and balanced funds, allowing users to understand the different investment options available.
+   * @param apiRequest {@link APIGetMutualFundsTypeRequest}
+   * @return GetMutualFundsType200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetMutualFundsType200Response getMutualFundsType(APIGetMutualFundsTypeRequest apiRequest) throws ApiException {
+    return getMutualFundsType(apiRequest, null);
+  }
+
+  /**
+   * MFs types
+   * This endpoint provides detailed information on various types of mutual funds, such as equity, bond, and balanced funds, allowing users to understand the different investment options available.
+   * @param apiRequest {@link APIGetMutualFundsTypeRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetMutualFundsType200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetMutualFundsType200Response getMutualFundsType(APIGetMutualFundsTypeRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String fundType = apiRequest.fundType();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    return getMutualFundsType(fundType, country, headers);
+  }
+
+  /**
+   * MFs types
+   * This endpoint provides detailed information on various types of mutual funds, such as equity, bond, and balanced funds, allowing users to understand the different investment options available.
+   * @param apiRequest {@link APIGetMutualFundsTypeRequest}
+   * @return ApiResponse&lt;GetMutualFundsType200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetMutualFundsType200Response> getMutualFundsTypeWithHttpInfo(APIGetMutualFundsTypeRequest apiRequest) throws ApiException {
+    return getMutualFundsTypeWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * MFs types
+   * This endpoint provides detailed information on various types of mutual funds, such as equity, bond, and balanced funds, allowing users to understand the different investment options available.
+   * @param apiRequest {@link APIGetMutualFundsTypeRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetMutualFundsType200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetMutualFundsType200Response> getMutualFundsTypeWithHttpInfo(APIGetMutualFundsTypeRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String fundType = apiRequest.fundType();
+    String country = apiRequest.country();
+    return getMutualFundsTypeWithHttpInfo(fundType, country, headers);
+  }
+
   /**
    * MFs types
    * This endpoint provides detailed information on various types of mutual funds, such as equity, bond, and balanced funds, allowing users to understand the different investment options available.
@@ -633,6 +1021,111 @@ public class MutualFundsApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
+  }
+
+
+  public static final class APIGetMutualFundsTypeRequest {
+    @javax.annotation.Nullable
+    private String fundType; // Filter by the type of fund (optional)
+    @javax.annotation.Nullable
+    private String country; // Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+
+    private APIGetMutualFundsTypeRequest(Builder builder) {
+      this.fundType = builder.fundType;
+      this.country = builder.country;
+    }
+    @javax.annotation.Nullable
+    public String fundType() {
+      return fundType;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String fundType;
+      private String country;
+
+      public Builder fundType(@javax.annotation.Nullable String fundType) {
+        this.fundType = fundType;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public APIGetMutualFundsTypeRequest build() {
+        return new APIGetMutualFundsTypeRequest(this);
+      }
+    }
+  }
+
+  /**
+   * MF full data
+   * The mutual full data endpoint provides detailed information about global mutual funds. It returns a comprehensive dataset that includes a summary of the fund, its performance metrics, risk assessment, ratings, asset composition, purchase details, and sustainability factors. This endpoint is essential for users seeking in-depth insights into mutual funds on a global scale, allowing them to evaluate various aspects such as investment performance, risk levels, and environmental impact.
+   * @param apiRequest {@link APIGetMutualFundsWorldRequest}
+   * @return GetMutualFundsWorld200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetMutualFundsWorld200Response getMutualFundsWorld(APIGetMutualFundsWorldRequest apiRequest) throws ApiException {
+    return getMutualFundsWorld(apiRequest, null);
+  }
+
+  /**
+   * MF full data
+   * The mutual full data endpoint provides detailed information about global mutual funds. It returns a comprehensive dataset that includes a summary of the fund, its performance metrics, risk assessment, ratings, asset composition, purchase details, and sustainability factors. This endpoint is essential for users seeking in-depth insights into mutual funds on a global scale, allowing them to evaluate various aspects such as investment performance, risk levels, and environmental impact.
+   * @param apiRequest {@link APIGetMutualFundsWorldRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetMutualFundsWorld200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetMutualFundsWorld200Response getMutualFundsWorld(APIGetMutualFundsWorldRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String figi = apiRequest.figi();
+    @javax.annotation.Nullable
+    String isin = apiRequest.isin();
+    @javax.annotation.Nullable
+    String cusip = apiRequest.cusip();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    @javax.annotation.Nullable
+    Long dp = apiRequest.dp();
+    return getMutualFundsWorld(symbol, figi, isin, cusip, country, dp, headers);
+  }
+
+  /**
+   * MF full data
+   * The mutual full data endpoint provides detailed information about global mutual funds. It returns a comprehensive dataset that includes a summary of the fund, its performance metrics, risk assessment, ratings, asset composition, purchase details, and sustainability factors. This endpoint is essential for users seeking in-depth insights into mutual funds on a global scale, allowing them to evaluate various aspects such as investment performance, risk levels, and environmental impact.
+   * @param apiRequest {@link APIGetMutualFundsWorldRequest}
+   * @return ApiResponse&lt;GetMutualFundsWorld200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetMutualFundsWorld200Response> getMutualFundsWorldWithHttpInfo(APIGetMutualFundsWorldRequest apiRequest) throws ApiException {
+    return getMutualFundsWorldWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * MF full data
+   * The mutual full data endpoint provides detailed information about global mutual funds. It returns a comprehensive dataset that includes a summary of the fund, its performance metrics, risk assessment, ratings, asset composition, purchase details, and sustainability factors. This endpoint is essential for users seeking in-depth insights into mutual funds on a global scale, allowing them to evaluate various aspects such as investment performance, risk levels, and environmental impact.
+   * @param apiRequest {@link APIGetMutualFundsWorldRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetMutualFundsWorld200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetMutualFundsWorld200Response> getMutualFundsWorldWithHttpInfo(APIGetMutualFundsWorldRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String figi = apiRequest.figi();
+    String isin = apiRequest.isin();
+    String cusip = apiRequest.cusip();
+    String country = apiRequest.country();
+    Long dp = apiRequest.dp();
+    return getMutualFundsWorldWithHttpInfo(symbol, figi, isin, cusip, country, dp, headers);
   }
 
   /**
@@ -793,6 +1286,159 @@ public class MutualFundsApi {
     return localVarRequestBuilder;
   }
 
+
+  public static final class APIGetMutualFundsWorldRequest {
+    @javax.annotation.Nullable
+    private String symbol; // Symbol ticker of mutual fund (optional)
+    @javax.annotation.Nullable
+    private String figi; // Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. (optional)
+    @javax.annotation.Nullable
+    private String isin; // Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cusip; // The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String country; // Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+    @javax.annotation.Nullable
+    private Long dp; // Number of decimal places for floating values. Accepts value in range [0,11] (optional, default to 5)
+
+    private APIGetMutualFundsWorldRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.figi = builder.figi;
+      this.isin = builder.isin;
+      this.cusip = builder.cusip;
+      this.country = builder.country;
+      this.dp = builder.dp;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String figi() {
+      return figi;
+    }
+    @javax.annotation.Nullable
+    public String isin() {
+      return isin;
+    }
+    @javax.annotation.Nullable
+    public String cusip() {
+      return cusip;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    @javax.annotation.Nullable
+    public Long dp() {
+      return dp;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String figi;
+      private String isin;
+      private String cusip;
+      private String country;
+      private Long dp;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder figi(@javax.annotation.Nullable String figi) {
+        this.figi = figi;
+        return this;
+      }
+      public Builder isin(@javax.annotation.Nullable String isin) {
+        this.isin = isin;
+        return this;
+      }
+      public Builder cusip(@javax.annotation.Nullable String cusip) {
+        this.cusip = cusip;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public Builder dp(@javax.annotation.Nullable Long dp) {
+        this.dp = dp;
+        return this;
+      }
+      public APIGetMutualFundsWorldRequest build() {
+        return new APIGetMutualFundsWorldRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Composition
+   * The mutual funds compositions endpoint provides detailed information about the portfolio composition of a specified mutual fund. It returns data on sector allocations, individual holdings, and their respective weighted exposures. This endpoint is useful for users seeking to understand the investment distribution and risk profile of a mutual fund.
+   * @param apiRequest {@link APIGetMutualFundsWorldCompositionRequest}
+   * @return GetMutualFundsWorldComposition200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetMutualFundsWorldComposition200Response getMutualFundsWorldComposition(APIGetMutualFundsWorldCompositionRequest apiRequest) throws ApiException {
+    return getMutualFundsWorldComposition(apiRequest, null);
+  }
+
+  /**
+   * Composition
+   * The mutual funds compositions endpoint provides detailed information about the portfolio composition of a specified mutual fund. It returns data on sector allocations, individual holdings, and their respective weighted exposures. This endpoint is useful for users seeking to understand the investment distribution and risk profile of a mutual fund.
+   * @param apiRequest {@link APIGetMutualFundsWorldCompositionRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetMutualFundsWorldComposition200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetMutualFundsWorldComposition200Response getMutualFundsWorldComposition(APIGetMutualFundsWorldCompositionRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String figi = apiRequest.figi();
+    @javax.annotation.Nullable
+    String isin = apiRequest.isin();
+    @javax.annotation.Nullable
+    String cusip = apiRequest.cusip();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    @javax.annotation.Nullable
+    Long dp = apiRequest.dp();
+    return getMutualFundsWorldComposition(symbol, figi, isin, cusip, country, dp, headers);
+  }
+
+  /**
+   * Composition
+   * The mutual funds compositions endpoint provides detailed information about the portfolio composition of a specified mutual fund. It returns data on sector allocations, individual holdings, and their respective weighted exposures. This endpoint is useful for users seeking to understand the investment distribution and risk profile of a mutual fund.
+   * @param apiRequest {@link APIGetMutualFundsWorldCompositionRequest}
+   * @return ApiResponse&lt;GetMutualFundsWorldComposition200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetMutualFundsWorldComposition200Response> getMutualFundsWorldCompositionWithHttpInfo(APIGetMutualFundsWorldCompositionRequest apiRequest) throws ApiException {
+    return getMutualFundsWorldCompositionWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Composition
+   * The mutual funds compositions endpoint provides detailed information about the portfolio composition of a specified mutual fund. It returns data on sector allocations, individual holdings, and their respective weighted exposures. This endpoint is useful for users seeking to understand the investment distribution and risk profile of a mutual fund.
+   * @param apiRequest {@link APIGetMutualFundsWorldCompositionRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetMutualFundsWorldComposition200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetMutualFundsWorldComposition200Response> getMutualFundsWorldCompositionWithHttpInfo(APIGetMutualFundsWorldCompositionRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String figi = apiRequest.figi();
+    String isin = apiRequest.isin();
+    String cusip = apiRequest.cusip();
+    String country = apiRequest.country();
+    Long dp = apiRequest.dp();
+    return getMutualFundsWorldCompositionWithHttpInfo(symbol, figi, isin, cusip, country, dp, headers);
+  }
+
   /**
    * Composition
    * The mutual funds compositions endpoint provides detailed information about the portfolio composition of a specified mutual fund. It returns data on sector allocations, individual holdings, and their respective weighted exposures. This endpoint is useful for users seeking to understand the investment distribution and risk profile of a mutual fund.
@@ -949,6 +1595,159 @@ public class MutualFundsApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
+  }
+
+
+  public static final class APIGetMutualFundsWorldCompositionRequest {
+    @javax.annotation.Nullable
+    private String symbol; // Symbol ticker of mutual fund (optional)
+    @javax.annotation.Nullable
+    private String figi; // Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. (optional)
+    @javax.annotation.Nullable
+    private String isin; // Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cusip; // The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String country; // Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+    @javax.annotation.Nullable
+    private Long dp; // Number of decimal places for floating values. Accepts value in range [0,11] (optional, default to 5)
+
+    private APIGetMutualFundsWorldCompositionRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.figi = builder.figi;
+      this.isin = builder.isin;
+      this.cusip = builder.cusip;
+      this.country = builder.country;
+      this.dp = builder.dp;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String figi() {
+      return figi;
+    }
+    @javax.annotation.Nullable
+    public String isin() {
+      return isin;
+    }
+    @javax.annotation.Nullable
+    public String cusip() {
+      return cusip;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    @javax.annotation.Nullable
+    public Long dp() {
+      return dp;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String figi;
+      private String isin;
+      private String cusip;
+      private String country;
+      private Long dp;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder figi(@javax.annotation.Nullable String figi) {
+        this.figi = figi;
+        return this;
+      }
+      public Builder isin(@javax.annotation.Nullable String isin) {
+        this.isin = isin;
+        return this;
+      }
+      public Builder cusip(@javax.annotation.Nullable String cusip) {
+        this.cusip = cusip;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public Builder dp(@javax.annotation.Nullable Long dp) {
+        this.dp = dp;
+        return this;
+      }
+      public APIGetMutualFundsWorldCompositionRequest build() {
+        return new APIGetMutualFundsWorldCompositionRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Performance
+   * The mutual funds performances endpoint provides comprehensive performance data for mutual funds globally. It returns metrics such as trailing returns, annual returns, quarterly returns, and load-adjusted returns.
+   * @param apiRequest {@link APIGetMutualFundsWorldPerformanceRequest}
+   * @return GetMutualFundsWorldPerformance200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetMutualFundsWorldPerformance200Response getMutualFundsWorldPerformance(APIGetMutualFundsWorldPerformanceRequest apiRequest) throws ApiException {
+    return getMutualFundsWorldPerformance(apiRequest, null);
+  }
+
+  /**
+   * Performance
+   * The mutual funds performances endpoint provides comprehensive performance data for mutual funds globally. It returns metrics such as trailing returns, annual returns, quarterly returns, and load-adjusted returns.
+   * @param apiRequest {@link APIGetMutualFundsWorldPerformanceRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetMutualFundsWorldPerformance200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetMutualFundsWorldPerformance200Response getMutualFundsWorldPerformance(APIGetMutualFundsWorldPerformanceRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String figi = apiRequest.figi();
+    @javax.annotation.Nullable
+    String isin = apiRequest.isin();
+    @javax.annotation.Nullable
+    String cusip = apiRequest.cusip();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    @javax.annotation.Nullable
+    Long dp = apiRequest.dp();
+    return getMutualFundsWorldPerformance(symbol, figi, isin, cusip, country, dp, headers);
+  }
+
+  /**
+   * Performance
+   * The mutual funds performances endpoint provides comprehensive performance data for mutual funds globally. It returns metrics such as trailing returns, annual returns, quarterly returns, and load-adjusted returns.
+   * @param apiRequest {@link APIGetMutualFundsWorldPerformanceRequest}
+   * @return ApiResponse&lt;GetMutualFundsWorldPerformance200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetMutualFundsWorldPerformance200Response> getMutualFundsWorldPerformanceWithHttpInfo(APIGetMutualFundsWorldPerformanceRequest apiRequest) throws ApiException {
+    return getMutualFundsWorldPerformanceWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Performance
+   * The mutual funds performances endpoint provides comprehensive performance data for mutual funds globally. It returns metrics such as trailing returns, annual returns, quarterly returns, and load-adjusted returns.
+   * @param apiRequest {@link APIGetMutualFundsWorldPerformanceRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetMutualFundsWorldPerformance200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetMutualFundsWorldPerformance200Response> getMutualFundsWorldPerformanceWithHttpInfo(APIGetMutualFundsWorldPerformanceRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String figi = apiRequest.figi();
+    String isin = apiRequest.isin();
+    String cusip = apiRequest.cusip();
+    String country = apiRequest.country();
+    Long dp = apiRequest.dp();
+    return getMutualFundsWorldPerformanceWithHttpInfo(symbol, figi, isin, cusip, country, dp, headers);
   }
 
   /**
@@ -1109,6 +1908,159 @@ public class MutualFundsApi {
     return localVarRequestBuilder;
   }
 
+
+  public static final class APIGetMutualFundsWorldPerformanceRequest {
+    @javax.annotation.Nullable
+    private String symbol; // Symbol ticker of mutual fund (optional)
+    @javax.annotation.Nullable
+    private String figi; // Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. (optional)
+    @javax.annotation.Nullable
+    private String isin; // Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cusip; // The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String country; // Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+    @javax.annotation.Nullable
+    private Long dp; // Number of decimal places for floating values. Accepts value in range [0,11] (optional, default to 5)
+
+    private APIGetMutualFundsWorldPerformanceRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.figi = builder.figi;
+      this.isin = builder.isin;
+      this.cusip = builder.cusip;
+      this.country = builder.country;
+      this.dp = builder.dp;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String figi() {
+      return figi;
+    }
+    @javax.annotation.Nullable
+    public String isin() {
+      return isin;
+    }
+    @javax.annotation.Nullable
+    public String cusip() {
+      return cusip;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    @javax.annotation.Nullable
+    public Long dp() {
+      return dp;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String figi;
+      private String isin;
+      private String cusip;
+      private String country;
+      private Long dp;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder figi(@javax.annotation.Nullable String figi) {
+        this.figi = figi;
+        return this;
+      }
+      public Builder isin(@javax.annotation.Nullable String isin) {
+        this.isin = isin;
+        return this;
+      }
+      public Builder cusip(@javax.annotation.Nullable String cusip) {
+        this.cusip = cusip;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public Builder dp(@javax.annotation.Nullable Long dp) {
+        this.dp = dp;
+        return this;
+      }
+      public APIGetMutualFundsWorldPerformanceRequest build() {
+        return new APIGetMutualFundsWorldPerformanceRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Purchase info
+   * The mutual funds purchase information endpoint provides detailed purchasing details for global mutual funds. It returns data on minimum investment requirements, current pricing, and a list of brokerages where the mutual fund can be purchased. This endpoint is useful for users looking to understand the entry requirements and options available for investing in specific mutual funds.
+   * @param apiRequest {@link APIGetMutualFundsWorldPurchaseInfoRequest}
+   * @return GetMutualFundsWorldPurchaseInfo200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetMutualFundsWorldPurchaseInfo200Response getMutualFundsWorldPurchaseInfo(APIGetMutualFundsWorldPurchaseInfoRequest apiRequest) throws ApiException {
+    return getMutualFundsWorldPurchaseInfo(apiRequest, null);
+  }
+
+  /**
+   * Purchase info
+   * The mutual funds purchase information endpoint provides detailed purchasing details for global mutual funds. It returns data on minimum investment requirements, current pricing, and a list of brokerages where the mutual fund can be purchased. This endpoint is useful for users looking to understand the entry requirements and options available for investing in specific mutual funds.
+   * @param apiRequest {@link APIGetMutualFundsWorldPurchaseInfoRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetMutualFundsWorldPurchaseInfo200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetMutualFundsWorldPurchaseInfo200Response getMutualFundsWorldPurchaseInfo(APIGetMutualFundsWorldPurchaseInfoRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String figi = apiRequest.figi();
+    @javax.annotation.Nullable
+    String isin = apiRequest.isin();
+    @javax.annotation.Nullable
+    String cusip = apiRequest.cusip();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    @javax.annotation.Nullable
+    Long dp = apiRequest.dp();
+    return getMutualFundsWorldPurchaseInfo(symbol, figi, isin, cusip, country, dp, headers);
+  }
+
+  /**
+   * Purchase info
+   * The mutual funds purchase information endpoint provides detailed purchasing details for global mutual funds. It returns data on minimum investment requirements, current pricing, and a list of brokerages where the mutual fund can be purchased. This endpoint is useful for users looking to understand the entry requirements and options available for investing in specific mutual funds.
+   * @param apiRequest {@link APIGetMutualFundsWorldPurchaseInfoRequest}
+   * @return ApiResponse&lt;GetMutualFundsWorldPurchaseInfo200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetMutualFundsWorldPurchaseInfo200Response> getMutualFundsWorldPurchaseInfoWithHttpInfo(APIGetMutualFundsWorldPurchaseInfoRequest apiRequest) throws ApiException {
+    return getMutualFundsWorldPurchaseInfoWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Purchase info
+   * The mutual funds purchase information endpoint provides detailed purchasing details for global mutual funds. It returns data on minimum investment requirements, current pricing, and a list of brokerages where the mutual fund can be purchased. This endpoint is useful for users looking to understand the entry requirements and options available for investing in specific mutual funds.
+   * @param apiRequest {@link APIGetMutualFundsWorldPurchaseInfoRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetMutualFundsWorldPurchaseInfo200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetMutualFundsWorldPurchaseInfo200Response> getMutualFundsWorldPurchaseInfoWithHttpInfo(APIGetMutualFundsWorldPurchaseInfoRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String figi = apiRequest.figi();
+    String isin = apiRequest.isin();
+    String cusip = apiRequest.cusip();
+    String country = apiRequest.country();
+    Long dp = apiRequest.dp();
+    return getMutualFundsWorldPurchaseInfoWithHttpInfo(symbol, figi, isin, cusip, country, dp, headers);
+  }
+
   /**
    * Purchase info
    * The mutual funds purchase information endpoint provides detailed purchasing details for global mutual funds. It returns data on minimum investment requirements, current pricing, and a list of brokerages where the mutual fund can be purchased. This endpoint is useful for users looking to understand the entry requirements and options available for investing in specific mutual funds.
@@ -1265,6 +2217,159 @@ public class MutualFundsApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
+  }
+
+
+  public static final class APIGetMutualFundsWorldPurchaseInfoRequest {
+    @javax.annotation.Nullable
+    private String symbol; // Symbol ticker of mutual fund (optional)
+    @javax.annotation.Nullable
+    private String figi; // Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. (optional)
+    @javax.annotation.Nullable
+    private String isin; // Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cusip; // The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String country; // Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+    @javax.annotation.Nullable
+    private Long dp; // Number of decimal places for floating values. Accepts value in range [0,11] (optional, default to 5)
+
+    private APIGetMutualFundsWorldPurchaseInfoRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.figi = builder.figi;
+      this.isin = builder.isin;
+      this.cusip = builder.cusip;
+      this.country = builder.country;
+      this.dp = builder.dp;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String figi() {
+      return figi;
+    }
+    @javax.annotation.Nullable
+    public String isin() {
+      return isin;
+    }
+    @javax.annotation.Nullable
+    public String cusip() {
+      return cusip;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    @javax.annotation.Nullable
+    public Long dp() {
+      return dp;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String figi;
+      private String isin;
+      private String cusip;
+      private String country;
+      private Long dp;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder figi(@javax.annotation.Nullable String figi) {
+        this.figi = figi;
+        return this;
+      }
+      public Builder isin(@javax.annotation.Nullable String isin) {
+        this.isin = isin;
+        return this;
+      }
+      public Builder cusip(@javax.annotation.Nullable String cusip) {
+        this.cusip = cusip;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public Builder dp(@javax.annotation.Nullable Long dp) {
+        this.dp = dp;
+        return this;
+      }
+      public APIGetMutualFundsWorldPurchaseInfoRequest build() {
+        return new APIGetMutualFundsWorldPurchaseInfoRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Ratings
+   * The mutual funds ratings endpoint provides detailed ratings for mutual funds across global markets. It returns data on the performance and quality of mutual funds, including ratings calculated in-house by Twelve Data and from various financial institutions.
+   * @param apiRequest {@link APIGetMutualFundsWorldRatingsRequest}
+   * @return GetMutualFundsWorldRatings200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetMutualFundsWorldRatings200Response getMutualFundsWorldRatings(APIGetMutualFundsWorldRatingsRequest apiRequest) throws ApiException {
+    return getMutualFundsWorldRatings(apiRequest, null);
+  }
+
+  /**
+   * Ratings
+   * The mutual funds ratings endpoint provides detailed ratings for mutual funds across global markets. It returns data on the performance and quality of mutual funds, including ratings calculated in-house by Twelve Data and from various financial institutions.
+   * @param apiRequest {@link APIGetMutualFundsWorldRatingsRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetMutualFundsWorldRatings200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetMutualFundsWorldRatings200Response getMutualFundsWorldRatings(APIGetMutualFundsWorldRatingsRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String figi = apiRequest.figi();
+    @javax.annotation.Nullable
+    String isin = apiRequest.isin();
+    @javax.annotation.Nullable
+    String cusip = apiRequest.cusip();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    @javax.annotation.Nullable
+    Long dp = apiRequest.dp();
+    return getMutualFundsWorldRatings(symbol, figi, isin, cusip, country, dp, headers);
+  }
+
+  /**
+   * Ratings
+   * The mutual funds ratings endpoint provides detailed ratings for mutual funds across global markets. It returns data on the performance and quality of mutual funds, including ratings calculated in-house by Twelve Data and from various financial institutions.
+   * @param apiRequest {@link APIGetMutualFundsWorldRatingsRequest}
+   * @return ApiResponse&lt;GetMutualFundsWorldRatings200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetMutualFundsWorldRatings200Response> getMutualFundsWorldRatingsWithHttpInfo(APIGetMutualFundsWorldRatingsRequest apiRequest) throws ApiException {
+    return getMutualFundsWorldRatingsWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Ratings
+   * The mutual funds ratings endpoint provides detailed ratings for mutual funds across global markets. It returns data on the performance and quality of mutual funds, including ratings calculated in-house by Twelve Data and from various financial institutions.
+   * @param apiRequest {@link APIGetMutualFundsWorldRatingsRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetMutualFundsWorldRatings200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetMutualFundsWorldRatings200Response> getMutualFundsWorldRatingsWithHttpInfo(APIGetMutualFundsWorldRatingsRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String figi = apiRequest.figi();
+    String isin = apiRequest.isin();
+    String cusip = apiRequest.cusip();
+    String country = apiRequest.country();
+    Long dp = apiRequest.dp();
+    return getMutualFundsWorldRatingsWithHttpInfo(symbol, figi, isin, cusip, country, dp, headers);
   }
 
   /**
@@ -1425,6 +2530,159 @@ public class MutualFundsApi {
     return localVarRequestBuilder;
   }
 
+
+  public static final class APIGetMutualFundsWorldRatingsRequest {
+    @javax.annotation.Nullable
+    private String symbol; // Symbol ticker of mutual fund (optional)
+    @javax.annotation.Nullable
+    private String figi; // Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. (optional)
+    @javax.annotation.Nullable
+    private String isin; // Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cusip; // The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String country; // Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+    @javax.annotation.Nullable
+    private Long dp; // Number of decimal places for floating values. Accepts value in range [0,11] (optional, default to 5)
+
+    private APIGetMutualFundsWorldRatingsRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.figi = builder.figi;
+      this.isin = builder.isin;
+      this.cusip = builder.cusip;
+      this.country = builder.country;
+      this.dp = builder.dp;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String figi() {
+      return figi;
+    }
+    @javax.annotation.Nullable
+    public String isin() {
+      return isin;
+    }
+    @javax.annotation.Nullable
+    public String cusip() {
+      return cusip;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    @javax.annotation.Nullable
+    public Long dp() {
+      return dp;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String figi;
+      private String isin;
+      private String cusip;
+      private String country;
+      private Long dp;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder figi(@javax.annotation.Nullable String figi) {
+        this.figi = figi;
+        return this;
+      }
+      public Builder isin(@javax.annotation.Nullable String isin) {
+        this.isin = isin;
+        return this;
+      }
+      public Builder cusip(@javax.annotation.Nullable String cusip) {
+        this.cusip = cusip;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public Builder dp(@javax.annotation.Nullable Long dp) {
+        this.dp = dp;
+        return this;
+      }
+      public APIGetMutualFundsWorldRatingsRequest build() {
+        return new APIGetMutualFundsWorldRatingsRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Risk
+   * The mutual funds risk endpoint provides detailed risk metrics for global mutual funds. It returns data such as standard deviation, beta, and Sharpe ratio, which help assess the volatility and risk profile of mutual funds across different markets.
+   * @param apiRequest {@link APIGetMutualFundsWorldRiskRequest}
+   * @return GetMutualFundsWorldRisk200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetMutualFundsWorldRisk200Response getMutualFundsWorldRisk(APIGetMutualFundsWorldRiskRequest apiRequest) throws ApiException {
+    return getMutualFundsWorldRisk(apiRequest, null);
+  }
+
+  /**
+   * Risk
+   * The mutual funds risk endpoint provides detailed risk metrics for global mutual funds. It returns data such as standard deviation, beta, and Sharpe ratio, which help assess the volatility and risk profile of mutual funds across different markets.
+   * @param apiRequest {@link APIGetMutualFundsWorldRiskRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetMutualFundsWorldRisk200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetMutualFundsWorldRisk200Response getMutualFundsWorldRisk(APIGetMutualFundsWorldRiskRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String figi = apiRequest.figi();
+    @javax.annotation.Nullable
+    String isin = apiRequest.isin();
+    @javax.annotation.Nullable
+    String cusip = apiRequest.cusip();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    @javax.annotation.Nullable
+    Long dp = apiRequest.dp();
+    return getMutualFundsWorldRisk(symbol, figi, isin, cusip, country, dp, headers);
+  }
+
+  /**
+   * Risk
+   * The mutual funds risk endpoint provides detailed risk metrics for global mutual funds. It returns data such as standard deviation, beta, and Sharpe ratio, which help assess the volatility and risk profile of mutual funds across different markets.
+   * @param apiRequest {@link APIGetMutualFundsWorldRiskRequest}
+   * @return ApiResponse&lt;GetMutualFundsWorldRisk200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetMutualFundsWorldRisk200Response> getMutualFundsWorldRiskWithHttpInfo(APIGetMutualFundsWorldRiskRequest apiRequest) throws ApiException {
+    return getMutualFundsWorldRiskWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Risk
+   * The mutual funds risk endpoint provides detailed risk metrics for global mutual funds. It returns data such as standard deviation, beta, and Sharpe ratio, which help assess the volatility and risk profile of mutual funds across different markets.
+   * @param apiRequest {@link APIGetMutualFundsWorldRiskRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetMutualFundsWorldRisk200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetMutualFundsWorldRisk200Response> getMutualFundsWorldRiskWithHttpInfo(APIGetMutualFundsWorldRiskRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String figi = apiRequest.figi();
+    String isin = apiRequest.isin();
+    String cusip = apiRequest.cusip();
+    String country = apiRequest.country();
+    Long dp = apiRequest.dp();
+    return getMutualFundsWorldRiskWithHttpInfo(symbol, figi, isin, cusip, country, dp, headers);
+  }
+
   /**
    * Risk
    * The mutual funds risk endpoint provides detailed risk metrics for global mutual funds. It returns data such as standard deviation, beta, and Sharpe ratio, which help assess the volatility and risk profile of mutual funds across different markets.
@@ -1581,6 +2839,159 @@ public class MutualFundsApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
+  }
+
+
+  public static final class APIGetMutualFundsWorldRiskRequest {
+    @javax.annotation.Nullable
+    private String symbol; // Symbol ticker of mutual fund (optional)
+    @javax.annotation.Nullable
+    private String figi; // Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. (optional)
+    @javax.annotation.Nullable
+    private String isin; // Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cusip; // The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String country; // Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+    @javax.annotation.Nullable
+    private Long dp; // Number of decimal places for floating values. Accepts value in range [0,11] (optional, default to 5)
+
+    private APIGetMutualFundsWorldRiskRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.figi = builder.figi;
+      this.isin = builder.isin;
+      this.cusip = builder.cusip;
+      this.country = builder.country;
+      this.dp = builder.dp;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String figi() {
+      return figi;
+    }
+    @javax.annotation.Nullable
+    public String isin() {
+      return isin;
+    }
+    @javax.annotation.Nullable
+    public String cusip() {
+      return cusip;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    @javax.annotation.Nullable
+    public Long dp() {
+      return dp;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String figi;
+      private String isin;
+      private String cusip;
+      private String country;
+      private Long dp;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder figi(@javax.annotation.Nullable String figi) {
+        this.figi = figi;
+        return this;
+      }
+      public Builder isin(@javax.annotation.Nullable String isin) {
+        this.isin = isin;
+        return this;
+      }
+      public Builder cusip(@javax.annotation.Nullable String cusip) {
+        this.cusip = cusip;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public Builder dp(@javax.annotation.Nullable Long dp) {
+        this.dp = dp;
+        return this;
+      }
+      public APIGetMutualFundsWorldRiskRequest build() {
+        return new APIGetMutualFundsWorldRiskRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Summary
+   * The mutual funds summary endpoint provides a concise overview of global mutual funds, including key details such as fund name, symbol, asset class, and region. This endpoint is useful for quickly obtaining essential information about various mutual funds worldwide, aiding in the comparison and selection of funds for investment portfolios.
+   * @param apiRequest {@link APIGetMutualFundsWorldSummaryRequest}
+   * @return GetMutualFundsWorldSummary200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetMutualFundsWorldSummary200Response getMutualFundsWorldSummary(APIGetMutualFundsWorldSummaryRequest apiRequest) throws ApiException {
+    return getMutualFundsWorldSummary(apiRequest, null);
+  }
+
+  /**
+   * Summary
+   * The mutual funds summary endpoint provides a concise overview of global mutual funds, including key details such as fund name, symbol, asset class, and region. This endpoint is useful for quickly obtaining essential information about various mutual funds worldwide, aiding in the comparison and selection of funds for investment portfolios.
+   * @param apiRequest {@link APIGetMutualFundsWorldSummaryRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetMutualFundsWorldSummary200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetMutualFundsWorldSummary200Response getMutualFundsWorldSummary(APIGetMutualFundsWorldSummaryRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String figi = apiRequest.figi();
+    @javax.annotation.Nullable
+    String isin = apiRequest.isin();
+    @javax.annotation.Nullable
+    String cusip = apiRequest.cusip();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    @javax.annotation.Nullable
+    Long dp = apiRequest.dp();
+    return getMutualFundsWorldSummary(symbol, figi, isin, cusip, country, dp, headers);
+  }
+
+  /**
+   * Summary
+   * The mutual funds summary endpoint provides a concise overview of global mutual funds, including key details such as fund name, symbol, asset class, and region. This endpoint is useful for quickly obtaining essential information about various mutual funds worldwide, aiding in the comparison and selection of funds for investment portfolios.
+   * @param apiRequest {@link APIGetMutualFundsWorldSummaryRequest}
+   * @return ApiResponse&lt;GetMutualFundsWorldSummary200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetMutualFundsWorldSummary200Response> getMutualFundsWorldSummaryWithHttpInfo(APIGetMutualFundsWorldSummaryRequest apiRequest) throws ApiException {
+    return getMutualFundsWorldSummaryWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Summary
+   * The mutual funds summary endpoint provides a concise overview of global mutual funds, including key details such as fund name, symbol, asset class, and region. This endpoint is useful for quickly obtaining essential information about various mutual funds worldwide, aiding in the comparison and selection of funds for investment portfolios.
+   * @param apiRequest {@link APIGetMutualFundsWorldSummaryRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetMutualFundsWorldSummary200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetMutualFundsWorldSummary200Response> getMutualFundsWorldSummaryWithHttpInfo(APIGetMutualFundsWorldSummaryRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String figi = apiRequest.figi();
+    String isin = apiRequest.isin();
+    String cusip = apiRequest.cusip();
+    String country = apiRequest.country();
+    Long dp = apiRequest.dp();
+    return getMutualFundsWorldSummaryWithHttpInfo(symbol, figi, isin, cusip, country, dp, headers);
   }
 
   /**
@@ -1741,6 +3152,159 @@ public class MutualFundsApi {
     return localVarRequestBuilder;
   }
 
+
+  public static final class APIGetMutualFundsWorldSummaryRequest {
+    @javax.annotation.Nullable
+    private String symbol; // Symbol ticker of mutual fund (optional)
+    @javax.annotation.Nullable
+    private String figi; // Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. (optional)
+    @javax.annotation.Nullable
+    private String isin; // Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cusip; // The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String country; // Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+    @javax.annotation.Nullable
+    private Long dp; // Number of decimal places for floating values. Accepts value in range [0,11] (optional, default to 5)
+
+    private APIGetMutualFundsWorldSummaryRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.figi = builder.figi;
+      this.isin = builder.isin;
+      this.cusip = builder.cusip;
+      this.country = builder.country;
+      this.dp = builder.dp;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String figi() {
+      return figi;
+    }
+    @javax.annotation.Nullable
+    public String isin() {
+      return isin;
+    }
+    @javax.annotation.Nullable
+    public String cusip() {
+      return cusip;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    @javax.annotation.Nullable
+    public Long dp() {
+      return dp;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String figi;
+      private String isin;
+      private String cusip;
+      private String country;
+      private Long dp;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder figi(@javax.annotation.Nullable String figi) {
+        this.figi = figi;
+        return this;
+      }
+      public Builder isin(@javax.annotation.Nullable String isin) {
+        this.isin = isin;
+        return this;
+      }
+      public Builder cusip(@javax.annotation.Nullable String cusip) {
+        this.cusip = cusip;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public Builder dp(@javax.annotation.Nullable Long dp) {
+        this.dp = dp;
+        return this;
+      }
+      public APIGetMutualFundsWorldSummaryRequest build() {
+        return new APIGetMutualFundsWorldSummaryRequest(this);
+      }
+    }
+  }
+
+  /**
+   * Sustainability
+   * The mutual funds sustainability endpoint provides detailed information on the sustainability and Environmental, Social, and Governance (ESG) ratings of global mutual funds. It returns data such as ESG scores, sustainability metrics, and fund identifiers.
+   * @param apiRequest {@link APIGetMutualFundsWorldSustainabilityRequest}
+   * @return GetMutualFundsWorldSustainability200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetMutualFundsWorldSustainability200Response getMutualFundsWorldSustainability(APIGetMutualFundsWorldSustainabilityRequest apiRequest) throws ApiException {
+    return getMutualFundsWorldSustainability(apiRequest, null);
+  }
+
+  /**
+   * Sustainability
+   * The mutual funds sustainability endpoint provides detailed information on the sustainability and Environmental, Social, and Governance (ESG) ratings of global mutual funds. It returns data such as ESG scores, sustainability metrics, and fund identifiers.
+   * @param apiRequest {@link APIGetMutualFundsWorldSustainabilityRequest}
+   * @param headers Optional headers to include in the request
+   * @return GetMutualFundsWorldSustainability200Response
+   * @throws ApiException if fails to make API call
+   */
+  public GetMutualFundsWorldSustainability200Response getMutualFundsWorldSustainability(APIGetMutualFundsWorldSustainabilityRequest apiRequest, Map<String, String> headers) throws ApiException {
+    @javax.annotation.Nullable
+    String symbol = apiRequest.symbol();
+    @javax.annotation.Nullable
+    String figi = apiRequest.figi();
+    @javax.annotation.Nullable
+    String isin = apiRequest.isin();
+    @javax.annotation.Nullable
+    String cusip = apiRequest.cusip();
+    @javax.annotation.Nullable
+    String country = apiRequest.country();
+    @javax.annotation.Nullable
+    Long dp = apiRequest.dp();
+    return getMutualFundsWorldSustainability(symbol, figi, isin, cusip, country, dp, headers);
+  }
+
+  /**
+   * Sustainability
+   * The mutual funds sustainability endpoint provides detailed information on the sustainability and Environmental, Social, and Governance (ESG) ratings of global mutual funds. It returns data such as ESG scores, sustainability metrics, and fund identifiers.
+   * @param apiRequest {@link APIGetMutualFundsWorldSustainabilityRequest}
+   * @return ApiResponse&lt;GetMutualFundsWorldSustainability200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetMutualFundsWorldSustainability200Response> getMutualFundsWorldSustainabilityWithHttpInfo(APIGetMutualFundsWorldSustainabilityRequest apiRequest) throws ApiException {
+    return getMutualFundsWorldSustainabilityWithHttpInfo(apiRequest, null);
+  }
+
+  /**
+   * Sustainability
+   * The mutual funds sustainability endpoint provides detailed information on the sustainability and Environmental, Social, and Governance (ESG) ratings of global mutual funds. It returns data such as ESG scores, sustainability metrics, and fund identifiers.
+   * @param apiRequest {@link APIGetMutualFundsWorldSustainabilityRequest}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;GetMutualFundsWorldSustainability200Response&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<GetMutualFundsWorldSustainability200Response> getMutualFundsWorldSustainabilityWithHttpInfo(APIGetMutualFundsWorldSustainabilityRequest apiRequest, Map<String, String> headers) throws ApiException {
+    String symbol = apiRequest.symbol();
+    String figi = apiRequest.figi();
+    String isin = apiRequest.isin();
+    String cusip = apiRequest.cusip();
+    String country = apiRequest.country();
+    Long dp = apiRequest.dp();
+    return getMutualFundsWorldSustainabilityWithHttpInfo(symbol, figi, isin, cusip, country, dp, headers);
+  }
+
   /**
    * Sustainability
    * The mutual funds sustainability endpoint provides detailed information on the sustainability and Environmental, Social, and Governance (ESG) ratings of global mutual funds. It returns data such as ESG scores, sustainability metrics, and fund identifiers.
@@ -1897,6 +3461,95 @@ public class MutualFundsApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
+  }
+
+
+  public static final class APIGetMutualFundsWorldSustainabilityRequest {
+    @javax.annotation.Nullable
+    private String symbol; // Symbol ticker of mutual fund (optional)
+    @javax.annotation.Nullable
+    private String figi; // Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. (optional)
+    @javax.annotation.Nullable
+    private String isin; // Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String cusip; // The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section (optional)
+    @javax.annotation.Nullable
+    private String country; // Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; (optional)
+    @javax.annotation.Nullable
+    private Long dp; // Number of decimal places for floating values. Accepts value in range [0,11] (optional, default to 5)
+
+    private APIGetMutualFundsWorldSustainabilityRequest(Builder builder) {
+      this.symbol = builder.symbol;
+      this.figi = builder.figi;
+      this.isin = builder.isin;
+      this.cusip = builder.cusip;
+      this.country = builder.country;
+      this.dp = builder.dp;
+    }
+    @javax.annotation.Nullable
+    public String symbol() {
+      return symbol;
+    }
+    @javax.annotation.Nullable
+    public String figi() {
+      return figi;
+    }
+    @javax.annotation.Nullable
+    public String isin() {
+      return isin;
+    }
+    @javax.annotation.Nullable
+    public String cusip() {
+      return cusip;
+    }
+    @javax.annotation.Nullable
+    public String country() {
+      return country;
+    }
+    @javax.annotation.Nullable
+    public Long dp() {
+      return dp;
+    }
+    public static Builder newBuilder() {
+      return new Builder();
+    }
+
+    public static class Builder {
+      private String symbol;
+      private String figi;
+      private String isin;
+      private String cusip;
+      private String country;
+      private Long dp;
+
+      public Builder symbol(@javax.annotation.Nullable String symbol) {
+        this.symbol = symbol;
+        return this;
+      }
+      public Builder figi(@javax.annotation.Nullable String figi) {
+        this.figi = figi;
+        return this;
+      }
+      public Builder isin(@javax.annotation.Nullable String isin) {
+        this.isin = isin;
+        return this;
+      }
+      public Builder cusip(@javax.annotation.Nullable String cusip) {
+        this.cusip = cusip;
+        return this;
+      }
+      public Builder country(@javax.annotation.Nullable String country) {
+        this.country = country;
+        return this;
+      }
+      public Builder dp(@javax.annotation.Nullable Long dp) {
+        this.dp = dp;
+        return this;
+      }
+      public APIGetMutualFundsWorldSustainabilityRequest build() {
+        return new APIGetMutualFundsWorldSustainabilityRequest(this);
+      }
+    }
   }
 
 }

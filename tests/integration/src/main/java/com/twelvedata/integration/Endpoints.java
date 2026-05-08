@@ -3,15 +3,25 @@ package com.twelvedata.integration;
 import com.twelvedata.client.ApiClient;
 import com.twelvedata.client.Twelvedata;
 import com.twelvedata.client.api.AdvancedApi;
+import com.twelvedata.client.api.AdvancedApi.*;
 import com.twelvedata.client.api.AnalysisApi;
+import com.twelvedata.client.api.AnalysisApi.*;
 import com.twelvedata.client.api.CurrenciesApi;
+import com.twelvedata.client.api.CurrenciesApi.*;
 import com.twelvedata.client.api.EtfsApi;
+import com.twelvedata.client.api.EtfsApi.*;
 import com.twelvedata.client.api.FundamentalsApi;
+import com.twelvedata.client.api.FundamentalsApi.*;
 import com.twelvedata.client.api.MarketDataApi;
+import com.twelvedata.client.api.MarketDataApi.*;
 import com.twelvedata.client.api.MutualFundsApi;
+import com.twelvedata.client.api.MutualFundsApi.*;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.*;
 import com.twelvedata.client.api.RegulatoryApi;
+import com.twelvedata.client.api.RegulatoryApi.*;
 import com.twelvedata.client.api.TechnicalIndicatorApi;
+import com.twelvedata.client.api.TechnicalIndicatorApi.*;
 import com.twelvedata.client.model.EndpointEnum;
 import com.twelvedata.client.model.IntervalEnum;
 import com.twelvedata.client.model.MarketEnum;
@@ -91,617 +101,575 @@ public final class Endpoints {
     // --- MarketDataApi ---
 
     runTest("MarketData.getTimeSeries", () -> {
-      var r = marketDataApi.getTimeSeries(
-          INTERVAL, SYMBOL_STOCK, null, null, null, OUTPUTSIZE,
-          null, null, null, null, null, null, null, null, null, null,
-          null, null, null, null, null);
+      var r = marketDataApi.getTimeSeries(APIGetTimeSeriesRequest.newBuilder()
+          .interval(INTERVAL).symbol(SYMBOL_STOCK).outputsize(OUTPUTSIZE).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getValues() != null && !r.getValues().isEmpty(), "expected non-empty values array");
-      // System.out.println(r.getValues().get(0));
     });
 
     runTest("MarketData.getPrice", () -> {
-      var r = marketDataApi.getPrice(
-          SYMBOL_STOCK, null, null, null, null, null, null, null, null, null, null, null);
+      var r = marketDataApi.getPrice(APIGetPriceRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue(r.getPrice() != null, "expected price to be present");
-      // System.out.println(r);
     });
 
     runTest("MarketData.getQuote", () -> {
-      var r = marketDataApi.getQuote(
-          SYMBOL_STOCK, null, null, null, null, null, null, null, null, null,
-          null, null, null, null, null, null, null);
+      var r = marketDataApi.getQuote(APIGetQuoteRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue(r.getSymbol() != null, "expected symbol to be present");
-      // System.out.println(r);
     });
 
     runTest("MarketData.getEod", () -> {
-      var r = marketDataApi.getEod(
-          SYMBOL_STOCK, null, null, null, null, null, null, null, null, null, null);
+      var r = marketDataApi.getEod(APIGetEodRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue(r.getClose() != null, "expected close to be present");
-      // System.out.println(r);
     });
 
     runTest("MarketData.getMarketMovers", () -> {
-      var r = marketDataApi.getMarketMovers(MarketEnum.STOCKS, null, null, null, null, null);
+      var r = marketDataApi.getMarketMovers(APIGetMarketMoversRequest.newBuilder()
+          .market(MarketEnum.STOCKS).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getValues() != null && !r.getValues().isEmpty(), "expected non-empty values array");
-      // System.out.println(r.getValues().get(0));
     });
 
     runTest("MarketData.getTimeSeriesCross", () -> {
-      var r = marketDataApi.getTimeSeriesCross(
-          FOREX_BASE, FOREX_QUOTE, INTERVAL, null, null, null, null, null, null,
-          OUTPUTSIZE, null, null, null, null, null, null, null, null);
+      var r = marketDataApi.getTimeSeriesCross(APIGetTimeSeriesCrossRequest.newBuilder()
+          .base(FOREX_BASE).quote(FOREX_QUOTE).interval(INTERVAL).outputsize(OUTPUTSIZE).build());
       assertTrue(r.getValues() != null && !r.getValues().isEmpty(), "expected non-empty values array");
-      // System.out.println(r.getValues().get(0));
     });
 
     // --- CurrenciesApi ---
 
     runTest("Currencies.getExchangeRate", () -> {
-      var r = currenciesApi.getExchangeRate(SYMBOL_FOREX, null, null, null, null, null);
+      var r = currenciesApi.getExchangeRate(APIGetExchangeRateRequest.newBuilder()
+          .symbol(SYMBOL_FOREX).build());
       assertTrue(r.getRate() != null, "expected rate to be present");
-      // System.out.println(r);
     });
 
     runTest("Currencies.getCurrencyConversion", () -> {
-      var r = currenciesApi.getCurrencyConversion(
-          SYMBOL_FOREX, CURRENCY_AMOUNT, null, null, null, null, null);
+      var r = currenciesApi.getCurrencyConversion(APIGetCurrencyConversionRequest.newBuilder()
+          .symbol(SYMBOL_FOREX).amount(CURRENCY_AMOUNT).build());
       assertTrue(r.getRate() != null, "expected rate to be present");
-      // System.out.println(r);
     });
 
     // --- FundamentalsApi ---
 
     runTest("Fundamentals.getIpoCalendar", () -> {
-      var r = fundamentalsApi.getIpoCalendar(null, null, null, START_DATE, END_DATE);
+      var r = fundamentalsApi.getIpoCalendar(APIGetIpoCalendarRequest.newBuilder()
+          .startDate(START_DATE).endDate(END_DATE).build());
       assertTrue(r != null, "expected response data");
-      // System.out.println(r);
     });
 
     runTest("Fundamentals.getEarningsCalendar", () -> {
-      var r = fundamentalsApi.getEarningsCalendar(
-          null, null, null, null, null, null, null, null);
+      var r = fundamentalsApi.getEarningsCalendar(APIGetEarningsCalendarRequest.newBuilder().build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getEarnings() != null, "expected earnings map");
-      // System.out.println(r);
     });
 
     runTest("Fundamentals.getDividendsCalendar", () -> {
-      var r = fundamentalsApi.getDividendsCalendar(
-          SYMBOL_STOCK, null, null, null, null, null, null, null, null, null, null);
+      var r = fundamentalsApi.getDividendsCalendar(APIGetDividendsCalendarRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue(r != null, "expected response data");
-      // System.out.println(r);
     });
 
     runTest("Fundamentals.getSplitsCalendar", () -> {
-      var r = fundamentalsApi.getSplitsCalendar(
-          null, null, null, null, null, null, null, START_DATE, END_DATE, null, null);
+      var r = fundamentalsApi.getSplitsCalendar(APIGetSplitsCalendarRequest.newBuilder()
+          .startDate(START_DATE).endDate(END_DATE).build());
       assertTrue(r != null, "expected response data");
-      // System.out.println(r);
     });
 
     runTest("Fundamentals.getEarnings", () -> {
-      var r = fundamentalsApi.getEarnings(
-          SYMBOL_STOCK, null, null, null, null, null, null, null, null, null, null,
-          null, null, null, null);
+      var r = fundamentalsApi.getEarnings(APIGetEarningsRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getEarnings() != null, "expected earnings to be present");
-      // System.out.println(r);
     });
 
     runTest("Fundamentals.getDividends", () -> {
-      var r = fundamentalsApi.getDividends(
-          SYMBOL_STOCK, null, null, null, null, null, null, null, null, null, null);
+      var r = fundamentalsApi.getDividends(APIGetDividendsRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue(r.getDividends() != null, "expected dividends to be present");
-      // System.out.println(r);
     });
 
     runTest("Fundamentals.getSplits", () -> {
-      var r = fundamentalsApi.getSplits(
-          SYMBOL_STOCK, null, null, null, null, null, null, null, null, null);
+      var r = fundamentalsApi.getSplits(APIGetSplitsRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue(r.getSplits() != null, "expected splits to be present");
-      // System.out.println(r);
     });
 
     runTest("Fundamentals.getBalanceSheet", () -> {
-      var r = fundamentalsApi.getBalanceSheet(
-          SYMBOL_STOCK, null, null, null, null, null, null, null, null, null, null);
+      var r = fundamentalsApi.getBalanceSheet(APIGetBalanceSheetRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue(r.getBalanceSheet() != null, "expected balanceSheet to be present");
-      // System.out.println(r);
     });
 
     runTest("Fundamentals.getCashFlow", () -> {
-      var r = fundamentalsApi.getCashFlow(
-          SYMBOL_STOCK, null, null, null, null, null, null, null, null, null, null);
+      var r = fundamentalsApi.getCashFlow(APIGetCashFlowRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue(r.getCashFlow() != null, "expected cashFlow to be present");
-      // System.out.println(r);
     });
 
     runTest("Fundamentals.getIncomeStatement", () -> {
-      var r = fundamentalsApi.getIncomeStatement(
-          SYMBOL_STOCK, null, null, null, null, null, null, null, null, null, null);
+      var r = fundamentalsApi.getIncomeStatement(APIGetIncomeStatementRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue(r.getIncomeStatement() != null, "expected incomeStatement to be present");
-      // System.out.println(r);
     });
 
     runTest("Fundamentals.getProfile", () -> {
-      var r = fundamentalsApi.getProfile(
-          SYMBOL_STOCK, null, null, null, null, null, null);
+      var r = fundamentalsApi.getProfile(APIGetProfileRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue(r.getSymbol() != null, "expected symbol to be present");
-      // System.out.println(r);
     });
 
     runTest("Fundamentals.getStatistics", () -> {
-      var r = fundamentalsApi.getStatistics(
-          SYMBOL_STOCK, null, null, null, null, null, null);
+      var r = fundamentalsApi.getStatistics(APIGetStatisticsRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue(r.getStatistics() != null, "expected statistics to be present");
-      // System.out.println(r);
     });
 
     runTest("Fundamentals.getMarketCap", () -> {
-      var r = fundamentalsApi.getMarketCap(
-          SYMBOL_STOCK, null, null, null, null, null, null, null, null, null, null);
+      var r = fundamentalsApi.getMarketCap(APIGetMarketCapRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue(r.getMarketCap() != null, "expected marketCap to be present");
-      // System.out.println(r);
     });
 
     runTest("Fundamentals.getKeyExecutives", () -> {
-      var r = fundamentalsApi.getKeyExecutives(
-          SYMBOL_STOCK, null, null, null, null, null, null);
+      var r = fundamentalsApi.getKeyExecutives(APIGetKeyExecutivesRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue(r.getKeyExecutives() != null, "expected keyExecutives to be present");
-      // System.out.println(r);
     });
 
     runTest("Fundamentals.getLogo", () -> {
-      var r = fundamentalsApi.getLogo(SYMBOL_STOCK, null, null, null);
+      var r = fundamentalsApi.getLogo(APIGetLogoRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue(r.getUrl() != null, "expected url to be present");
-      // System.out.println(r);
     });
 
     runTest("Fundamentals.pressReleasesListParameters", () -> {
-      var r = fundamentalsApi.pressReleasesListParameters(
-          SYMBOL_STOCK, null, null, null, null, null, null, null, null, null, null);
+      var r = fundamentalsApi.pressReleasesListParameters(APIPressReleasesListParametersRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getPressReleases() != null, "expected pressReleases to be present");
-      // System.out.println(r);
     });
 
     runTest("Fundamentals.getBalanceSheetConsolidated", () -> {
-      var r = fundamentalsApi.getBalanceSheetConsolidated(
-          SYMBOL_STOCK, null, null, null, null, null, null, null, null, null, null);
+      var r = fundamentalsApi.getBalanceSheetConsolidated(APIGetBalanceSheetConsolidatedRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getBalanceSheet() != null && !r.getBalanceSheet().isEmpty(),
           "expected non-empty balanceSheet array");
-      // System.out.println(r.getBalanceSheet().get(0));
     });
 
     runTest("Fundamentals.getCashFlowConsolidated", () -> {
-      var r = fundamentalsApi.getCashFlowConsolidated(
-          SYMBOL_STOCK, null, null, null, null, null, null, null, null, null, null);
+      var r = fundamentalsApi.getCashFlowConsolidated(APIGetCashFlowConsolidatedRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getCashFlow() != null && !r.getCashFlow().isEmpty(),
           "expected non-empty cashFlow array");
-      // System.out.println(r.getCashFlow().get(0));
     });
 
     runTest("Fundamentals.getIncomeStatementConsolidated", () -> {
-      var r = fundamentalsApi.getIncomeStatementConsolidated(
-          SYMBOL_STOCK, null, null, null, null, null, null, null, null, null, null);
+      var r = fundamentalsApi.getIncomeStatementConsolidated(APIGetIncomeStatementConsolidatedRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getIncomeStatement() != null && !r.getIncomeStatement().isEmpty(),
           "expected non-empty incomeStatement array");
-      // System.out.println(r.getIncomeStatement().get(0));
     });
 
     runTest("Fundamentals.getLastChanges", () -> {
-      var r = fundamentalsApi.getLastChanges(
-          LAST_CHANGES_ENDPOINT, null, null, null, null, null, null, null);
+      var r = fundamentalsApi.getLastChanges(APIGetLastChangesRequest.newBuilder()
+          .endpoint(LAST_CHANGES_ENDPOINT).build());
       assertTrue(r.getData() != null, "expected data array");
-      // System.out.println(r.getData().isEmpty() ? r : r.getData().get(0));
     });
 
     // --- AnalysisApi ---
 
     runTest("Analysis.getAnalystRatingsUsEquities", () -> {
-      var r = analysisApi.getAnalystRatingsUsEquities(
-          SYMBOL_STOCK, null, null, null, null, null, null);
+      var r = analysisApi.getAnalystRatingsUsEquities(APIGetAnalystRatingsUsEquitiesRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getRatings() != null, "expected ratings to be present");
-      // System.out.println(r);
     });
 
     runTest("Analysis.getPriceTarget", () -> {
-      var r = analysisApi.getPriceTarget(SYMBOL_STOCK, null, null, null, null, null);
+      var r = analysisApi.getPriceTarget(APIGetPriceTargetRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getPriceTarget() != null, "expected priceTarget to be present");
-      // System.out.println(r);
     });
 
     runTest("Analysis.getRecommendations", () -> {
-      var r = analysisApi.getRecommendations(SYMBOL_STOCK, null, null, null, null, null);
+      var r = analysisApi.getRecommendations(APIGetRecommendationsRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getTrends() != null, "expected trends to be present");
-      // System.out.println(r);
     });
 
     runTest("Analysis.getEarningsEstimate", () -> {
-      var r = analysisApi.getEarningsEstimate(SYMBOL_STOCK, null, null, null, null, null);
+      var r = analysisApi.getEarningsEstimate(APIGetEarningsEstimateRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getEarningsEstimate() != null, "expected earningsEstimate to be present");
-      // System.out.println(r);
     });
 
     runTest("Analysis.getEpsRevisions", () -> {
-      var r = analysisApi.getEpsRevisions(SYMBOL_STOCK, null, null, null, null, null);
+      var r = analysisApi.getEpsRevisions(APIGetEpsRevisionsRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getEpsRevision() != null, "expected epsRevision to be present");
-      // System.out.println(r);
     });
 
     runTest("Analysis.getEpsTrend", () -> {
-      var r = analysisApi.getEpsTrend(SYMBOL_STOCK, null, null, null, null, null);
+      var r = analysisApi.getEpsTrend(APIGetEpsTrendRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getEpsTrend() != null, "expected epsTrend to be present");
-      // System.out.println(r);
     });
 
     runTest("Analysis.getGrowthEstimates", () -> {
-      var r = analysisApi.getGrowthEstimates(SYMBOL_STOCK, null, null, null, null, null);
+      var r = analysisApi.getGrowthEstimates(APIGetGrowthEstimatesRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getGrowthEstimates() != null, "expected growthEstimates to be present");
-      // System.out.println(r);
     });
 
     runTest("Analysis.getRevenueEstimate", () -> {
-      var r = analysisApi.getRevenueEstimate(
-          SYMBOL_STOCK, null, null, null, null, null, null);
+      var r = analysisApi.getRevenueEstimate(APIGetRevenueEstimateRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getRevenueEstimate() != null, "expected revenueEstimate to be present");
-      // System.out.println(r);
     });
 
     runTest("Analysis.getAnalystRatingsLight", () -> {
-      var r = analysisApi.getAnalystRatingsLight(
-          SYMBOL_STOCK, null, null, null, null, null, null, null);
+      var r = analysisApi.getAnalystRatingsLight(APIGetAnalystRatingsLightRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getRatings() != null, "expected ratings to be present");
-      // System.out.println(r);
     });
 
     // --- EtfsApi ---
 
     runTest("Etfs.getETFsList", () -> {
-      var r = etfsApi.getETFsList(
-          SYMBOL_ETF, null, null, null, null, null, null, null, null, null);
+      var r = etfsApi.getETFsList(APIGetETFsListRequest.newBuilder()
+          .symbol(SYMBOL_ETF).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getResult() != null, "expected result to be present");
-      // System.out.println(r);
     });
 
     runTest("Etfs.getETFsWorld", () -> {
-      var r = etfsApi.getETFsWorld(SYMBOL_ETF, null, null, null, null, null);
+      var r = etfsApi.getETFsWorld(APIGetETFsWorldRequest.newBuilder()
+          .symbol(SYMBOL_ETF).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getEtf() != null, "expected etf to be present");
-      // System.out.println(r);
     });
 
     runTest("Etfs.getETFsWorldSummary", () -> {
-      var r = etfsApi.getETFsWorldSummary(SYMBOL_ETF, null, null, null, null, null);
+      var r = etfsApi.getETFsWorldSummary(APIGetETFsWorldSummaryRequest.newBuilder()
+          .symbol(SYMBOL_ETF).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getEtf() != null, "expected etf to be present");
-      // System.out.println(r);
     });
 
     runTest("Etfs.getETFsWorldComposition", () -> {
-      var r = etfsApi.getETFsWorldComposition(SYMBOL_ETF, null, null, null, null, null);
+      var r = etfsApi.getETFsWorldComposition(APIGetETFsWorldCompositionRequest.newBuilder()
+          .symbol(SYMBOL_ETF).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getEtf() != null, "expected etf to be present");
-      // System.out.println(r);
     });
 
     runTest("Etfs.getETFsWorldPerformance", () -> {
-      var r = etfsApi.getETFsWorldPerformance(SYMBOL_ETF, null, null, null, null, null);
+      var r = etfsApi.getETFsWorldPerformance(APIGetETFsWorldPerformanceRequest.newBuilder()
+          .symbol(SYMBOL_ETF).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getEtf() != null, "expected etf to be present");
-      // System.out.println(r);
     });
 
     runTest("Etfs.getETFsWorldRisk", () -> {
-      var r = etfsApi.getETFsWorldRisk(SYMBOL_ETF, null, null, null, null, null);
+      var r = etfsApi.getETFsWorldRisk(APIGetETFsWorldRiskRequest.newBuilder()
+          .symbol(SYMBOL_ETF).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getEtf() != null, "expected etf to be present");
-      // System.out.println(r);
     });
 
     runTest("Etfs.getETFsFamily", () -> {
-      var r = etfsApi.getETFsFamily(COUNTRY, null);
+      var r = etfsApi.getETFsFamily(APIGetETFsFamilyRequest.newBuilder()
+          .country(COUNTRY).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getResult() != null && !r.getResult().isEmpty(),
           "expected non-empty result map");
-      // System.out.println(r);
     });
 
     runTest("Etfs.getETFsType", () -> {
-      var r = etfsApi.getETFsType(COUNTRY, null);
+      var r = etfsApi.getETFsType(APIGetETFsTypeRequest.newBuilder()
+          .country(COUNTRY).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getResult() != null && !r.getResult().isEmpty(),
           "expected non-empty result map");
-      // System.out.println(r);
     });
 
     // --- MutualFundsApi ---
 
     runTest("MutualFunds.getMutualFundsWorld", () -> {
-      var r = mutualFundsApi.getMutualFundsWorld(
-          SYMBOL_MUTUAL_FUND, null, null, null, null, null);
+      var r = mutualFundsApi.getMutualFundsWorld(APIGetMutualFundsWorldRequest.newBuilder()
+          .symbol(SYMBOL_MUTUAL_FUND).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getMutualFund() != null, "expected mutualFund to be present");
-      // System.out.println(r);
     });
 
     runTest("MutualFunds.getMutualFundsWorldSummary", () -> {
-      var r = mutualFundsApi.getMutualFundsWorldSummary(
-          SYMBOL_MUTUAL_FUND, null, null, null, null, null);
+      var r = mutualFundsApi.getMutualFundsWorldSummary(APIGetMutualFundsWorldSummaryRequest.newBuilder()
+          .symbol(SYMBOL_MUTUAL_FUND).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getMutualFund() != null, "expected mutualFund to be present");
-      // System.out.println(r);
     });
 
     runTest("MutualFunds.getMutualFundsWorldComposition", () -> {
-      var r = mutualFundsApi.getMutualFundsWorldComposition(
-          SYMBOL_MUTUAL_FUND, null, null, null, null, null);
+      var r = mutualFundsApi.getMutualFundsWorldComposition(APIGetMutualFundsWorldCompositionRequest.newBuilder()
+          .symbol(SYMBOL_MUTUAL_FUND).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getMutualFund() != null, "expected mutualFund to be present");
-      // System.out.println(r);
     });
 
     runTest("MutualFunds.getMutualFundsWorldPerformance", () -> {
-      var r = mutualFundsApi.getMutualFundsWorldPerformance(
-          SYMBOL_MUTUAL_FUND, null, null, null, null, null);
+      var r = mutualFundsApi.getMutualFundsWorldPerformance(APIGetMutualFundsWorldPerformanceRequest.newBuilder()
+          .symbol(SYMBOL_MUTUAL_FUND).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getMutualFund() != null, "expected mutualFund to be present");
-      // System.out.println(r);
     });
 
     runTest("MutualFunds.getMutualFundsWorldRisk", () -> {
-      var r = mutualFundsApi.getMutualFundsWorldRisk(
-          SYMBOL_MUTUAL_FUND, null, null, null, null, null);
+      var r = mutualFundsApi.getMutualFundsWorldRisk(APIGetMutualFundsWorldRiskRequest.newBuilder()
+          .symbol(SYMBOL_MUTUAL_FUND).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getMutualFund() != null, "expected mutualFund to be present");
-      // System.out.println(r);
     });
 
     runTest("MutualFunds.getMutualFundsWorldRatings", () -> {
-      var r = mutualFundsApi.getMutualFundsWorldRatings(
-          SYMBOL_MUTUAL_FUND, null, null, null, null, null);
+      var r = mutualFundsApi.getMutualFundsWorldRatings(APIGetMutualFundsWorldRatingsRequest.newBuilder()
+          .symbol(SYMBOL_MUTUAL_FUND).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getMutualFund() != null, "expected mutualFund to be present");
-      // System.out.println(r);
     });
 
     runTest("MutualFunds.getMutualFundsWorldPurchaseInfo", () -> {
-      var r = mutualFundsApi.getMutualFundsWorldPurchaseInfo(
-          SYMBOL_MUTUAL_FUND, null, null, null, null, null);
+      var r = mutualFundsApi.getMutualFundsWorldPurchaseInfo(APIGetMutualFundsWorldPurchaseInfoRequest.newBuilder()
+          .symbol(SYMBOL_MUTUAL_FUND).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getMutualFund() != null, "expected mutualFund to be present");
-      // System.out.println(r);
     });
 
     runTest("MutualFunds.getMutualFundsWorldSustainability", () -> {
-      var r = mutualFundsApi.getMutualFundsWorldSustainability(
-          SYMBOL_MUTUAL_FUND, null, null, null, null, null);
+      var r = mutualFundsApi.getMutualFundsWorldSustainability(APIGetMutualFundsWorldSustainabilityRequest.newBuilder()
+          .symbol(SYMBOL_MUTUAL_FUND).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getMutualFund() != null, "expected mutualFund to be present");
-      // System.out.println(r);
     });
 
     runTest("MutualFunds.getMutualFundsFamily", () -> {
-      var r = mutualFundsApi.getMutualFundsFamily(null, COUNTRY);
+      var r = mutualFundsApi.getMutualFundsFamily(APIGetMutualFundsFamilyRequest.newBuilder()
+          .country(COUNTRY).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getResult() != null && !r.getResult().isEmpty(),
           "expected non-empty result map");
-      // System.out.println(r);
     });
 
     runTest("MutualFunds.getMutualFundsList", () -> {
-      var r = mutualFundsApi.getMutualFundsList(
-          SYMBOL_MUTUAL_FUND, null, null, null, null, null, null, null, null, null, null, null);
+      var r = mutualFundsApi.getMutualFundsList(APIGetMutualFundsListRequest.newBuilder()
+          .symbol(SYMBOL_MUTUAL_FUND).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getResult() != null, "expected result to be present");
-      // System.out.println(r);
     });
 
     runTest("MutualFunds.getMutualFundsType", () -> {
-      var r = mutualFundsApi.getMutualFundsType(null, COUNTRY);
+      var r = mutualFundsApi.getMutualFundsType(APIGetMutualFundsTypeRequest.newBuilder()
+          .country(COUNTRY).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getResult() != null && !r.getResult().isEmpty(),
           "expected non-empty result map");
-      // System.out.println(r);
     });
 
     // --- ReferenceDataApi ---
 
     runTest("ReferenceData.getStocks", () -> {
-      var r = referenceDataApi.getStocks(
-          SYMBOL_STOCK, null, null, null, null, null, null, null, null, null, null, null, null);
+      var r = referenceDataApi.getStocks(APIGetStocksRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getData() != null && !r.getData().isEmpty(), "expected non-empty data array");
-      // System.out.println(r.getData().get(0));
     });
 
     runTest("ReferenceData.getCryptocurrencies", () -> {
-      var r = referenceDataApi.getCryptocurrencies(
-          SYMBOL_CRYPTO, null, null, null, null, null);
+      var r = referenceDataApi.getCryptocurrencies(APIGetCryptocurrenciesRequest.newBuilder()
+          .symbol(SYMBOL_CRYPTO).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getData() != null && !r.getData().isEmpty(), "expected non-empty data array");
-      // System.out.println(r.getData().get(0));
     });
 
     runTest("ReferenceData.getForexPairs", () -> {
-      var r = referenceDataApi.getForexPairs(SYMBOL_FOREX, null, null, null, null);
+      var r = referenceDataApi.getForexPairs(APIGetForexPairsRequest.newBuilder()
+          .symbol(SYMBOL_FOREX).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getData() != null && !r.getData().isEmpty(), "expected non-empty data array");
-      // System.out.println(r.getData().get(0));
     });
 
     runTest("ReferenceData.getExchanges", () -> {
-      var r = referenceDataApi.getExchanges(null, null, null, null, null, null, null);
+      var r = referenceDataApi.getExchanges(APIGetExchangesRequest.newBuilder().build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getData() != null && !r.getData().isEmpty(), "expected non-empty data array");
-      // System.out.println(r.getData().get(0));
     });
 
     runTest("ReferenceData.getMarketState", () -> {
-      var r = referenceDataApi.getMarketState(null, null, null);
+      var r = referenceDataApi.getMarketState(APIGetMarketStateRequest.newBuilder().build());
       assertTrue(r != null && !r.isEmpty(), "expected non-empty market state array");
-      // System.out.println(r.get(0));
     });
 
     runTest("ReferenceData.getEarliestTimestamp", () -> {
-      var r = referenceDataApi.getEarliestTimestamp(
-          INTERVAL, SYMBOL_STOCK, null, null, null, null, null, null);
+      var r = referenceDataApi.getEarliestTimestamp(APIGetEarliestTimestampRequest.newBuilder()
+          .interval(INTERVAL).symbol(SYMBOL_STOCK).build());
       assertTrue(r.getDatetime() != null, "expected datetime to be present");
-      // System.out.println(r);
     });
 
     runTest("ReferenceData.getSymbolSearch", () -> {
-      var r = referenceDataApi.getSymbolSearch(SYMBOL_STOCK, null, null);
+      var r = referenceDataApi.getSymbolSearch(APIGetSymbolSearchRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getData() != null, "expected data to be present");
-      // System.out.println(r);
     });
 
     runTest("ReferenceData.getCrossListings", () -> {
-      var r = referenceDataApi.getCrossListings(SYMBOL_STOCK, null, null, null);
+      var r = referenceDataApi.getCrossListings(APIGetCrossListingsRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue(r.getResult() != null, "expected result to be present");
-      // System.out.println(r);
     });
 
     runTest("ReferenceData.getBonds", () -> {
-      var r = referenceDataApi.getBonds(null, null, null, null, null, null, null, null);
+      var r = referenceDataApi.getBonds(APIGetBondsRequest.newBuilder().build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getResult() != null, "expected result to be present");
-      // System.out.println(r);
     });
 
     runTest("ReferenceData.getCommodities", () -> {
-      var r = referenceDataApi.getCommodities(null, null, null, null);
+      var r = referenceDataApi.getCommodities(APIGetCommoditiesRequest.newBuilder().build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getData() != null && !r.getData().isEmpty(), "expected non-empty data array");
-      // System.out.println(r.getData().get(0));
     });
 
     runTest("ReferenceData.getCryptocurrencyExchanges", () -> {
-      var r = referenceDataApi.getCryptocurrencyExchanges(null, null);
+      var r = referenceDataApi.getCryptocurrencyExchanges(APIGetCryptocurrencyExchangesRequest.newBuilder().build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getData() != null && !r.getData().isEmpty(), "expected non-empty data array");
-      // System.out.println(r.getData().get(0));
     });
 
     runTest("ReferenceData.getEtf", () -> {
-      var r = referenceDataApi.getEtf(
-          SYMBOL_ETF, null, null, null, null, null, null, null, null, null, null, null);
+      var r = referenceDataApi.getEtf(APIGetEtfRequest.newBuilder()
+          .symbol(SYMBOL_ETF).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getData() != null && !r.getData().isEmpty(), "expected non-empty data array");
-      // System.out.println(r.getData().get(0));
     });
 
     runTest("ReferenceData.getExchangeSchedule", () -> {
-      var r = referenceDataApi.getExchangeSchedule(null, MIC_CODE, null, null);
+      var r = referenceDataApi.getExchangeSchedule(APIGetExchangeScheduleRequest.newBuilder()
+          .micCode(MIC_CODE).build());
       assertTrue(r.getData() != null && !r.getData().isEmpty(), "expected non-empty data array");
-      // System.out.println(r.getData().get(0));
     });
 
     runTest("ReferenceData.getFunds", () -> {
-      var r = referenceDataApi.getFunds(
-          SYMBOL_MUTUAL_FUND, null, null, null, null, null, null, null, null, null, null, null);
+      var r = referenceDataApi.getFunds(APIGetFundsRequest.newBuilder()
+          .symbol(SYMBOL_MUTUAL_FUND).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getResult() != null, "expected result to be present");
-      // System.out.println(r);
+    });
+
+    runTest("ReferenceData.getCountries", () -> {
+      var r = referenceDataApi.getCountries();
+      assertTrue(r.getData() != null && !r.getData().isEmpty(), "expected non-empty data array");
+    });
+
+    runTest("ReferenceData.getInstrumentType", () -> {
+      var r = referenceDataApi.getInstrumentType();
+      assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
+      assertTrue(r.getResult() != null && !r.getResult().isEmpty(), "expected non-empty result array");
+    });
+
+    runTest("ReferenceData.getIntervals", () -> {
+      var r = referenceDataApi.getIntervals();
+      assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
+      assertTrue(r.getData() != null && !r.getData().isEmpty(), "expected non-empty data array");
+    });
+
+    runTest("ReferenceData.getTechnicalIndicators", () -> {
+      var r = referenceDataApi.getTechnicalIndicators();
+      assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
+      assertTrue(r.getData() != null && !r.getData().isEmpty(), "expected non-empty data map");
     });
 
     // --- RegulatoryApi ---
 
     runTest("Regulatory.getDirectHolders", () -> {
-      var r = regulatoryApi.getDirectHolders(
-          SYMBOL_STOCK, null, null, null, null, null, null);
+      var r = regulatoryApi.getDirectHolders(APIGetDirectHoldersRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue(r != null, "expected response data");
-      // System.out.println(r);
     });
 
     runTest("Regulatory.getFundHolders", () -> {
-      var r = regulatoryApi.getFundHolders(
-          SYMBOL_STOCK, null, null, null, null, null, null);
+      var r = regulatoryApi.getFundHolders(APIGetFundHoldersRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue(r != null, "expected response data");
-      // System.out.println(r);
     });
 
     runTest("Regulatory.getInstitutionalHolders", () -> {
-      var r = regulatoryApi.getInstitutionalHolders(
-          SYMBOL_STOCK, null, null, null, null, null, null);
+      var r = regulatoryApi.getInstitutionalHolders(APIGetInstitutionalHoldersRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue(r != null, "expected response data");
-      // System.out.println(r);
     });
 
     runTest("Regulatory.getInsiderTransactions", () -> {
-      var r = regulatoryApi.getInsiderTransactions(
-          SYMBOL_STOCK, null, null, null, null, null, null);
+      var r = regulatoryApi.getInsiderTransactions(APIGetInsiderTransactionsRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue(r != null, "expected response data");
-      // System.out.println(r);
     });
 
     runTest("Regulatory.getTaxInfo", () -> {
-      var r = regulatoryApi.getTaxInfo(SYMBOL_STOCK, null, null, null, null, null);
+      var r = regulatoryApi.getTaxInfo(APIGetTaxInfoRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getData() != null, "expected data to be present");
-      // System.out.println(r);
     });
 
     runTest("Regulatory.getSourceSanctionedEntities", () -> {
-      var r = regulatoryApi.getSourceSanctionedEntities(SANCTIONS_SOURCE);
+      var r = regulatoryApi.getSourceSanctionedEntities(APIGetSourceSanctionedEntitiesRequest.newBuilder()
+          .source(SANCTIONS_SOURCE).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getSanctions() != null, "expected sanctions to be present");
-      // System.out.println(r);
     });
 
     runTest("Regulatory.getEdgarFilingsArchive", () -> {
-      var r = regulatoryApi.getEdgarFilingsArchive(
-          SYMBOL_STOCK, null, null, null, null, null, null, null, null, null, null, null);
+      var r = regulatoryApi.getEdgarFilingsArchive(APIGetEdgarFilingsArchiveRequest.newBuilder()
+          .symbol(SYMBOL_STOCK).build());
       assertTrue(r.getMeta() != null, "expected meta to be present");
       assertTrue(r.getValues() != null, "expected values array");
-      // System.out.println(r.getValues().isEmpty() ? r.getMeta() : r.getValues().get(0));
     });
 
     // --- TechnicalIndicatorApi (2 only) ---
 
     runTest("TechnicalIndicator.getTimeSeriesRsi", () -> {
-      var r = technicalIndicatorApi.getTimeSeriesRsi(
-          INTERVAL, SYMBOL_STOCK, null, null, null, OUTPUTSIZE,
-          null, null, null, null, TIMEZONE, null, null, null, null, null,
-          null, null, null, null, null, null, null, null);
+      var r = technicalIndicatorApi.getTimeSeriesRsi(APIGetTimeSeriesRsiRequest.newBuilder()
+          .interval(INTERVAL).symbol(SYMBOL_STOCK).outputsize(OUTPUTSIZE).timezone(TIMEZONE).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getValues() != null && !r.getValues().isEmpty(), "expected non-empty values array");
-      // System.out.println(r.getValues().get(0));
     });
 
     runTest("TechnicalIndicator.getTimeSeriesMacd", () -> {
-      var r = technicalIndicatorApi.getTimeSeriesMacd(
-          INTERVAL, SYMBOL_STOCK, null, null, null, OUTPUTSIZE,
-          null, null, null, null, TIMEZONE, null, null, null, null, null,
-          null, null, null, null, null, null, null, null, null, null);
+      var r = technicalIndicatorApi.getTimeSeriesMacd(APIGetTimeSeriesMacdRequest.newBuilder()
+          .interval(INTERVAL).symbol(SYMBOL_STOCK).outputsize(OUTPUTSIZE).timezone(TIMEZONE).build());
       assertTrue("ok".equals(r.getStatus()), "expected status ok, got " + r.getStatus());
       assertTrue(r.getValues() != null && !r.getValues().isEmpty(), "expected non-empty values array");
-      // System.out.println(r.getValues().get(0));
     });
 
     // --- AdvancedApi ---
 
     runTest("Advanced.getApiUsage", () -> {
-      var r = advancedApi.getApiUsage(null, null, null);
+      var r = advancedApi.getApiUsage(APIGetApiUsageRequest.newBuilder().build());
       assertTrue(r != null, "expected response data");
-      // System.out.println(r);
     });
 
     int total = passed + failed;

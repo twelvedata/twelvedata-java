@@ -85,6 +85,7 @@ package com.example;
 import com.twelvedata.client.ApiClient;
 import com.twelvedata.client.Twelvedata;
 import com.twelvedata.client.api.MarketDataApi;
+import com.twelvedata.client.api.MarketDataApi.APIGetTimeSeriesRequest;
 import com.twelvedata.client.errors.TwelvedataApiException;
 import com.twelvedata.client.model.GetTimeSeries200Response;
 import com.twelvedata.client.model.IntervalEnum;
@@ -96,11 +97,11 @@ public class App {
 
         try {
             GetTimeSeries200Response response = api.getTimeSeries(
-                IntervalEnum._1DAY, // interval (required)
-                "AAPL",             // symbol
-                null, null, null,   // isin, figi, cusip
-                5L,                 // outputsize
-                null, null, null, null, null, null, null, null, null, null, null, null, null, null, null
+                APIGetTimeSeriesRequest.newBuilder()
+                    .interval(IntervalEnum._1DAY)
+                    .symbol("AAPL")
+                    .outputsize(5L)
+                    .build()
             );
             System.out.println(response);
         } catch (TwelvedataApiException e) {

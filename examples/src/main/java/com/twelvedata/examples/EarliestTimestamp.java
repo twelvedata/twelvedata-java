@@ -3,6 +3,7 @@ package com.twelvedata.examples;
 import com.twelvedata.client.ApiClient;
 import com.twelvedata.client.Twelvedata;
 import com.twelvedata.client.api.ReferenceDataApi;
+import com.twelvedata.client.api.ReferenceDataApi.APIGetEarliestTimestampRequest;
 import com.twelvedata.client.model.IntervalEnum;
 
 public final class EarliestTimestamp {
@@ -11,7 +12,10 @@ public final class EarliestTimestamp {
     ReferenceDataApi api = new ReferenceDataApi(client);
 
     var response = api.getEarliestTimestamp(
-        IntervalEnum._1DAY, "AAPL", null, null, null, null, null, null);
+        APIGetEarliestTimestampRequest.newBuilder()
+            .interval(IntervalEnum._1DAY)
+            .symbol("AAPL")
+            .build());
     System.out.println(response);
   }
 

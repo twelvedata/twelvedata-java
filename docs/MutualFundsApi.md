@@ -31,7 +31,7 @@ All URIs are relative to *https://api.twelvedata.com*
 
 ## getMutualFundsFamily
 
-> GetMutualFundsFamily200Response getMutualFundsFamily(fundFamily, country)
+> GetMutualFundsFamily200Response getMutualFundsFamily(getMutualFundsFamilyRequest)
 
 MFs families
 
@@ -47,6 +47,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.MutualFundsApi;
+import com.twelvedata.client.api.MutualFundsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -63,7 +64,11 @@ public class Example {
         String fundFamily = "Jackson National"; // String | Filter by investment company that manages the fund
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         try {
-            GetMutualFundsFamily200Response result = apiInstance.getMutualFundsFamily(fundFamily, country);
+            APIgetMutualFundsFamilyRequest request = APIgetMutualFundsFamilyRequest.newBuilder()
+                .fundFamily(fundFamily)
+                .country(country)
+                .build();
+            GetMutualFundsFamily200Response result = apiInstance.getMutualFundsFamily(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling MutualFundsApi#getMutualFundsFamily");
@@ -78,11 +83,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **fundFamily** | **String**| Filter by investment company that manages the fund | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| getMutualFundsFamilyRequest | [**APIgetMutualFundsFamilyRequest**](MutualFundsApi.md#APIgetMutualFundsFamilyRequest)|-|-|
 
 ### Return type
 
@@ -112,7 +115,7 @@ public class Example {
 
 ## getMutualFundsFamilyWithHttpInfo
 
-> ApiResponse<GetMutualFundsFamily200Response> getMutualFundsFamily getMutualFundsFamilyWithHttpInfo(fundFamily, country)
+> ApiResponse<GetMutualFundsFamily200Response> getMutualFundsFamily getMutualFundsFamilyWithHttpInfo(getMutualFundsFamilyRequest)
 
 MFs families
 
@@ -129,6 +132,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.MutualFundsApi;
+import com.twelvedata.client.api.MutualFundsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -145,7 +149,11 @@ public class Example {
         String fundFamily = "Jackson National"; // String | Filter by investment company that manages the fund
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         try {
-            ApiResponse<GetMutualFundsFamily200Response> response = apiInstance.getMutualFundsFamilyWithHttpInfo(fundFamily, country);
+            APIgetMutualFundsFamilyRequest request = APIgetMutualFundsFamilyRequest.newBuilder()
+                .fundFamily(fundFamily)
+                .country(country)
+                .build();
+            ApiResponse<GetMutualFundsFamily200Response> response = apiInstance.getMutualFundsFamilyWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -162,11 +170,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **fundFamily** | **String**| Filter by investment company that manages the fund | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| getMutualFundsFamilyRequest | [**APIgetMutualFundsFamilyRequest**](MutualFundsApi.md#APIgetMutualFundsFamilyRequest)|-|-|
 
 ### Return type
 
@@ -195,9 +201,20 @@ ApiResponse<[**GetMutualFundsFamily200Response**](GetMutualFundsFamily200Respons
 | **500** |  |  -  |
 
 
+<a id="APIgetMutualFundsFamilyRequest"></a>
+## APIgetMutualFundsFamilyRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **fundFamily** | **String** | Filter by investment company that manages the fund | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+
+
+
 ## getMutualFundsList
 
-> GetMutualFundsList200Response getMutualFundsList(symbol, figi, isin, cusip, cik, country, fundFamily, fundType, performanceRating, riskRating, page, outputsize)
+> GetMutualFundsList200Response getMutualFundsList(getMutualFundsListRequest)
 
 MFs directory
 
@@ -213,6 +230,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.MutualFundsApi;
+import com.twelvedata.client.api.MutualFundsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -239,7 +257,21 @@ public class Example {
         Long page = 1L; // Long | Page number
         Long outputsize = 100L; // Long | Number of records in response
         try {
-            GetMutualFundsList200Response result = apiInstance.getMutualFundsList(symbol, figi, isin, cusip, cik, country, fundFamily, fundType, performanceRating, riskRating, page, outputsize);
+            APIgetMutualFundsListRequest request = APIgetMutualFundsListRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .cik(cik)
+                .country(country)
+                .fundFamily(fundFamily)
+                .fundType(fundType)
+                .performanceRating(performanceRating)
+                .riskRating(riskRating)
+                .page(page)
+                .outputsize(outputsize)
+                .build();
+            GetMutualFundsList200Response result = apiInstance.getMutualFundsList(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling MutualFundsApi#getMutualFundsList");
@@ -254,21 +286,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Filter by symbol | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cik** | **String**| The CIK of an instrument for which data is requested | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **fundFamily** | **String**| Filter by investment company that manages the fund | [optional] |
-| **fundType** | **String**| Filter by the type of fund | [optional] |
-| **performanceRating** | **Long**| Filter by performance rating from &#x60;0&#x60; to &#x60;5&#x60; | [optional] |
-| **riskRating** | **Long**| Filter by risk rating from &#x60;0&#x60; to &#x60;5&#x60; | [optional] |
-| **page** | **Long**| Page number | [optional] [default to 1] |
-| **outputsize** | **Long**| Number of records in response | [optional] [default to 100] |
+| getMutualFundsListRequest | [**APIgetMutualFundsListRequest**](MutualFundsApi.md#APIgetMutualFundsListRequest)|-|-|
 
 ### Return type
 
@@ -298,7 +318,7 @@ public class Example {
 
 ## getMutualFundsListWithHttpInfo
 
-> ApiResponse<GetMutualFundsList200Response> getMutualFundsList getMutualFundsListWithHttpInfo(symbol, figi, isin, cusip, cik, country, fundFamily, fundType, performanceRating, riskRating, page, outputsize)
+> ApiResponse<GetMutualFundsList200Response> getMutualFundsList getMutualFundsListWithHttpInfo(getMutualFundsListRequest)
 
 MFs directory
 
@@ -315,6 +335,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.MutualFundsApi;
+import com.twelvedata.client.api.MutualFundsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -341,7 +362,21 @@ public class Example {
         Long page = 1L; // Long | Page number
         Long outputsize = 100L; // Long | Number of records in response
         try {
-            ApiResponse<GetMutualFundsList200Response> response = apiInstance.getMutualFundsListWithHttpInfo(symbol, figi, isin, cusip, cik, country, fundFamily, fundType, performanceRating, riskRating, page, outputsize);
+            APIgetMutualFundsListRequest request = APIgetMutualFundsListRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .cik(cik)
+                .country(country)
+                .fundFamily(fundFamily)
+                .fundType(fundType)
+                .performanceRating(performanceRating)
+                .riskRating(riskRating)
+                .page(page)
+                .outputsize(outputsize)
+                .build();
+            ApiResponse<GetMutualFundsList200Response> response = apiInstance.getMutualFundsListWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -358,21 +393,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Filter by symbol | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cik** | **String**| The CIK of an instrument for which data is requested | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **fundFamily** | **String**| Filter by investment company that manages the fund | [optional] |
-| **fundType** | **String**| Filter by the type of fund | [optional] |
-| **performanceRating** | **Long**| Filter by performance rating from &#x60;0&#x60; to &#x60;5&#x60; | [optional] |
-| **riskRating** | **Long**| Filter by risk rating from &#x60;0&#x60; to &#x60;5&#x60; | [optional] |
-| **page** | **Long**| Page number | [optional] [default to 1] |
-| **outputsize** | **Long**| Number of records in response | [optional] [default to 100] |
+| getMutualFundsListRequest | [**APIgetMutualFundsListRequest**](MutualFundsApi.md#APIgetMutualFundsListRequest)|-|-|
 
 ### Return type
 
@@ -401,9 +424,30 @@ ApiResponse<[**GetMutualFundsList200Response**](GetMutualFundsList200Response.md
 | **500** |  |  -  |
 
 
+<a id="APIgetMutualFundsListRequest"></a>
+## APIgetMutualFundsListRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Filter by symbol | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cik** | **String** | The CIK of an instrument for which data is requested | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **fundFamily** | **String** | Filter by investment company that manages the fund | [optional] |
+| **fundType** | **String** | Filter by the type of fund | [optional] |
+| **performanceRating** | **Long** | Filter by performance rating from &#x60;0&#x60; to &#x60;5&#x60; | [optional] |
+| **riskRating** | **Long** | Filter by risk rating from &#x60;0&#x60; to &#x60;5&#x60; | [optional] |
+| **page** | **Long** | Page number | [optional] [default to 1] |
+| **outputsize** | **Long** | Number of records in response | [optional] [default to 100] |
+
+
+
 ## getMutualFundsType
 
-> GetMutualFundsType200Response getMutualFundsType(fundType, country)
+> GetMutualFundsType200Response getMutualFundsType(getMutualFundsTypeRequest)
 
 MFs types
 
@@ -419,6 +463,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.MutualFundsApi;
+import com.twelvedata.client.api.MutualFundsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -435,7 +480,11 @@ public class Example {
         String fundType = "Jackson National"; // String | Filter by the type of fund
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         try {
-            GetMutualFundsType200Response result = apiInstance.getMutualFundsType(fundType, country);
+            APIgetMutualFundsTypeRequest request = APIgetMutualFundsTypeRequest.newBuilder()
+                .fundType(fundType)
+                .country(country)
+                .build();
+            GetMutualFundsType200Response result = apiInstance.getMutualFundsType(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling MutualFundsApi#getMutualFundsType");
@@ -450,11 +499,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **fundType** | **String**| Filter by the type of fund | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| getMutualFundsTypeRequest | [**APIgetMutualFundsTypeRequest**](MutualFundsApi.md#APIgetMutualFundsTypeRequest)|-|-|
 
 ### Return type
 
@@ -484,7 +531,7 @@ public class Example {
 
 ## getMutualFundsTypeWithHttpInfo
 
-> ApiResponse<GetMutualFundsType200Response> getMutualFundsType getMutualFundsTypeWithHttpInfo(fundType, country)
+> ApiResponse<GetMutualFundsType200Response> getMutualFundsType getMutualFundsTypeWithHttpInfo(getMutualFundsTypeRequest)
 
 MFs types
 
@@ -501,6 +548,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.MutualFundsApi;
+import com.twelvedata.client.api.MutualFundsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -517,7 +565,11 @@ public class Example {
         String fundType = "Jackson National"; // String | Filter by the type of fund
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         try {
-            ApiResponse<GetMutualFundsType200Response> response = apiInstance.getMutualFundsTypeWithHttpInfo(fundType, country);
+            APIgetMutualFundsTypeRequest request = APIgetMutualFundsTypeRequest.newBuilder()
+                .fundType(fundType)
+                .country(country)
+                .build();
+            ApiResponse<GetMutualFundsType200Response> response = apiInstance.getMutualFundsTypeWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -534,11 +586,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **fundType** | **String**| Filter by the type of fund | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| getMutualFundsTypeRequest | [**APIgetMutualFundsTypeRequest**](MutualFundsApi.md#APIgetMutualFundsTypeRequest)|-|-|
 
 ### Return type
 
@@ -567,9 +617,20 @@ ApiResponse<[**GetMutualFundsType200Response**](GetMutualFundsType200Response.md
 | **500** |  |  -  |
 
 
+<a id="APIgetMutualFundsTypeRequest"></a>
+## APIgetMutualFundsTypeRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **fundType** | **String** | Filter by the type of fund | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+
+
+
 ## getMutualFundsWorld
 
-> GetMutualFundsWorld200Response getMutualFundsWorld(symbol, figi, isin, cusip, country, dp)
+> GetMutualFundsWorld200Response getMutualFundsWorld(getMutualFundsWorldRequest)
 
 MF full data
 
@@ -585,6 +646,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.MutualFundsApi;
+import com.twelvedata.client.api.MutualFundsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -605,7 +667,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         Long dp = 5L; // Long | Number of decimal places for floating values. Accepts value in range [0,11]
         try {
-            GetMutualFundsWorld200Response result = apiInstance.getMutualFundsWorld(symbol, figi, isin, cusip, country, dp);
+            APIgetMutualFundsWorldRequest request = APIgetMutualFundsWorldRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .dp(dp)
+                .build();
+            GetMutualFundsWorld200Response result = apiInstance.getMutualFundsWorld(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling MutualFundsApi#getMutualFundsWorld");
@@ -620,15 +690,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of mutual fund | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+| getMutualFundsWorldRequest | [**APIgetMutualFundsWorldRequest**](MutualFundsApi.md#APIgetMutualFundsWorldRequest)|-|-|
 
 ### Return type
 
@@ -658,7 +722,7 @@ public class Example {
 
 ## getMutualFundsWorldWithHttpInfo
 
-> ApiResponse<GetMutualFundsWorld200Response> getMutualFundsWorld getMutualFundsWorldWithHttpInfo(symbol, figi, isin, cusip, country, dp)
+> ApiResponse<GetMutualFundsWorld200Response> getMutualFundsWorld getMutualFundsWorldWithHttpInfo(getMutualFundsWorldRequest)
 
 MF full data
 
@@ -675,6 +739,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.MutualFundsApi;
+import com.twelvedata.client.api.MutualFundsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -695,7 +760,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         Long dp = 5L; // Long | Number of decimal places for floating values. Accepts value in range [0,11]
         try {
-            ApiResponse<GetMutualFundsWorld200Response> response = apiInstance.getMutualFundsWorldWithHttpInfo(symbol, figi, isin, cusip, country, dp);
+            APIgetMutualFundsWorldRequest request = APIgetMutualFundsWorldRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .dp(dp)
+                .build();
+            ApiResponse<GetMutualFundsWorld200Response> response = apiInstance.getMutualFundsWorldWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -712,15 +785,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of mutual fund | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+| getMutualFundsWorldRequest | [**APIgetMutualFundsWorldRequest**](MutualFundsApi.md#APIgetMutualFundsWorldRequest)|-|-|
 
 ### Return type
 
@@ -749,9 +816,24 @@ ApiResponse<[**GetMutualFundsWorld200Response**](GetMutualFundsWorld200Response.
 | **500** |  |  -  |
 
 
+<a id="APIgetMutualFundsWorldRequest"></a>
+## APIgetMutualFundsWorldRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of mutual fund | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **dp** | **Long** | Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+
+
+
 ## getMutualFundsWorldComposition
 
-> GetMutualFundsWorldComposition200Response getMutualFundsWorldComposition(symbol, figi, isin, cusip, country, dp)
+> GetMutualFundsWorldComposition200Response getMutualFundsWorldComposition(getMutualFundsWorldCompositionRequest)
 
 Composition
 
@@ -767,6 +849,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.MutualFundsApi;
+import com.twelvedata.client.api.MutualFundsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -787,7 +870,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         Long dp = 5L; // Long | Number of decimal places for floating values. Accepts value in range [0,11]
         try {
-            GetMutualFundsWorldComposition200Response result = apiInstance.getMutualFundsWorldComposition(symbol, figi, isin, cusip, country, dp);
+            APIgetMutualFundsWorldCompositionRequest request = APIgetMutualFundsWorldCompositionRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .dp(dp)
+                .build();
+            GetMutualFundsWorldComposition200Response result = apiInstance.getMutualFundsWorldComposition(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling MutualFundsApi#getMutualFundsWorldComposition");
@@ -802,15 +893,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of mutual fund | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+| getMutualFundsWorldCompositionRequest | [**APIgetMutualFundsWorldCompositionRequest**](MutualFundsApi.md#APIgetMutualFundsWorldCompositionRequest)|-|-|
 
 ### Return type
 
@@ -840,7 +925,7 @@ public class Example {
 
 ## getMutualFundsWorldCompositionWithHttpInfo
 
-> ApiResponse<GetMutualFundsWorldComposition200Response> getMutualFundsWorldComposition getMutualFundsWorldCompositionWithHttpInfo(symbol, figi, isin, cusip, country, dp)
+> ApiResponse<GetMutualFundsWorldComposition200Response> getMutualFundsWorldComposition getMutualFundsWorldCompositionWithHttpInfo(getMutualFundsWorldCompositionRequest)
 
 Composition
 
@@ -857,6 +942,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.MutualFundsApi;
+import com.twelvedata.client.api.MutualFundsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -877,7 +963,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         Long dp = 5L; // Long | Number of decimal places for floating values. Accepts value in range [0,11]
         try {
-            ApiResponse<GetMutualFundsWorldComposition200Response> response = apiInstance.getMutualFundsWorldCompositionWithHttpInfo(symbol, figi, isin, cusip, country, dp);
+            APIgetMutualFundsWorldCompositionRequest request = APIgetMutualFundsWorldCompositionRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .dp(dp)
+                .build();
+            ApiResponse<GetMutualFundsWorldComposition200Response> response = apiInstance.getMutualFundsWorldCompositionWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -894,15 +988,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of mutual fund | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+| getMutualFundsWorldCompositionRequest | [**APIgetMutualFundsWorldCompositionRequest**](MutualFundsApi.md#APIgetMutualFundsWorldCompositionRequest)|-|-|
 
 ### Return type
 
@@ -931,9 +1019,24 @@ ApiResponse<[**GetMutualFundsWorldComposition200Response**](GetMutualFundsWorldC
 | **500** |  |  -  |
 
 
+<a id="APIgetMutualFundsWorldCompositionRequest"></a>
+## APIgetMutualFundsWorldCompositionRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of mutual fund | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **dp** | **Long** | Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+
+
+
 ## getMutualFundsWorldPerformance
 
-> GetMutualFundsWorldPerformance200Response getMutualFundsWorldPerformance(symbol, figi, isin, cusip, country, dp)
+> GetMutualFundsWorldPerformance200Response getMutualFundsWorldPerformance(getMutualFundsWorldPerformanceRequest)
 
 Performance
 
@@ -949,6 +1052,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.MutualFundsApi;
+import com.twelvedata.client.api.MutualFundsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -969,7 +1073,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         Long dp = 5L; // Long | Number of decimal places for floating values. Accepts value in range [0,11]
         try {
-            GetMutualFundsWorldPerformance200Response result = apiInstance.getMutualFundsWorldPerformance(symbol, figi, isin, cusip, country, dp);
+            APIgetMutualFundsWorldPerformanceRequest request = APIgetMutualFundsWorldPerformanceRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .dp(dp)
+                .build();
+            GetMutualFundsWorldPerformance200Response result = apiInstance.getMutualFundsWorldPerformance(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling MutualFundsApi#getMutualFundsWorldPerformance");
@@ -984,15 +1096,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of mutual fund | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+| getMutualFundsWorldPerformanceRequest | [**APIgetMutualFundsWorldPerformanceRequest**](MutualFundsApi.md#APIgetMutualFundsWorldPerformanceRequest)|-|-|
 
 ### Return type
 
@@ -1022,7 +1128,7 @@ public class Example {
 
 ## getMutualFundsWorldPerformanceWithHttpInfo
 
-> ApiResponse<GetMutualFundsWorldPerformance200Response> getMutualFundsWorldPerformance getMutualFundsWorldPerformanceWithHttpInfo(symbol, figi, isin, cusip, country, dp)
+> ApiResponse<GetMutualFundsWorldPerformance200Response> getMutualFundsWorldPerformance getMutualFundsWorldPerformanceWithHttpInfo(getMutualFundsWorldPerformanceRequest)
 
 Performance
 
@@ -1039,6 +1145,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.MutualFundsApi;
+import com.twelvedata.client.api.MutualFundsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1059,7 +1166,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         Long dp = 5L; // Long | Number of decimal places for floating values. Accepts value in range [0,11]
         try {
-            ApiResponse<GetMutualFundsWorldPerformance200Response> response = apiInstance.getMutualFundsWorldPerformanceWithHttpInfo(symbol, figi, isin, cusip, country, dp);
+            APIgetMutualFundsWorldPerformanceRequest request = APIgetMutualFundsWorldPerformanceRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .dp(dp)
+                .build();
+            ApiResponse<GetMutualFundsWorldPerformance200Response> response = apiInstance.getMutualFundsWorldPerformanceWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1076,15 +1191,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of mutual fund | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+| getMutualFundsWorldPerformanceRequest | [**APIgetMutualFundsWorldPerformanceRequest**](MutualFundsApi.md#APIgetMutualFundsWorldPerformanceRequest)|-|-|
 
 ### Return type
 
@@ -1113,9 +1222,24 @@ ApiResponse<[**GetMutualFundsWorldPerformance200Response**](GetMutualFundsWorldP
 | **500** |  |  -  |
 
 
+<a id="APIgetMutualFundsWorldPerformanceRequest"></a>
+## APIgetMutualFundsWorldPerformanceRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of mutual fund | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **dp** | **Long** | Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+
+
+
 ## getMutualFundsWorldPurchaseInfo
 
-> GetMutualFundsWorldPurchaseInfo200Response getMutualFundsWorldPurchaseInfo(symbol, figi, isin, cusip, country, dp)
+> GetMutualFundsWorldPurchaseInfo200Response getMutualFundsWorldPurchaseInfo(getMutualFundsWorldPurchaseInfoRequest)
 
 Purchase info
 
@@ -1131,6 +1255,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.MutualFundsApi;
+import com.twelvedata.client.api.MutualFundsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1151,7 +1276,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         Long dp = 5L; // Long | Number of decimal places for floating values. Accepts value in range [0,11]
         try {
-            GetMutualFundsWorldPurchaseInfo200Response result = apiInstance.getMutualFundsWorldPurchaseInfo(symbol, figi, isin, cusip, country, dp);
+            APIgetMutualFundsWorldPurchaseInfoRequest request = APIgetMutualFundsWorldPurchaseInfoRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .dp(dp)
+                .build();
+            GetMutualFundsWorldPurchaseInfo200Response result = apiInstance.getMutualFundsWorldPurchaseInfo(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling MutualFundsApi#getMutualFundsWorldPurchaseInfo");
@@ -1166,15 +1299,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of mutual fund | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+| getMutualFundsWorldPurchaseInfoRequest | [**APIgetMutualFundsWorldPurchaseInfoRequest**](MutualFundsApi.md#APIgetMutualFundsWorldPurchaseInfoRequest)|-|-|
 
 ### Return type
 
@@ -1204,7 +1331,7 @@ public class Example {
 
 ## getMutualFundsWorldPurchaseInfoWithHttpInfo
 
-> ApiResponse<GetMutualFundsWorldPurchaseInfo200Response> getMutualFundsWorldPurchaseInfo getMutualFundsWorldPurchaseInfoWithHttpInfo(symbol, figi, isin, cusip, country, dp)
+> ApiResponse<GetMutualFundsWorldPurchaseInfo200Response> getMutualFundsWorldPurchaseInfo getMutualFundsWorldPurchaseInfoWithHttpInfo(getMutualFundsWorldPurchaseInfoRequest)
 
 Purchase info
 
@@ -1221,6 +1348,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.MutualFundsApi;
+import com.twelvedata.client.api.MutualFundsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1241,7 +1369,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         Long dp = 5L; // Long | Number of decimal places for floating values. Accepts value in range [0,11]
         try {
-            ApiResponse<GetMutualFundsWorldPurchaseInfo200Response> response = apiInstance.getMutualFundsWorldPurchaseInfoWithHttpInfo(symbol, figi, isin, cusip, country, dp);
+            APIgetMutualFundsWorldPurchaseInfoRequest request = APIgetMutualFundsWorldPurchaseInfoRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .dp(dp)
+                .build();
+            ApiResponse<GetMutualFundsWorldPurchaseInfo200Response> response = apiInstance.getMutualFundsWorldPurchaseInfoWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1258,15 +1394,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of mutual fund | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+| getMutualFundsWorldPurchaseInfoRequest | [**APIgetMutualFundsWorldPurchaseInfoRequest**](MutualFundsApi.md#APIgetMutualFundsWorldPurchaseInfoRequest)|-|-|
 
 ### Return type
 
@@ -1295,9 +1425,24 @@ ApiResponse<[**GetMutualFundsWorldPurchaseInfo200Response**](GetMutualFundsWorld
 | **500** |  |  -  |
 
 
+<a id="APIgetMutualFundsWorldPurchaseInfoRequest"></a>
+## APIgetMutualFundsWorldPurchaseInfoRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of mutual fund | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **dp** | **Long** | Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+
+
+
 ## getMutualFundsWorldRatings
 
-> GetMutualFundsWorldRatings200Response getMutualFundsWorldRatings(symbol, figi, isin, cusip, country, dp)
+> GetMutualFundsWorldRatings200Response getMutualFundsWorldRatings(getMutualFundsWorldRatingsRequest)
 
 Ratings
 
@@ -1313,6 +1458,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.MutualFundsApi;
+import com.twelvedata.client.api.MutualFundsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1333,7 +1479,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         Long dp = 5L; // Long | Number of decimal places for floating values. Accepts value in range [0,11]
         try {
-            GetMutualFundsWorldRatings200Response result = apiInstance.getMutualFundsWorldRatings(symbol, figi, isin, cusip, country, dp);
+            APIgetMutualFundsWorldRatingsRequest request = APIgetMutualFundsWorldRatingsRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .dp(dp)
+                .build();
+            GetMutualFundsWorldRatings200Response result = apiInstance.getMutualFundsWorldRatings(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling MutualFundsApi#getMutualFundsWorldRatings");
@@ -1348,15 +1502,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of mutual fund | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+| getMutualFundsWorldRatingsRequest | [**APIgetMutualFundsWorldRatingsRequest**](MutualFundsApi.md#APIgetMutualFundsWorldRatingsRequest)|-|-|
 
 ### Return type
 
@@ -1386,7 +1534,7 @@ public class Example {
 
 ## getMutualFundsWorldRatingsWithHttpInfo
 
-> ApiResponse<GetMutualFundsWorldRatings200Response> getMutualFundsWorldRatings getMutualFundsWorldRatingsWithHttpInfo(symbol, figi, isin, cusip, country, dp)
+> ApiResponse<GetMutualFundsWorldRatings200Response> getMutualFundsWorldRatings getMutualFundsWorldRatingsWithHttpInfo(getMutualFundsWorldRatingsRequest)
 
 Ratings
 
@@ -1403,6 +1551,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.MutualFundsApi;
+import com.twelvedata.client.api.MutualFundsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1423,7 +1572,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         Long dp = 5L; // Long | Number of decimal places for floating values. Accepts value in range [0,11]
         try {
-            ApiResponse<GetMutualFundsWorldRatings200Response> response = apiInstance.getMutualFundsWorldRatingsWithHttpInfo(symbol, figi, isin, cusip, country, dp);
+            APIgetMutualFundsWorldRatingsRequest request = APIgetMutualFundsWorldRatingsRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .dp(dp)
+                .build();
+            ApiResponse<GetMutualFundsWorldRatings200Response> response = apiInstance.getMutualFundsWorldRatingsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1440,15 +1597,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of mutual fund | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+| getMutualFundsWorldRatingsRequest | [**APIgetMutualFundsWorldRatingsRequest**](MutualFundsApi.md#APIgetMutualFundsWorldRatingsRequest)|-|-|
 
 ### Return type
 
@@ -1477,9 +1628,24 @@ ApiResponse<[**GetMutualFundsWorldRatings200Response**](GetMutualFundsWorldRatin
 | **500** |  |  -  |
 
 
+<a id="APIgetMutualFundsWorldRatingsRequest"></a>
+## APIgetMutualFundsWorldRatingsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of mutual fund | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **dp** | **Long** | Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+
+
+
 ## getMutualFundsWorldRisk
 
-> GetMutualFundsWorldRisk200Response getMutualFundsWorldRisk(symbol, figi, isin, cusip, country, dp)
+> GetMutualFundsWorldRisk200Response getMutualFundsWorldRisk(getMutualFundsWorldRiskRequest)
 
 Risk
 
@@ -1495,6 +1661,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.MutualFundsApi;
+import com.twelvedata.client.api.MutualFundsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1515,7 +1682,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         Long dp = 5L; // Long | Number of decimal places for floating values. Accepts value in range [0,11]
         try {
-            GetMutualFundsWorldRisk200Response result = apiInstance.getMutualFundsWorldRisk(symbol, figi, isin, cusip, country, dp);
+            APIgetMutualFundsWorldRiskRequest request = APIgetMutualFundsWorldRiskRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .dp(dp)
+                .build();
+            GetMutualFundsWorldRisk200Response result = apiInstance.getMutualFundsWorldRisk(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling MutualFundsApi#getMutualFundsWorldRisk");
@@ -1530,15 +1705,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of mutual fund | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+| getMutualFundsWorldRiskRequest | [**APIgetMutualFundsWorldRiskRequest**](MutualFundsApi.md#APIgetMutualFundsWorldRiskRequest)|-|-|
 
 ### Return type
 
@@ -1568,7 +1737,7 @@ public class Example {
 
 ## getMutualFundsWorldRiskWithHttpInfo
 
-> ApiResponse<GetMutualFundsWorldRisk200Response> getMutualFundsWorldRisk getMutualFundsWorldRiskWithHttpInfo(symbol, figi, isin, cusip, country, dp)
+> ApiResponse<GetMutualFundsWorldRisk200Response> getMutualFundsWorldRisk getMutualFundsWorldRiskWithHttpInfo(getMutualFundsWorldRiskRequest)
 
 Risk
 
@@ -1585,6 +1754,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.MutualFundsApi;
+import com.twelvedata.client.api.MutualFundsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1605,7 +1775,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         Long dp = 5L; // Long | Number of decimal places for floating values. Accepts value in range [0,11]
         try {
-            ApiResponse<GetMutualFundsWorldRisk200Response> response = apiInstance.getMutualFundsWorldRiskWithHttpInfo(symbol, figi, isin, cusip, country, dp);
+            APIgetMutualFundsWorldRiskRequest request = APIgetMutualFundsWorldRiskRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .dp(dp)
+                .build();
+            ApiResponse<GetMutualFundsWorldRisk200Response> response = apiInstance.getMutualFundsWorldRiskWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1622,15 +1800,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of mutual fund | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+| getMutualFundsWorldRiskRequest | [**APIgetMutualFundsWorldRiskRequest**](MutualFundsApi.md#APIgetMutualFundsWorldRiskRequest)|-|-|
 
 ### Return type
 
@@ -1659,9 +1831,24 @@ ApiResponse<[**GetMutualFundsWorldRisk200Response**](GetMutualFundsWorldRisk200R
 | **500** |  |  -  |
 
 
+<a id="APIgetMutualFundsWorldRiskRequest"></a>
+## APIgetMutualFundsWorldRiskRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of mutual fund | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **dp** | **Long** | Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+
+
+
 ## getMutualFundsWorldSummary
 
-> GetMutualFundsWorldSummary200Response getMutualFundsWorldSummary(symbol, figi, isin, cusip, country, dp)
+> GetMutualFundsWorldSummary200Response getMutualFundsWorldSummary(getMutualFundsWorldSummaryRequest)
 
 Summary
 
@@ -1677,6 +1864,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.MutualFundsApi;
+import com.twelvedata.client.api.MutualFundsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1697,7 +1885,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         Long dp = 5L; // Long | Number of decimal places for floating values. Accepts value in range [0,11]
         try {
-            GetMutualFundsWorldSummary200Response result = apiInstance.getMutualFundsWorldSummary(symbol, figi, isin, cusip, country, dp);
+            APIgetMutualFundsWorldSummaryRequest request = APIgetMutualFundsWorldSummaryRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .dp(dp)
+                .build();
+            GetMutualFundsWorldSummary200Response result = apiInstance.getMutualFundsWorldSummary(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling MutualFundsApi#getMutualFundsWorldSummary");
@@ -1712,15 +1908,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of mutual fund | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+| getMutualFundsWorldSummaryRequest | [**APIgetMutualFundsWorldSummaryRequest**](MutualFundsApi.md#APIgetMutualFundsWorldSummaryRequest)|-|-|
 
 ### Return type
 
@@ -1750,7 +1940,7 @@ public class Example {
 
 ## getMutualFundsWorldSummaryWithHttpInfo
 
-> ApiResponse<GetMutualFundsWorldSummary200Response> getMutualFundsWorldSummary getMutualFundsWorldSummaryWithHttpInfo(symbol, figi, isin, cusip, country, dp)
+> ApiResponse<GetMutualFundsWorldSummary200Response> getMutualFundsWorldSummary getMutualFundsWorldSummaryWithHttpInfo(getMutualFundsWorldSummaryRequest)
 
 Summary
 
@@ -1767,6 +1957,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.MutualFundsApi;
+import com.twelvedata.client.api.MutualFundsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1787,7 +1978,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         Long dp = 5L; // Long | Number of decimal places for floating values. Accepts value in range [0,11]
         try {
-            ApiResponse<GetMutualFundsWorldSummary200Response> response = apiInstance.getMutualFundsWorldSummaryWithHttpInfo(symbol, figi, isin, cusip, country, dp);
+            APIgetMutualFundsWorldSummaryRequest request = APIgetMutualFundsWorldSummaryRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .dp(dp)
+                .build();
+            ApiResponse<GetMutualFundsWorldSummary200Response> response = apiInstance.getMutualFundsWorldSummaryWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1804,15 +2003,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of mutual fund | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+| getMutualFundsWorldSummaryRequest | [**APIgetMutualFundsWorldSummaryRequest**](MutualFundsApi.md#APIgetMutualFundsWorldSummaryRequest)|-|-|
 
 ### Return type
 
@@ -1841,9 +2034,24 @@ ApiResponse<[**GetMutualFundsWorldSummary200Response**](GetMutualFundsWorldSumma
 | **500** |  |  -  |
 
 
+<a id="APIgetMutualFundsWorldSummaryRequest"></a>
+## APIgetMutualFundsWorldSummaryRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of mutual fund | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **dp** | **Long** | Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+
+
+
 ## getMutualFundsWorldSustainability
 
-> GetMutualFundsWorldSustainability200Response getMutualFundsWorldSustainability(symbol, figi, isin, cusip, country, dp)
+> GetMutualFundsWorldSustainability200Response getMutualFundsWorldSustainability(getMutualFundsWorldSustainabilityRequest)
 
 Sustainability
 
@@ -1859,6 +2067,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.MutualFundsApi;
+import com.twelvedata.client.api.MutualFundsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1879,7 +2088,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         Long dp = 5L; // Long | Number of decimal places for floating values. Accepts value in range [0,11]
         try {
-            GetMutualFundsWorldSustainability200Response result = apiInstance.getMutualFundsWorldSustainability(symbol, figi, isin, cusip, country, dp);
+            APIgetMutualFundsWorldSustainabilityRequest request = APIgetMutualFundsWorldSustainabilityRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .dp(dp)
+                .build();
+            GetMutualFundsWorldSustainability200Response result = apiInstance.getMutualFundsWorldSustainability(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling MutualFundsApi#getMutualFundsWorldSustainability");
@@ -1894,15 +2111,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of mutual fund | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+| getMutualFundsWorldSustainabilityRequest | [**APIgetMutualFundsWorldSustainabilityRequest**](MutualFundsApi.md#APIgetMutualFundsWorldSustainabilityRequest)|-|-|
 
 ### Return type
 
@@ -1932,7 +2143,7 @@ public class Example {
 
 ## getMutualFundsWorldSustainabilityWithHttpInfo
 
-> ApiResponse<GetMutualFundsWorldSustainability200Response> getMutualFundsWorldSustainability getMutualFundsWorldSustainabilityWithHttpInfo(symbol, figi, isin, cusip, country, dp)
+> ApiResponse<GetMutualFundsWorldSustainability200Response> getMutualFundsWorldSustainability getMutualFundsWorldSustainabilityWithHttpInfo(getMutualFundsWorldSustainabilityRequest)
 
 Sustainability
 
@@ -1949,6 +2160,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.MutualFundsApi;
+import com.twelvedata.client.api.MutualFundsApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1969,7 +2181,15 @@ public class Example {
         String country = "United States"; // String | Filter by country name or alpha code, e.g., `United States` or `US`
         Long dp = 5L; // Long | Number of decimal places for floating values. Accepts value in range [0,11]
         try {
-            ApiResponse<GetMutualFundsWorldSustainability200Response> response = apiInstance.getMutualFundsWorldSustainabilityWithHttpInfo(symbol, figi, isin, cusip, country, dp);
+            APIgetMutualFundsWorldSustainabilityRequest request = APIgetMutualFundsWorldSustainabilityRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .country(country)
+                .dp(dp)
+                .build();
+            ApiResponse<GetMutualFundsWorldSustainability200Response> response = apiInstance.getMutualFundsWorldSustainabilityWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1986,15 +2206,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of mutual fund | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **dp** | **Long**| Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+| getMutualFundsWorldSustainabilityRequest | [**APIgetMutualFundsWorldSustainabilityRequest**](MutualFundsApi.md#APIgetMutualFundsWorldSustainabilityRequest)|-|-|
 
 ### Return type
 
@@ -2021,4 +2235,19 @@ ApiResponse<[**GetMutualFundsWorldSustainability200Response**](GetMutualFundsWor
 | **414** |  |  -  |
 | **429** |  |  -  |
 | **500** |  |  -  |
+
+
+<a id="APIgetMutualFundsWorldSustainabilityRequest"></a>
+## APIgetMutualFundsWorldSustainabilityRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of mutual fund | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **dp** | **Long** | Number of decimal places for floating values. Accepts value in range [0,11] | [optional] [default to 5] |
+
 

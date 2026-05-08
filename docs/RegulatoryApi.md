@@ -23,7 +23,7 @@ All URIs are relative to *https://api.twelvedata.com*
 
 ## getDirectHolders
 
-> GetDirectHolders200Response getDirectHolders(symbol, figi, isin, cusip, exchange, micCode, country)
+> GetDirectHolders200Response getDirectHolders(getDirectHoldersRequest)
 
 Direct holders
 
@@ -39,6 +39,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.RegulatoryApi;
+import com.twelvedata.client.api.RegulatoryApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -60,7 +61,16 @@ public class Example {
         String micCode = "XNAS"; // String | Market Identifier Code (MIC) under ISO 10383 standard
         String country = "United States"; // String | Country where instrument is traded, e.g., `United States` or `US`
         try {
-            GetDirectHolders200Response result = apiInstance.getDirectHolders(symbol, figi, isin, cusip, exchange, micCode, country);
+            APIgetDirectHoldersRequest request = APIgetDirectHoldersRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .build();
+            GetDirectHolders200Response result = apiInstance.getDirectHolders(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RegulatoryApi#getDirectHolders");
@@ -75,16 +85,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| getDirectHoldersRequest | [**APIgetDirectHoldersRequest**](RegulatoryApi.md#APIgetDirectHoldersRequest)|-|-|
 
 ### Return type
 
@@ -114,7 +117,7 @@ public class Example {
 
 ## getDirectHoldersWithHttpInfo
 
-> ApiResponse<GetDirectHolders200Response> getDirectHolders getDirectHoldersWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country)
+> ApiResponse<GetDirectHolders200Response> getDirectHolders getDirectHoldersWithHttpInfo(getDirectHoldersRequest)
 
 Direct holders
 
@@ -131,6 +134,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.RegulatoryApi;
+import com.twelvedata.client.api.RegulatoryApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -152,7 +156,16 @@ public class Example {
         String micCode = "XNAS"; // String | Market Identifier Code (MIC) under ISO 10383 standard
         String country = "United States"; // String | Country where instrument is traded, e.g., `United States` or `US`
         try {
-            ApiResponse<GetDirectHolders200Response> response = apiInstance.getDirectHoldersWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country);
+            APIgetDirectHoldersRequest request = APIgetDirectHoldersRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .build();
+            ApiResponse<GetDirectHolders200Response> response = apiInstance.getDirectHoldersWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -169,16 +182,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| getDirectHoldersRequest | [**APIgetDirectHoldersRequest**](RegulatoryApi.md#APIgetDirectHoldersRequest)|-|-|
 
 ### Return type
 
@@ -207,9 +213,25 @@ ApiResponse<[**GetDirectHolders200Response**](GetDirectHolders200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetDirectHoldersRequest"></a>
+## APIgetDirectHoldersRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **exchange** | **String** | Exchange where instrument is traded | [optional] |
+| **micCode** | **String** | Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+
+
+
 ## getEdgarFilingsArchive
 
-> GetEdgarFilingsArchive200Response getEdgarFilingsArchive(symbol, figi, isin, cusip, exchange, micCode, country, formType, filledFrom, filledTo, page, pageSize)
+> GetEdgarFilingsArchive200Response getEdgarFilingsArchive(getEdgarFilingsArchiveRequest)
 
 EDGAR fillings
 
@@ -225,6 +247,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.RegulatoryApi;
+import com.twelvedata.client.api.RegulatoryApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -251,7 +274,21 @@ public class Example {
         Long page = 1L; // Long | Page number
         Long pageSize = 10L; // Long | Number of records in response
         try {
-            GetEdgarFilingsArchive200Response result = apiInstance.getEdgarFilingsArchive(symbol, figi, isin, cusip, exchange, micCode, country, formType, filledFrom, filledTo, page, pageSize);
+            APIgetEdgarFilingsArchiveRequest request = APIgetEdgarFilingsArchiveRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .formType(formType)
+                .filledFrom(filledFrom)
+                .filledTo(filledTo)
+                .page(page)
+                .pageSize(pageSize)
+                .build();
+            GetEdgarFilingsArchive200Response result = apiInstance.getEdgarFilingsArchive(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RegulatoryApi#getEdgarFilingsArchive");
@@ -266,21 +303,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The ticker symbol of an instrument for which data is requested | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Filter by exchange name | [optional] |
-| **micCode** | **String**| Filter by market identifier code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **formType** | **String**| Filter by form types, example &#x60;8-K&#x60;, &#x60;EX-1.1&#x60; | [optional] |
-| **filledFrom** | **String**| Filter by filled time from | [optional] |
-| **filledTo** | **String**| Filter by filled time to | [optional] |
-| **page** | **Long**| Page number | [optional] [default to 1] |
-| **pageSize** | **Long**| Number of records in response | [optional] [default to 10] |
+| getEdgarFilingsArchiveRequest | [**APIgetEdgarFilingsArchiveRequest**](RegulatoryApi.md#APIgetEdgarFilingsArchiveRequest)|-|-|
 
 ### Return type
 
@@ -310,7 +335,7 @@ public class Example {
 
 ## getEdgarFilingsArchiveWithHttpInfo
 
-> ApiResponse<GetEdgarFilingsArchive200Response> getEdgarFilingsArchive getEdgarFilingsArchiveWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, formType, filledFrom, filledTo, page, pageSize)
+> ApiResponse<GetEdgarFilingsArchive200Response> getEdgarFilingsArchive getEdgarFilingsArchiveWithHttpInfo(getEdgarFilingsArchiveRequest)
 
 EDGAR fillings
 
@@ -327,6 +352,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.RegulatoryApi;
+import com.twelvedata.client.api.RegulatoryApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -353,7 +379,21 @@ public class Example {
         Long page = 1L; // Long | Page number
         Long pageSize = 10L; // Long | Number of records in response
         try {
-            ApiResponse<GetEdgarFilingsArchive200Response> response = apiInstance.getEdgarFilingsArchiveWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country, formType, filledFrom, filledTo, page, pageSize);
+            APIgetEdgarFilingsArchiveRequest request = APIgetEdgarFilingsArchiveRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .formType(formType)
+                .filledFrom(filledFrom)
+                .filledTo(filledTo)
+                .page(page)
+                .pageSize(pageSize)
+                .build();
+            ApiResponse<GetEdgarFilingsArchive200Response> response = apiInstance.getEdgarFilingsArchiveWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -370,21 +410,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The ticker symbol of an instrument for which data is requested | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Filter by exchange name | [optional] |
-| **micCode** | **String**| Filter by market identifier code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
-| **formType** | **String**| Filter by form types, example &#x60;8-K&#x60;, &#x60;EX-1.1&#x60; | [optional] |
-| **filledFrom** | **String**| Filter by filled time from | [optional] |
-| **filledTo** | **String**| Filter by filled time to | [optional] |
-| **page** | **Long**| Page number | [optional] [default to 1] |
-| **pageSize** | **Long**| Number of records in response | [optional] [default to 10] |
+| getEdgarFilingsArchiveRequest | [**APIgetEdgarFilingsArchiveRequest**](RegulatoryApi.md#APIgetEdgarFilingsArchiveRequest)|-|-|
 
 ### Return type
 
@@ -413,9 +441,30 @@ ApiResponse<[**GetEdgarFilingsArchive200Response**](GetEdgarFilingsArchive200Res
 | **500** |  |  -  |
 
 
+<a id="APIgetEdgarFilingsArchiveRequest"></a>
+## APIgetEdgarFilingsArchiveRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | The ticker symbol of an instrument for which data is requested | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **exchange** | **String** | Filter by exchange name | [optional] |
+| **micCode** | **String** | Filter by market identifier code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Filter by country name or alpha code, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| **formType** | **String** | Filter by form types, example &#x60;8-K&#x60;, &#x60;EX-1.1&#x60; | [optional] |
+| **filledFrom** | **String** | Filter by filled time from | [optional] |
+| **filledTo** | **String** | Filter by filled time to | [optional] |
+| **page** | **Long** | Page number | [optional] [default to 1] |
+| **pageSize** | **Long** | Number of records in response | [optional] [default to 10] |
+
+
+
 ## getFundHolders
 
-> GetFundHolders200Response getFundHolders(symbol, figi, isin, cusip, exchange, micCode, country)
+> GetFundHolders200Response getFundHolders(getFundHoldersRequest)
 
 Fund holders
 
@@ -431,6 +480,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.RegulatoryApi;
+import com.twelvedata.client.api.RegulatoryApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -452,7 +502,16 @@ public class Example {
         String micCode = "XNAS"; // String | Market Identifier Code (MIC) under ISO 10383 standard
         String country = "United States"; // String | Country where instrument is traded, e.g., `United States` or `US`
         try {
-            GetFundHolders200Response result = apiInstance.getFundHolders(symbol, figi, isin, cusip, exchange, micCode, country);
+            APIgetFundHoldersRequest request = APIgetFundHoldersRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .build();
+            GetFundHolders200Response result = apiInstance.getFundHolders(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RegulatoryApi#getFundHolders");
@@ -467,16 +526,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| getFundHoldersRequest | [**APIgetFundHoldersRequest**](RegulatoryApi.md#APIgetFundHoldersRequest)|-|-|
 
 ### Return type
 
@@ -506,7 +558,7 @@ public class Example {
 
 ## getFundHoldersWithHttpInfo
 
-> ApiResponse<GetFundHolders200Response> getFundHolders getFundHoldersWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country)
+> ApiResponse<GetFundHolders200Response> getFundHolders getFundHoldersWithHttpInfo(getFundHoldersRequest)
 
 Fund holders
 
@@ -523,6 +575,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.RegulatoryApi;
+import com.twelvedata.client.api.RegulatoryApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -544,7 +597,16 @@ public class Example {
         String micCode = "XNAS"; // String | Market Identifier Code (MIC) under ISO 10383 standard
         String country = "United States"; // String | Country where instrument is traded, e.g., `United States` or `US`
         try {
-            ApiResponse<GetFundHolders200Response> response = apiInstance.getFundHoldersWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country);
+            APIgetFundHoldersRequest request = APIgetFundHoldersRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .build();
+            ApiResponse<GetFundHolders200Response> response = apiInstance.getFundHoldersWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -561,16 +623,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| getFundHoldersRequest | [**APIgetFundHoldersRequest**](RegulatoryApi.md#APIgetFundHoldersRequest)|-|-|
 
 ### Return type
 
@@ -599,9 +654,25 @@ ApiResponse<[**GetFundHolders200Response**](GetFundHolders200Response.md)>
 | **500** |  |  -  |
 
 
+<a id="APIgetFundHoldersRequest"></a>
+## APIgetFundHoldersRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **exchange** | **String** | Exchange where instrument is traded | [optional] |
+| **micCode** | **String** | Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+
+
+
 ## getInsiderTransactions
 
-> GetInsiderTransactions200Response getInsiderTransactions(symbol, figi, isin, cusip, exchange, micCode, country)
+> GetInsiderTransactions200Response getInsiderTransactions(getInsiderTransactionsRequest)
 
 Insider transaction
 
@@ -617,6 +688,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.RegulatoryApi;
+import com.twelvedata.client.api.RegulatoryApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -638,7 +710,16 @@ public class Example {
         String micCode = "XNAS"; // String | Market Identifier Code (MIC) under ISO 10383 standard
         String country = "United States"; // String | Country where instrument is traded, e.g., United States or US.
         try {
-            GetInsiderTransactions200Response result = apiInstance.getInsiderTransactions(symbol, figi, isin, cusip, exchange, micCode, country);
+            APIgetInsiderTransactionsRequest request = APIgetInsiderTransactionsRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .build();
+            GetInsiderTransactions200Response result = apiInstance.getInsiderTransactions(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RegulatoryApi#getInsiderTransactions");
@@ -653,16 +734,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The ticker symbol of an instrument for which data is requested, e.g., &#x60;AAPL&#x60;, &#x60;TSLA&#x60;. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded, e.g., &#x60;Nasdaq&#x60;, &#x60;NSE&#x60; | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., United States or US. | [optional] |
+| getInsiderTransactionsRequest | [**APIgetInsiderTransactionsRequest**](RegulatoryApi.md#APIgetInsiderTransactionsRequest)|-|-|
 
 ### Return type
 
@@ -692,7 +766,7 @@ public class Example {
 
 ## getInsiderTransactionsWithHttpInfo
 
-> ApiResponse<GetInsiderTransactions200Response> getInsiderTransactions getInsiderTransactionsWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country)
+> ApiResponse<GetInsiderTransactions200Response> getInsiderTransactions getInsiderTransactionsWithHttpInfo(getInsiderTransactionsRequest)
 
 Insider transaction
 
@@ -709,6 +783,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.RegulatoryApi;
+import com.twelvedata.client.api.RegulatoryApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -730,7 +805,16 @@ public class Example {
         String micCode = "XNAS"; // String | Market Identifier Code (MIC) under ISO 10383 standard
         String country = "United States"; // String | Country where instrument is traded, e.g., United States or US.
         try {
-            ApiResponse<GetInsiderTransactions200Response> response = apiInstance.getInsiderTransactionsWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country);
+            APIgetInsiderTransactionsRequest request = APIgetInsiderTransactionsRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .build();
+            ApiResponse<GetInsiderTransactions200Response> response = apiInstance.getInsiderTransactionsWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -747,16 +831,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The ticker symbol of an instrument for which data is requested, e.g., &#x60;AAPL&#x60;, &#x60;TSLA&#x60;. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded, e.g., &#x60;Nasdaq&#x60;, &#x60;NSE&#x60; | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., United States or US. | [optional] |
+| getInsiderTransactionsRequest | [**APIgetInsiderTransactionsRequest**](RegulatoryApi.md#APIgetInsiderTransactionsRequest)|-|-|
 
 ### Return type
 
@@ -785,9 +862,25 @@ ApiResponse<[**GetInsiderTransactions200Response**](GetInsiderTransactions200Res
 | **500** |  |  -  |
 
 
+<a id="APIgetInsiderTransactionsRequest"></a>
+## APIgetInsiderTransactionsRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | The ticker symbol of an instrument for which data is requested, e.g., &#x60;AAPL&#x60;, &#x60;TSLA&#x60;. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **exchange** | **String** | Exchange where instrument is traded, e.g., &#x60;Nasdaq&#x60;, &#x60;NSE&#x60; | [optional] |
+| **micCode** | **String** | Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Country where instrument is traded, e.g., United States or US. | [optional] |
+
+
+
 ## getInstitutionalHolders
 
-> GetInstitutionalHolders200Response getInstitutionalHolders(symbol, figi, isin, cusip, exchange, micCode, country)
+> GetInstitutionalHolders200Response getInstitutionalHolders(getInstitutionalHoldersRequest)
 
 Institutional holders
 
@@ -803,6 +896,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.RegulatoryApi;
+import com.twelvedata.client.api.RegulatoryApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -824,7 +918,16 @@ public class Example {
         String micCode = "XNAS"; // String | Market Identifier Code (MIC) under ISO 10383 standard
         String country = "United States"; // String | Country where instrument is traded, e.g., `United States` or `US`
         try {
-            GetInstitutionalHolders200Response result = apiInstance.getInstitutionalHolders(symbol, figi, isin, cusip, exchange, micCode, country);
+            APIgetInstitutionalHoldersRequest request = APIgetInstitutionalHoldersRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .build();
+            GetInstitutionalHolders200Response result = apiInstance.getInstitutionalHolders(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RegulatoryApi#getInstitutionalHolders");
@@ -839,16 +942,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| getInstitutionalHoldersRequest | [**APIgetInstitutionalHoldersRequest**](RegulatoryApi.md#APIgetInstitutionalHoldersRequest)|-|-|
 
 ### Return type
 
@@ -878,7 +974,7 @@ public class Example {
 
 ## getInstitutionalHoldersWithHttpInfo
 
-> ApiResponse<GetInstitutionalHolders200Response> getInstitutionalHolders getInstitutionalHoldersWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country)
+> ApiResponse<GetInstitutionalHolders200Response> getInstitutionalHolders getInstitutionalHoldersWithHttpInfo(getInstitutionalHoldersRequest)
 
 Institutional holders
 
@@ -895,6 +991,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.RegulatoryApi;
+import com.twelvedata.client.api.RegulatoryApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -916,7 +1013,16 @@ public class Example {
         String micCode = "XNAS"; // String | Market Identifier Code (MIC) under ISO 10383 standard
         String country = "United States"; // String | Country where instrument is traded, e.g., `United States` or `US`
         try {
-            ApiResponse<GetInstitutionalHolders200Response> response = apiInstance.getInstitutionalHoldersWithHttpInfo(symbol, figi, isin, cusip, exchange, micCode, country);
+            APIgetInstitutionalHoldersRequest request = APIgetInstitutionalHoldersRequest.newBuilder()
+                .symbol(symbol)
+                .figi(figi)
+                .isin(isin)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .country(country)
+                .build();
+            ApiResponse<GetInstitutionalHolders200Response> response = apiInstance.getInstitutionalHoldersWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -933,16 +1039,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
-| **figi** | **String**| Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| Exchange where instrument is traded | [optional] |
-| **micCode** | **String**| Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
-| **country** | **String**| Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+| getInstitutionalHoldersRequest | [**APIgetInstitutionalHoldersRequest**](RegulatoryApi.md#APIgetInstitutionalHoldersRequest)|-|-|
 
 ### Return type
 
@@ -971,9 +1070,25 @@ ApiResponse<[**GetInstitutionalHolders200Response**](GetInstitutionalHolders200R
 | **500** |  |  -  |
 
 
+<a id="APIgetInstitutionalHoldersRequest"></a>
+## APIgetInstitutionalHoldersRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | Symbol ticker of instrument. For preffered stocks use dot(.) delimiter. E.g. &#x60;BRK.A&#x60; or &#x60;BRK.B&#x60; will be correct | [optional] |
+| **figi** | **String** | Filter by financial instrument global identifier (FIGI). This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **exchange** | **String** | Exchange where instrument is traded | [optional] |
+| **micCode** | **String** | Market Identifier Code (MIC) under ISO 10383 standard | [optional] |
+| **country** | **String** | Country where instrument is traded, e.g., &#x60;United States&#x60; or &#x60;US&#x60; | [optional] |
+
+
+
 ## getSourceSanctionedEntities
 
-> GetSourceSanctionedEntities200Response getSourceSanctionedEntities(source)
+> GetSourceSanctionedEntities200Response getSourceSanctionedEntities(getSourceSanctionedEntitiesRequest)
 
 Sanctioned entities
 
@@ -989,6 +1104,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.RegulatoryApi;
+import com.twelvedata.client.api.RegulatoryApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1004,7 +1120,10 @@ public class Example {
         RegulatoryApi apiInstance = new RegulatoryApi(defaultClient);
         SourceEnum source = SourceEnum.fromValue("ofac"); // SourceEnum | Sanctions source
         try {
-            GetSourceSanctionedEntities200Response result = apiInstance.getSourceSanctionedEntities(source);
+            APIgetSourceSanctionedEntitiesRequest request = APIgetSourceSanctionedEntitiesRequest.newBuilder()
+                .source(source)
+                .build();
+            GetSourceSanctionedEntities200Response result = apiInstance.getSourceSanctionedEntities(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RegulatoryApi#getSourceSanctionedEntities");
@@ -1019,10 +1138,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **source** | [**SourceEnum**](.md)| Sanctions source | [enum: ofac, uk, eu, au] |
+| getSourceSanctionedEntitiesRequest | [**APIgetSourceSanctionedEntitiesRequest**](RegulatoryApi.md#APIgetSourceSanctionedEntitiesRequest)|-|-|
 
 ### Return type
 
@@ -1052,7 +1170,7 @@ public class Example {
 
 ## getSourceSanctionedEntitiesWithHttpInfo
 
-> ApiResponse<GetSourceSanctionedEntities200Response> getSourceSanctionedEntities getSourceSanctionedEntitiesWithHttpInfo(source)
+> ApiResponse<GetSourceSanctionedEntities200Response> getSourceSanctionedEntities getSourceSanctionedEntitiesWithHttpInfo(getSourceSanctionedEntitiesRequest)
 
 Sanctioned entities
 
@@ -1069,6 +1187,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.RegulatoryApi;
+import com.twelvedata.client.api.RegulatoryApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1084,7 +1203,10 @@ public class Example {
         RegulatoryApi apiInstance = new RegulatoryApi(defaultClient);
         SourceEnum source = SourceEnum.fromValue("ofac"); // SourceEnum | Sanctions source
         try {
-            ApiResponse<GetSourceSanctionedEntities200Response> response = apiInstance.getSourceSanctionedEntitiesWithHttpInfo(source);
+            APIgetSourceSanctionedEntitiesRequest request = APIgetSourceSanctionedEntitiesRequest.newBuilder()
+                .source(source)
+                .build();
+            ApiResponse<GetSourceSanctionedEntities200Response> response = apiInstance.getSourceSanctionedEntitiesWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1101,10 +1223,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **source** | [**SourceEnum**](.md)| Sanctions source | [enum: ofac, uk, eu, au] |
+| getSourceSanctionedEntitiesRequest | [**APIgetSourceSanctionedEntitiesRequest**](RegulatoryApi.md#APIgetSourceSanctionedEntitiesRequest)|-|-|
 
 ### Return type
 
@@ -1133,9 +1254,19 @@ ApiResponse<[**GetSourceSanctionedEntities200Response**](GetSourceSanctionedEnti
 | **500** |  |  -  |
 
 
+<a id="APIgetSourceSanctionedEntitiesRequest"></a>
+## APIgetSourceSanctionedEntitiesRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **source** | [**SourceEnum**](.md) | Sanctions source | [enum: ofac, uk, eu, au] |
+
+
+
 ## getTaxInfo
 
-> GetTaxInfo200Response getTaxInfo(symbol, isin, figi, cusip, exchange, micCode)
+> GetTaxInfo200Response getTaxInfo(getTaxInfoRequest)
 
 Tax information
 
@@ -1151,6 +1282,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.RegulatoryApi;
+import com.twelvedata.client.api.RegulatoryApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1171,7 +1303,15 @@ public class Example {
         String exchange = "Nasdaq"; // String | The exchange name where the instrument is traded, e.g., `Nasdaq`, `Euronext`
         String micCode = "XNAS"; // String | The Market Identifier Code (MIC) of the exchange where the instrument is traded, e.g., `XNAS`, `XLON`
         try {
-            GetTaxInfo200Response result = apiInstance.getTaxInfo(symbol, isin, figi, cusip, exchange, micCode);
+            APIgetTaxInfoRequest request = APIgetTaxInfoRequest.newBuilder()
+                .symbol(symbol)
+                .isin(isin)
+                .figi(figi)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .build();
+            GetTaxInfo200Response result = apiInstance.getTaxInfo(request);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling RegulatoryApi#getTaxInfo");
@@ -1186,15 +1326,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The ticker symbol of an instrument for which data is requested, e.g., &#x60;SKYQ&#x60;, &#x60;AIRE&#x60;, &#x60;ALM:BME&#x60;, &#x60;HSI:HKEX&#x60;. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **figi** | **String**| The FIGI of an instrument for which data is requested. This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| The exchange name where the instrument is traded, e.g., &#x60;Nasdaq&#x60;, &#x60;Euronext&#x60; | [optional] |
-| **micCode** | **String**| The Market Identifier Code (MIC) of the exchange where the instrument is traded, e.g., &#x60;XNAS&#x60;, &#x60;XLON&#x60; | [optional] |
+| getTaxInfoRequest | [**APIgetTaxInfoRequest**](RegulatoryApi.md#APIgetTaxInfoRequest)|-|-|
 
 ### Return type
 
@@ -1224,7 +1358,7 @@ public class Example {
 
 ## getTaxInfoWithHttpInfo
 
-> ApiResponse<GetTaxInfo200Response> getTaxInfo getTaxInfoWithHttpInfo(symbol, isin, figi, cusip, exchange, micCode)
+> ApiResponse<GetTaxInfo200Response> getTaxInfo getTaxInfoWithHttpInfo(getTaxInfoRequest)
 
 Tax information
 
@@ -1241,6 +1375,7 @@ import com.twelvedata.client.Configuration;
 import com.twelvedata.client.auth.*;
 import com.twelvedata.client.models.*;
 import com.twelvedata.client.api.RegulatoryApi;
+import com.twelvedata.client.api.RegulatoryApi.*;
 
 public class Example {
     public static void main(String[] args) {
@@ -1261,7 +1396,15 @@ public class Example {
         String exchange = "Nasdaq"; // String | The exchange name where the instrument is traded, e.g., `Nasdaq`, `Euronext`
         String micCode = "XNAS"; // String | The Market Identifier Code (MIC) of the exchange where the instrument is traded, e.g., `XNAS`, `XLON`
         try {
-            ApiResponse<GetTaxInfo200Response> response = apiInstance.getTaxInfoWithHttpInfo(symbol, isin, figi, cusip, exchange, micCode);
+            APIgetTaxInfoRequest request = APIgetTaxInfoRequest.newBuilder()
+                .symbol(symbol)
+                .isin(isin)
+                .figi(figi)
+                .cusip(cusip)
+                .exchange(exchange)
+                .micCode(micCode)
+                .build();
+            ApiResponse<GetTaxInfo200Response> response = apiInstance.getTaxInfoWithHttpInfo(request);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
@@ -1278,15 +1421,9 @@ public class Example {
 
 ### Parameters
 
-
-| Name | Type | Description  | Notes |
+|    Name      |    Type       | Description   |     Notes    |
 |------------- | ------------- | ------------- | -------------|
-| **symbol** | **String**| The ticker symbol of an instrument for which data is requested, e.g., &#x60;SKYQ&#x60;, &#x60;AIRE&#x60;, &#x60;ALM:BME&#x60;, &#x60;HSI:HKEX&#x60;. | [optional] |
-| **isin** | **String**| Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **figi** | **String**| The FIGI of an instrument for which data is requested. This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
-| **cusip** | **String**| The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
-| **exchange** | **String**| The exchange name where the instrument is traded, e.g., &#x60;Nasdaq&#x60;, &#x60;Euronext&#x60; | [optional] |
-| **micCode** | **String**| The Market Identifier Code (MIC) of the exchange where the instrument is traded, e.g., &#x60;XNAS&#x60;, &#x60;XLON&#x60; | [optional] |
+| getTaxInfoRequest | [**APIgetTaxInfoRequest**](RegulatoryApi.md#APIgetTaxInfoRequest)|-|-|
 
 ### Return type
 
@@ -1313,4 +1450,19 @@ ApiResponse<[**GetTaxInfo200Response**](GetTaxInfo200Response.md)>
 | **414** |  |  -  |
 | **429** |  |  -  |
 | **500** |  |  -  |
+
+
+<a id="APIgetTaxInfoRequest"></a>
+## APIgetTaxInfoRequest
+### Properties
+
+|     Name      |    Type       | Description   |     Notes    |
+| ------------- | ------------- | ------------- | -------------|
+| **symbol** | **String** | The ticker symbol of an instrument for which data is requested, e.g., &#x60;SKYQ&#x60;, &#x60;AIRE&#x60;, &#x60;ALM:BME&#x60;, &#x60;HSI:HKEX&#x60;. | [optional] |
+| **isin** | **String** | Filter by international securities identification number (ISIN). ISIN access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **figi** | **String** | The FIGI of an instrument for which data is requested. This parameter is available on the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing\&quot;&gt;Ultra&lt;/a&gt; plan (individual) and the &lt;a href&#x3D;\&quot;https://twelvedata.com/pricing-business\&quot;&gt;Enterprise&lt;/a&gt; plan (business) and above. | [optional] |
+| **cusip** | **String** | The CUSIP of an instrument for which data is requested. CUSIP access is activating in the &lt;a href&#x3D;\&quot;https://twelvedata.com/account/add-ons\&quot;&gt;Data add-ons&lt;/a&gt; section | [optional] |
+| **exchange** | **String** | The exchange name where the instrument is traded, e.g., &#x60;Nasdaq&#x60;, &#x60;Euronext&#x60; | [optional] |
+| **micCode** | **String** | The Market Identifier Code (MIC) of the exchange where the instrument is traded, e.g., &#x60;XNAS&#x60;, &#x60;XLON&#x60; | [optional] |
+
 
