@@ -6,6 +6,7 @@
 
 package com.twelvedata.client.errors;
 
+import com.twelvedata.client.ApiClient;
 import com.twelvedata.client.ApiException;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -97,7 +98,11 @@ public final class TwelvedataErrorInterceptor implements Consumer<HttpResponse<I
   }
 
   private static String readBody(HttpResponse<InputStream> response) {
-    try (InputStream body = response.body()) {
+    // Use ApiClient.getResponseBody so a gzipped error body is decoded the
+    // same way the success path decodes a 2xx body — otherwise a server that
+    // sets Content-Encoding: gzip on errors would leave us with binary bytes
+    // that fail JSON detection and skip the typed-exception path.
+    try (InputStream body = ApiClient.getResponseBody(response)) {
       if (body == null) {
         return "";
       }

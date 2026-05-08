@@ -349,6 +349,13 @@ public class TwelvedataWebSocketClient {
     }
 
     private void attemptReconnect(int attempt) {
+        // The reconnectTask was scheduled before the user called disconnect();
+        // cancel(false) doesn't stop a task that already started, so we have to
+        // re-check the bail conditions here under the lock to avoid opening a
+        // fresh socket after the user said disconnect.
+        synchronized (stateLock) {
+            if (userInitiatedClose || fatalError != null) return;
+        }
         CompletableFuture<Void> f = new CompletableFuture<>();
         f.whenComplete((ok, err) -> {
             if (err == null) {
@@ -744,8 +751,30 @@ public class TwelvedataWebSocketClient {
 
         @Override
         public void onOpen(WebSocket webSocket) {
-            if (isStale()) {
-                // Orphan handshake completed after we moved on — drop the socket.
+            // Acquire stateLock for the assignment + keep-alive setup so a
+            // concurrent disconnect() either runs entirely before us (we see
+            // userInitiatedClose and bail) or entirely after us (it stops the
+            // heartbeat/ping timers we just started and closes the socket).
+            boolean accept;
+            synchronized (stateLock) {
+                accept = !isStale() && !userInitiatedClose && fatalError == null;
+                if (accept) {
+                    socket = webSocket;
+                    reconnectAttempts = 0;
+                    hasEverConnected = true;
+                    // Discard any leftover fragment from a previous connection.
+                    textBuffer.setLength(0);
+                    // Request continuous delivery so we don't have to call request(1) per message.
+                    webSocket.request(Long.MAX_VALUE);
+                    startHeartbeat();
+                    startPing();
+                    if (connectingFuture == connectFuture) {
+                        connectingFuture = null;
+                    }
+                }
+            }
+            if (!accept) {
+                // Orphan handshake (stale listener, or user disconnected mid-handshake).
                 try {
                     webSocket.abort();
                 } catch (Throwable t) {
@@ -753,22 +782,8 @@ public class TwelvedataWebSocketClient {
                 }
                 return;
             }
-            socket = webSocket;
-            // Request continuous delivery so we don't have to call request(1) per message.
-            webSocket.request(Long.MAX_VALUE);
-            // Discard any leftover fragment from a previous connection.
-            textBuffer.setLength(0);
-            reconnectAttempts = 0;
-            hasEverConnected = true;
-            startHeartbeat();
-            startPing();
             replaySubscriptions();
             emit(TwelvedataWebSocketListener::onOpen);
-            synchronized (stateLock) {
-                if (connectingFuture == connectFuture) {
-                    connectingFuture = null;
-                }
-            }
             if (!settledConnectFuture) {
                 settledConnectFuture = true;
                 connectFuture.complete(null);
