@@ -1,10 +1,3 @@
-apply plugin: 'idea'
-apply plugin: 'eclipse'
-apply plugin: 'com.diffplug.spotless'
-
-group = 'com.twelvedata'
-version = '1.0.0'
-
 buildscript {
     repositories {
         mavenCentral()
@@ -14,12 +7,21 @@ buildscript {
     }
 }
 
+plugins {
+    id 'com.vanniktech.maven.publish' version '0.30.0'
+}
+
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'com.diffplug.spotless'
+apply plugin: 'java-library'
+
+group = 'com.twelvedata'
+version = '1.0.0'
+
 repositories {
     mavenCentral()
 }
-
-apply plugin: 'java-library'
-apply plugin: 'maven-publish'
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
@@ -37,11 +39,33 @@ javadoc {
     options.encoding = 'UTF-8'
 }
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            artifactId = 'twelvedata-java'
-            from components.java
+mavenPublishing {
+    publishToMavenCentral()
+    signAllPublications()
+
+    coordinates('com.twelvedata', 'twelvedata-java', '1.0.0')
+
+    pom {
+        name = 'Twelve Data API client for Java'
+        description = 'Twelve Data API client for Java'
+        url = 'https://github.com/twelvedata/twelvedata-java'
+        licenses {
+            license {
+                name = 'MIT'
+                url = 'https://github.com/twelvedata/twelvedata-java/blob/master/LICENSE'
+            }
+        }
+        developers {
+            developer {
+                id = 'Twelve Data'
+                name = 'Twelve Data'
+                url = 'https://github.com/twelvedata/twelvedata-java'
+            }
+        }
+        scm {
+            url = 'https://github.com/twelvedata/twelvedata-java'
+            connection = 'scm:git:https://github.com/twelvedata/twelvedata-java.git'
+            developerConnection = 'scm:git:https://github.com/twelvedata/twelvedata-java.git'
         }
     }
 }
@@ -49,21 +73,6 @@ publishing {
 task execute(type:JavaExec) {
    mainClass = System.getProperty('mainClass')
    classpath = sourceSets.main.runtimeClasspath
-}
-
-task sourcesJar(type: Jar, dependsOn: classes) {
-    archiveClassifier = 'sources'
-    from sourceSets.main.allSource
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    archiveClassifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-artifacts {
-    archives sourcesJar
-    archives javadocJar
 }
 
 
