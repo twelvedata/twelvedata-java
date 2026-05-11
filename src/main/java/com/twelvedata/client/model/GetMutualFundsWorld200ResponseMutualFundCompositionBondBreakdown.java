@@ -33,8 +33,8 @@ import com.twelvedata.client.ApiClient;
  */
 @JsonPropertyOrder({
   GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown.JSON_PROPERTY_AVERAGE_MATURITY,
-  GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown.JSON_PROPERTY_CREDIT_QUALITY,
-  GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown.JSON_PROPERTY_AVERAGE_DURATION
+  GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown.JSON_PROPERTY_AVERAGE_DURATION,
+  GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown.JSON_PROPERTY_CREDIT_QUALITY
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.19.0")
 public class GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown {
@@ -42,13 +42,13 @@ public class GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown {
   @javax.annotation.Nullable
   private GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdownAverageMaturity averageMaturity;
 
-  public static final String JSON_PROPERTY_CREDIT_QUALITY = "credit_quality";
-  @javax.annotation.Nullable
-  private List<GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdownCreditQualityInner> creditQuality = new ArrayList<>();
-
   public static final String JSON_PROPERTY_AVERAGE_DURATION = "average_duration";
   @javax.annotation.Nullable
   private GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdownAverageDuration averageDuration;
+
+  public static final String JSON_PROPERTY_CREDIT_QUALITY = "credit_quality";
+  @javax.annotation.Nullable
+  private List<GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdownCreditQualityInner> creditQuality = new ArrayList<>();
 
   public GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown() { 
   }
@@ -74,6 +74,30 @@ public class GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAverageMaturity(@javax.annotation.Nullable GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdownAverageMaturity averageMaturity) {
     this.averageMaturity = averageMaturity;
+  }
+
+
+  public GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown averageDuration(@javax.annotation.Nullable GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdownAverageDuration averageDuration) {
+    this.averageDuration = averageDuration;
+    return this;
+  }
+
+  /**
+   * Get averageDuration
+   * @return averageDuration
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_AVERAGE_DURATION, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdownAverageDuration getAverageDuration() {
+    return averageDuration;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_AVERAGE_DURATION, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAverageDuration(@javax.annotation.Nullable GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdownAverageDuration averageDuration) {
+    this.averageDuration = averageDuration;
   }
 
 
@@ -109,30 +133,6 @@ public class GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown {
   }
 
 
-  public GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown averageDuration(@javax.annotation.Nullable GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdownAverageDuration averageDuration) {
-    this.averageDuration = averageDuration;
-    return this;
-  }
-
-  /**
-   * Get averageDuration
-   * @return averageDuration
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_AVERAGE_DURATION, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdownAverageDuration getAverageDuration() {
-    return averageDuration;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_AVERAGE_DURATION, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAverageDuration(@javax.annotation.Nullable GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdownAverageDuration averageDuration) {
-    this.averageDuration = averageDuration;
-  }
-
-
   /**
    * Return true if this GetMutualFundsWorld_200_response_mutual_fund_composition_bond_breakdown object is equal to o.
    */
@@ -146,13 +146,13 @@ public class GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown {
     }
     GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown getMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown = (GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown) o;
     return Objects.equals(this.averageMaturity, getMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown.averageMaturity) &&
-        Objects.equals(this.creditQuality, getMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown.creditQuality) &&
-        Objects.equals(this.averageDuration, getMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown.averageDuration);
+        Objects.equals(this.averageDuration, getMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown.averageDuration) &&
+        Objects.equals(this.creditQuality, getMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown.creditQuality);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(averageMaturity, creditQuality, averageDuration);
+    return Objects.hash(averageMaturity, averageDuration, creditQuality);
   }
 
   @Override
@@ -160,8 +160,8 @@ public class GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown {\n");
     sb.append("    averageMaturity: ").append(toIndentedString(averageMaturity)).append("\n");
-    sb.append("    creditQuality: ").append(toIndentedString(creditQuality)).append("\n");
     sb.append("    averageDuration: ").append(toIndentedString(averageDuration)).append("\n");
+    sb.append("    creditQuality: ").append(toIndentedString(creditQuality)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -214,6 +214,11 @@ public class GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown {
       joiner.add(getAverageMaturity().toUrlQueryString(prefix + "average_maturity" + suffix));
     }
 
+    // add `average_duration` to the URL query string
+    if (getAverageDuration() != null) {
+      joiner.add(getAverageDuration().toUrlQueryString(prefix + "average_duration" + suffix));
+    }
+
     // add `credit_quality` to the URL query string
     if (getCreditQuality() != null) {
       for (int i = 0; i < getCreditQuality().size(); i++) {
@@ -222,11 +227,6 @@ public class GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown {
           "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
-    }
-
-    // add `average_duration` to the URL query string
-    if (getAverageDuration() != null) {
-      joiner.add(getAverageDuration().toUrlQueryString(prefix + "average_duration" + suffix));
     }
 
     return joiner.toString();
