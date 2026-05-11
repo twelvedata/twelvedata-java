@@ -1,7 +1,7 @@
 # Twelve Data API client for Java
 
 [![Maven Central](https://img.shields.io/maven-central/v/com.twelvedata/twelvedata-java)](https://central.sonatype.com/artifact/com.twelvedata/twelvedata-java)
-[![License](https://img.shields.io/github/license/twelvedata/twelvedata-java)](https://github.com/twelvedata/twelvedata-java/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/twelvedata/twelvedata-java?v=2)](https://github.com/twelvedata/twelvedata-java/blob/master/LICENSE)
 [![Issues](https://img.shields.io/github/issues/twelvedata/twelvedata-java)](https://github.com/twelvedata/twelvedata-java/issues)
 
 Twelve Data official library. This package supports all main features of the service:
@@ -14,7 +14,7 @@ Twelve Data official library. This package supports all main features of the ser
 🔑 **API key** is required. If you don't have it yet, get it by [signing up here](https://twelvedata.com/pricing).
 
 ## Requirements
-Java 11 or later.
+JDK 11 or later.
 
 ## Installation
 
@@ -24,14 +24,14 @@ Maven (`pom.xml`):
 <dependency>
   <groupId>com.twelvedata</groupId>
   <artifactId>twelvedata-java</artifactId>
-  <version>LATEST</version>
+  <version>1.0.4</version>
 </dependency>
 ```
 
 Gradle (`build.gradle`):
 
 ```groovy
-implementation 'com.twelvedata:twelvedata-java:LATEST'
+implementation 'com.twelvedata:twelvedata-java:1.0.4'
 ```
 
 🔗 View the package on [Maven Central](https://central.sonatype.com/artifact/com.twelvedata/twelvedata-java).
@@ -47,6 +47,8 @@ mvn archetype:generate \
     -DgroupId=com.example \
     -DartifactId=my-app \
     -DarchetypeArtifactId=maven-archetype-quickstart \
+    -DarchetypeVersion=1.5 \
+    -DjavaCompilerVersion=11 \
     -DinteractiveMode=false
 cd my-app
 ```
@@ -57,7 +59,7 @@ Add the Twelve Data dependency to `pom.xml` inside `<dependencies>`:
 <dependency>
   <groupId>com.twelvedata</groupId>
   <artifactId>twelvedata-java</artifactId>
-  <version>LATEST</version>
+  <version>1.0.4</version>
 </dependency>
 ```
 
@@ -74,7 +76,7 @@ gradle init --type java-application --dsl groovy \
 Add the Twelve Data dependency to `build.gradle` inside `dependencies { ... }`:
 
 ```groovy
-implementation 'com.twelvedata:twelvedata-java:LATEST'
+implementation 'com.twelvedata:twelvedata-java:1.0.4'
 ```
 
 ### 2. Replace `src/main/java/com/example/App.java`
