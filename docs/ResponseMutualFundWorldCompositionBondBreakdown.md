@@ -1,6 +1,6 @@
 
 
-# GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown
+# ResponseMutualFundWorldCompositionBondBreakdown
 
 Breakdown of the fund’s bond holdings by maturity, duration, and credit quality
 

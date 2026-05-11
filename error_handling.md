@@ -94,7 +94,7 @@ import com.twelvedata.client.ws.TwelvedataWebSocketListener;
 import com.twelvedata.client.ws.TwelvedataWebSocketOptions;
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         TwelvedataWebSocketClient client = new TwelvedataWebSocketClient(
             TwelvedataWebSocketOptions.builder()
                 .apiKey("YOUR_API_KEY_HERE") // defaults to System.getenv("TWELVEDATA_API_KEY")
@@ -122,6 +122,12 @@ public class App {
         }
 
         client.subscribe("AAPL");
+
+        // The WS runs on daemon threads; keep the main thread alive so events
+        // can be delivered. Ctrl-C triggers the shutdown hook, which closes
+        // the connection cleanly.
+        Runtime.getRuntime().addShutdownHook(new Thread(client::disconnect));
+        Thread.currentThread().join();
     }
 }
 ```

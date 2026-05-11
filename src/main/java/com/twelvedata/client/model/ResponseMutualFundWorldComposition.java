@@ -19,9 +19,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.twelvedata.client.model.GetMutualFundsWorld200ResponseMutualFundCompositionAssetAllocation;
-import com.twelvedata.client.model.GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown;
 import com.twelvedata.client.model.GetMutualFundsWorld200ResponseMutualFundCompositionMajorMarketSectorsInner;
 import com.twelvedata.client.model.GetMutualFundsWorld200ResponseMutualFundCompositionTopHoldingsInner;
+import com.twelvedata.client.model.ResponseMutualFundWorldCompositionBondBreakdown;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -54,7 +54,7 @@ public class ResponseMutualFundWorldComposition {
 
   public static final String JSON_PROPERTY_BOND_BREAKDOWN = "bond_breakdown";
   @javax.annotation.Nullable
-  private GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown bondBreakdown;
+  private ResponseMutualFundWorldCompositionBondBreakdown bondBreakdown;
 
   public ResponseMutualFundWorldComposition() { 
   }
@@ -147,7 +147,7 @@ public class ResponseMutualFundWorldComposition {
   }
 
 
-  public ResponseMutualFundWorldComposition bondBreakdown(@javax.annotation.Nullable GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown bondBreakdown) {
+  public ResponseMutualFundWorldComposition bondBreakdown(@javax.annotation.Nullable ResponseMutualFundWorldCompositionBondBreakdown bondBreakdown) {
     this.bondBreakdown = bondBreakdown;
     return this;
   }
@@ -159,14 +159,14 @@ public class ResponseMutualFundWorldComposition {
   @javax.annotation.Nullable
   @JsonProperty(value = JSON_PROPERTY_BOND_BREAKDOWN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown getBondBreakdown() {
+  public ResponseMutualFundWorldCompositionBondBreakdown getBondBreakdown() {
     return bondBreakdown;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_BOND_BREAKDOWN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBondBreakdown(@javax.annotation.Nullable GetMutualFundsWorld200ResponseMutualFundCompositionBondBreakdown bondBreakdown) {
+  public void setBondBreakdown(@javax.annotation.Nullable ResponseMutualFundWorldCompositionBondBreakdown bondBreakdown) {
     this.bondBreakdown = bondBreakdown;
   }
 

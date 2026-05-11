@@ -24,14 +24,14 @@ Maven (`pom.xml`):
 <dependency>
   <groupId>com.twelvedata</groupId>
   <artifactId>twelvedata-java</artifactId>
-  <version>1.0.6</version>
+  <version>1.0.7</version>
 </dependency>
 ```
 
 Gradle (`build.gradle`):
 
 ```groovy
-implementation 'com.twelvedata:twelvedata-java:1.0.6'
+implementation 'com.twelvedata:twelvedata-java:1.0.7'
 ```
 
 🔗 View the package on [Maven Central](https://central.sonatype.com/artifact/com.twelvedata/twelvedata-java).
@@ -59,7 +59,7 @@ Add the Twelve Data dependency to `pom.xml` inside `<dependencies>`:
 <dependency>
   <groupId>com.twelvedata</groupId>
   <artifactId>twelvedata-java</artifactId>
-  <version>1.0.6</version>
+  <version>1.0.7</version>
 </dependency>
 ```
 
@@ -76,7 +76,7 @@ gradle init --type java-application --dsl groovy \
 Add the Twelve Data dependency to `build.gradle` inside `dependencies { ... }`:
 
 ```groovy
-implementation 'com.twelvedata:twelvedata-java:1.0.6'
+implementation 'com.twelvedata:twelvedata-java:1.0.7'
 ```
 
 ### 2. Replace `src/main/java/com/example/App.java`
@@ -160,7 +160,7 @@ import com.twelvedata.client.ws.TwelvedataWebSocketListener;
 import com.twelvedata.client.ws.TwelvedataWebSocketOptions;
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         TwelvedataWebSocketClient client = new TwelvedataWebSocketClient(
             TwelvedataWebSocketOptions.builder()
                 .apiKey("YOUR_API_KEY_HERE") // defaults to System.getenv("TWELVEDATA_API_KEY")
@@ -203,9 +203,11 @@ public class App {
 
         client.subscribe("AAPL,EUR/USD,BTC/USD");
 
-        // Later, if you want to stop:
-        // client.unsubscribe("BTC/USD");
-        // client.disconnect();
+        // The WS runs on daemon threads; keep the main thread alive so events
+        // can be delivered. Ctrl-C triggers the shutdown hook, which closes
+        // the connection cleanly.
+        Runtime.getRuntime().addShutdownHook(new Thread(client::disconnect));
+        Thread.currentThread().join();
     }
 }
 ```
