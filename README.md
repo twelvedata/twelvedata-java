@@ -24,14 +24,14 @@ Maven (`pom.xml`):
 <dependency>
   <groupId>com.twelvedata</groupId>
   <artifactId>twelvedata-java</artifactId>
-  <version>1.0.4</version>
+  <version>1.0.5</version>
 </dependency>
 ```
 
 Gradle (`build.gradle`):
 
 ```groovy
-implementation 'com.twelvedata:twelvedata-java:1.0.4'
+implementation 'com.twelvedata:twelvedata-java:1.0.5'
 ```
 
 🔗 View the package on [Maven Central](https://central.sonatype.com/artifact/com.twelvedata/twelvedata-java).
@@ -59,7 +59,7 @@ Add the Twelve Data dependency to `pom.xml` inside `<dependencies>`:
 <dependency>
   <groupId>com.twelvedata</groupId>
   <artifactId>twelvedata-java</artifactId>
-  <version>1.0.4</version>
+  <version>1.0.5</version>
 </dependency>
 ```
 
@@ -76,7 +76,7 @@ gradle init --type java-application --dsl groovy \
 Add the Twelve Data dependency to `build.gradle` inside `dependencies { ... }`:
 
 ```groovy
-implementation 'com.twelvedata:twelvedata-java:1.0.4'
+implementation 'com.twelvedata:twelvedata-java:1.0.5'
 ```
 
 ### 2. Replace `src/main/java/com/example/App.java`
