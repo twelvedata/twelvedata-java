@@ -17,7 +17,7 @@ apply plugin: 'com.diffplug.spotless'
 apply plugin: 'java-library'
 
 group = 'com.twelvedata'
-version = '1.0.0'
+version = '1.0.1'
 
 repositories {
     mavenCentral()
@@ -43,7 +43,7 @@ mavenPublishing {
     publishToMavenCentral()
     signAllPublications()
 
-    coordinates('com.twelvedata', 'twelvedata-java', '1.0.0')
+    coordinates('com.twelvedata', 'twelvedata-java', '1.0.1')
 
     pom {
         name = 'Twelve Data API client for Java'
